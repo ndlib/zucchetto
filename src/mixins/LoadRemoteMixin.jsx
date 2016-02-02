@@ -1,7 +1,6 @@
 "use strict"
 var React = require("react");
 var ItemActions = require('../actions/ItemActions.jsx');
-var SectionActions = require('../actions/SectionActions.jsx');
 
 var LoadRemoteMixin = {
   propTypes: {
@@ -50,20 +49,6 @@ var LoadRemoteMixin = {
       success: function(result) {
         ItemActions.setCurrentItem(result.items);
         ItemActions.showItemDialogWindow(result.items);
-      },
-      error: function(request, status, thrownError) {}
-    });
-  },
-
-  loadRemoteSection: function(url) {
-    $.ajax({
-      context: this,
-      type: 'GET',
-      url: url,
-      dataType: 'json',
-      success: function(result) {
-        SectionActions.setCurrentSection(result.showcases.sections);
-        SectionActions.showSectionDialogWindow(result.showcases.sections)
       },
       error: function(request, status, thrownError) {}
     });

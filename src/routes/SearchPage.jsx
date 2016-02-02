@@ -4,6 +4,7 @@ import Search from '../components/Search//Search.jsx';
 import QueryParm from '../modules/QueryParam.js';
 import HoneycombURL from '../modules/HoneycombURL.js'
 
+let vatican_id = '9f86e30bfb';
 class SearchPage extends Component {
 
   render() {
@@ -11,8 +12,8 @@ class SearchPage extends Component {
       <div>
         <Search
           collection={HoneycombURL() + "/v1/collections/"
-            + 'animals'}
-          hits={HoneycombURL() + '/v1/collections/' + 'animals' + '/search'}
+            + vatican_id}
+          hits={HoneycombURL() + '/v1/collections/' + vatican_id + '/search'}
           searchTerm={QueryParm('q')}
           sortTerm={QueryParm('sort')}
           facet={QueryParm('facet')}

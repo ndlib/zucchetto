@@ -3,9 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 var ItemPanel = require("./ItemPanel.jsx");
 
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var SearchControls = require('./SearchControls.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
@@ -88,13 +86,11 @@ var Search = React.createClass({
 
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader>
         <ItemPanel />
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList />
         </PageContent>
-        <CollectionPageFooter collection={SearchStore.collection} />
       </mui.AppCanvas>
     );
   }
