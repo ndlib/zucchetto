@@ -1,0 +1,272 @@
+$yellow: #D5B117;
+$gold: #B29138;
+$green: #224048;
+$grey: #979694;
+$ltgrey: #B2B4B2;
+$blue: #193035;
+$tan: #E4E1D1;
+$khaki: #F8F6ED;
+
+@font-face {font-family:GPCBook;
+  src:url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.eot');
+  src:url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.eot?iefix') format('embedded-opentype'),
+      url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.woff') format('woff'),
+      url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.ttf') format('truetype'),
+      url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.svg#svgGPCBook') format('svg');
+}
+@font-face {font-family:GPCMed;
+  src:url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.eot');
+  src:url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.eot?iefix') format('embedded-opentype'),
+      url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.woff') format('woff'),
+      url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.ttf') format('truetype'),
+      url('//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.svg#svgGPCMed') format('svg');
+}
+
+
+body {
+	background: $khaki;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: GPCMed, sans-serif;
+	color: $green;
+	font-weight: bold;
+}
+
+header {
+	background: $tan;
+	padding: 11px;
+
+	h1 {
+		color: $green;
+		text-transform: uppercase;
+		font-size: 54px;
+		margin-top: 0;
+		line-height: 1em;
+	}
+	.tagline {
+		color: $yellow;
+		font-size: 18px;
+		font-family: GPCBook, sans-serif;
+		text-transform: uppercase;
+		margin: 0;
+	}
+	.cchr {
+		height: 49px;
+		margin-bottom: 10px;
+	}
+	.cds {
+		height:17px;
+	}
+}
+
+nav {
+	ul {
+		list-style: none;
+		padding: 0;
+
+		li {
+			list-style: none;
+			a {
+				color: $green;
+				font-family: GPCBook, sans-serif;
+				text-decoration: none;
+				line-height: 1em;
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+.body {
+	width: 98vw;
+	border-top: double 3px $grey;
+	border-bottom: double 3px $yellow;
+	margin:5px auto;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+
+	.left-col {
+		padding-left: 0;
+		background: $tan;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding: 15px;
+
+		h2 {
+			font-size:22px;
+		}
+	}
+
+	.right-col {
+		padding-right: 0;
+	}
+
+	nav {
+		a {
+			color: $green;
+			font-size: 24px;
+			text-transform: uppercase;
+			font-family: GPCBook, sans-serif;
+			text-decoration: none;
+			padding:11px 0;
+			line-height: 1em;
+			display: block;
+		}
+	}
+
+	nav.filter {
+		li ul {
+			margin-left:24px;
+		}
+		a {
+			color: $grey;
+			font-family: GPCMed, sans-serif;
+			font-size:18px;
+			text-transform: none;
+			padding:4px 0 4px 24px;
+			background: url(/resources/images/closed.png) no-repeat 3px 4px;
+			display: inline-block;
+		}
+
+		a.open {
+			background-image: url(/resources/images/open.png);
+			background-position: 0 8px;
+		}
+		input {
+			border: solid $grey 1px;
+			height:14px;
+			width:14px;
+			float: right;
+		}
+	}
+
+	section {
+		margin-top: 5px;
+		margin-bottom: 5px;
+
+		h1 {
+			font-size: 22px;
+		}
+	}
+}
+
+.search {
+	input {
+		border: solid 3px $grey;
+		border-radius: 6px;
+		color: $grey;
+		font-family: GPCBook;
+		font-size: 20px;
+		font-weight: bold;
+		padding:6px 5px;
+		text-transform: uppercase;
+		background: $khaki;
+	} 
+
+	.glyphicon {
+		color: $grey;
+		font-size: 30px;
+		color: $khaki;
+	}
+}
+
+.results {
+	.helpers {
+		float: left;
+		width:100%;
+		clear: both;
+
+		a {
+			color: $blue;
+		}
+	}
+	article {
+		background: white;
+		margin-bottom: 8px;
+		float: left;
+		width: 100%;
+		clear: both;
+		padding:6px;
+
+		h4 {
+			margin: 0;
+			font-size: 18px;
+			float: left;
+			a {
+				color: $yellow;
+				padding-right: 24px;
+				background: url(/resources/images/closed.png) no-repeat right 3px ;
+
+			}
+			a.open {
+				background: url(/resources/images/open.png) no-repeat right 8px;
+			}
+
+		}
+
+		a {
+			color:$grey;
+			font-family: GPCMed;
+		}
+
+		.paragraphNumber {
+			float: right;
+			font-size: 14px;
+			font-family: GPCMed;
+			color: $ltgrey;
+			font-weight: bold;
+		}
+
+		.blurb {
+			clear: both;
+			padding:10px;
+			float: left;
+			widows: 100%;
+
+			p {
+				color: $grey;
+			}
+
+			a {
+				font-size: 12px;
+				color: $blue;
+			}
+		}
+		hr {
+			border:none;
+			background: white;
+			height:1px;
+		}
+	}
+}
+
+footer {
+	width: 98vw;
+	margin: 15px auto;
+
+	img {
+		vertical-align: bottom;
+		margin-right: 15px;
+		margin-bottom: 15px;
+	}
+
+	
+}
+
+a.right {
+	float:right;
+}
+
+a.left {
+	float: left;
+}
+
+.right {
+		img {
+			float: right;
+			margin-right: 0;
+			clear: right;
+		}
+	}

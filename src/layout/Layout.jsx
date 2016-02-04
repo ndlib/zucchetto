@@ -7,6 +7,7 @@ var Layout = React.createClass({
 
     return (
       <mui.AppCanvas>
+      	
         {this.props.children}
       </mui.AppCanvas>
     );

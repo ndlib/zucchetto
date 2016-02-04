@@ -6836,6 +6836,186 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+@font-face {
+  font-family: GPCBook;
+  src: url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.eot");
+  src: url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.eot?iefix") format("embedded-opentype"), url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.woff") format("woff"), url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.ttf") format("truetype"), url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Book.svg#svgGPCBook") format("svg"); }
 
+@font-face {
+  font-family: GPCMed;
+  src: url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.eot");
+  src: url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.eot?iefix") format("embedded-opentype"), url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.woff") format("woff"), url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.ttf") format("truetype"), url("//www.nd.edu/assets/fonts/GalaxiePolarisCondensed-Medium.svg#svgGPCMed") format("svg"); }
+
+body {
+  background: #F8F6ED; }
+
+h1, h2, h3, h4, h5 {
+  font-family: GPCMed, sans-serif;
+  color: #224048;
+  font-weight: bold; }
+
+header {
+  background: #E4E1D1;
+  padding: 11px; }
+  header h1 {
+    color: #224048;
+    text-transform: uppercase;
+    font-size: 54px;
+    margin-top: 0;
+    line-height: 1em; }
+  header .tagline {
+    color: #D5B117;
+    font-size: 18px;
+    font-family: GPCBook, sans-serif;
+    text-transform: uppercase;
+    margin: 0; }
+  header .cchr {
+    height: 49px;
+    margin-bottom: 10px; }
+  header .cds {
+    height: 17px; }
+
+nav ul {
+  list-style: none;
+  padding: 0; }
+  nav ul li {
+    list-style: none; }
+    nav ul li a {
+      color: #224048;
+      font-family: GPCBook, sans-serif;
+      text-decoration: none;
+      line-height: 1em;
+      font-size: 14px; }
+
+.body {
+  width: 98vw;
+  border-top: double 3px #979694;
+  border-bottom: double 3px #D5B117;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; }
+  .body .left-col {
+    padding-left: 0;
+    background: #E4E1D1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 15px; }
+    .body .left-col h2 {
+      font-size: 22px; }
+  .body .right-col {
+    padding-right: 0; }
+  .body nav a {
+    color: #224048;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: GPCBook, sans-serif;
+    text-decoration: none;
+    padding: 11px 0;
+    line-height: 1em;
+    display: block; }
+  .body nav.filter li ul {
+    margin-left: 24px; }
+  .body nav.filter a {
+    color: #979694;
+    font-family: GPCMed, sans-serif;
+    font-size: 18px;
+    text-transform: none;
+    padding: 4px 0 4px 24px;
+    background: url(/resources/images/closed.png) no-repeat 3px 4px;
+    display: inline-block; }
+  .body nav.filter a.open {
+    background-image: url(/resources/images/open.png);
+    background-position: 0 8px; }
+  .body nav.filter input {
+    border: solid #979694 1px;
+    height: 14px;
+    width: 14px;
+    float: right; }
+  .body section {
+    margin-top: 5px;
+    margin-bottom: 5px; }
+    .body section h1 {
+      font-size: 22px; }
+
+.search input {
+  border: solid 3px #979694;
+  border-radius: 6px;
+  color: #979694;
+  font-family: GPCBook;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 5px; }
+
+.search .glyphicon {
+  color: #979694;
+  font-size: 32px; }
+
+.results .helpers {
+  float: left;
+  width: 100%;
+  clear: both; }
+  .results .helpers a {
+    color: #193035; }
+
+.results article {
+  background: white;
+  margin-bottom: 8px;
+  float: left;
+  width: 100%;
+  clear: both;
+  padding: 6px; }
+  .results article h4 {
+    margin: 0;
+    font-size: 18px;
+    float: left; }
+    .results article h4 a {
+      color: #D5B117;
+      padding-right: 24px;
+      background: url(/resources/images/closed.png) no-repeat right 3px; }
+    .results article h4 a.open {
+      background: url(/resources/images/open.png) no-repeat right 8px; }
+  .results article a {
+    color: #979694;
+    font-family: GPCMed; }
+  .results article .paragraphNumber {
+    float: right;
+    font-size: 14px;
+    font-family: GPCMed;
+    color: #B2B4B2;
+    font-weight: bold; }
+  .results article .blurb {
+    clear: both;
+    padding: 10px;
+    float: left;
+    widows: 100%; }
+    .results article .blurb p {
+      color: #979694; }
+    .results article .blurb a {
+      font-size: 12px;
+      color: #193035; }
+  .results article hr {
+    border: none;
+    background: white;
+    height: 1px; }
+
+footer {
+  width: 98vw;
+  margin: 15px auto; }
+  footer img {
+    vertical-align: bottom;
+    margin-right: 15px;
+    margin-bottom: 15px; }
+
+a.right {
+  float: right; }
+
+a.left {
+  float: left; }
+
+.right img {
+  float: right;
+  margin-right: 0;
+  clear: right; }
 
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJyZXNvdXJjZXMvc3R5bGVzLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

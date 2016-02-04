@@ -28,7 +28,7 @@ var PageHeader = React.createClass({
           <nav className="" role="navigation" >
             {titleBar}
           </nav>
-        </header>
+        </header> 
       </div>
     );
   }
