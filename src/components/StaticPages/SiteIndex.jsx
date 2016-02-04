@@ -1,24 +1,14 @@
 'use strict'
 var React = require('react');
-
+var Header = require('../StaticAssets/Header.jsx');
+var Footer = require('../StaticAssets/Footer.jsx');
 var SiteIndex = React.createClass({
 
   render: function() {
     return (
       <div>
-      	<header>
-      		<div className="row">
-      			<div className="col-md-8">
-      				<h1>Research Database</h1>
-      				<p className="tagline">A CROSS-COMPARISON OF CATHOLIC SOCIAL TEACHING AND INTERNATIONAL HUMAN RIGHTS LAW</p>
-      			</div>
-  				<div className="col-md-4 right">
-  					<img src="/resources/images/cchr.png" className="cchr" />
-      				<img src="/resources/images/cds.png" className="cds" />
-  				</div>
-      		</div>
-      	</header>
-      	<div className="row body">
+        <Header />
+        <div className="row body">
       		<div className="col-sm-4 left-col">
       			<nav>
       				<ul>
@@ -43,32 +33,8 @@ var SiteIndex = React.createClass({
       	</div>
 
 
-      	<footer>
-      		<div className="row">
-      			<div className="col-sm-8">
-      				<img src="/resources/images/cchr.png" />
-      				<img src="/resources/images/cds.png" />
-      				<nav>
-      					<ul>
-      				    	<li>
-      						<a href="about">About the Database</a>
-      					</li>
-      					<li>
-      						<a href="partners">Project Partners</a>
-      					</li>
-      					<li>
-      						<a href="Contact">Contact Us</a>
-      					</li>
-      				    </ul>
-      				</nav>
-      			</div>
-      			<div className="col-sm-4 right">
-      				<img src="/resources/images/und.png" />
-      			</div>
-      		</div>
+        <Footer />
 
-      	</footer>
-      	
       </div>
     );
   }

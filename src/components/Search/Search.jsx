@@ -4,7 +4,6 @@ var mui = require('material-ui');
 var ItemPanel = require("./ItemPanel.jsx");
 
 var PageContent = require('../../layout/PageContent.jsx');
-var SearchControls = require('./SearchControls.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
@@ -87,7 +86,6 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         <ItemPanel />
-        <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList />
         </PageContent>

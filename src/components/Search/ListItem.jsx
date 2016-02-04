@@ -1,7 +1,6 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var ItemImage = require('./ItemImage.jsx');
 
 var ListItem = React.createClass({
   mixins: [
@@ -14,17 +13,6 @@ var ListItem = React.createClass({
 
   render: function() {
     var item = this.props.item;
-    var avatar;
-    if(item.image) {
-      avatar = (
-        <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px'}}>
-          <ItemImage image={item.image} />
-        </div>
-      );
-    }
-    else {
-      avatar = (<mui.Avatar>{item.name.charAt(0).toUpperCase()}</mui.Avatar>);
-    }
 
     var name = (
       <span style={{marginLeft: '30px'}}>
@@ -45,14 +33,13 @@ var ListItem = React.createClass({
     return (
       <div>
         <mui.ListItem
-          leftIcon={avatar}
           primaryText={name}
           secondaryText={description}
           secondaryTextLines={2}
           onClick={this.itemOnClick}
-          innerDivStyle={{paddingLeft:'80px', height:'85px'}}
+          innerDivStyle={{height:'85px'}}
         />
-      <mui.ListDivider  style={{marginLeft: "110px" }} />
+      <mui.Divider />
       </div>
     );
   }
