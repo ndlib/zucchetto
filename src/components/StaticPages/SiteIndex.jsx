@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var Header = require('../StaticAssets/Header.jsx');
+var Navigation = require('../StaticAssets/Navigation.jsx');
 var Footer = require('../StaticAssets/Footer.jsx');
 var SiteIndex = React.createClass({
 
@@ -10,19 +11,7 @@ var SiteIndex = React.createClass({
         <Header />
         <div className="row body">
       		<div className="col-sm-4 left-col">
-      			<nav>
-      				<ul>
-      					<li>
-      						<a href="about">About the Database</a>
-      					</li>
-      					<li>
-      						<a href="partners">Project Partners</a>
-      					</li>
-      					<li>
-      						<a href="Contact">Contact Us</a>
-      					</li>
-      				</ul>
-      			</nav>
+      			<Navigation/>
       		</div>
       		<div className="col-sm-8 right-col">
       			<section className="content">
