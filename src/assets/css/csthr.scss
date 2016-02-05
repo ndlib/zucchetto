@@ -97,10 +97,22 @@ nav {
 		h2 {
 			font-size:22px;
 		}
+
+		label {
+			color: $green;
+		}
 	}
 
 	.right-col {
 		padding-right: 0;
+
+		h1 {
+			font-size: 22px;
+		}
+
+		h2 {
+			font-size: 18px;
+		}
 	}
 
 	nav {
@@ -163,12 +175,17 @@ nav {
 		padding:6px 5px;
 		text-transform: uppercase;
 		background: $khaki;
+		box-shadow: 0px 0px 6px rgba(0,0,0,.65);
+		vertical-align: middle;
 	} 
 
 	.glyphicon {
 		color: $grey;
 		font-size: 30px;
 		color: $khaki;
+		text-shadow: 0px 0px 6px rgba(0,0,0,.65);
+		-webkit-text-stroke: 3px $grey;
+		vertical-align: middle;
 	}
 }
 
@@ -238,6 +255,24 @@ nav {
 			border:none;
 			background: white;
 			height:1px;
+		}
+	}
+}
+
+.partners {
+	table {
+		width: 100%;
+		margin-bottom:2em;
+
+		td {
+			width: 50%;
+			text-align: center;
+			padding: 0 0 1em;
+
+			img {
+				max-width: 20vw;
+				max-height: 12vw;
+			}
 		}
 	}
 }

@@ -6903,8 +6903,14 @@ nav ul {
     padding: 15px; }
     .body .left-col h2 {
       font-size: 22px; }
+    .body .left-col label {
+      color: #224048; }
   .body .right-col {
     padding-right: 0; }
+    .body .right-col h1 {
+      font-size: 22px; }
+    .body .right-col h2 {
+      font-size: 18px; }
   .body nav a {
     color: #224048;
     font-size: 24px;
@@ -6947,12 +6953,17 @@ nav ul {
   font-weight: bold;
   padding: 6px 5px;
   text-transform: uppercase;
-  background: #F8F6ED; }
+  background: #F8F6ED;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.65);
+  vertical-align: middle; }
 
 .search .glyphicon {
   color: #979694;
   font-size: 30px;
-  color: #F8F6ED; }
+  color: #F8F6ED;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.65);
+  -webkit-text-stroke: 3px #979694;
+  vertical-align: middle; }
 
 .results .helpers {
   float: left;
@@ -7001,6 +7012,17 @@ nav ul {
     border: none;
     background: white;
     height: 1px; }
+
+.partners table {
+  width: 100%;
+  margin-bottom: 2em; }
+  .partners table td {
+    width: 50%;
+    text-align: center;
+    padding: 0 0 1em; }
+    .partners table td img {
+      max-width: 20vw;
+      max-height: 12vw; }
 
 footer {
   width: 98vw;

@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var Header = require('../StaticAssets/Header.jsx');
+var Navigation = require('../StaticAssets/Navigation.jsx');
 var Footer = require('../StaticAssets/Footer.jsx');
 
 var Result = React.createClass({
@@ -32,11 +33,11 @@ var Result = React.createClass({
       				</ul>
       			</nav>
             <h2>Search by Date</h2>
-            <div className="form-group">
+            <div className="form-group col-md-6">
               <label for="dateFrom">From</label>
               <input type="text" className="form-control" id="dateFrom" />
             </div>
-            <div className="form-group">
+            <div className="form-group col-md-6">
               <label for="dateTo">To</label>
               <input type="text" className="form-control" id="dateTo" />
             </div>
