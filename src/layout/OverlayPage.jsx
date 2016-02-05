@@ -6,9 +6,6 @@ var SideNavButton = require("../other/SideNavButton.jsx");
 var PageContent = require('../layout/PageContent.jsx');
 
 var OverlayPage = React.createClass({
-  mixins: [
-    require("../mixins/CurrentThemeMixin.jsx")
-  ],
   propTypes: {
     title: React.PropTypes.string,
     onPrevButtonClick: React.PropTypes.func,
@@ -16,33 +13,20 @@ var OverlayPage = React.createClass({
     onCloseButtonClick: React.PropTypes.func,
   },
 
-  styles: function () {
-    return {
-      backgroundColor: this.getCurrentPallette.primary3Color,
-    }
-  },
-
-  titleStyle: function () {
-    return {
-      color: this.getCurrentPallette().textColor,
-    }
-  },
-
   pageStyles: function() {
     return {
       height: window.innerHeight + "px",
       width: "100%",
       position: "fixed",
-      backgroundColor: this.getCurrentPallette().canvasColor,
       zIndex: "4",
     }
   },
 
   toolbar: function() {
     return (
-      <mui.Toolbar style={this.styles()} >
+      <mui.Toolbar >
         <mui.ToolbarGroup key={0} float="left" >
-          <mui.ToolbarTitle text={this.props.title} style={this.titleStyle()} />
+          <mui.ToolbarTitle text={this.props.title} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
           {this.closeButton()}

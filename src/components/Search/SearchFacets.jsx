@@ -7,9 +7,6 @@ var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 
 var SearchFacets = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx')
-  ],
 
   getInitialState: function() {
     return {

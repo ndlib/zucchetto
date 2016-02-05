@@ -17,12 +17,10 @@ var React = require('react');
       return {
         top: this.props.offsetTop + 'px',
         zIndex: 100,
-        backgroundColor: this.getCurrentPallette().accent3Color,
         color: '#fff',
       };
     } else {
       return {
-        backgroundColor: this.getCurrentPallette().accent3Color,
         color: '#fff',
       };
     }

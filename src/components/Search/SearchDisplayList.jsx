@@ -1,6 +1,5 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
 var EventEmitter = require("../../middleware/EventEmitter.js");
 var MediaQuery = require('react-responsive');
 var SearchStore = require('../../store/SearchStore.js');
@@ -44,9 +43,9 @@ var SearchDisplayList = React.createClass({
       itemNodes = (<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>);
     }
     return (
-      <mui.List>
+      <div>
         {itemNodes}
-      </mui.List>
+      </div>
     )
   },
 
@@ -54,18 +53,20 @@ var SearchDisplayList = React.createClass({
     return (
       <div>
         <MediaQuery maxWidth={700}>
-          <div Depth={0}>
             {this.itemList()}
-            <SearchPagination />
-          </div>
+            {this.itemList()}
         </MediaQuery>
 
         <MediaQuery minWidth={700}>
           <SearchSidebar />
 
-          <div style={{display: 'inline-block', width: "80%"}} zDepth={0}>
-            {this.itemList()}
-            <SearchPagination />
+          <div className="col-sm-10 right-col">
+            <div className="col-sm-5 left-col">
+              {this.itemList()}
+            </div>
+            <div className="col-sm-5 left-col">
+              {this.itemList()}
+            </div>
           </div>
         </MediaQuery>
       </div>

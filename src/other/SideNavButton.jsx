@@ -1,11 +1,7 @@
 var React = require('react');
 var mui = require("material-ui");
-var ColorManipulator = mui.Utils.ColorManipulator;
 
 var SideNavButton = React.createClass({
-  mixins: [
-    require("../mixins/CurrentThemeMixin.jsx")
-  ],
 
   propTypes: {
     onClick: React.PropTypes.func,
@@ -46,7 +42,7 @@ var SideNavButton = React.createClass({
     var styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? "1" : "0.7",
-      backgroundColor: hovered ? ColorManipulator.darken(this.getCurrentPallette().accent3Color, .2) : this.getCurrentPallette().accent3Color,
+
       borderRadius: "50%",
       display: "inline-block",
       margin: "0",
@@ -71,7 +67,6 @@ var SideNavButton = React.createClass({
     var hovered = (this.state.hovered || this.state.isKeyboardFocused);
 
     var styles = {
-      color: hovered ? this.getCurrentPallette().textColor : this.getCurrentPallette().alternateTextColor,
       fontSize: "25px",
       position: "absolute",
       top: "17.5px",

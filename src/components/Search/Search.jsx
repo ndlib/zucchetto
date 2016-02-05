@@ -1,8 +1,8 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
+var Header = require('../StaticAssets/Header.jsx');
+var Footer = require('../StaticAssets/Footer.jsx');
 var ItemPanel = require("./ItemPanel.jsx");
-
 var PageContent = require('../../layout/PageContent.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
@@ -11,7 +11,6 @@ var SearchDisplayList = require('./SearchDisplayList.jsx');
 var Search = React.createClass({
   mixins: [
     require('../../mixins/LoadRemoteMixin.jsx'),
-    require('../../mixins/MuiThemeMixin.jsx')
   ],
 
   propTypes: {
@@ -84,12 +83,16 @@ var Search = React.createClass({
     }
 
     return (
-      <mui.AppCanvas>
-        <ItemPanel />
-        <PageContent fluidLayout={false}>
-          <SearchDisplayList />
-        </PageContent>
-      </mui.AppCanvas>
+      <div>
+        <Header/>
+        <div>
+          <ItemPanel />
+          <PageContent fluidLayout={true}>
+            <SearchDisplayList />
+          </PageContent>
+        </div>
+        <Footer/>
+      </div>
     );
   }
 });

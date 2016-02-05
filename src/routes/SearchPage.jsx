@@ -3,8 +3,9 @@ import React, { Component, PropTypes } from 'react';
 import Search from '../components/Search//Search.jsx';
 import QueryParm from '../modules/QueryParam.js';
 import HoneycombURL from '../modules/HoneycombURL.js'
+import VaticanID from '../constants/VaticanID.js';
 
-let vatican_id = '9f86e30bfb';
+
 class SearchPage extends Component {
 
   render() {
@@ -12,13 +13,12 @@ class SearchPage extends Component {
       <div>
         <Search
           collection={HoneycombURL() + "/v1/collections/"
-            + vatican_id}
-          hits={HoneycombURL() + '/v1/collections/' + vatican_id + '/search'}
+            + VaticanID}
+          hits={HoneycombURL() + '/v1/collections/' + VaticanID + '/search'}
           searchTerm={QueryParm('q')}
           sortTerm={QueryParm('sort')}
           facet={QueryParm('facet')}
           start={QueryParm('start')}
-          view={QueryParm('view')}
         />
         {this.props.children}
       </div>

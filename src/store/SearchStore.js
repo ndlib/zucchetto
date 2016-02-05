@@ -31,7 +31,6 @@ class SearchStore extends EventEmitter {
 
     // User selections that only affect the view (don't require a reload)
     this._selectedItem = null;
-    this._view = null;
 
     Object.defineProperty(this, "baseApiUrl", { get: function() { return this._baseApiUrl; } });
     Object.defineProperty(this, "collection", { get: function() { return this._collection; } });
@@ -46,7 +45,6 @@ class SearchStore extends EventEmitter {
     Object.defineProperty(this, "facetOption", { get: function() { return this._facetOption; } });
     Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
     Object.defineProperty(this, "selectedItem", { get: function() { return this._selectedItem; } });
-    Object.defineProperty(this, "view", { get: function() { return this._view; } });
 
     AppDispatcher.register(this.receiveAction.bind(this));
   }
@@ -71,7 +69,6 @@ class SearchStore extends EventEmitter {
     this._facetOption = params.facetOption;
     this._sortOption = params.sortOption;
     this._start = params.start;
-    this._view = params.view ? params.view : "grid";
   }
 
   getQueryParams() {
@@ -82,7 +79,6 @@ class SearchStore extends EventEmitter {
       facetOption: this._facetOption,
       sortOption: this._sortOption,
       start: this._start,
-      view: this._view,
     };
   }
 
@@ -160,11 +156,6 @@ class SearchStore extends EventEmitter {
     this._count = this._items.length;
   }
 
-  setView(view) {
-    this._view = view;
-    this.emit("SearchStoreViewChanged");
-  }
-
   // Overrides can be provided to override the value in the store when creating the uri params.
   // This was primarily created to allow pagination to generate links using the same search, but
   // with other start values.
@@ -181,7 +172,6 @@ class SearchStore extends EventEmitter {
     } else if(this._start) {
       uri += "&start=" + this._start;
     }
-    uri += "&view=" + this._view;
     return uri;
   }
 
@@ -202,9 +192,6 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_SORT:
         this.setSelectedSort(action.sort);
-        break;
-      case SearchActionTypes.SEARCH_SET_VIEW:
-        this.setView(action.view);
         break;
       default:
         break;

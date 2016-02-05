@@ -1,8 +1,5 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
-var SelectField = mui.SelectField;
-var MenuItem = mui.MenuItem;
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 

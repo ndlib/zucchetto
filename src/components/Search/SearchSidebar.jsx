@@ -1,15 +1,19 @@
 'use strict'
 var React = require('react');
 var SearchFacets = require('./SearchFacets.jsx');
+var SearchBox = require('./SearchBox.jsx');
+var VaticanID = require('../../constants/VaticanID.js');
 
 var SearchSidebar = React.createClass({
 
-
   render: function() {
     return (
-      <div style={{display: 'inline-block', width: "20%", float: 'left'}} >
-        <h3 style={{paddingLeft:'16px'}}>Filter Results</h3>
-        <hr/>
+      <div className="col-sm-2 left-col" >
+        <SearchBox
+          collection={VaticanID}
+          primary={true}
+          useStore={true}
+        />
         <SearchFacets/>
       </div>
     );

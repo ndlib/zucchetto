@@ -5,9 +5,6 @@ var mui = require("material-ui");
 var MetadataList = require('../display/MetadataList.jsx');
 
 var Details = React.createClass({
-  mixins: [
-    require('../mixins/CurrentThemeMixin.jsx')
-  ],
 
   propTypes: {
     item: React.PropTypes.object,
@@ -34,7 +31,7 @@ var Details = React.createClass({
 
   detailsButtonStyle: function() {
     var arr = {
-      backgroundColor: this.getCurrentPallette().accent3Color,
+
       position: "absolute",
       top: "-45px",
       right: "0",

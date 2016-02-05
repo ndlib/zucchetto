@@ -1,6 +1,5 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
 var SearchStore = require('../../store/SearchStore.js');
 
 var SearchPagination = React.createClass({

@@ -1,6 +1,5 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
 var SideNavButton = require("../../other/SideNavButton.jsx");
 var OverlayPage = require("../../layout/OverlayPage.jsx");
@@ -11,7 +10,6 @@ var EventEmitter = require('../../middleware/EventEmitter.js');
 
 var ItemPanel = React.createClass({
   mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx'),
     require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/LoadRemoteMixin.jsx') ],
 
