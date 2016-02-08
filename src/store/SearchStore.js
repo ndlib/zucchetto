@@ -26,7 +26,7 @@ class SearchStore extends EventEmitter {
     this._rowLimit = 12; // The maximum number of items that a query will return.
 
     // User selections that affect the data
-    this._facetOption = null;
+    this._facetOption = new Array();
     this._sortOption = null;
 
     // User selections that only affect the view (don't require a reload)
@@ -86,9 +86,15 @@ class SearchStore extends EventEmitter {
     reason = typeof reason != "undefined" ? reason : "load";
 
     var url = this._baseApiUrl + "?q=" + encodeURIComponent(this._searchTerm);
-    if(this._facetOption && this._facetOption.name && this._facetOption.value) {
-      url += "&facets[" + this._facetOption.name + "]=" + this._facetOption.value;
+    if(this._facetOption != null){
+      for(var i = 0; i < this._facetOption.length; i++) {
+        if(this._facetOption[i].name && this._facetOption[i].value) {
+          url += "&facets[" + this._facetOption[i].name + "]=" + this._facetOption[i].value;
+        }
+      }
+
     }
+
     if(this._sortOption) {
       url += "&sort=" + this._sortOption;
     }
@@ -118,7 +124,29 @@ class SearchStore extends EventEmitter {
   }
 
   setSelectedFacet(facet) {
-    this._facetOption = facet;
+    if(!this._facetOption){
+      this._facetOption = new Array();
+    }
+    // should we add the facet, start by assuming yes we should
+    var addFacet = true;
+    // look for a facet wit the same name
+    // if it is found, delete it
+    // if it has the same name and same value, we don't want to add it so
+    // set addFacet to false
+    for (var i = 0; i < this._facetOption.length; i++) {
+      if(this._facetOption[i].name == facet.name){
+        if(this._facetOption[i].value == facet.value) {
+          addFacet = false;
+        }
+        this._facetOption.splice(i, 1);
+      }
+    }
+    if(addFacet){
+      this._facetOption.push(facet);
+    }
+
+
+    console.log('set facet', this._facetOption)
     this.executeQuery();
   }
 
@@ -161,9 +189,16 @@ class SearchStore extends EventEmitter {
   // with other start values.
   searchUri(overrides) {
     var uri = "/search?q=" + this._searchTerm;
-    if(this._facetOption && this._facetOption.name && this._facetOption.value){
-      uri += "&facet[" + this._facetOption.name + "]=" + this._facetOption.value;
+
+    if(this._facetOption && this._facetOption.length > 0) {
+      for (var i = 0; i < this._facetOption.length; i++) {
+        if(this._facetOption[i].name && this._facetOption[i].value) {
+          uri += "&facet[" + this._facetOption[i].name + "]=" + this._facetOption[i].value;
+        }
+      }
     }
+
+
     if(this._sortOption) {
       uri += "&sort=" + this._sortOption;
     }

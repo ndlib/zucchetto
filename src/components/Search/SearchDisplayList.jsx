@@ -7,6 +7,9 @@ var SearchPagination = require('./SearchPagination.jsx');
 var ListItem = require('./ListItem.jsx');
 var SearchSidebar = require('./SearchSidebar.jsx');
 
+const CATHOLIC = 'Catholic Social Teaching';
+const HUMANRIGHTS = 'International Human Rights Law';
+
 var SearchDisplayList = React.createClass({
   mixins: [
     require('../../mixins/CollectionUrlMixin.jsx'),
@@ -29,7 +32,7 @@ var SearchDisplayList = React.createClass({
     this.setState({ view: SearchStore.view });
   },
 
-  itemList: function() {
+  itemList: function(category) {
     var view = this.state.view;
     var itemNodes = SearchStore.items.map(function(item, index) {
       return (
@@ -44,6 +47,7 @@ var SearchDisplayList = React.createClass({
     }
     return (
       <div>
+        <h3>{category}</h3>
         {itemNodes}
       </div>
     )
@@ -53,19 +57,22 @@ var SearchDisplayList = React.createClass({
     return (
       <div>
         <MediaQuery maxWidth={700}>
-            {this.itemList()}
-            {this.itemList()}
+            {this.itemList(CATHOLIC)}
+            {this.itemList(HUMANRIGHTS)}
         </MediaQuery>
 
         <MediaQuery minWidth={700}>
           <SearchSidebar />
-
           <div className="col-sm-10 right-col">
-            <div className="col-sm-5 left-col">
-              {this.itemList()}
+            <div className="row">
+              <div className="col-sm-5"><a href="/">« Home</a></div>
+              <div className="col-sm-5">Share/Save Search Results</div>
             </div>
             <div className="col-sm-5 left-col">
-              {this.itemList()}
+              {this.itemList(CATHOLIC)}
+            </div>
+            <div className="col-sm-5 left-col">
+              {this.itemList(HUMANRIGHTS)}
             </div>
           </div>
         </MediaQuery>

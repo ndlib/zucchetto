@@ -85,11 +85,11 @@ var Search = React.createClass({
     return (
       <div>
         <Header/>
-        <div>
-          <ItemPanel />
-          <PageContent fluidLayout={true}>
+        <ItemPanel />
+        <div className="row body" style={{display: 'block'}}>
+          <div className="row col-sm-12">
             <SearchDisplayList />
-          </PageContent>
+          </div>
         </div>
         <Footer/>
       </div>

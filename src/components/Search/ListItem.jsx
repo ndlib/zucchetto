@@ -11,34 +11,19 @@ var ListItem = React.createClass({
     item: React.PropTypes.object.isRequired,
   },
 
+  componentWillMount: function() {
+    //this.loadRemoteItem(this.props.item['@id']);
+  },
+
   render: function() {
     var item = this.props.item;
 
-    var name = (
-      <span style={{marginLeft: '30px'}}>
-        {item.name}
-      </span>
-    );
-
-    var description = (
-        <span style={{
-            maxWidth: '50em',
-            marginLeft: '30px'}}
-        >
-          {item.description}
-
-        </span>
-    );
-
     return (
       <div>
-        <mui.ListItem
-          primaryText={name}
-          secondaryText={description}
-          secondaryTextLines={2}
-          onClick={this.itemOnClick}
-          innerDivStyle={{height:'85px'}}
-        />
+        <h4>{item.name}</h4>
+        <div>{item.description}</div>
+        <div>Add to Notebook</div>
+        <div>Download PDF</div>
       </div>
     );
   }
