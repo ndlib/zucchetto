@@ -305,3 +305,136 @@ a.left {
 			clear: right;
 		}
 	}
+
+.index {
+	header {
+		background: none;
+		padding: 0;
+		margin:0 auto;
+		max-width: 960px;
+		text-align: center;
+		border: none;
+		margin-top:8vh;
+
+		h1 {
+			color: #fff;
+			font-size: 54px;
+		}
+
+		p {
+			color: #fff;
+			font-size:22px;
+			width: 450px;
+			margin: 0 auto;
+		}
+
+		.col-md-8 {
+			width: 100%;
+		}
+
+		.col-md-4 {
+			display: none;
+		}
+	}
+
+	.search {
+		background: rgba(212,176,47,.3);
+		width: 100%;
+		padding:30px 0 15px;
+		margin-top: 20vh;
+
+		h2 {
+			text-align: center;
+			font-size: 40px;
+			text-transform: uppercase;
+			font-family: GPCBook;
+			margin-top:0;
+		}
+		p {
+			text-align: center;
+			font-size: 16px;
+			font-family: GPCBook;
+			margin:0;
+		}
+		a {
+			color:#fff;
+			text-shadow: 2px 2px 1px rgba(0,0,0,.8)
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		.glyphicon {
+			vertical-align: initial;
+		}
+	}
+
+	header, .search, nav {
+		position: relative;
+		z-index: 20;
+	}
+
+	nav {
+		float: left; 
+		width: 100%;
+		background: rgba(11,34,63,.1);
+		padding: 12px 0;
+		margin-top:10%;
+
+		ul {
+			width: 960px;
+			margin:0 auto;
+
+			li {
+				float: left; 
+				padding: 0 80px;
+
+				a {
+					color: #fff;
+					font-size: 26px;
+					font-family: GPCMed;
+					text-shadow: 2px 2px 1px rgba(0,0,0,.8)
+				}
+
+			}
+		}
+	}
+
+	.home-frame {
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.carousel {
+		max-height: 68vh;
+		overflow: hidden;
+
+		.fader {
+			background: -moz-linear-gradient(top,  rgba(248,246,237,0) 0%, rgba(248,246,237,1) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  rgba(248,246,237,0) 0%,rgba(248,246,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom,  rgba(248,246,237,0) 0%,rgba(248,246,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f8f6ed', endColorstr='#f8f6ed',GradientType=0 ); /* IE6-9 */
+			height:10vh;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			z-index: 2;
+		}
+
+		.item img {
+			width: 100%;
+			max-width: initial;
+		}
+	}
+
+	footer {
+		max-width: 960px;
+		margin:0 auto;
+		clear: both;
+
+		nav {
+			display: none;
+		}
+	}
+
+}
