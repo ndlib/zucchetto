@@ -26,7 +26,7 @@ class SearchStore extends EventEmitter {
     this._rowLimit = 12; // The maximum number of items that a query will return.
 
     // User selections that affect the data
-    this._facetOption = new Array();
+    this._facetOption = null;
     this._sortOption = null;
 
     // User selections that only affect the view (don't require a reload)
@@ -207,6 +207,7 @@ class SearchStore extends EventEmitter {
     } else if(this._start) {
       uri += "&start=" + this._start;
     }
+    console.log('uri', uri);
     return uri;
   }
 
