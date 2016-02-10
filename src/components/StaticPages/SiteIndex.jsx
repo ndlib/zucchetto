@@ -7,22 +7,42 @@ var SiteIndex = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="index">
         <Header />
-        <div className="row body">
-      		<div className="col-sm-4 left-col">
-      			<Navigation/>
-      		</div>
-      		<div className="col-sm-8 right-col">
-      			<section className="content">
-        		<h1>Index Page</h1>
-        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        		</section>
-      		</div>
-      	</div>
 
 
-        <Footer />
+      		<section className="search">
+              <h2><a href="#">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></a></h2>
+              <p><a href="#">Using the Database</a></p>
+          </section>
+
+        
+        <Navigation/>
+<div className="home-frame">
+  <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
+    <ol className="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" className="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+  
+  
+    <div className="carousel-inner" role="listbox">
+      <div className="item active">
+        <img src="resources/images/cover/01.jpg" />
+      </div>
+      <div className="item">
+        <img src="resources/images/cover/02.jpg" />
+      </div>
+      <div className="item">
+        <img src="resources/images/cover/03.jpg" />
+      </div>
+    </div>
+    <div className="fader"></div>
+  </div>
+  <Footer />
+</div>
+        
 
       </div>
     );
