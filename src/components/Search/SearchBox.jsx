@@ -85,6 +85,7 @@ var SearchBox = React.createClass({
         fontFamily: 'GPCMed, sans-serif',
         height:'36px',
         minWidth: '150px',
+        paddingLeft: '4px',
         verticalAlign:'top',
        }}
     />);

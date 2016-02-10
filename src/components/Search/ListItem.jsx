@@ -19,7 +19,14 @@ var ListItem = React.createClass({
     var item = this.props.item;
 
     return (
-      <div style={{backgroundColor:'white', color: '#a7a7a5', margin: '0.5em 0', padding: '0.2em 1em'}}>
+      <div style={{
+          backgroundColor:'white',
+          fontFamily: 'GPCMed, sans-serif',
+          color: '#a7a7a5',
+          margin: '0.5em 0',
+          padding: '0.2em 1em'
+        }}
+      >
         <h4 style={{color:'#D5B117'}}>{item.name}</h4>
         <div>{item.description}</div>
         <div style={{float: 'right'}}>Download PDF</div>

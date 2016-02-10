@@ -44,6 +44,11 @@ var SearchFacets = React.createClass({
         <List
           key={e.name}
           subheader={e.name}
+          subheaderStyle={{
+            color: '#224048',
+            fontFamily: 'GPCMed, sans-serif',
+            fontSize: '1.2em'
+          }}
           style={{backgroundColor: 'transparent'}}
         >
           {this.values(e)}
