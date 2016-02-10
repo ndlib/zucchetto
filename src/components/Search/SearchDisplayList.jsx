@@ -47,31 +47,67 @@ var SearchDisplayList = React.createClass({
     }
     return (
       <div>
-        <h3>{category}</h3>
+        <h3 style={this.listHeaderStyle()}>{category}</h3>
         {itemNodes}
       </div>
     )
   },
+  listHeaderStyle: function() {
+    return {
+      backgroundColor: '#cacccb',
+      padding: '.25em',
+      textAlign: 'center',
+      textTransform: 'uppercase',
+    }
+  },
 
+  listStyle: function(side) {
+    var ta = side ? side : 'left';
+    return {
+      backgroundColor: 'transparent',
+      fontFamily: 'GPCMed, sans-serif',
+      textAlign: ta,
+    }
+  },
+  topLinkStyle: function() {
+    return {
+      color: '#224048',
+      fontSize: '1.2em',
+      lineHeight: '2em',
+      textTransform: 'uppercase',
+    }
+  },
   render: function() {
     return (
       <div>
         <MediaQuery maxWidth={700}>
-            {this.itemList(CATHOLIC)}
-            {this.itemList(HUMANRIGHTS)}
+          {this.itemList(CATHOLIC)}
+          {this.itemList(HUMANRIGHTS)}
         </MediaQuery>
 
         <MediaQuery minWidth={700}>
           <SearchSidebar />
-          <div className="col-sm-10 right-col">
+          <div className="col-sm-10 right-col" style={this.listStyle()}>
             <div className="row">
-              <div className="col-sm-5"><a href="/">« Home</a></div>
-              <div className="col-sm-5">Share/Save Search Results</div>
+              <div
+                className="col-sm-5"
+                style={this.listStyle()}
+              >
+                <a href="/" style={this.topLinkStyle()}>« Home</a>
+
+              </div>
+              <div
+                className="col-sm-5"
+                style={this.listStyle('right')}
+              >
+                <a href="#" style={this.topLinkStyle()}>Share/Save Search Results</a>
+
+              </div>
             </div>
-            <div className="col-sm-5 left-col">
+            <div className="col-sm-5" style={this.listStyle()}>
               {this.itemList(CATHOLIC)}
             </div>
-            <div className="col-sm-5 left-col">
+            <div className="col-sm-5" style={this.listStyle()}>
               {this.itemList(HUMANRIGHTS)}
             </div>
           </div>

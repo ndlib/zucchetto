@@ -6,7 +6,10 @@ var SearchActions = require('../../actions/SearchActions.js');
 
 var SearchBox = React.createClass({
   propTypes: {
-    collection: React.PropTypes.object,
+    collection: React.PropTypes.oneOfType([
+      React.PropTypes.object,
+      React.PropTypes.string,
+    ]),
     primary: React.PropTypes.bool,
     useStore: React.PropTypes.bool,
   },
@@ -78,22 +81,34 @@ var SearchBox = React.createClass({
       //defaultValue={SearchStore.searchTerm}
       onKeyDown={this.handleKeyDown}
       inputStyle={this.inputStyle()}
-      style={{height:'36px', verticalAlign:'top'}}
+      style={{
+        fontFamily: 'GPCMed, sans-serif',
+        height:'36px',
+        minWidth: '150px',
+        verticalAlign:'top',
+       }}
     />);
   },
 
   render: function() {
     return(
-      <div style={{display:'inline-block', margin:'14px 0'}}>
+      <div style={{display:'inline-block', margin:'0'}}>
         {this.input()}
         <mui.RaisedButton
           onClick={this.onClick}
-          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px'}}
-          primary={false}
-          secondary={true}
+          style={{
+            zIndex: '0',
+            minWidth: 'auto',
+            boxShadow: 'none',
+            lineHeight: '36px'
+          }}
+          backgroundColor='#224048'
           disableTouchRipple={true}
         >
-          <mui.FontIcon className="material-icons">search</mui.FontIcon>
+          <mui.FontIcon
+            className="material-icons"
+            style={{color: 'white', padding: '0 1px', verticalAlign: 'middle'}}
+          >search</mui.FontIcon>
         </mui.RaisedButton>
       </div>
     );

@@ -146,7 +146,6 @@ class SearchStore extends EventEmitter {
     }
 
 
-    console.log('set facet', this._facetOption)
     this.executeQuery();
   }
 
@@ -207,7 +206,6 @@ class SearchStore extends EventEmitter {
     } else if(this._start) {
       uri += "&start=" + this._start;
     }
-    console.log('uri', uri);
     return uri;
   }
 

@@ -10,6 +10,5 @@ module.exports = function(url) {
     href = href.replace(facetReg[0], '');
     facetReg = reg.exec(href);
   }
-  console.log('facets', facets);
   return facets.length > 0 ? facets : null;
 };

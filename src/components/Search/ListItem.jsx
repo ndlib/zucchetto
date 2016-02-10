@@ -19,11 +19,12 @@ var ListItem = React.createClass({
     var item = this.props.item;
 
     return (
-      <div>
-        <h4>{item.name}</h4>
+      <div style={{backgroundColor:'white', color: '#a7a7a5', margin: '0.5em 0', padding: '0.2em 1em'}}>
+        <h4 style={{color:'#D5B117'}}>{item.name}</h4>
         <div>{item.description}</div>
+        <div style={{float: 'right'}}>Download PDF</div>
         <div>Add to Notebook</div>
-        <div>Download PDF</div>
+
       </div>
     );
   }

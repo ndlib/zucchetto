@@ -44,6 +44,7 @@ var SearchFacets = React.createClass({
         <List
           key={e.name}
           subheader={e.name}
+          style={{backgroundColor: 'transparent'}}
         >
           {this.values(e)}
         </List>
@@ -62,6 +63,14 @@ var SearchFacets = React.createClass({
     return false;
 
   },
+  checkBoxStyle: function() {
+    return {
+      color: '#a7a7a5',
+      fontSize: '24px',
+      top: '-6px',
+      width: '24px'
+    };
+  },
 
   values: function(facet) {
     var parentFacet = facet.field;
@@ -78,13 +87,13 @@ var SearchFacets = React.createClass({
         return (
           <ListItem
             key={e.name}
-            primaryText={<span style={{marginLeft:'30px'}}>{e.name}</span>}
-            secondaryText={"(" + e.count + ")"}
+            primaryText={<span>{e.name}</span>}
             value={parentFacet +"|"+ e.name}
             onClick={this.valueOnClick}
+            style={{color: '#a7a7a5'}}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
-            leftIcon={this.isSelected(e.name) ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
+            rightIcon={this.isSelected(e.name) ?  (<mui.FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</mui.FontIcon>) :  ( <mui.FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</mui.FontIcon>)}
           />
         );
       }.bind(this)));
@@ -92,7 +101,11 @@ var SearchFacets = React.createClass({
     return (<div></div>);
   },
 
-  searchStoreChanged() {
+  componentDidMount: function() {
+    this.searchStoreChanged();
+  },
+
+  searchStoreChanged: function() {
     this.setState({ selectedFacet: SearchStore.facetOption });
   },
 
