@@ -1,9 +1,7 @@
 'use strict'
 var React = require("react");
 var mui = require('material-ui');
-var MediaQuery = require("react-responsive");
 var Details = require('../display/Details.jsx');
-var OpenseadragonViewer = require('../display/OpenseadragonViewer.jsx');
 
 var ItemShow = React.createClass({
   displayName: "Item Show",
@@ -46,31 +44,7 @@ var ItemShow = React.createClass({
     if (this.props.item) {
       return (
         <div style={this.outerStyles()}>
-          <MediaQuery minWidth={650}>
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
-          </MediaQuery>
-
-          <div className="item-detail-zoom" style={this.zoomStyles()}>
-            <MediaQuery minWidth={650}>
-              <OpenseadragonViewer
-                image={this.props.item.image}
-                containerID={this.props.item.id}
-                height={this.props.height}
-                toolbarTop={60}
-                toolbarLeft={40}
-                showFullPageControl={false} />
-            </MediaQuery>
-            <MediaQuery maxWidth={650}>
-              <OpenseadragonViewer
-                image={this.props.item.image}
-                containerID={this.props.item.id}
-                height={this.props.height}
-                toolbarTop={60}
-                toolbarLeft={40}
-                showFullPageControl={false}
-                showNavigator={false} />
-            </MediaQuery>
-          </div>
+          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
         </div>
       );
     } else {

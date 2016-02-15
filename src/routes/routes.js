@@ -1,8 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
-import { createHistory } from 'history';
+import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 
 import SiteIndexPage from './SiteIndexPage.jsx';
 import AboutPage from './AboutPage.jsx';
@@ -13,9 +12,8 @@ import SearchPage from './SearchPage.jsx';
 
 
 export default function() {
-  const history = createHistory();
   return (
-    <Router history={ history }>
+    <Router history={ browserHistory }>
       <Route path="/" component="div">
         <IndexRoute component={ SiteIndexPage } />
         <Route path="/about" component={ AboutPage } />

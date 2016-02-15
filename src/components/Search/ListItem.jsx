@@ -11,8 +11,8 @@ var ListItem = React.createClass({
     item: React.PropTypes.object.isRequired,
   },
 
-  componentWillMount: function() {
-    //this.loadRemoteItem(this.props.item['@id']);
+  onClick: function() {
+    this.loadRemoteItem(this.props.item['@id'])
   },
 
   render: function() {
@@ -27,7 +27,7 @@ var ListItem = React.createClass({
           padding: '0.2em 1em'
         }}
       >
-        <h4 style={{color:'#D5B117'}}>{item.name}</h4>
+        <h4 style={{color:'#D5B117', cursor: 'pointer'}} onClick={this.onClick}>{item.name}</h4>
         <div>{item.description}</div>
         <div style={{float: 'right'}}>Download PDF</div>
         <div>Add to Notebook</div>

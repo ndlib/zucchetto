@@ -17,6 +17,7 @@ var OverlayPage = React.createClass({
     return {
       height: window.innerHeight + "px",
       width: "100%",
+      marginLeft: '-13px',
       position: "fixed",
       zIndex: "4",
     }
