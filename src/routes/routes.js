@@ -14,7 +14,7 @@ import SearchPage from './SearchPage.jsx';
 export default function() {
   return (
     <Router history={ browserHistory }>
-      <Route path="/" component="div">
+      <Route path="/">
         <IndexRoute component={ SiteIndexPage } />
         <Route path="/about" component={ AboutPage } />
         <Route path="/partners" component={ PartnersPage} />

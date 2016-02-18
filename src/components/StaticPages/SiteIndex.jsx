@@ -12,8 +12,6 @@ var SiteIndex = React.createClass({
 
 
       		<section className="search">
-              <h2><a href="#">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></a></h2>
-              <p><a href="#">Using the Database</a></p>
           </section>
 
         
@@ -25,8 +23,6 @@ var SiteIndex = React.createClass({
       <li data-target="#carousel-example-generic" data-slide-to="1"></li>
       <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     </ol>
-  
-  
     <div className="carousel-inner" role="listbox">
       <div className="item active">
         <img src="resources/images/cover/01.jpg" />
@@ -42,7 +38,6 @@ var SiteIndex = React.createClass({
   </div>
   <Footer />
 </div>
-        
 
       </div>
     );
