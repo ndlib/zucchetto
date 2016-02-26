@@ -3,52 +3,18 @@ var React = require('react');
 var mui = require('material-ui');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
+var VaticanID = require('../../constants/VaticanID.js');
+var HumanRightsID = require('../../constants/HumanRightsID.js');
 
 var SearchBox = React.createClass({
-  propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.object,
-      React.PropTypes.string,
-    ]),
-    primary: React.PropTypes.bool,
-    useStore: React.PropTypes.bool,
-  },
-
-  getDefaultProps: function() {
-    return {
-      primary: true,
-      active: false,
-      useStore: true,
-    };
-  },
-
-  getInitialState: function() {
-    var state = {
-      active: this.props.active,
-    };
-    return state;
-  },
-
   onChange: function(e) {
     this.setTerm(e.target.value);
   },
 
   onClick: function(e) {
-    if (this.state.active && this.state.searchTerm) {
-      if(this.props.useStore) {
-        SearchActions.setSearchTerm(this.state.searchTerm);
-      } else {
-        var url = window.location.origin
-          + "/" + this.props.collection.id
-          + "/" + this.props.collection.slug
-          + "/search?q=" + this.state.searchTerm;
-        window.location = url;
-      }
-    } else if (this.state.active) {
-      this.setState({active: false});
-    } else {
-      this.setState({active: true});
-    }
+    var url = window.location.origin
+      + "/search?q=" + this.state.searchTerm;
+    window.location = url;
   },
 
   componentDidMount: function() {

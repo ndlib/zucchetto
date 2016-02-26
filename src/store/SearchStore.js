@@ -108,8 +108,6 @@ class SearchStore extends EventEmitter {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
-        this._sorts = result.sorts;
-        this._facets = result.facets;
         this.emit("SearchStoreChanged", reason);
       },
       error: function(request, status, thrownError) {
@@ -154,19 +152,6 @@ class SearchStore extends EventEmitter {
     this.executeQuery();
   }
 
-  mapHitToItem(hit) {
-    var item = {};
-    item["@id"] = hit["@id"];
-    item.name = hit.name;
-    item.description = hit.description;
-    item.image = {
-      "thumbnail/medium": {
-        contentUrl: hit.thumbnailURL
-      }
-    };
-    return item;
-  }
-
   // Translates all hits to items. A hit json has a different structure from an item,
   // and most objects that interact with this store expect an item to look like an item json.
   setItems(hits) {
@@ -176,7 +161,7 @@ class SearchStore extends EventEmitter {
     for (var h in hits.hit) {
       if (hits.hit.hasOwnProperty(h)){
         var hit = hits.hit[h];
-        var item = this.mapHitToItem(hit);
+        var item = hit;
         this._items.push(item);
       }
     }
@@ -196,7 +181,6 @@ class SearchStore extends EventEmitter {
         }
       }
     }
-
 
     if(this._sortOption) {
       uri += "&sort=" + this._sortOption;

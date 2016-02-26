@@ -40,28 +40,26 @@ var LoadRemoteMixin = {
     });
   },
 
-  loadRemoteItem: function(url){
-    $.ajax({
-      context: this,
-      type: 'GET',
-      url: url,
-      dataType: 'json',
-      success: function(result) {
-        ItemActions.setCurrentItem(result.items);
-        ItemActions.showItemDialogWindow(result.items);
-      },
-      error: function(request, status, thrownError) {}
-    });
+  // loadRemoteItem: function(url){
+  //   $.ajax({
+  //     context: this,
+  //     type: 'GET',
+  //     url: url,
+  //     dataType: 'json',
+  //     success: function(result) {
+  //       ItemActions.setCurrentItem(result.items);
+  //       ItemActions.showItemDialogWindow(result.items);
+  //     },
+  //     error: function(request, status, thrownError) {}
+  //   });
+  // },
+  addToNoteBook: function(url) {
+    console.log('add ' + url + ' to notebook');
   },
 
   itemOnClick: function() {
-    this.loadRemoteItem(this.props.item['@id']);
+    this.addToNoteBook(this.props.item['@id']);
     window.location.hash = this.props.item['@id'].split("/").pop();
-  },
-
-  sectionOnClick: function() {
-    this.loadRemoteSection(this.props.section['@id']);
-    window.location.hash = this.props.section['@id'].split("/").pop();
   },
 }
 

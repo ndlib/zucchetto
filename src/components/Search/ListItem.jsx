@@ -12,7 +12,7 @@ var ListItem = React.createClass({
   },
 
   onClick: function() {
-    this.loadRemoteItem(this.props.item['@id'])
+    this.addToNoteBook(this.props.item['@id']);
   },
 
   render: function() {
@@ -30,7 +30,7 @@ var ListItem = React.createClass({
         <h4 style={{color:'#D5B117', cursor: 'pointer'}} onClick={this.onClick}>{item.name}</h4>
         <div>{item.description}</div>
         <div style={{float: 'right'}}>Download PDF</div>
-        <div>Add to Notebook</div>
+        <div onClick={this.onClick} style={{cursor: 'pointer'}}>Add to Notebook</div>
 
       </div>
     );
