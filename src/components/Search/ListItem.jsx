@@ -12,7 +12,8 @@ var ListItem = React.createClass({
   },
 
   onClick: function() {
-    this.addToNoteBook(this.props.item['@id']);
+
+    this.addToNoteBook(this.props.item);
   },
 
   render: function() {

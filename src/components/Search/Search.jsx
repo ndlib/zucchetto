@@ -35,17 +35,10 @@ var Search = React.createClass({
     this.setState({
       readyToRender: true,
     });
-
-    if(reason == "load") {
-      var path = window.location.origin + SearchStore.searchUri();
-      // window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
-    }
   },
 
   // Callback from LoadRemoteMixin when remote collection is loaded
   setValues: function(collection) {
-    // SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view);
-    console.log(collection);
     if(collection && collection.hits){
       this.setItems(collection.hits);
     }
@@ -54,32 +47,18 @@ var Search = React.createClass({
 
   setItems: function(hits) {
     var items = [];
-    console.log(hits);
     for (var h in hits.hit) {
       if (hits.hit.hasOwnProperty(h)){
         var hit = hits.hit[h];
         var item = hit;
+        item.collection = this.props.collection
         items.push(item);
       }
     }
     this.setState({items: items,});
   },
 
-  // onWindowPopState: function(event) {
-  //   if(event.state){
-  //     SearchActions.reloadSearchResults(event.state.store);
-  //   }
-  // },
-
   componentWillMount: function() {
-    // SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
-    // SearchStore.on("SearchStoreQueryFailed",
-    //   function(result) {
-    //     window.location = window.location.origin + '/404'
-    //   }
-    // );
-    // window.addEventListener("popstate", this.onWindowPopState);
-
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
@@ -131,7 +110,6 @@ var Search = React.createClass({
   render: function() {
     // All children of this object expect the collection and all data to be loaded into the SearchStore.
     // This will prevent mounting them until ready.
-    console.log(SearchStore);
     return (
       <div>
         <h3 style={this.listHeaderStyle()}>{this.props.title}</h3>

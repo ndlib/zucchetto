@@ -1,6 +1,7 @@
 "use strict"
 var React = require("react");
 var ItemActions = require('../actions/ItemActions.jsx');
+var HoneycombURL = require('../modules/HoneycombURL.js');
 
 var LoadRemoteMixin = {
   propTypes: {
@@ -39,22 +40,17 @@ var LoadRemoteMixin = {
       }
     });
   },
+  
+  addToNoteBook: function(item) {
+    var id = item['@id'].replace(HoneycombURL() + '/v1/items/', '');
+    var collection = item['collection'].replace(HoneycombURL() + '/v1/collections/', '');
 
-  // loadRemoteItem: function(url){
-  //   $.ajax({
-  //     context: this,
-  //     type: 'GET',
-  //     url: url,
-  //     dataType: 'json',
-  //     success: function(result) {
-  //       ItemActions.setCurrentItem(result.items);
-  //       ItemActions.showItemDialogWindow(result.items);
-  //     },
-  //     error: function(request, status, thrownError) {}
-  //   });
-  // },
-  addToNoteBook: function(url) {
-    console.log('add ' + url + ' to notebook');
+    if(window.localStorage.getItem(id)){
+      window.localStorage.removeItem(id, collection);
+    } else {
+      window.localStorage.setItem(id, collection);
+    }
+    console.log(window.localStorage);
   },
 
   itemOnClick: function() {

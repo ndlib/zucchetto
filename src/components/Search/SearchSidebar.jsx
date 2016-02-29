@@ -2,7 +2,7 @@
 var React = require('react');
 
 var SearchBox = require('./SearchBox.jsx');
-var VaticanID = require('../../constants/VaticanID.js');
+var NotebookLink = require('../Notebook/NotebookLink.jsx');
 
 var SearchSidebar = React.createClass({
 
@@ -10,7 +10,7 @@ var SearchSidebar = React.createClass({
     return (
       <div className="col-sm-2 left-col" >
         <SearchBox/>
-
+        <NotebookLink />
       </div>
     );
   }
