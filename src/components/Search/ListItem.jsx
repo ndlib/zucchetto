@@ -30,8 +30,8 @@ var ListItem = React.createClass({
       >
         <h4 style={{color:'#D5B117', cursor: 'pointer'}} onClick={this.onClick}>{item.name}</h4>
         <div>{item.description}</div>
-        <div style={{float: 'right'}}>Download PDF</div>
-        <div onClick={this.onClick} style={{cursor: 'pointer'}}>Add to Notebook</div>
+        <div style={{color: '#224048', float: 'right'}}>Download PDF</div>
+        <div onClick={this.onClick} style={{color: '#224048', cursor: 'pointer'}}>Add to Notebook</div>
 
       </div>
     );
