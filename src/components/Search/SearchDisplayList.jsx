@@ -6,9 +6,6 @@ var SearchPagination = require('./SearchPagination.jsx');
 var ListItem = require('./ListItem.jsx');
 
 var SearchDisplayList = React.createClass({
-  mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
-  ],
 
   propTypes: {
     items: React.PropTypes.array,

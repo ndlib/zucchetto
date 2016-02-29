@@ -10,7 +10,6 @@ var EventEmitter = require('../../middleware/EventEmitter.js');
 
 var ItemPanel = React.createClass({
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/LoadRemoteMixin.jsx') ],
 
   displayName: 'Item Panel',
