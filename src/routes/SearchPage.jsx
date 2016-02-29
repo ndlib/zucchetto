@@ -42,7 +42,7 @@ class SearchPage extends Component {
                 <a href="/" style={this.topLinkStyle()}>« Home</a>
               </div>
               <div className="col-sm-5" style={{textAlign:'right'}}>
-                <a href="#" style={this.topLinkStyle()}>Share/Save Search Results</a>
+                <a href="#" style={this.topLinkStyle()}><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Search Results</a>
               </div>
               <div className="col-sm-5">
                 <Search
