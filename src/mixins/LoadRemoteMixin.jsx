@@ -1,5 +1,6 @@
 "use strict"
 var React = require("react");
+var IDFromAtID = require("../modules/IDFromAtID.js");
 var ItemActions = require('../actions/ItemActions.jsx');
 var HoneycombURL = require('../modules/HoneycombURL.js');
 
@@ -40,10 +41,10 @@ var LoadRemoteMixin = {
       }
     });
   },
-  
+
   addToNoteBook: function(item) {
-    var id = item['@id'].replace(HoneycombURL() + '/v1/items/', '');
-    var collection = item['collection'].replace(HoneycombURL() + '/v1/collections/', '');
+    var id = IDFromAtID(item['@id']);
+    var collection = IDFromAtID(item['collection']);
 
     if(window.localStorage.getItem(id)){
       window.localStorage.removeItem(id, collection);
