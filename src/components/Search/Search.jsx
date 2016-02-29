@@ -6,9 +6,6 @@ var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
 
 var Search = React.createClass({
-  mixins: [
-    require('../../mixins/LoadRemoteMixin.jsx'),
-  ],
 
   propTypes: {
     title: React.PropTypes.string,

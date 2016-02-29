@@ -1,11 +1,9 @@
 'use strict'
 var React = require('react');
+var IDFromAtID = require("../../modules/IDFromAtID.js");
 var CheckLocalStorage = require('../../modules/CheckLocalStorage.js');
 
 var ListItem = React.createClass({
-  mixins: [
-    require('../../mixins/LoadRemoteMixin.jsx')
-  ],
 
   propTypes: {
     item: React.PropTypes.object.isRequired,
@@ -35,6 +33,18 @@ var ListItem = React.createClass({
       return (<i className="material-icons" style={this.checkboxStyle()}>check_box</i>);
     }
     return (<i className="material-icons" style={this.checkboxStyle()}>check_box_outline_blank</i>);
+  },
+
+  addToNoteBook: function(item) {
+    var id = IDFromAtID(item['@id']);
+    var collection = IDFromAtID(item['collection']);
+
+    if(window.localStorage.getItem(id)){
+      window.localStorage.removeItem(id, collection);
+    } else {
+      window.localStorage.setItem(id, collection);
+    }
+    console.log(window.localStorage);
   },
 
   render: function() {

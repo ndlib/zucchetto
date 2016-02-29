@@ -8,7 +8,6 @@ import VaticanID from '../constants/VaticanID.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
-import ItemPanel from "../components/Search/ItemPanel.jsx";
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
 const CATHOLIC = 'Catholic Social Teaching';
 const HUMANRIGHTS = 'International Human Rights Law';
