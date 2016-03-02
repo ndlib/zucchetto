@@ -1,19 +1,26 @@
 'use strict'
-var React = require('react');
+import React, { Component, PropTypes } from 'react';
+import SearchBox from './SearchBox.jsx';
+import NotebookLink from '../Notebook/NotebookLink.jsx';
+import SearchByTopic from './SearchByTopic.jsx';
+import SearchByDate from './SearchByDate.jsx';
+import SearchByDocumentType from './SearchByDocumentType.jsx';
+import SearchByGeographicRegion from './SearchByGeographicRegion.jsx';
 
-var SearchBox = require('./SearchBox.jsx');
-var NotebookLink = require('../Notebook/NotebookLink.jsx');
+class SearchSidebar extends Component {
 
-var SearchSidebar = React.createClass({
-
-  render: function() {
+  render() {
     return (
       <div className="col-sm-2 left-col" >
         <SearchBox/>
         <NotebookLink />
+        <SearchByTopic />
+        <SearchByDate />
+        <SearchByDocumentType />
+        <SearchByGeographicRegion />
       </div>
     );
   }
-});
+}
 
-module.exports = SearchSidebar;
+export default SearchSidebar;

@@ -74,7 +74,11 @@ var SearchBox = React.createClass({
         >
           <mui.FontIcon
             className="material-icons"
-            style={{color: 'white', padding: '0 1px', verticalAlign: 'middle'}}
+            style={{
+              color: 'white',
+              padding: '0 1px',
+              verticalAlign: 'middle'
+            }}
           >search</mui.FontIcon>
         </mui.RaisedButton>
       </div>

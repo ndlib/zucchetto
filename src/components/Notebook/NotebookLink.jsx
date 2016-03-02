@@ -27,9 +27,19 @@ class NotebookLink extends Component {
 
   render() {
     return (
-      <div onClick={this.clickAction} style={{cursor:'pointer'}}>
-        View Notebook
-      </div>
+      <div onClick={this.clickAction}
+        style={{
+          backgroundColor: '#224048',
+          color: '#D5B117',
+          cursor:'pointer',
+          fontFamily: 'GPCMed, sans-serif',
+          fontSize: '0.9em',
+          margin: '10px 0',
+          padding: '5px',
+          textAlign: 'center',
+          textTransform: 'uppercase',
+        }}
+      >Go To Notebook and View Documents</div>
     );
   }
 }
