@@ -43,7 +43,7 @@ class ItemStore extends EventEmitter {
     return this._items[id];
   }
 
-  getItemByUserDefinedId(id) {
+  getItemParent(id) {
 
   }
 
