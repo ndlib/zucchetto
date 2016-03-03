@@ -15,6 +15,8 @@ class ItemStore extends EventEmitter {
   constructor() {
     super();
     this._items = {};
+    this._user_defined2_item_id = {};
+    this._parent2children = {};
     this._finished = false;
     AppDispatcher.register(this.receiveAction.bind(this));
   }
@@ -32,19 +34,27 @@ class ItemStore extends EventEmitter {
 
   parseItems(items) {
     var newItems = {};
+    var crossRef = {};
+    var parent2children = {};
+
     _.each(items, function(item) {
-      newItems[item.id] = item
+      newItems[item.id] = item;
+      crossRef[item.user_defined_id] = item.id;
+      if (item.metadata.parent_id) {
+        var parent_id = item.metadata.parent_id.values[0].value;
+        if (!parent2children[parent_id]) {
+          parent2children[parent_id] = [];
+        }
+        parent2children[parent_id].push(item.id);
+      }
     });
+    this._parent2children = parent2children;
+    this._user_defined2_item_id = crossRef;
     this._items = newItems;
-    console.log(this._items);
   }
 
   getItem(id) {
     return this._items[id];
-  }
-
-  getItemParent(id) {
-
   }
 
   getItemsByMultipleIds(ids) {
@@ -55,9 +65,34 @@ class ItemStore extends EventEmitter {
     return _.filter(_.map(ids, func));
   }
 
-  getItemChildrenInOrder(id) {
-    return _.sortBy(this._items, function(item) {
-      return item.order;
+  getItemParent(item) {
+    if (!item.metadata.parent_id) {
+      return null;
+    }
+
+    var parent_user_defined_id = item.metadata.parent_id.values[0].value;
+    var item_id = this._user_defined2_item_id[parent_user_defined_id];
+    if (item_id) {
+      return this.getItem(item_id);
+    } else {
+      return null;
+    }
+  }
+
+  getItemChildrenInOrder(parent) {
+    var items = this._parent2children[parent.user_defined_id];
+    if (!items) {
+      return [];
+    }
+
+    items = this.getItemsByMultipleIds(items);
+
+    return _.sortBy(items, function(item) {
+      if (item.metadata.order) {
+        return item.metadata.order.values[0].value;
+      } else {
+        return 0;
+      }
     });
   }
 }
