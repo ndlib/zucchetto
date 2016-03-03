@@ -6,11 +6,12 @@ import _ from 'underscore'
 class DisplayDocument extends Component {
 
   paragraphs() {
-    return ItemStore.getItemChildrenInOrder(this.props.documentId).map(this.paragraph.bind(this))
+    var item = ItemStore.getItem(this.props.documentId);
+    var parent = ItemStore.getItemParent(item);
+    return ItemStore.getItemChildrenInOrder(parent).map(this.paragraph.bind(this))
   }
 
   paragraph(item) {
-    console.log(item);
     if (item.metadata.transcription) {
       return (<p dangerouslySetInnerHTML={ { __html: item.metadata.transcription.values[0].value } } />);
     } else {
@@ -19,8 +20,6 @@ class DisplayDocument extends Component {
   }
 
   render() {
-    console.log("render")
-    console.log(this.paragraphs());
     return (<div>{ this.paragraphs() }</div>);
   }
 }

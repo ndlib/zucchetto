@@ -34,7 +34,8 @@ class Notebook extends Component {
     var clickFunc = _.bind(this.selectDocumentClick, this);
     return(
       _.map(ItemStore.getItemsByMultipleIds(this.props.vaticanItems), function (item) {
-        return (<li><a href="#" id={item.id} onClick={clickFunc}>{item.name}</a></li>)
+        var parentItem = ItemStore.getItemParent(item);
+        return (<li><a href="#" id={item.id} onClick={clickFunc}>{parentItem.name}</a></li>)
       })
     );
   }
