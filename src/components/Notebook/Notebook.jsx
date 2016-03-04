@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import Header  from '../StaticAssets/Header.jsx';
 import Footer from '../StaticAssets/Footer.jsx';
-import DisplayDocument from './DisplayDocument.jsx'
+import Document from '../Document/Document.jsx'
 import ItemActions from '../../actions/ItemActions.jsx'
 import ItemStore from '../../store/ItemStore.js'
 import _ from 'underscore'
@@ -35,14 +35,15 @@ class Notebook extends Component {
     return(
       _.map(ItemStore.getItemsByMultipleIds(this.props.vaticanItems), function (item) {
         var parentItem = ItemStore.getItemParent(item);
-        return (<li><a href="#" id={item.id} onClick={clickFunc}>{parentItem.name}</a></li>)
+
+        return (<li key={ item.id }><a href="#" id={item.id} onClick={clickFunc}>{parentItem.name}</a></li>)
       })
     );
   }
 
   displayDocuemnt() {
     if (this.state.selectedDocument) {
-      return (<DisplayDocument documentId={this.state.selectedDocument} />);
+      return (<Document documentId={this.state.selectedDocument} />);
     }
   }
 
