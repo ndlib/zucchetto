@@ -4,7 +4,6 @@ import React, { Component, PropTypes } from 'react';
 class Paragraph extends Component {
 
   determineHTMLTag(content) {
-    console.log(this.props.item.metadata.type);
     if (this.props.item.metadata.type) {
       var type = this.props.item.metadata.type.values[0].value;
       if (type == "Heading3") {

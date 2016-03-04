@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
 import Paragraph from './Paragraph.jsx'
 import Title from './Title.jsx'
+import DownloadPDF from './DownloadPDF.jsx'
 
 class Document extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Document extends Component {
     return (
       <div>
         <Title item={this._parent} />
+        <DownloadPDF item={this._parent} />
         { this.paragraphs() }
       </div>);
   }

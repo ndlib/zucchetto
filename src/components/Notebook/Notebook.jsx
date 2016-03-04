@@ -5,6 +5,7 @@ import Footer from '../StaticAssets/Footer.jsx';
 import Document from '../Document/Document.jsx'
 import ItemActions from '../../actions/ItemActions.jsx'
 import ItemStore from '../../store/ItemStore.js'
+import mui from 'material-ui'
 import _ from 'underscore'
 
 class Notebook extends Component {
@@ -23,7 +24,11 @@ class Notebook extends Component {
   }
 
   selectDocumentClick(event) {
-    this.setState( { selectedDocument: event.target.id } )
+    this.setState({ selectedDocument: event.target.id });
+  }
+
+  removeDocumentClick(event) {
+    this.setState({ selectedDocument: false });
   }
 
   preLoadFinished() {
@@ -43,7 +48,17 @@ class Notebook extends Component {
 
   displayDocuemnt() {
     if (this.state.selectedDocument) {
-      return (<Document documentId={this.state.selectedDocument} />);
+      return (
+      <div>
+        <div>
+          <a href="#" className="remove-document" onClick={ this.removeDocumentClick.bind(this) }>
+            <mui.FontIcon
+              className="material-icons"
+            >clear</mui.FontIcon>
+          </a>
+        </div>
+        <Document documentId={this.state.selectedDocument} />
+      </div>);
     }
   }
 
