@@ -1,11 +1,8 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import Document from '../Document/Document.jsx'
-import ItemStore from '../../store/ItemStore.js'
-import NotebookList from './NotebookList.jsx'
-
-import mui from 'material-ui'
-import _ from 'underscore'
+import ItemStore from '../../store/ItemStore.js';
+import NotebookList from './NotebookList.jsx';
+import NotebookDocument from './NotebookDocument.jsx';
 
 class NotebookColumn extends Component {
   constructor() {
@@ -27,24 +24,14 @@ class NotebookColumn extends Component {
     this.setState({loaded: true});
   }
 
-  displayDocuemnt(documentId) {
-    return (
-      <div>
-        <div>
-          <a href="#" className="remove-document" onClick={ this.removeDocumentClick.bind(this) }>
-            <mui.FontIcon
-              className="material-icons"
-            >clear</mui.FontIcon>
-          </a>
-        </div>
-        <Document documentId={ documentId } />
-      </div>
-    );
-  }
-
-  displayColumn() {
+  render() {
     if (this.state.selectedDocumentId) {
-      return this.displayDocuemnt(this.state.selectedDocumentId)
+      return (
+        <NotebookDocument
+          documentId={ this.state.selectedDocumentId }
+          removeDocument={ this.removeDocumentClick.bind(this) }
+        />
+      );
     } else {
       return (
         <NotebookList
@@ -54,10 +41,6 @@ class NotebookColumn extends Component {
         />
       );
     }
-  }
-
-  render() {
-    return this.displayColumn();
   }
 }
 
