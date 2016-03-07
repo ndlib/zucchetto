@@ -21,7 +21,7 @@ class NotebookColumn extends Component {
   }
 
   preLoadFinished() {
-    this.setState({loaded: true});
+    this.setState({ loaded: true });
   }
 
   render() {
