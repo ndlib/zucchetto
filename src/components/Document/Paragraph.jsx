@@ -11,10 +11,17 @@ class Paragraph extends Component {
       } else if (type == "Subheading1") {
         return (<h4 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading2") {
-        return (<h5  className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h5 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
-    return (<p dangerouslySetInnerHTML={ { __html: content } } />);
+    return (<div className={this.determineClassName()} dangerouslySetInnerHTML={ { __html: content } } />);
+  }
+
+  determineClassName() {
+    if (this.props.selectedItem.id == this.props.item.id) {
+      return "selected-paragrah";
+    }
+    return ""
   }
 
   render() {
@@ -28,6 +35,7 @@ class Paragraph extends Component {
 
 Paragraph.propTypes = {
   item: React.PropTypes.object,
+  selectedItem: React.PropTypes.object,
 }
 
 export default Paragraph;
