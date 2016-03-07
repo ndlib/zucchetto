@@ -33,16 +33,19 @@ class Notebook extends Component {
     return (
       <div>
         <Header/>
+        <div className="row">
+          <div className="col-sm-12">
+            <h3>Compare Documents</h3>
+          </div>
+        </div>
         <div className="row body">
           <div className="col-sm-6 right-col">
-            <h3>Catholic Social Teaching</h3>
             <NotebookColumn
               vaticanItems={ this.props.vaticanItems }
               humanRightsItems={ this.props.humanRightsItems }
             />
           </div>
           <div className="col-sm-6 right-col">
-            <h3>International Human Rights Law</h3>
               <NotebookColumn
                 vaticanItems={ this.props.vaticanItems }
                 humanRightsItems={ this.props.humanRightsItems }

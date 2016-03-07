@@ -18,7 +18,7 @@ class Document extends Component {
   }
 
   paragraph(item) {
-    return (<Paragraph key={ item.id } item={ item } />);
+    return (<Paragraph key={ item.id } item={ item } selectedItem={ this._item }/>);
   }
 
   render() {

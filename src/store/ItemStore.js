@@ -61,6 +61,7 @@ class ItemStore extends EventEmitter {
     var func = function(id) {
       return this.getItem(id)
     }
+
     func = _.bind(func, this);
     return _.filter(_.map(ids, func));
   }

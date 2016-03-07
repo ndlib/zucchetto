@@ -11,6 +11,7 @@ class NotebookList extends Component {
 
   documentList() {
     var clickFunc = this.documentClick.bind(this);
+
     return(
       _.map(ItemStore.getItemsByMultipleIds(this.props.vaticanItems), function (item) {
         var parentItem = ItemStore.getItemParent(item);
