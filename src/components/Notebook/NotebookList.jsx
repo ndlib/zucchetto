@@ -11,9 +11,10 @@ class NotebookList extends Component {
 
   documentList() {
     var clickFunc = this.documentClick.bind(this);
+    var allIds = _.union(this.props.vaticanItems, this.props.humanRightsItems);
 
     return(
-      _.map(ItemStore.getItemsByMultipleIds(this.props.vaticanItems), function (item) {
+      _.map(ItemStore.getItemsByMultipleIds(allIds), function (item) {
         var parentItem = ItemStore.getItemParent(item);
 
         return (<li key={ item.id }><a href="#" id={item.id} onClick={clickFunc}>{parentItem.name}</a></li>)

@@ -17,40 +17,44 @@ class ItemStore extends EventEmitter {
     this._items = {};
     this._user_defined2_item_id = {};
     this._parent2children = {};
-    this._finished = false;
+    this._vatican_finished = false;
+    this._human_rights_finished = false;
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
-      case ItemActionTypes.PRE_LOAD_ITEMS:
+      case ItemActionTypes.PRE_LOAD_VATICAN_ITEMS:
         this.parseItems(action.items);
-        this._finished = true;
-        this.emit("PreLoadFinished");
+        this._vatican_finished = true;
         break;
+      case ItemActionTypes.PRE_LOAD_HUMANRIGHTS_ITEMS:
+        this.parseItems(action.items);
+        this._human_rights_finished = true;
+        break;
+    }
+    if (this._human_rights_finished && this._vatican_finished) {
+      this.emit("PreLoadFinished");
     }
   }
 
   parseItems(items) {
-    var newItems = {};
-    var crossRef = {};
-    var parent2children = {};
+    var parseFunction = _.bind(this.parseFunction, this);
 
-    _.each(items, function(item) {
-      newItems[item.id] = item;
-      crossRef[item.user_defined_id] = item.id;
-      if (item.metadata.parent_id) {
-        var parent_id = item.metadata.parent_id.values[0].value;
-        if (!parent2children[parent_id]) {
-          parent2children[parent_id] = [];
-        }
-        parent2children[parent_id].push(item.id);
+    _.each(items, parseFunction);
+  }
+
+  parseFunction(item) {
+    this._items[item.id] = item;
+    this._user_defined2_item_id[item.user_defined_id] = item.id;
+    if (item.metadata.parent_id) {
+      var parent_id = item.metadata.parent_id.values[0].value;
+      if (!this._parent2children[parent_id]) {
+        this._parent2children[parent_id] = [];
       }
-    });
-    this._parent2children = parent2children;
-    this._user_defined2_item_id = crossRef;
-    this._items = newItems;
+      this._parent2children[parent_id].push(item.id);
+    }
   }
 
   getItem(id) {
