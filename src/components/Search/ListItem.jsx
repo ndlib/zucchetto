@@ -1,41 +1,50 @@
 'use strict'
-var React = require('react');
-var IDFromAtID = require("../../modules/IDFromAtID.js");
-var CheckLocalStorage = require('../../modules/CheckLocalStorage.js');
+import React, { Component, PropTypes } from 'react';
+import IDFromAtID from "../../modules/IDFromAtID.js";
+import CheckLocalStorage from '../../modules/CheckLocalStorage.js';
+import ItemStore from '../../store/ItemStore.js';
+import Document from '../Document/Document.jsx';
 
-var ListItem = React.createClass({
+class ListItem extends Component{
+  constructor(props) {
+    super(props);
 
-  propTypes: {
-    item: React.PropTypes.object.isRequired,
-  },
-
-  getInitialState: function() {
-    return {
+    this.state = {
       checked: CheckLocalStorage(this.props.item['@id']),
-    }
-  },
+      showDocument: false,
+    };
 
-  onClick: function() {
+    this.titleOnClick = this.titleOnClick.bind(this);
+    this.addToNotebookOnClick = this.addToNotebookOnClick.bind(this);
+    this._item = ItemStore.getItem(IDFromAtID(props.item['@id']));
+    this._parent = ItemStore.getItemParent(this._item);
+  }
+
+  titleOnClick() {
+    this.setState({showDocument: !this.state.showDocument});
+  }
+
+  addToNotebookOnClick() {
     this.setState({checked: !this.state.checked});
     this.addToNoteBook(this.props.item);
-  },
+  }
 
-  checkboxStyle: function() {
+  checkboxStyle() {
     return {
       fontSize: '18px',
       verticalAlign: 'text-top',
       paddingRight: '20px',
     }
-  },
+  }
 
-  checked: function() {
+  checked() {
     if(this.state.checked) {
       return (<i className="material-icons" style={this.checkboxStyle()}>check_box</i>);
     }
     return (<i className="material-icons" style={this.checkboxStyle()}>check_box_outline_blank</i>);
-  },
+  }
 
-  addToNoteBook: function(item) {
+  addToNoteBook(item) {
     var id = IDFromAtID(item['@id']);
     var collection = IDFromAtID(item['collection']);
 
@@ -45,11 +54,24 @@ var ListItem = React.createClass({
       window.localStorage.setItem(id, collection);
     }
     console.log(window.localStorage);
-  },
+  }
 
-  render: function() {
-    var item = this.props.item;
+  showDocument(id) {
+    if(this.state.showDocument) {
+      return (<Document documentId={id} />);
+    }
+    return null;
+  }
 
+  render() {
+    if(!this._parent) {
+      return null;
+    }
+    let item = this._item;
+    let orderNumber = 0;
+    if(item.metadata.order) {
+      orderNumber = item.metadata.order.values[0].value;
+    }
     return (
       <div style={{
           backgroundColor:'white',
@@ -59,14 +81,18 @@ var ListItem = React.createClass({
           padding: '0.2em 1em'
         }}
       >
-        <h4 style={{color:'#D5B117', cursor: 'pointer'}} onClick={this.onClick}>{item.name}</h4>
-        <div>{item.description}</div>
-        <div style={{color: '#224048', float: 'right'}}>Download PDF</div>
-        <div onClick={this.onClick} style={{color: '#224048', cursor: 'pointer'}}>{this.checked()}Add to Notebook</div>
+        <h4 style={{color:'#D5B117', cursor: 'pointer'}} onClick={this.titleOnClick}>{this._parent.name}</h4>
+        <div style={{float:'right'}}>Paragraph {orderNumber}</div>
+        {this.showDocument(IDFromAtID(item['@id']))}
+        <div onClick={this.addToNotebookOnClick} style={{color: '#224048', cursor: 'pointer'}}>{this.checked()}Add to Notebook</div>
 
       </div>
     );
   }
-});
+};
 
-module.exports = ListItem;
+ListItem.propTypes = {
+  item: PropTypes.object.isRequired,
+}
+
+export default ListItem;
