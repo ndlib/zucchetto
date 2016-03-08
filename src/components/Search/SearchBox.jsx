@@ -50,7 +50,7 @@ var SearchBox = React.createClass({
       style={{
         fontFamily: 'GPCMed, sans-serif',
         height:'36px',
-        minWidth: '150px',
+        minWidth: '100%',
         paddingLeft: '4px',
         verticalAlign:'top',
        }}
@@ -59,15 +59,24 @@ var SearchBox = React.createClass({
 
   render: function() {
     return(
-      <div style={{display:'inline-block', margin:'0'}}>
+      <div style={{
+          display: 'block',
+          margin: '0',
+          textAlign: 'center',
+          width: '100%'}}
+      >
         {this.input()}
         <mui.RaisedButton
           onClick={this.onClick}
           style={{
-            zIndex: '0',
-            minWidth: 'auto',
             boxShadow: 'none',
-            lineHeight: '36px'
+            float: 'right',
+            lineHeight: '36px',
+            marginLeft: '-36px',
+            minWidth: '36px',
+            width: '36px',
+            zIndex: '0',
+
           }}
           backgroundColor='#224048'
           disableTouchRipple={true}
