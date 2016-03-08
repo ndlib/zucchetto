@@ -1,2 +1,2 @@
-let humanRightsID = 'places';
+let humanRightsID = 'humanrights';
 module.exports = humanRightsID;

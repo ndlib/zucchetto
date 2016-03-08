@@ -14,7 +14,17 @@ import Drawer from '../components/Search/Drawer.jsx';
 const CATHOLIC = 'Catholic Social Teaching';
 const HUMANRIGHTS = 'International Human Rights Law';
 
+import ItemActions from '../actions/ItemActions.jsx';
+import ItemStore from '../store/ItemStore.js';
+
 class SearchPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loaded: false,
+    };
+  }
+
   listStyle(side) {
     return {
       backgroundColor: 'transparent',
@@ -31,7 +41,21 @@ class SearchPage extends Component {
     }
   }
 
+  componentWillMount() {
+    ItemActions.preLoadItems();
+    var func = this.preLoadFinished.bind(this);
+    ItemStore.on("PreLoadFinished", func);
+  }
+
+  preLoadFinished() {
+    this.setState({loaded: true});
+  }
+
   render() {
+    if (!this.state.loaded) {
+      return (<p>Loading....</p>);
+    }
+
     return (
       <div>
         <Header/>

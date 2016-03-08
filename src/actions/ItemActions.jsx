@@ -20,16 +20,33 @@ class ItemActions {
   }
 
   preLoadItems() {
-    var url = "http://localhost:3017/v1/collections/animals/items";
+    var vaticanUrl = "http://localhost:3017/v1/collections/vatican/items";
+    var humanrightsUrl = "http://localhost:3017/v1/collections/humanrights/items";
 
     $.ajax({
       context: this,
       type: "GET",
-      url: url,
+      url: vaticanUrl,
       dataType: "json",
       success: function(result) {
         AppDispatcher.dispatch({
-          actionType: ItemActionTypes.PRE_LOAD_ITEMS,
+          actionType: ItemActionTypes.PRE_LOAD_VATICAN_ITEMS,
+          items: result.items
+        });;
+      },
+      error: function(request, status, thrownError) {
+        this.emit("SearchStoreQueryFailed", { request: request, status: status, error: thrownError });
+      }
+    });
+
+    $.ajax({
+      context: this,
+      type: "GET",
+      url: humanrightsUrl,
+      dataType: "json",
+      success: function(result) {
+        AppDispatcher.dispatch({
+          actionType: ItemActionTypes.PRE_LOAD_HUMANRIGHTS_ITEMS,
           items: result.items
         });;
       },
