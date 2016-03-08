@@ -20,7 +20,7 @@ class ItemActions {
   }
 
   preLoadItems() {
-    var url = "http://localhost:3017/v1/collections/animals/items";
+    var url = "http://localhost:3017/v1/collections/vatican/items";
 
     $.ajax({
       context: this,

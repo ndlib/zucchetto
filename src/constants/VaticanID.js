@@ -1,2 +1,2 @@
-let vaticanID = 'animals';
+let vaticanID = 'vatican';
 module.exports = vaticanID;
