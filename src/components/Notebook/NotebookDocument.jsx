@@ -9,9 +9,16 @@ class NotebookDocument extends Component {
     this.props.removeDocument();
   }
 
+  style() {
+    return {
+      overflow: "scroll",
+      height: "400px",
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div style={ this.style() }>
         <div>
           <a href="#" className="remove-document" onClick={ this.removeClick.bind(this) }>
             <mui.FontIcon
