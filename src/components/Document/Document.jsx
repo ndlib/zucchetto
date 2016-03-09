@@ -5,12 +5,21 @@ import ItemStore from '../../store/ItemStore.js'
 import Paragraph from './Paragraph.jsx'
 import Title from './Title.jsx'
 import DownloadPDF from './DownloadPDF.jsx'
+import CurrentParagraph from './CurrentParagraph.jsx'
 
 class Document extends Component {
   constructor(props) {
     super(props);
     this._item = ItemStore.getItem(props.documentId);
     this._parent = ItemStore.getItemParent(this._item);
+  }
+
+  style() {
+    return {
+      overflow: "scroll",
+      height: "400px",
+      clear: "both",
+    }
   }
 
   paragraphs() {
@@ -23,11 +32,15 @@ class Document extends Component {
 
   render() {
     return (
-      <div>
+      <div className="document">
         <Title item={this._parent} />
+        <CurrentParagraph item={ this._item } />
         <DownloadPDF item={this._parent} />
-        { this.paragraphs() }
-      </div>);
+        <div style={ this.style() } >
+          { this.paragraphs() }
+        </div>
+      </div>
+    );
   }
 }
 

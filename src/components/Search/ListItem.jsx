@@ -4,6 +4,8 @@ import IDFromAtID from "../../modules/IDFromAtID.js";
 import CheckLocalStorage from '../../modules/CheckLocalStorage.js';
 import ItemStore from '../../store/ItemStore.js';
 import Document from '../Document/Document.jsx';
+import CurrentParagraph from '../Document/CurrentParagraph.jsx';
+import Title from '../Document/Title.jsx';
 
 class ListItem extends Component{
   constructor(props) {
@@ -72,22 +74,19 @@ class ListItem extends Component{
     if(item.metadata.order) {
       orderNumber = item.metadata.order.values[0].value;
     }
-    return (
-      <div style={{
-          backgroundColor:'white',
-          fontFamily: 'GPCMed, sans-serif',
-          color: '#a7a7a5',
-          margin: '0.5em 0',
-          padding: '0.2em 1em'
-        }}
-      >
-        <h4 style={{color:'#D5B117', cursor: 'pointer'}} onClick={this.titleOnClick}>{this._parent.name}</h4>
-        <div style={{float:'right'}}>Paragraph {orderNumber}</div>
-        {this.showDocument(IDFromAtID(item['@id']))}
-        <div onClick={this.addToNotebookOnClick} style={{color: '#224048', cursor: 'pointer'}}>{this.checked()}Add to Notebook</div>
-
-      </div>
-    );
+    if(this.state.showDocument) {
+      return this.showDocument(IDFromAtID(item['@id']));
+    } else {
+      return (
+        <div className="document">
+          <div  style={{cursor: 'pointer'}} onClick={this.titleOnClick}>
+            <Title item={this._parent} />
+          </div>
+          <CurrentParagraph item={ this._item } />
+          <div onClick={this.addToNotebookOnClick} style={{color: '#224048', cursor: 'pointer'}}>{this.checked()}Add to Notebook</div>
+        </div>
+      );
+    }
   }
 };
 
