@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 class Title extends Component {
 
   render() {
-    return (<h1>{ this.props.item.name }</h1>);
+    return (<h4 className="document-title">{ this.props.item.name }</h4>);
   }
 }
 

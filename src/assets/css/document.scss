@@ -1,0 +1,20 @@
+$documentTitle: #D5B117;
+$documentBackground: white;
+$documentTextColor: #a7a7a5;
+
+
+.document {
+  background-color: $documentBackground;
+  margin: 0.5em 0;
+  padding: 0.2em 1em;
+  color: $documentTextColor;
+  font-family: GPCMed, sans-serif;
+}
+
+.document-title {
+  color: $documentTitle;
+}
+
+.selected-paragrah {
+  background-color: gray;
+}
