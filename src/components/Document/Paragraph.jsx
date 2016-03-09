@@ -1,5 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 class Paragraph extends Component {
 
@@ -14,7 +15,11 @@ class Paragraph extends Component {
         return (<h5 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
-    return (<div className={this.determineClassName()} dangerouslySetInnerHTML={ { __html: content } } />);
+    return (<div ref={ this.ref() } className={this.determineClassName()} dangerouslySetInnerHTML={ { __html: content } } />);
+  }
+
+  ref() {
+    return this.props.item.id;
   }
 
   determineClassName() {
@@ -22,6 +27,13 @@ class Paragraph extends Component {
       return "selected-paragrah";
     }
     return ""
+  }
+
+  componentDidUpdate() {
+    if (this.props.selectedItem.id == this.props.item.id) {
+      var node = this.refs[this.ref()];
+      node.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
   }
 
   render() {
