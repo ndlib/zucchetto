@@ -12,8 +12,9 @@ class NotebookColumn extends Component {
     };
   }
 
-  selectDocumentClick(documentId) {
-    this.setState({ selectedDocumentId: documentId });
+  selectDocumentClick(item) {
+    console.log(item);
+    this.setState({ selectedDocumentId: item.id });
   }
 
   removeDocumentClick(event) {

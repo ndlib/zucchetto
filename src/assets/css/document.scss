@@ -1,7 +1,7 @@
 $documentTitle: #D5B117;
 $documentBackground: white;
 $documentTextColor: #a7a7a5;
-
+$documentAddToCompareColor: #224048;
 
 .document {
   background-color: $documentBackground;
@@ -17,4 +17,14 @@ $documentTextColor: #a7a7a5;
 
 .selected-paragrah {
   background-color: gray;
+}
+
+.add-to-compare {
+  color: $documentAddToCompareColor;
+}
+
+.add-to-compare-checkbox {
+  font-size: 18px;
+  vertical-align: text-top;
+  padding-right: 20px;
 }
