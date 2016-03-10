@@ -1,23 +1,27 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
+import DocumentCard from '../Document/DocumentCard.jsx'
 import _ from 'underscore'
 
 class NotebookList extends Component {
+  constructor(props) {
+    super(props);
+    this.documentClick = this.documentClick.bind(this);
+  }
 
-  documentClick(event) {
-    this.props.selectDocument(event.target.id);
+  documentClick(event, item) {
+    this.props.selectDocument(item);
   }
 
   documentList() {
-    var clickFunc = this.documentClick.bind(this);
+    var clickFunc = this.documentClick;
     var allIds = _.union(this.props.vaticanItems, this.props.humanRightsItems);
 
     return(
       _.map(ItemStore.getItemsByMultipleIds(allIds), function (item) {
-        var parentItem = ItemStore.getItemParent(item);
 
-        return (<li key={ item.id }><a href="#" id={item.id} onClick={clickFunc}>{parentItem.name}</a></li>)
+        return (<DocumentCard key={item.id} item={item} primaryAction={clickFunc} />);
       })
     );
   }
