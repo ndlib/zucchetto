@@ -1,34 +1,28 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import CheckLocalStorage from '../../modules/CheckLocalStorage.js';
 import IDFromAtID from "../../modules/IDFromAtID.js";
+import CompareStore from "../../store/CompareStore.js";
+import CompareActions from "../../actions/CompareActions.js";
 
 class AddToCompare extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      checked: CheckLocalStorage(this.props.item['@id']),
+      checked: CompareStore.itemInCompare(this.props.item),
     };
-
     this.addToCompareClick = this.addToCompareClick.bind(this);
   }
 
   addToCompareClick() {
-    this.setState({checked: !this.state.checked});
-    this.addToNoteBook(this.props.item);
+    this.setState({ checked: !this.state.checked }, this.runCompareAction.bind(this));
   }
 
-  addToNoteBook(item) {
-    var id = item.id;
-    var collection = item.collection_id
-
-    if(window.localStorage.getItem(id)){
-      window.localStorage.removeItem(id, collection);
+  runCompareAction() {
+    if (this.state.checked) {
+      CompareActions.setItem(this.props.item);
     } else {
-      window.localStorage.setItem(id, collection);
+      CompareActions.removeItem(this.props.item);
     }
-    console.log(window.localStorage);
   }
 
   checked() {
