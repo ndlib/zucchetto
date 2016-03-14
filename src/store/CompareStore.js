@@ -44,7 +44,6 @@ class CompareStore extends EventEmitter {
     this.emit("ItemCompareUpdated");
   }
 
-
   allItems() {
     let items = [];
     for(var i = 0; i < window.localStorage.length; i++) {
