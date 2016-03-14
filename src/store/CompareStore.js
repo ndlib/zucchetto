@@ -33,6 +33,7 @@ class CompareStore extends EventEmitter {
     var collection = item.collection_id
 
     window.localStorage.setItem(id, collection);
+    this.emit("ItemCompareUpdated");
   }
 
   removeItem(item) {
@@ -40,6 +41,7 @@ class CompareStore extends EventEmitter {
     var collection = item.collection_id
 
     window.localStorage.removeItem(id, collection);
+    this.emit("ItemCompareUpdated");
   }
 
 
