@@ -42,7 +42,7 @@ class Notebook extends Component {
             <NotebookColumn />
           </div>
           <div className="col-sm-6 right-col">
-              <NotebookColumn />
+            <NotebookColumn />
           </div>
         </div>
         <Footer/>

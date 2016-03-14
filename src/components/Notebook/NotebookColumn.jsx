@@ -13,7 +13,6 @@ class NotebookColumn extends Component {
   }
 
   selectDocumentClick(item) {
-    console.log(item);
     this.setState({ selectedDocumentId: item.id });
   }
 
