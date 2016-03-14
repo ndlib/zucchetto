@@ -17,6 +17,20 @@ class CompareActions {
       item: item
     });
   }
+
+  setColumnItem(item) {
+    AppDispatcher.dispatch({
+      actionType: CompareActionTypes.SET_COMPARE_COLUMN_ITEM,
+      item: item
+    });
+  }
+
+  removeColumnItem(item) {
+    AppDispatcher.dispatch({
+      actionType: CompareActionTypes.REMOVE_COMPARE_COLUMN_ITEM,
+      item: item
+    });
+  }
 }
 
 module.exports = new CompareActions();

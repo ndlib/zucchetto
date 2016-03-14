@@ -13,6 +13,10 @@ var CompareActionTypes = require("../constants/CompareActionTypes.jsx");
 class CompareStore extends EventEmitter {
   constructor() {
     super();
+
+    this._column1Item = false;
+    this._column2Item = false;
+
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
@@ -24,6 +28,12 @@ class CompareStore extends EventEmitter {
         break;
       case CompareActionTypes.REMOVE_ITEM_TO_COMPARE:
         this.removeItem(action.item);
+        break;
+      case CompareActionTypes.SET_COMPARE_COLUMN_ITEM:
+        this.setColumnItem(action.item);
+        break;
+      case CompareActionTypes.REMOVE_COMPARE_COLUMN_ITEM:
+        this.removeColumnItem(action.item);
         break;
     }
   }
@@ -59,6 +69,32 @@ class CompareStore extends EventEmitter {
 
   clearAll() {
     window.localStorage.clear();
+  }
+
+  setColumnItem(item) {
+    if (!this._column1Item) {
+      this._column1Item = item;
+    } else if(!this._column2Item) {
+      this._column2Item = item;
+    }
+    this.emit("CompareColumnsUpdated");
+  }
+
+  removeColumnItem(item) {
+    if (this._column1Item == item) {
+      this._column1Item = false;
+    } else if (this._column2Item == item) {
+      this._column2Item = false;
+    }
+    this.emit("CompareColumnsUpdated");
+  }
+
+  getColumn1() {
+    return this._column1Item;
+  }
+
+  getColumn2() {
+    return this._column2Item
   }
 }
 
