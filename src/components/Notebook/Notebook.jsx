@@ -40,16 +40,10 @@ class Notebook extends Component {
         </div>
         <div className="row body">
           <div className="col-sm-6 right-col">
-            <NotebookColumn
-              vaticanItems={ this.props.vaticanItems }
-              humanRightsItems={ this.props.humanRightsItems }
-            />
+            <NotebookColumn />
           </div>
           <div className="col-sm-6 right-col">
-              <NotebookColumn
-                vaticanItems={ this.props.vaticanItems }
-                humanRightsItems={ this.props.humanRightsItems }
-              />
+              <NotebookColumn />
           </div>
         </div>
         <Footer/>
