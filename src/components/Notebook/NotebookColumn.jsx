@@ -13,7 +13,6 @@ class NotebookColumn extends Component {
   }
 
   selectDocumentClick(item) {
-    console.log(item);
     this.setState({ selectedDocumentId: item.id });
   }
 
@@ -36,8 +35,6 @@ class NotebookColumn extends Component {
     } else {
       return (
         <NotebookList
-          vaticanItems={ this.props.vaticanItems }
-          humanRightsItems={ this.props.humanRightsItems }
           selectDocument={ this.selectDocumentClick.bind(this) }
         />
       );
@@ -46,13 +43,9 @@ class NotebookColumn extends Component {
 }
 
 NotebookColumn.propTypes = {
-  vaticanItems: React.PropTypes.array,
-  humanRightsItems: React.PropTypes.array,
 }
 
 NotebookColumn.defaultProps = {
-  vaticanItems: [],
-  humanRightsItems: [],
 }
 
 export default NotebookColumn;
