@@ -1,23 +1,25 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import ItemStore from '../../store/ItemStore.js';
 import NotebookList from './NotebookList.jsx';
 import NotebookDocument from './NotebookDocument.jsx';
+import CompareActions from '../../actions/CompareActions.js'
 
 class NotebookColumn extends Component {
   constructor() {
     super();
     this.state = {
-      selectedDocumentId: null,
+      selectedDocument: null,
     };
   }
 
   selectDocumentClick(item) {
-    this.setState({ selectedDocumentId: item.id });
+    CompareActions.setColumnItem(item);
+    this.setState({ selectedDocument: item });
   }
 
   removeDocumentClick(event) {
-    this.setState({ selectedDocumentId: false });
+    CompareActions.removeColumnItem(this.state.selectedDocument);
+    this.setState({ selectedDocument: false });
   }
 
   preLoadFinished() {
@@ -25,10 +27,10 @@ class NotebookColumn extends Component {
   }
 
   render() {
-    if (this.state.selectedDocumentId) {
+    if (this.state.selectedDocument) {
       return (
         <NotebookDocument
-          documentId={ this.state.selectedDocumentId }
+          documentId={ this.state.selectedDocument.id }
           removeDocument={ this.removeDocumentClick.bind(this) }
         />
       );

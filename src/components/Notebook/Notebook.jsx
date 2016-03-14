@@ -4,6 +4,7 @@ import Header  from '../StaticAssets/Header.jsx';
 import Footer from '../StaticAssets/Footer.jsx';
 import ItemActions from '../../actions/ItemActions.jsx'
 import ItemStore from '../../store/ItemStore.js'
+import CompareStore from '../../store/CompareStore.js'
 import NotebookColumn from './NotebookColumn.jsx'
 
 class Notebook extends Component {
@@ -21,7 +22,13 @@ class Notebook extends Component {
   }
 
   preLoadFinished() {
-    this.setState({loaded: true});
+    this.setState({ loaded: true });
+  }
+
+  renderColumn2() {
+    if (CompareStore.getColumn1() || CompareStore.getColumn2()) {
+      return (<NotebookColumn />);
+    }
   }
 
   render() {
@@ -42,7 +49,7 @@ class Notebook extends Component {
             <NotebookColumn />
           </div>
           <div className="col-sm-6 right-col">
-            <NotebookColumn />
+            { this.renderColumn2() }
           </div>
         </div>
         <Footer/>
