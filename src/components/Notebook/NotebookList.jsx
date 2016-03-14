@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
+import CompareStore from '../../store/CompareStore.js'
 import DocumentCard from '../Document/DocumentCard.jsx'
 import _ from 'underscore'
 
@@ -16,7 +17,7 @@ class NotebookList extends Component {
 
   documentList() {
     var clickFunc = this.documentClick;
-    var allIds = _.union(this.props.vaticanItems, this.props.humanRightsItems);
+    var allIds = CompareStore.allItems();
 
     return(
       _.map(ItemStore.getItemsByMultipleIds(allIds), function (item) {
@@ -39,8 +40,6 @@ class NotebookList extends Component {
 }
 
 NotebookList.propTypes = {
-  vaticanItems: React.PropTypes.array,
-  humanRightsItems: React.PropTypes.array,
   selectDocument: React.PropTypes.func,
 }
 
