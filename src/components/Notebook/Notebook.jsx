@@ -6,19 +6,18 @@ import ItemActions from '../../actions/ItemActions.jsx'
 import ItemStore from '../../store/ItemStore.js'
 import NotebookColumn from './NotebookColumn.jsx'
 
-
 class Notebook extends Component {
   constructor() {
     super();
     this.state = {
       loaded: false,
     };
+    this.preLoadFinished = this.preLoadFinished.bind(this)
   }
 
   componentWillMount() {
     ItemActions.preLoadItems();
-    var func = this.preLoadFinished.bind(this);
-    ItemStore.on("PreLoadFinished", func);
+    ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   preLoadFinished() {
@@ -53,13 +52,9 @@ class Notebook extends Component {
 }
 
 Notebook.propTypes = {
-  vaticanItems: React.PropTypes.array,
-  humanRightsItems: React.PropTypes.array,
 }
 
 Notebook.defaultProps = {
-  vaticanItems: [],
-  humanRightsItems: [],
 }
 
 export default Notebook;
