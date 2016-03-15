@@ -7,7 +7,10 @@ class Paragraph extends Component {
   determineHTMLTag(content) {
     if (this.props.item.metadata.type) {
       var type = this.props.item.metadata.type.values[0].value;
-      if (type == "Heading3") {
+
+      if (type == "Heading1") {
+        return (<h2 className="heading1" dangerouslySetInnerHTML={ { __html: content } } />);
+      } else if (type == "Heading3") {
         return (<h3 className="heading3" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading1") {
         return (<h4 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
@@ -26,7 +29,7 @@ class Paragraph extends Component {
     if (this.props.selectedItem.id == this.props.item.id) {
       return "selected-paragrah";
     }
-    return ""
+    return "";
   }
 
   componentDidUpdate() {

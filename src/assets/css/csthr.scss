@@ -34,6 +34,8 @@ h1, h2, h3, h4, h5 {
 }
 
 header {
+  border-bottom: double 3px $grey;
+  margin-bottom: 4px;
 	background: $tan;
 	padding: 11px;
 
@@ -80,8 +82,6 @@ nav {
 
 .body {
 	width: 98vw;
-	border-top: double 3px $grey;
-	border-bottom: double 3px $yellow;
 	margin:5px auto;
 	display: flex;
 	flex-direction: row;
@@ -278,8 +278,10 @@ nav {
 }
 
 footer {
-	width: 98vw;
+	width: 100vw;
 	margin: 15px auto;
+  padding-top: 10px;
+  border-top: double 3px $yellow;
 
 	img {
 		vertical-align: bottom;

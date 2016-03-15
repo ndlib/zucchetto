@@ -33,9 +33,13 @@ class Document extends Component {
   render() {
     return (
       <div className="document">
+        <div style={{ float: "right" }}>
+          { this.props.children }
+        </div>
         <Title item={this._parent} />
         <CurrentParagraph item={ this._item } />
         <DownloadPDF item={this._parent} />
+        <hr />
         <div style={ this.style() } >
           { this.paragraphs() }
         </div>

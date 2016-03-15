@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentCard from '../Document/DocumentCard.jsx'
+import Heading from '../Shared/Heading.jsx'
 import _ from 'underscore'
 
 class NotebookList extends Component {
@@ -21,8 +22,11 @@ class NotebookList extends Component {
 
     return(
       _.map(ItemStore.getItemsByMultipleIds(allIds), function (item) {
-
-        return (<DocumentCard key={item.id} item={item} primaryAction={clickFunc} />);
+        return (
+          <DocumentCard key={item.id} item={item} primaryAction={clickFunc}>
+            <div>&nbsp;</div>
+          </DocumentCard>
+        );
       })
     );
   }
@@ -30,10 +34,8 @@ class NotebookList extends Component {
   render() {
     return (
       <div>
-        <h4>Select Document to View</h4>
-        <ul>
-          { this.documentList() }
-        </ul>
+        <Heading title="Select Document to Compare" />
+        { this.documentList() }
       </div>
     );
   }

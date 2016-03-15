@@ -30,7 +30,7 @@ class NotebookColumn extends Component {
     if (this.state.selectedDocument) {
       return (
         <NotebookDocument
-          documentId={ this.state.selectedDocument.id }
+          document={ this.state.selectedDocument }
           removeDocument={ this.removeDocumentClick.bind(this) }
         />
       );

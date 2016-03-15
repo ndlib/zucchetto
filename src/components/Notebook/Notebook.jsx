@@ -39,11 +39,6 @@ class Notebook extends Component {
     return (
       <div>
         <Header/>
-        <div className="row">
-          <div className="col-sm-12">
-            <h3>Compare Documents</h3>
-          </div>
-        </div>
         <div className="row body">
           <div className="col-sm-6 right-col">
             <NotebookColumn />
