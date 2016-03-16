@@ -32,14 +32,6 @@ class SearchPage extends Component {
       textAlign: 'left',
     }
   }
-  topLinkStyle() {
-    return {
-      color: '#224048',
-      fontSize: '1.2em',
-      lineHeight: '2em',
-      textTransform: 'uppercase',
-    }
-  }
 
   componentWillMount() {
     ItemActions.preLoadItems();
@@ -64,10 +56,10 @@ class SearchPage extends Component {
             <SearchSidebar />
             <div className="col-sm-8 right-col" style={this.listStyle()}>
               <div className="col-sm-6">
-                <a href="/" style={this.topLinkStyle()}>« Home</a>
+                <a href="/" className="top-links">« Home</a>
               </div>
               <div className="col-sm-6" style={{textAlign:'right'}}>
-                <a href="#" style={this.topLinkStyle()}><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Search Results</a>
+                <a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Search Results</a>
               </div>
               <div className="col-sm-12">
                 <SearchBox />

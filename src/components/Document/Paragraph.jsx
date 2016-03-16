@@ -32,13 +32,6 @@ class Paragraph extends Component {
     return "";
   }
 
-  componentDidUpdate() {
-    if (this.props.selectedItem.id == this.props.item.id) {
-      var node = this.refs[this.ref()];
-      node.scrollIntoView({ behavior: "smooth", block: "end" });
-    }
-  }
-
   render() {
     if (this.props.item.metadata.transcription) {
       return this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value);

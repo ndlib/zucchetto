@@ -39,15 +39,25 @@ class Notebook extends Component {
     return (
       <div>
         <Header/>
-        <div className="row body">
-          <div className="col-sm-6 right-col">
-            <NotebookColumn />
+        <div className="row" style={{ maxWidth: "80em"  }}>
+          <div className="col-sm-6">
+            <a href="/" className="top-links">« Home </a>
+            <a href="/search" className="top-links">« Search</a>
           </div>
-          <div className="col-sm-6 right-col">
-            { this.renderColumn2() }
+          <div className="col-sm-6" style={{textAlign:'right'}}>
+            <a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Search Results</a>
           </div>
         </div>
-        <Footer/>
+        <div class="row">
+          <div className="col-sm-12">
+            <div className="notebook-column left">
+              <NotebookColumn />
+            </div>
+            <div className="notebook-column right">
+              { this.renderColumn2() }
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -15,8 +15,6 @@ class NotebookDocument extends Component {
   }
 
   documentTitle() {
-    console.log(this.props.document);
-    console.log(HumanRightsID);
     if (this.props.document.collection_id == HumanRightsID) {
       return HUMANRIGHTS;
     } else {

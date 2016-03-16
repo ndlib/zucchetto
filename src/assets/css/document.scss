@@ -1,7 +1,12 @@
 $documentTitle: #D5B117;
 $documentBackground: white;
-$documentTextColor: #a7a7a5;
+$documentTextColor: #224048;
 $documentAddToCompareColor: #224048;
+$documentSelectedParagraph: #B2B4B2;
+
+body {
+  height: 100%;
+}
 
 .document {
   background-color: $documentBackground;
@@ -11,12 +16,27 @@ $documentAddToCompareColor: #224048;
   font-family: GPCMed, sans-serif;
 }
 
+.notebook-column {
+  max-width: 39em;
+  font-size: 16px;
+  float: left;
+}
+
+.notebook-column.left {
+  margin-right: 10px;
+}
+.notebook-column.right {
+  margin-left: 10px;
+}
+
+
 .document-title {
   color: $documentTitle;
 }
 
 .selected-paragrah {
-  background-color: gray;
+  background-color: $documentSelectedParagraph;
+  color: black;
 }
 
 .add-to-compare {
@@ -33,5 +53,10 @@ $documentAddToCompareColor: #224048;
   background-color: #cacccb;
   padding: 0.25em;
   text-align: center;
-  text-transform: uppercase;
+}
+
+.top-links {
+  color: $documentTextColor;
+  font-size: 1.2em;
+  line-height: 2em;
 }
