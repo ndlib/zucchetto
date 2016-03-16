@@ -32,6 +32,8 @@ class NotebookLink extends Component {
           backgroundColor: '#224048',
           color: '#D5B117',
           cursor:'pointer',
+          display: 'inline-block',
+          float: 'right',
           fontFamily: 'GPCMed, sans-serif',
           fontSize: '0.9em',
           margin: '10px 0',
