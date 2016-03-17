@@ -6,6 +6,8 @@ class SearchByGeographicRegion extends Component {
 
 
   render() {
+    return (<div />);
+
     return (
       <div>
         <h4>Search By Geographic Region</h4>

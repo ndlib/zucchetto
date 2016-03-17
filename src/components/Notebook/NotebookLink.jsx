@@ -6,7 +6,6 @@ import HumanRightsID from '../../constants/HumanRightsID.js';
 class NotebookLink extends Component {
 
   clickAction() {
-    console.log(this.props);
     if(!this.props.disabled) {
       let vaticanItems = [];
       let humanRightItems = [];
@@ -24,11 +23,9 @@ class NotebookLink extends Component {
       let vString = 'v=' + vaticanItems.join('|');
       let hString = 'h=' + humanRightItems.join('|');
 
-      console.log(" go ?")
       window.location = '/notebook' + '?' + vString + '&' + hString;
     }
     else {
-      console.log("no go?")
       // disabled do nothing
     }
 
@@ -38,9 +35,9 @@ class NotebookLink extends Component {
     return (
       <div onClick={this.clickAction.bind(this)}
         style={{
-          backgroundColor: this.props.disabled ? '#224048' :'#dddddd' ,
-          color: this.props.disabled ? '#ffffff' : '#cdcdcd',
-          cursor: this.props.disabled ? 'pointer' :'default',
+          backgroundColor: this.props.disabled ? '#dddddd': '#224048',
+          color: this.props.disabled ? '#cdcdcd' : '#ffffff',
+          cursor: this.props.disabled ? 'default' :'pointer',
           display: 'inline-block',
           float: 'right',
           fontFamily: 'GPCMed, sans-serif',
