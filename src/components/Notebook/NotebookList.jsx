@@ -4,6 +4,7 @@ import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentCard from '../Document/DocumentCard.jsx'
 import Heading from '../Shared/Heading.jsx'
+import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
 
 class NotebookList extends Component {
@@ -13,7 +14,9 @@ class NotebookList extends Component {
   }
 
   documentClick(event, item) {
-    this.props.selectDocument(item);
+    CompareActions.setColumnItem(item);
+    CompareStore.getColumn1()
+//    this.props.selectDocument(item);
   }
 
   documentList() {
@@ -33,8 +36,8 @@ class NotebookList extends Component {
 
   render() {
     return (
-      <div>
-        <Heading title="Select Document to Compare" />
+      <div className="left-col">
+        <h4>Notebook</h4>
         { this.documentList() }
       </div>
     );

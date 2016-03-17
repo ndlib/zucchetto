@@ -94,7 +94,7 @@ class CompareStore extends EventEmitter {
   }
 
   getColumn2() {
-    return this._column2Item
+    return this._column2Item;
   }
 }
 
