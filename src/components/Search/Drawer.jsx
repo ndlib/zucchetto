@@ -10,7 +10,6 @@ class Drawer extends Component {
       count: CompareStore.allItems().length,
     }
     this.updateCount = this.updateCount.bind(this);
-    this.notebook = this.notebook.bind(this);
   }
 
   componentWillMount() {
@@ -21,36 +20,35 @@ class Drawer extends Component {
     this.setState({count: CompareStore.allItems().length});
   }
 
-  notebook(count) {
-    if( count >= 2) {
-      return (<NotebookLink />);
-    }
-    else {
-      return (<div/>);
-    }
-  }
-
   style() {
     return {
       backgroundColor: '#E4E1D1',
+      border: '1px solid #D5B117',
+      bottom: '-1px',
+      boxShadow: '0px -1px 5px #aaa',
       color: '#224048',
       lineHeight: '30px',
-      marginBottom: '10px',
       minHeight: '40px',
       padding: '0 20px',
-      width: '100%',
+      position: 'fixed',
       zIndex: '2',
     }
   }
 
   render() {
-    return (
-      <div style={this.style()}>
-        {this.state.count} items selected to compare.
-        {this.notebook(this.state.count)}
-        <div style={{clear:'both'}}/>
-      </div>
-    )
+    if(this.state.count) {
+      return (
+        <div style={this.style()}>
+          <h4>Select two or more items to compare.</h4>
+          <div>{this.state.count} items selected.</div>
+          <NotebookLink disabled={this.state.count >= 2} />
+          <div style={{clear:'both'}}/>
+        </div>
+      );
+    }
+    else {
+      return (<div/>);
+    }
 
   }
 }

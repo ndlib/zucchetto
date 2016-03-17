@@ -6,32 +6,38 @@ import HumanRightsID from '../../constants/HumanRightsID.js';
 class NotebookLink extends Component {
 
   clickAction() {
-    let vaticanItems = [];
-    let humanRightItems = [];
-    if(window.localStorage.length > 0) {
-      for(var i = 0; i < window.localStorage.length; i++) {
-        if(window.localStorage.getItem(window.localStorage.key(i)) === VaticanID) {
-          vaticanItems.push(window.localStorage.key(i));
-        }
-        else if (window.localStorage.getItem(window.localStorage.key(i)) === HumanRightsID) {
-          humanRightItems.push(window.localStorage.key(i));
+    if(!this.props.disabled) {
+      let vaticanItems = [];
+      let humanRightItems = [];
+      if(window.localStorage.length > 0) {
+        for(var i = 0; i < window.localStorage.length; i++) {
+          if(window.localStorage.getItem(window.localStorage.key(i)) === VaticanID) {
+            vaticanItems.push(window.localStorage.key(i));
+          }
+          else if (window.localStorage.getItem(window.localStorage.key(i)) === HumanRightsID) {
+            humanRightItems.push(window.localStorage.key(i));
+          }
         }
       }
+
+      let vString = 'v=' + vaticanItems.join('|');
+      let hString = 'h=' + humanRightItems.join('|');
+
+      window.location = '/notebook' + '?' + vString + '&' + hString;
+    }
+    else {
+      // disabled do nothing
     }
 
-    let vString = 'v=' + vaticanItems.join('|');
-    let hString = 'h=' + humanRightItems.join('|');
-
-    window.location = '/notebook' + '?' + vString + '&' + hString;
   }
 
   render() {
     return (
       <div onClick={this.clickAction}
         style={{
-          backgroundColor: '#224048',
-          color: '#D5B117',
-          cursor:'pointer',
+          backgroundColor: this.props.disabled ? '#224048' :'#dddddd' ,
+          color: this.props.disabled ? '#ffffff' : '#cdcdcd',
+          cursor: this.props.disabled ? 'pointer' :'default',
           display: 'inline-block',
           float: 'right',
           fontFamily: 'GPCMed, sans-serif',
@@ -41,9 +47,17 @@ class NotebookLink extends Component {
           textAlign: 'center',
           textTransform: 'uppercase',
         }}
-      >Go To Notebook and View Documents</div>
+      >View Documents</div>
     );
   }
+}
+
+NotebookLink.propTypes = {
+  disabled: React.PropTypes.bool,
+}
+
+NotebookLink.defaultProps = {
+  disabled: true,
 }
 
 export default NotebookLink;

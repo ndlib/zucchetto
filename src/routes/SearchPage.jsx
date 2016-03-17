@@ -98,13 +98,20 @@ class SearchPage extends Component {
               </div>
             </div>
             <div className=" row col-sm-12">
-              <Drawer />
+
             </div>
           </div>
         </div>
 
       <Footer/>
-      {this.props.children}
+      <div>
+        <div className='col-sm-7'/>
+        <div className='col-sm-4'>
+          <Drawer />
+        </div>
+        <div className='col-sm-1'/>
+      </div>
+    {this.props.children}
     </div>
 
     )
