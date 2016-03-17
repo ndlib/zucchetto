@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import IDFromAtID from "../../modules/IDFromAtID.js";
 import ItemStore from '../../store/ItemStore.js';
 import Document from '../Document/Document.jsx';
+import Paragraph from '../Document/Paragraph.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 
 import AddToCompare from '../Document/AddToCompare.jsx';
@@ -30,7 +31,13 @@ class ListItem extends Component{
     }
 
     if(this.state.showDocument) {
-      return (<Document documentId={ this._item.id } />);
+      return (
+        <DocumentCard item={ this._item } primaryAction={ this.titleOnClick }>
+          <AddToCompare item={ this._item } />
+          <hr />
+          <Paragraph item={ this._item } />
+        </DocumentCard>
+      );
     } else {
       return (
         <DocumentCard item={ this._item } primaryAction={ this.titleOnClick }>
