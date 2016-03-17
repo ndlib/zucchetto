@@ -41,7 +41,7 @@ class Drawer extends Component {
         <div style={this.style()}>
           <h4>Select two or more items to compare.</h4>
           <div>{this.state.count} items selected.</div>
-          <NotebookLink disabled={this.state.count >= 2} />
+          <NotebookLink disabled={this.state.count <= 2} />
           <div style={{clear:'both'}}/>
         </div>
       );
