@@ -14,7 +14,6 @@ class ListItem extends Component{
     this.state = {
       showDocument: false,
     };
-
     this.titleOnClick = this.titleOnClick.bind(this);
     this._item = ItemStore.getItem(IDFromAtID(props.item['@id']));
     this._parent = ItemStore.getItemParent(this._item);
