@@ -2,7 +2,9 @@
 import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
-import DocumentCard from '../Document/DocumentCard.jsx'
+import DocumentListItem from '../Document/DocumentListItem.jsx'
+import Heading from '../Shared/Heading.jsx'
+import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
 
 class NotebookList extends Component {
@@ -12,7 +14,7 @@ class NotebookList extends Component {
   }
 
   documentClick(event, item) {
-    this.props.selectDocument(item);
+    CompareActions.setColumnItem(item);
   }
 
   documentList() {
@@ -21,19 +23,22 @@ class NotebookList extends Component {
 
     return(
       _.map(ItemStore.getItemsByMultipleIds(allIds), function (item) {
-
-        return (<DocumentCard key={item.id} item={item} primaryAction={clickFunc} />);
+        return (
+          <DocumentListItem key={item.id} item={item} primaryAction={clickFunc} />
+        );
       })
     );
   }
 
   render() {
     return (
-      <div>
-        <h4>Select Document to View</h4>
-        <ul>
-          { this.documentList() }
-        </ul>
+      <div className="left-col">
+        <h4>Notebook</h4>
+          <ul style={{
+              paddingLeft: '0',
+          }}>
+            { this.documentList() }
+          </ul>
       </div>
     );
   }

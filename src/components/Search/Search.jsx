@@ -4,6 +4,7 @@ var PageContent = require('../../layout/PageContent.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
+var Heading = require('../Shared/Heading.jsx');
 
 var Search = React.createClass({
 
@@ -95,21 +96,13 @@ var Search = React.createClass({
     return facets;
   },
 
-  listHeaderStyle: function() {
-    return {
-      backgroundColor: '#cacccb',
-      padding: '.25em',
-      textAlign: 'center',
-      textTransform: 'uppercase',
-    }
-  },
 
   render: function() {
     // All children of this object expect the collection and all data to be loaded into the SearchStore.
     // This will prevent mounting them until ready.
     return (
       <div>
-        <h3 style={this.listHeaderStyle()}>{this.props.title}</h3>
+        <Heading title={this.props.title} />
         <SearchDisplayList items={this.state.items}/>
       </div>
 

@@ -34,14 +34,17 @@ h1, h2, h3, h4, h5 {
 }
 
 header {
-	background: $tan;
+  border-bottom: double 3px $grey;
+  margin-bottom: 4px;
+	background: $blue;
 	padding: 11px;
 
 	h1 {
-		color: $green;
+		color: $yellow;
 		text-transform: uppercase;
-		font-size: 54px;
-		margin-top: 0;
+		font-size: 25px;
+		margin: 0;
+    padding-top: 5px;
 		line-height: 1em;
 	}
 	.tagline {
@@ -80,8 +83,6 @@ nav {
 
 .body {
 	width: 98vw;
-	border-top: double 3px $grey;
-	border-bottom: double 3px $yellow;
 	margin:5px auto;
 	display: flex;
 	flex-direction: row;
@@ -278,13 +279,17 @@ nav {
 }
 
 footer {
-	width: 98vw;
-	margin: 15px auto;
+	width: 100vw;
+	margin: 5px auto;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top: double 3px $yellow;
 
 	img {
 		vertical-align: bottom;
 		margin-right: 15px;
-		margin-bottom: 15px;
+		margin-bottom: 5px;
 	}
 
 
