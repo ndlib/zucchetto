@@ -20,25 +20,32 @@ class Header extends Component {
     var icon = (<mui.FontIcon className="material-icons">menu</mui.FontIcon>);
     return (
       <header>
-        <h1><mui.FlatButton style={ { color: "#D5B117" }}  icon={ icon } onTouchTap={ this.menuClick.bind(this) } />Research Database</h1>
-        <mui.LeftNav
-          open={this.state.menuOpen}
-          docked={ false }
-          onRequestChange={ this.requestChange.bind(this) }
-        >
-          <p className="tagline"></p>
-          <a onTouchTap={this.menuClick.bind(this)}>Hi</a>
-          <mui.MenuItem onTouchTap={this.handleClose}>Home</mui.MenuItem>
-          <mui.MenuItem onTouchTap={this.handleClose}>Search Database</mui.MenuItem>
-          <mui.MenuItem onTouchTap={this.handleClose}>About Database</mui.MenuItem>
-          <mui.MenuItem onTouchTap={this.handleClose}>Project Partners</mui.MenuItem>
-          <mui.MenuItem onTouchTap={this.handleClose}>Contact Us</mui.MenuItem>
+        <div className="row">
+          <div className="col-sm-9">
+            <h1><mui.FlatButton style={ { color: "#D5B117" }}  icon={ icon } onTouchTap={ this.menuClick.bind(this) } />Research Database</h1>
+            <mui.LeftNav
+              open={this.state.menuOpen}
+              docked={ false }
+              onRequestChange={ this.requestChange.bind(this) }
+            >
+              <p className="tagline"></p>
+              <a onTouchTap={this.menuClick.bind(this)}>Hi</a>
+              <mui.MenuItem onTouchTap={this.handleClose}>Home</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.handleClose}>Search Database</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.handleClose}>About Database</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.handleClose}>Project Partners</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.handleClose}>Contact Us</mui.MenuItem>
 
-          <p>
+              <p>
+                <img src="/resources/images/cchr.png" className="cchr" />
+                <img src="/resources/images/cds.png" className="cds" />
+              </p>
+            </mui.LeftNav>
+          </div>
+          <div className="col-sm-3 right">
             <img src="/resources/images/cchr.png" className="cchr" />
-            <img src="/resources/images/cds.png" className="cds" />
-          </p>
-        </mui.LeftNav>
+          </div>
+        </div>
       </header>
     );
   }
