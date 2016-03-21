@@ -2,6 +2,7 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var ItemActionTypes = require("../constants/ItemActionTypes.jsx");
 var EventEmitter = require("../middleware/EventEmitter.js");
+var HoneycombURL = require("../modules/HoneycombURL.js");
 
 class ItemActions {
   setCurrentItem(item) {
@@ -20,8 +21,8 @@ class ItemActions {
   }
 
   preLoadItems() {
-    var vaticanUrl = "http://localhost:3017/v1/collections/vatican/items";
-    var humanrightsUrl = "http://localhost:3017/v1/collections/humanrights/items";
+    var vaticanUrl = HoneycombURL() + "/v1/collections/vatican/items";
+    var humanrightsUrl = HoneycombURL() + "/v1/collections/humanrights/items";
 
     $.ajax({
       context: this,
