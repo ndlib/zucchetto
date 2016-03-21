@@ -62,7 +62,7 @@ class SearchPage extends Component {
         <div className="row body" style={{display: 'block'}}>
           <div className="row col-sm-12">
             <SearchSidebar />
-            <div className="col-sm-8 right-col" style={this.listStyle()}>
+            <div className="col-sm-10 right-col" style={this.listStyle()}>
               <div className="col-sm-6">
                 <a href="/" style={this.topLinkStyle()}>« Home</a>
               </div>
@@ -97,13 +97,21 @@ class SearchPage extends Component {
                 />
               </div>
             </div>
-            <div className="col-sm-2 left-col">
-              <Drawer />
+            <div className=" row col-sm-12">
+
             </div>
           </div>
         </div>
+
       <Footer/>
-      {this.props.children}
+      <div>
+        <div className='col-sm-7'/>
+        <div className='col-sm-4'>
+          <Drawer />
+        </div>
+        <div className='col-sm-1'/>
+      </div>
+    {this.props.children}
     </div>
 
     )
