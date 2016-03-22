@@ -1,3 +1,4 @@
+// Return the parent object's value + all of it's children's values found recursively
 function ChildValue(parent) {
   if(parent.children) {
     var children = '';

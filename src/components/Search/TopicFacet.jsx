@@ -20,7 +20,6 @@ class TopicFacet extends Component {
   onLabelClick() {
     let currentSearch = window.location.search.split(',');
     window.location.search = currentSearch[0] + ',' + ChildValue(this.props.topic);
-    console.log(ChildValue(this.props.topic));
   }
 
   arrowStyle() {
