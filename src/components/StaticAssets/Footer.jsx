@@ -10,7 +10,6 @@ class Footer extends Component {
             <img src="/resources/images/und.png" />
           </div>
         </div>
-
       </footer>
     );
   }

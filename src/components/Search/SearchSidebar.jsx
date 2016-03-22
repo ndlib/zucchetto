@@ -6,6 +6,7 @@ import SearchByTopic from './SearchByTopic.jsx';
 import SearchByDate from './SearchByDate.jsx';
 import SearchByDocumentType from './SearchByDocumentType.jsx';
 import SearchByGeographicRegion from './SearchByGeographicRegion.jsx';
+import ShareSave from '../Document/ShareSave.jsx';
 
 class SearchSidebar extends Component {
 
@@ -13,6 +14,7 @@ class SearchSidebar extends Component {
     return (
       <div className="col-sm-2 left-col" >
         <SearchByTopic />
+        <ShareSave />
       </div>
     );
   }
