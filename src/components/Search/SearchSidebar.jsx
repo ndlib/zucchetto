@@ -12,11 +12,7 @@ class SearchSidebar extends Component {
   render() {
     return (
       <div className="col-sm-2 left-col" >
-
         <SearchByTopic />
-        <SearchByDate />
-        <SearchByDocumentType />
-        <SearchByGeographicRegion />
       </div>
     );
   }

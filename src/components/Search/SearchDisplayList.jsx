@@ -23,7 +23,7 @@ var SearchDisplayList = React.createClass({
         return (
           <ListItem
             item={item}
-            key={item.name}
+            key={item['@id']}
           />
         );
       });
