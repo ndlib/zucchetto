@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentListItem from '../Document/DocumentListItem.jsx'
+import ShareSave from '../Document/ShareSave.jsx'
 import Heading from '../Shared/Heading.jsx'
 import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
@@ -39,6 +40,7 @@ class NotebookList extends Component {
           }}>
             { this.documentList() }
           </ul>
+          <ShareSave />
       </div>
     );
   }

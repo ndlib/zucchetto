@@ -55,13 +55,7 @@ class SearchPage extends Component {
           <div className="row col-sm-12">
             <SearchSidebar />
             <div className="col-sm-10 right-col" style={this.listStyle()}>
-              <div className="col-sm-6">
-                <a href="/" className="top-links">« Home</a>
-              </div>
-              <div className="col-sm-6" style={{textAlign:'right'}}>
-                <a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Search Results</a>
-              </div>
-              <div className="col-sm-12">
+              <div className="col-sm-12" style={{ paddingTop: "7px"}}>
                 <SearchBox />
               </div>
               <div className="col-sm-6">
@@ -94,14 +88,11 @@ class SearchPage extends Component {
             </div>
           </div>
         </div>
-
       <Footer/>
       <div>
-        <div className='col-sm-7'/>
-        <div className='col-sm-4'>
+        <div className="col-sm-12" >
           <Drawer />
         </div>
-        <div className='col-sm-1'/>
       </div>
     {this.props.children}
     </div>

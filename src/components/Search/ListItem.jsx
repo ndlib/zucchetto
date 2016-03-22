@@ -4,6 +4,7 @@ import IDFromAtID from "../../modules/IDFromAtID.js";
 import ItemStore from '../../store/ItemStore.js';
 import Document from '../Document/Document.jsx';
 import Paragraph from '../Document/Paragraph.jsx';
+import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 
 import AddToCompare from '../Document/AddToCompare.jsx';
@@ -35,6 +36,7 @@ class ListItem extends Component{
           <AddToCompare item={ this._item } />
           <hr />
           <Paragraph item={ this._item } />
+          <CopyrightNotification item={ this._parent } />
         </DocumentCard>
       );
     } else {

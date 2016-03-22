@@ -280,16 +280,19 @@ nav {
 
 footer {
 	width: 100vw;
-	margin: 5px auto;
+	margin: 0px;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   border-top: double 3px $yellow;
-
+  position: fixed;
+  bottom: 0px;
+  background-color: $tan;
 	img {
 		vertical-align: bottom;
 		margin-right: 15px;
 		margin-bottom: 5px;
+    float: right;
 	}
 
 

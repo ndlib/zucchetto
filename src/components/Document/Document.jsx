@@ -6,6 +6,7 @@ import Paragraph from './Paragraph.jsx'
 import Title from './Title.jsx'
 import DownloadPDF from './DownloadPDF.jsx'
 import CurrentParagraph from './CurrentParagraph.jsx'
+import CopyrightNotification from './CopyrightNotification.jsx'
 
 class Document extends Component {
   constructor(props) {
@@ -37,8 +38,7 @@ class Document extends Component {
           { this.props.children }
         </div>
         <Title item={this._parent} />
-        <CurrentParagraph item={ this._item } />
-        <DownloadPDF item={this._parent} />
+        <CopyrightNotification item={ this._parent } />        
         <hr />
         <div style={ this.style() } >
           { this.paragraphs() }
