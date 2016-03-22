@@ -42,35 +42,25 @@ class Notebook extends Component {
       return (
         <div>
           <div className="col-sm-5 notebook-column left">
-            <a href="/" className="top-links">« Home</a>
             <NotebookColumn item={ this.state.column1 } />
           </div>
           <div className="col-sm-5 notebook-column right">
-            <a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Notebook</a>
             <NotebookColumn item={ this.state.column2 } />
           </div>
         </div>
       );
     } else {
-
       return (
         <div>
-          <div className="col-sm-5 notebook-column left">
-            <a href="/" className="top-links">« Home</a>
-          </div>
-          <div className="col-sm-5 notebook-column right">
-            <a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save Notebook</a>
-          </div>
           <div className="col-sm-10">
             <p style={{ margin: "50px", padding: "50px", textAlign: "center", fontSize: "3em", border: "1px black dashed"}}>
               Select the documents from your notebook to compare.
             </p>
           </div>
         </div>
-      )
+      );
     }
   }
-
 
   render() {
     if (!this.state.loaded) {
@@ -79,14 +69,14 @@ class Notebook extends Component {
 
     return (
       <div>
-        <Header/>
+        <Header />
         <div className="row body">
           <div className="col-sm-2">
             <NotebookList />
           </div>
           {  this.renderNotebook() }
         </div>
-
+        <Footer />
       </div>
     );
   }

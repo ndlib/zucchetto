@@ -38,8 +38,8 @@ class Document extends Component {
           { this.props.children }
         </div>
         <Title item={this._parent} />
+        <CopyrightNotification item={ this._parent } />        
         <hr />
-        <CopyrightNotification item={ this._parent } />
         <div style={ this.style() } >
           { this.paragraphs() }
         </div>

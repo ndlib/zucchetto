@@ -6,6 +6,7 @@ class Header extends Component {
   constructor() {
     super();
     this.state = { menuOpen: false }
+    this.menuClick = this.menuClick.bind(this);
   }
 
   menuClick() {
@@ -22,19 +23,18 @@ class Header extends Component {
       <header>
         <div className="row">
           <div className="col-sm-9">
-            <h1><mui.FlatButton style={ { color: "#D5B117" }}  icon={ icon } onTouchTap={ this.menuClick.bind(this) } />Research Database</h1>
+            <h1><mui.FlatButton style={ { color: "#D5B117" }}  icon={ icon } onTouchTap={ this.menuClick } />Research Database</h1>
             <mui.LeftNav
               open={this.state.menuOpen}
               docked={ false }
               onRequestChange={ this.requestChange.bind(this) }
             >
               <p className="tagline"></p>
-              <a onTouchTap={this.menuClick.bind(this)}>Hi</a>
-              <mui.MenuItem onTouchTap={this.handleClose}>Home</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.handleClose}>Search Database</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.handleClose}>About Database</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.handleClose}>Project Partners</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.handleClose}>Contact Us</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}>Home</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}>Search Database</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}>About Database</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}>Project Partners</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}>Contact Us</mui.MenuItem>
 
               <p>
                 <img src="/resources/images/cchr.png" className="cchr" />
