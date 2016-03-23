@@ -6,8 +6,11 @@ import ChildValue from './ChildValue.js';
 class TopicFacet extends Component {
   constructor(props) {
     super(props);
+
+    let searchStr = window.location.search
     this.state = {
-      expanded: false,
+      expanded: searchStr.search(this.props.topic.value) > -1,
+      selected: searchStr.search(this.props.topic.value) > -1,
     }
     this.onArrowClick = this.onArrowClick.bind(this);
     this.onLabelClick = this.onLabelClick.bind(this);
@@ -27,6 +30,7 @@ class TopicFacet extends Component {
       fontSize: '20px',
       verticalAlign: 'middle',
       color: '#224048',
+      cursor: 'pointer',
       transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(0deg)',
     }
   }
@@ -53,7 +57,13 @@ class TopicFacet extends Component {
         <li>
           <div>
             {arrow}
-            <span onClick={this.onLabelClick}>{this.props.topic.name}</span>
+            <span
+              onClick={this.onLabelClick}
+              style={{
+                cursor: 'pointer',
+                fontWeight: this.state.selected ? 'bold': 'normal',
+              }}
+            >{this.props.topic.name}</span>
           </div>
           <ul style={{
               listStyleType: 'none',
