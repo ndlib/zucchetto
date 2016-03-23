@@ -40,11 +40,15 @@ var SearchBox = React.createClass({
   },
 
   input: function() {
+    var defaultValue = '';
+    if(window.location.search) {
+      defaultValue = window.location.search.split(',')[0].replace('?q=', '')
+    }
     return (<input
       placeholder='SEARCH THE DATABASE'
       ref='searchBox'
       onChange={this.onChange}
-      //defaultValue={SearchStore.searchTerm}
+      defaultValue={defaultValue}
       onKeyDown={this.handleKeyDown}
       inputStyle={this.inputStyle()}
       style={{
