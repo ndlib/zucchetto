@@ -30,14 +30,15 @@ class Header extends Component {
               onRequestChange={ this.requestChange.bind(this) }
             >
               <p className="tagline"></p>
+              <div  className="menu">
               <mui.MenuItem onTouchTap={this.menuClick}>Home</mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}>Search Database</mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}>About Database</mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}>Project Partners</mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}>Contact Us</mui.MenuItem>
-
+              </div>
               <p>
-                <img src="/resources/images/cchr.png" className="cchr" />
+                <img src="/resources/images/cchr.png" className="cchr m" />
                 <img src="/resources/images/cds.png" className="cds" />
               </p>
             </mui.LeftNav>
