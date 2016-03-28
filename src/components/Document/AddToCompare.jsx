@@ -4,32 +4,95 @@ import IDFromAtID from "../../modules/IDFromAtID.js";
 import CompareStore from "../../store/CompareStore.js";
 import CompareActions from "../../actions/CompareActions.js";
 
+let TRUE = 'true';
+let FALSE = 'false';
+let IND = 'indeterminate';
+
 class AddToCompare extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      checked: CompareStore.itemInCompare(this.props.item),
-    };
     this.addToCompareClick = this.addToCompareClick.bind(this);
+    this.setStateFromCompareStore = this.setStateFromCompareStore.bind(this);
+    this.setStateFromCompareStore();
+  }
+
+  componentWillMount() {
+    CompareStore.on('ItemCompareUpdated', this.setStateFromCompareStore);
+  }
+
+  setStateFromCompareStore() {
+    if(!this.props.subItems){
+      this.state = {
+        checked: CompareStore.itemInCompare(this.props.item) ? TRUE : FALSE,
+      };
+    }
+    else {
+      let selectedSubItems = 0;
+      for(var i = 0; i < this.props.subItems.length; i++) {
+        if(CompareStore.itemInCompare(this.props.subItems[i])) {
+          selectedSubItems++;
+        }
+      }
+      if(selectedSubItems === 0) {
+        this.state = {
+          checked: FALSE,
+        };
+      }
+      else if(selectedSubItems === this.props.subItems.length) {
+        this.state = {
+          checked: TRUE,
+        };
+      }
+      else {
+        this.state = {
+          checked: IND,
+        };
+      }
+    }
   }
 
   addToCompareClick() {
-    this.setState({ checked: !this.state.checked }, this.runCompareAction.bind(this));
+    if(this.state.checked === TRUE || this.state.checked === IND) {
+      this.setState({ checked: FALSE  }, this.runCompareAction.bind(this));
+    }
+    else {
+      this.setState({ checked: TRUE  }, this.runCompareAction.bind(this));
+    }
   }
 
   runCompareAction() {
-    if (this.state.checked) {
-      CompareActions.setItem(this.props.item);
-    } else {
-      CompareActions.removeItem(this.props.item);
+    if(this.props.subItems){
+      if (this.state.checked === TRUE) {
+        for(var i = 0; i < this.props.subItems.length; i++) {
+          CompareActions.setItem(this.props.subItems[i]);
+        }
+
+      } else {
+        for(var i = 0; i < this.props.subItems.length; i++) {
+          CompareActions.removeItem(this.props.subItems[i]);
+        }
+      }
     }
+    else {
+      if (this.state.checked === TRUE) {
+        CompareActions.setItem(this.props.item);
+      } else {
+        CompareActions.removeItem(this.props.item);
+      }
+    }
+
   }
 
   checked() {
-    if(this.state.checked) {
+    if(this.state.checked === TRUE) {
       return (<i className="material-icons add-to-compare-checkbox">check_box</i>);
     }
-    return (<i className="material-icons add-to-compare-checkbox">check_box_outline_blank</i>);
+    else if(this.state.checked === FALSE) {
+      return (<i className="material-icons add-to-compare-checkbox">check_box_outline_blank</i>);
+    }
+    else {
+      return (<i className="material-icons add-to-compare-checkbox">indeterminate_check_box</i>);
+    }
   }
 
   render() {
