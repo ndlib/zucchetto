@@ -13,13 +13,9 @@ class Document extends Component {
     super(props);
     this._item = ItemStore.getItem(props.documentId);
     this._parent = ItemStore.getItemParent(this._item);
-  }
-
-  style() {
-    return {
-      overflow: "scroll",
-      height: "400px",
-      clear: "both",
+    if(this._parent == null){
+      // If the item has no parents, we assume it is a parent.
+      this._parent = this._item;
     }
   }
 
@@ -38,9 +34,9 @@ class Document extends Component {
           { this.props.children }
         </div>
         <Title item={this._parent} />
-        <CopyrightNotification item={ this._parent } />        
+        <CopyrightNotification item={ this._parent } />
         <hr />
-        <div style={ this.style() } >
+        <div style={ this.props.bodyStyle } >
           { this.paragraphs() }
         </div>
       </div>
@@ -53,5 +49,13 @@ Document.propTypes = {
   item: React.PropTypes.object,
   parent: React.PropTypes.object,
 }
+
+Document.defaultProps = {
+  bodyStyle: {
+    fontSize: "16px",
+    maxWidth: "32.5em", // Should put it between 70-75 characters at 1em (16px)
+    margin: "0 auto",
+  }
+};
 
 export default Document;
