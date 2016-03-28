@@ -4,6 +4,8 @@ var EventEmitter = require("../../middleware/EventEmitter.js");
 var MediaQuery = require('react-responsive');
 var SearchPagination = require('./SearchPagination.jsx');
 var ListItem = require('./ListItem.jsx');
+import ItemStore from '../../store/ItemStore.js';
+import IDFromAtID from "../../modules/IDFromAtID.js";
 
 var SearchDisplayList = React.createClass({
 
@@ -18,25 +20,47 @@ var SearchDisplayList = React.createClass({
   },
 
   itemList: function() {
+    var groupedItems = [];
     if(this.props.items.length > 0){
       var itemNodes = this.props.items.map(function(item, index) {
-        return (
+        var fullItem = ItemStore.getItem(IDFromAtID(item['@id']));
+        var itemParent = ItemStore.getItemParent(fullItem);
+        var docExists = false;
+        for(var i = 0; i < groupedItems.length; i++){
+          if(itemParent && groupedItems[i].doc == itemParent.id) {
+            // found parent
+            docExists = true;
+            groupedItems[i].paragraphs.push(fullItem.id);
+          }
+        }
+        if(itemParent && !docExists) {
+          groupedItems.push({doc: itemParent.id, paragraphs: [fullItem.id]});
+        }
+      });
+      for(var i = 0;  i < groupedItems.length; i++) {
+        itemNodes.push(
           <ListItem
-            item={item}
-            key={item['@id']}
+            groupedItem={groupedItems[i]}
+            key={i}
           />
         );
-      });
-      if(itemNodes.length === 0) {
-        itemNodes = (<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>);
       }
+
       return (
         <div>
           {itemNodes}
         </div>
       )
     }
-    return null;
+    return (
+      <div
+        style={{
+          color:'rgba(0, 0, 0, 0.870588)',
+          fontStyle:'italic',
+          textAlign:'center'
+        }}>No matching results could be found.
+      </div>
+    );
   },
 
   render: function() {
