@@ -33,13 +33,14 @@ class AddToCompare extends Component {
   }
 
   render() {
+    var label = this.props.subItems ? 'Add Document' : 'Add Section';
     return (
       <div
         className="add-to-compare"
         onClick={this.addToCompareClick}
         style={{cursor: 'pointer'}}
         >
-          {this.checked()}Compare Document
+          { this.checked() }{ label }
         </div>
       );
   }
@@ -47,6 +48,7 @@ class AddToCompare extends Component {
 
 AddToCompare.propTypes = {
   item: React.PropTypes.object,
+  subItems: React.PropTypes.array,
 }
 
 export default AddToCompare;

@@ -1,6 +1,8 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import CurrentParagraph from '../Document/CurrentParagraph.jsx';
+import AddToCompare from '../Document/AddToCompare.jsx';
 
 class Paragraph extends Component {
 
@@ -34,7 +36,14 @@ class Paragraph extends Component {
 
   render() {
     if (this.props.item.metadata.transcription) {
-      return this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value);
+      return(
+        <div>
+          {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
+          <CurrentParagraph item={ this.props.item } />
+          <AddToCompare item={ this.props.item } />
+          <hr />
+        </div>
+      )
     } else {
       return "";
     }
