@@ -7,23 +7,43 @@ import ShareSave from '../Document/ShareSave.jsx'
 import Heading from '../Shared/Heading.jsx'
 import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
+import VaticanID from '../../constants/VaticanID.js';
+import HumanRightsID from '../../constants/HumanRightsID.js';
 
 class NotebookList extends Component {
   constructor(props) {
     super(props);
+    var allIds = CompareStore.allItems();
+
     this.documentClick = this.documentClick.bind(this);
+    this._all_items = ItemStore.getItemsByMultipleIds(allIds)
+    this._humanrights_documents = _.filter(this._all_items, function(item) {
+      return item.collection_id == HumanRightsID;
+    });
+    this._vatican_douments = _.filter(this._all_items, function(item) {
+      return item.collection_id == VaticanID;
+    });
   }
 
   documentClick(event, item) {
     CompareActions.setColumnItem(item);
   }
 
-  documentList() {
+  humanRightsDocumentList() {
     var clickFunc = this.documentClick;
-    var allIds = CompareStore.allItems();
-
     return(
-      _.map(ItemStore.getItemsByMultipleIds(allIds), function (item) {
+      _.map(this._humanrights_documents, function (item) {
+        return (
+          <DocumentListItem key={item.id} item={item} primaryAction={clickFunc} />
+        );
+      })
+    );
+  }
+
+  vaticanDocumentList() {
+    var clickFunc = this.documentClick;
+    return(
+      _.map(this._vatican_douments, function (item) {
         return (
           <DocumentListItem key={item.id} item={item} primaryAction={clickFunc} />
         );
@@ -34,12 +54,19 @@ class NotebookList extends Component {
   render() {
     return (
       <div className="left-col">
-        <h4>Notebook</h4>
+        <h4>Catholic Social Teachings</h4>
           <ul style={{
               paddingLeft: '0',
           }}>
-            { this.documentList() }
+            { this.vaticanDocumentList() }
           </ul>
+
+          <h4>Internactional Human Rights</h4>
+            <ul style={{
+                paddingLeft: '0',
+            }}>
+              { this.humanRightsDocumentList() }
+            </ul>
           <ShareSave />
       </div>
     );
