@@ -3,6 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import CompareStore from '../../store/CompareStore.js';
 import ItemStore from '../../store/ItemStore.js';
 import NotebookLink from '../Notebook/NotebookLink.jsx';
+import VaticanID from '../../constants/VaticanID.js';
+import HumanRightsID from '../../constants/HumanRightsID.js';
 
 class Drawer extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class Drawer extends Component {
     this.countParents = this.countParents.bind(this);
     this.updateCount = this.updateCount.bind(this);
     this.state = {
-      count: this.countParents(),
+      vatCount: this.countParents().vatCount,
+      humanCount: this.countParents().humanCount,
     }
   }
 
@@ -20,17 +23,29 @@ class Drawer extends Component {
 
   countParents() {
     let compareItems = CompareStore.allItems();
-    let parents = [];
+    let parentsVat = [];
+    let parentsHu = [];
     for (var i = 0; i < compareItems.length; i++) {
       let parent = ItemStore.getItemParent(ItemStore.getItem(compareItems[i]));
-      if(parents.indexOf(parent) < 0) {
-        parents.push(parent);
+      if(parent.collection_id === VaticanID) {
+        if(parentsVat.indexOf(parent) < 0) {
+          parentsVat.push(parent);
+        }
+      }
+      if(parent.collection_id === HumanRightsID) {
+        if(parentsHu.indexOf(parent) < 0) {
+          parentsHu.push(parent);
+        }
       }
     }
-    return parents.length;
+
+    return {vatCount: parentsVat.length, humanCount: parentsHu.length};
   }
   updateCount() {
-    this.setState({count: this.countParents()});
+    this.setState({
+      vatCount: this.countParents().vatCount,
+      humanCount: this.countParents().humanCount,
+    });
   }
 
   style() {
@@ -49,12 +64,13 @@ class Drawer extends Component {
   }
 
   render() {
-    if(this.state.count) {
+    if(this.state.vatCount + this.state.humanCount > 0) {
       return (
         <div style={this.style()}>
           <h4>Select two or more items to compare.</h4>
-          <div>{this.state.count} items selected.</div>
-          <NotebookLink disabled={this.state.count < 1} />
+          <div>{this.state.vatCount} Catholic Social Teachings</div>
+          <div>{this.state.humanCount} International Human Rights Laws</div>
+          <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />
           <div style={{clear:'both'}}/>
         </div>
       );
