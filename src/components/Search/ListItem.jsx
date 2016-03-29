@@ -43,6 +43,7 @@ class ListItem extends Component{
       }
       return (
         <div>
+          <CopyrightNotification item={ this._doc } />
           <hr />
           {paragraphs}
         </div>
@@ -57,13 +58,18 @@ class ListItem extends Component{
         paragraphs={ this._paragraphs }
         primaryAction={ this.titleOnClick }
       >
-        <div style={{float: 'right'}}>Results in Document: {this._paragraphs.length}</div>
+        <div
+          style={{
+            paddingTop: '10px',
+            position: 'absolute',
+            right: '30px'
+          }}
+        >Results in Document: {this._paragraphs.length}</div>
         <AddToCompare
           item={ this._doc }
           subItems={ this._paragraphs }
         />
         { this.paragraphs() }
-        <CopyrightNotification item={ this._doc } />
       </DocumentCard>
     );
   }

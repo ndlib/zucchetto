@@ -64,7 +64,7 @@ class Paragraph extends Component {
 Paragraph.propTypes = {
   item: React.PropTypes.object,
   selectedItem: React.PropTypes.object,
-  showCheckBoxes: React.PropTypes.object,
+  showCheckBoxes: React.PropTypes.bool,
 }
 
 Paragraph.defaultProps = {
