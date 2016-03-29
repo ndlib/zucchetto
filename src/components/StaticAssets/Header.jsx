@@ -39,7 +39,7 @@ class Header extends Component {
               </div>
               <p>
                 <img src="/resources/images/cchr.png" className="cchr m" />
-                <img src="/resources/images/cds.png" className="cds" />
+                <img src="/resources/images/undhl-cds.png" className="cds" />
               </p>
             </mui.LeftNav>
           </div>
