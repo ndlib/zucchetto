@@ -34,14 +34,25 @@ class Paragraph extends Component {
     return "";
   }
 
+  addButton() {
+    if(this.props.showCheckBoxes) {
+      return (
+        <div>
+          <CurrentParagraph item={ this.props.item } />
+          <AddToCompare item={ this.props.item } />
+          <hr />
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
     if (this.props.item.metadata.transcription) {
       return(
         <div>
           {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
-          <CurrentParagraph item={ this.props.item } />
-          <AddToCompare item={ this.props.item } />
-          <hr />
+          { this.addButton() }
         </div>
       )
     } else {
@@ -53,6 +64,10 @@ class Paragraph extends Component {
 Paragraph.propTypes = {
   item: React.PropTypes.object,
   selectedItem: React.PropTypes.object,
+  showCheckBoxes: React.PropTypes.object,
 }
 
+Paragraph.defaultProps = {
+  showCheckBoxes: false,
+}
 export default Paragraph;

@@ -34,7 +34,10 @@ class ListItem extends Component{
       for(var i = 0; i < this._paragraphs.length; i++) {
         paragraphs.push(
           <div key={ i } >
-            <Paragraph item={ this._paragraphs[i] } />
+            <Paragraph
+              item={ this._paragraphs[i] }
+              showCheckBoxes={ true }
+            />
           </div>
         );
       }
