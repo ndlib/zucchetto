@@ -1,23 +1,36 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import CompareStore from '../../store/CompareStore.js';
+import ItemStore from '../../store/ItemStore.js';
 import NotebookLink from '../Notebook/NotebookLink.jsx';
 
 class Drawer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      count: CompareStore.allItems().length,
-    }
+    this.countParents = this.countParents.bind(this);
     this.updateCount = this.updateCount.bind(this);
+    this.state = {
+      count: this.countParents(),
+    }
   }
 
   componentWillMount() {
     CompareStore.on('ItemCompareUpdated', this.updateCount);
   }
 
+  countParents() {
+    let compareItems = CompareStore.allItems();
+    let parents = [];
+    for (var i = 0; i < compareItems.length; i++) {
+      let parent = ItemStore.getItemParent(ItemStore.getItem(compareItems[i]));
+      if(parents.indexOf(parent) < 0) {
+        parents.push(parent);
+      }
+    }
+    return parents.length;
+  }
   updateCount() {
-    this.setState({count: CompareStore.allItems().length});
+    this.setState({count: this.countParents()});
   }
 
   style() {
@@ -41,7 +54,7 @@ class Drawer extends Component {
         <div style={this.style()}>
           <h4>Select two or more items to compare.</h4>
           <div>{this.state.count} items selected.</div>
-          <NotebookLink disabled={this.state.count < 2} />
+          <NotebookLink disabled={this.state.count < 1} />
           <div style={{clear:'both'}}/>
         </div>
       );
