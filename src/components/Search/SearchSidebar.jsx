@@ -12,7 +12,7 @@ class SearchSidebar extends Component {
 
   render() {
     return (
-      <div className="col-sm-2 left-col" >
+      <div className="col-sm-3 left-col" >
         <SearchByTopic />
         <ShareSave />
       </div>
