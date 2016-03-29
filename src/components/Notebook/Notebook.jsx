@@ -7,6 +7,7 @@ import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import NotebookColumn from './NotebookColumn.jsx'
 import NotebookList from './NotebookList.jsx'
+import EmptyColumn from './EmptyColumn.jsx'
 
 class Notebook extends Component {
   constructor() {
@@ -53,9 +54,7 @@ class Notebook extends Component {
       return (
         <div>
           <div className="col-sm-10">
-            <p style={{ margin: "50px", padding: "50px", textAlign: "center", fontSize: "3em", border: "1px black dashed"}}>
-              Select the documents from your notebook to compare.
-            </p>
+            <EmptyColumn />
           </div>
         </div>
       );
