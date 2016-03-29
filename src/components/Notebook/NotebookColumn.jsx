@@ -4,6 +4,7 @@ import NotebookList from './NotebookList.jsx';
 import NotebookDocument from './NotebookDocument.jsx';
 import CompareActions from '../../actions/CompareActions.js'
 import CompareStore from '../../actions/CompareActions.js'
+import EmptyColumn from './EmptyColumn.jsx'
 
 class NotebookColumn extends Component {
 
@@ -21,7 +22,7 @@ class NotebookColumn extends Component {
       );
     } else {
       return (
-        <div />
+        <EmptyColumn />
       );
     }
   }
