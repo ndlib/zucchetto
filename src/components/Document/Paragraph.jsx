@@ -1,6 +1,8 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import CurrentParagraph from '../Document/CurrentParagraph.jsx';
+import AddToCompare from '../Document/AddToCompare.jsx';
 
 class Paragraph extends Component {
 
@@ -32,9 +34,27 @@ class Paragraph extends Component {
     return "";
   }
 
+  addButton() {
+    if(this.props.showCheckBoxes) {
+      return (
+        <div>
+          <CurrentParagraph item={ this.props.item } />
+          <AddToCompare item={ this.props.item } />
+          <hr />
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
     if (this.props.item.metadata.transcription) {
-      return this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value);
+      return(
+        <div>
+          {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
+          { this.addButton() }
+        </div>
+      )
     } else {
       return "";
     }
@@ -44,6 +64,10 @@ class Paragraph extends Component {
 Paragraph.propTypes = {
   item: React.PropTypes.object,
   selectedItem: React.PropTypes.object,
+  showCheckBoxes: React.PropTypes.bool,
 }
 
+Paragraph.defaultProps = {
+  showCheckBoxes: false,
+}
 export default Paragraph;
