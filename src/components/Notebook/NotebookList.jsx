@@ -8,7 +8,7 @@ import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
-import ItemQueryParams from '../modules/ItemQueryParams.js';
+import ItemQueryParams from '../../modules/ItemQueryParams.js';
 
 class NotebookList extends Component {
   constructor(props) {
