@@ -4,7 +4,7 @@ import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 
 class NotebookLink extends Component {
-
+  
   clickAction() {
     if(!this.props.disabled) {
       let vaticanItems = [];
@@ -23,7 +23,7 @@ class NotebookLink extends Component {
       let vString = 'v=' + vaticanItems.join('|');
       let hString = 'h=' + humanRightItems.join('|');
 
-      window.location = '/notebook' + '?' + vString + '&' + hString;
+      this.context.router.push('/notebook' + '?' + vString + '&' + hString)
     }
     else {
       // disabled do nothing
@@ -55,6 +55,11 @@ class NotebookLink extends Component {
 NotebookLink.propTypes = {
   disabled: React.PropTypes.bool,
 }
+
+NotebookLink.contextTypes = {
+  router: React.PropTypes.func.isRequired
+};
+
 
 NotebookLink.defaultProps = {
   disabled: true,
