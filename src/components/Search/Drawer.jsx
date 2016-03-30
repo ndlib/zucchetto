@@ -12,6 +12,8 @@ class Drawer extends Component {
     super(props);
     this.countParents = this.countParents.bind(this);
     this.updateCount = this.updateCount.bind(this);
+    this.preLoadFinished = this.preLoadFinished.bind(this);
+
     this.state = {
       loaded: false,
       vatCount: 0,
