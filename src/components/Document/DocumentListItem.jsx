@@ -14,12 +14,13 @@ class DocumentListItem extends Component {
 
   primaryAction(event) {
     this.props.primaryAction(event, this._item);
+    event.preventDefault();
   }
 
   render() {
     return (
       <li style={{margin: "5px"}} >
-        <a style={{cursor: 'pointer'}} onClick={this.primaryAction} >{this._parent.name}</a>
+        <div style={{cursor: 'pointer'}} onClick={this.primaryAction} >{this._parent.name}</div>
       </li>
     );
   }
