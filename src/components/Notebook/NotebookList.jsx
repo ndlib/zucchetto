@@ -4,11 +4,11 @@ import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentListItem from '../Document/DocumentListItem.jsx'
 import ShareSave from '../Document/ShareSave.jsx'
-import Heading from '../Shared/Heading.jsx'
 import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
+import ItemQueryParams from '../../modules/ItemQueryParams.js';
 
 class NotebookList extends Component {
   constructor(props) {
@@ -16,11 +16,10 @@ class NotebookList extends Component {
     var allIds = CompareStore.allItems();
 
     this.documentClick = this.documentClick.bind(this);
-    this._all_items = ItemStore.getItemsByMultipleIds(allIds)
-    this._humanrights_documents = _.filter(this._all_items, function(item) {
+    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
       return item.collection_id == HumanRightsID;
     });
-    this._vatican_douments = _.filter(this._all_items, function(item) {
+    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
       return item.collection_id == VaticanID;
     });
   }

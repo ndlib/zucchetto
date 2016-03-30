@@ -11,12 +11,13 @@ import ResultPage from './ResultPage.jsx';
 import SearchPage from './SearchPage.jsx';
 import NotebookPage from './NotebookPage.jsx';
 import DocumentPage from './DocumentPage.jsx';
+import Page from './Page.jsx';
 
 
 export default function() {
   return (
     <Router history={ browserHistory }>
-      <Route path="/">
+      <Route path="/" component={ Page }>
         <IndexRoute component={ SiteIndexPage } />
         <Route path="/about" component={ AboutPage } />
         <Route path="/partners" component={ PartnersPage} />
