@@ -54,7 +54,7 @@ class SearchPage extends Component {
         <div className="row body" style={{display: 'block'}}>
           <div className="row col-sm-12">
             <SearchSidebar />
-            <div className="col-sm-10 right-col" style={this.listStyle()}>
+            <div className="col-sm-9 right-col" style={this.listStyle()}>
               <div className="col-sm-12" style={{ paddingTop: "7px"}}>
                 <SearchBox />
               </div>
