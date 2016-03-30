@@ -1,5 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router'
 
 class Navigation extends Component {
   render() {
@@ -7,13 +8,13 @@ class Navigation extends Component {
       <nav>
         <ul>
           <li>
-            <a href="about">About the Database</a>
+            <Link to="/about">About the Database</Link>
           </li>
           <li>
-            <a href="partners">Project Partners</a>
+            <Link to="/partners">Project Partners</Link>
           </li>
           <li>
-            <a href="Contact">Contact Us</a>
+            <Link to="/Contact">Contact Us</Link>
           </li>
         </ul>
       </nav>
