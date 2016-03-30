@@ -4,7 +4,7 @@ import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 
 class NotebookLink extends Component {
-  
+
   clickAction() {
     if(!this.props.disabled) {
       let vaticanItems = [];
@@ -57,7 +57,7 @@ NotebookLink.propTypes = {
 }
 
 NotebookLink.contextTypes = {
-  router: React.PropTypes.func.isRequired
+  router: React.PropTypes.object.isRequired
 };
 
 
