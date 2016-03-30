@@ -6,6 +6,7 @@ var SearchPagination = require('./SearchPagination.jsx');
 var ListItem = require('./ListItem.jsx');
 import ItemStore from '../../store/ItemStore.js';
 import IDFromAtID from "../../modules/IDFromAtID.js";
+import ItemActions from '../../actions/ItemActions.jsx';
 
 var SearchDisplayList = React.createClass({
 
@@ -17,6 +18,21 @@ var SearchDisplayList = React.createClass({
     return {
       items: [],
     }
+  },
+
+  getInitialState: function() {
+    return {
+      loaded: false,
+    }
+  },
+
+  componentWillMount: function() {
+    ItemActions.preLoadItems();
+    ItemStore.on("PreLoadFinished", this.preLoadFinished);
+  },
+
+  preLoadFinished() {
+    this.setState({ loaded: true });
   },
 
   itemList: function() {
@@ -64,6 +80,9 @@ var SearchDisplayList = React.createClass({
   },
 
   render: function() {
+    if(!this.state.loaded){
+      return null;
+    }
     return (
       <div>
         {this.itemList()}
