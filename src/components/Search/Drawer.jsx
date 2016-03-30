@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import CompareStore from '../../store/CompareStore.js';
 import ItemStore from '../../store/ItemStore.js';
+import ItemActions from '../../actions/ItemActions.jsx';
 import NotebookLink from '../Notebook/NotebookLink.jsx';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
@@ -12,13 +13,24 @@ class Drawer extends Component {
     this.countParents = this.countParents.bind(this);
     this.updateCount = this.updateCount.bind(this);
     this.state = {
-      vatCount: this.countParents().vatCount,
-      humanCount: this.countParents().humanCount,
+      loaded: false,
+      vatCount: 0,
+      humanCount: 0,
     }
   }
 
   componentWillMount() {
+    ItemActions.preLoadItems();
+    ItemStore.on("PreLoadFinished", this.preLoadFinished);
     CompareStore.on('ItemCompareUpdated', this.updateCount);
+  }
+
+  preLoadFinished() {
+    this.setState({
+      loaded: true,
+      vatCount: this.countParents().vatCount,
+      humanCount: this.countParents().humanCount,
+    });
   }
 
   countParents() {
@@ -64,6 +76,10 @@ class Drawer extends Component {
   }
 
   render() {
+    if(!this.state.loaded) {
+      return null;
+    }
+
     if(this.state.vatCount + this.state.humanCount > 0) {
       return (
         <div style={this.style()}>
