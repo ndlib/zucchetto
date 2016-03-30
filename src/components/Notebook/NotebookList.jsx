@@ -26,6 +26,7 @@ class NotebookList extends Component {
 
   documentClick(event, item) {
     CompareActions.setColumnItem(item);
+    event.preventDefault();
   }
 
   humanRightsDocumentList() {
