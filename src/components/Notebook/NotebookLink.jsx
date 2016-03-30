@@ -23,7 +23,7 @@ class NotebookLink extends Component {
       let vString = 'v=' + vaticanItems.join('|');
       let hString = 'h=' + humanRightItems.join('|');
 
-      window.location = '/notebook' + '?' + vString + '&' + hString;
+      this.context.router.push('/notebook' + '?' + vString + '&' + hString)
     }
     else {
       // disabled do nothing
@@ -55,6 +55,11 @@ class NotebookLink extends Component {
 NotebookLink.propTypes = {
   disabled: React.PropTypes.bool,
 }
+
+NotebookLink.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
 
 NotebookLink.defaultProps = {
   disabled: true,

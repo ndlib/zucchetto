@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui from 'material-ui';
+import { Link } from 'react-router'
 
 class Header extends Component {
   constructor() {
@@ -31,11 +32,11 @@ class Header extends Component {
             >
               <p className="tagline"></p>
               <div  className="menu">
-              <mui.MenuItem onTouchTap={this.menuClick}>Home</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.menuClick}>Search Database</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.menuClick}>About Database</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.menuClick}>Project Partners</mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.menuClick}>Contact Us</mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/">Home</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/search?q=">Search Database</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/about">About Database</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/partners">Project Partners</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
               </div>
               <p>
                 <img src="/resources/images/cchr.png" className="cchr m" />

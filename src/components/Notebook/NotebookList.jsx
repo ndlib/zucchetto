@@ -16,10 +16,10 @@ class NotebookList extends Component {
     var allIds = CompareStore.allItems();
 
     this.documentClick = this.documentClick.bind(this);
-    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
+    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
       return item.collection_id == HumanRightsID;
     });
-    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
+    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
       return item.collection_id == VaticanID;
     });
   }

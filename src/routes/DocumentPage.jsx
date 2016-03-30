@@ -17,8 +17,12 @@ class DocumentPage extends Component {
   }
 
   componentWillMount() {
-    ItemActions.preLoadItems();
-    ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    if (ItemStore.preLoaded()) {
+      this.preLoadFinished();
+    } else {
+      var func = this.preLoadFinished.bind(this);
+      ItemStore.on("PreLoadFinished", func);
+    }
   }
 
   preLoadFinished() {
