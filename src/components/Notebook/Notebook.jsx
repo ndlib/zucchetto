@@ -13,22 +13,13 @@ class Notebook extends Component {
   constructor() {
     super();
     this.state = {
-      loaded: false,
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
     };
-    this.preLoadFinished = this.preLoadFinished.bind(this)
   }
 
   componentWillMount() {
-    ItemActions.preLoadItems();
-    ItemStore.on("PreLoadFinished", this.preLoadFinished);
-
     CompareStore.on("CompareColumnsUpdated", this.updateColumns.bind(this));
-  }
-
-  preLoadFinished() {
-    this.setState({ loaded: true });
   }
 
   updateColumns() {
@@ -62,10 +53,6 @@ class Notebook extends Component {
   }
 
   render() {
-    if (!this.state.loaded) {
-      return (<p>Loading....</p>);
-    }
-
     return (
       <div>
         <Header />
