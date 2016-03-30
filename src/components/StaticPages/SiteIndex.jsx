@@ -3,6 +3,9 @@ var React = require('react');
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var Footer = require('../StaticAssets/Footer.jsx');
+
+import { Link } from 'react-router'
+
 var SiteIndex = React.createClass({
 
   render: function() {
@@ -12,8 +15,9 @@ var SiteIndex = React.createClass({
 
 
       		<section className="search">
-            <h2><a href="/search?q=">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></a></h2>
-            <p><a href="/search?q=">Using the Database</a></p>
+
+            <h2><Link to="/search?q=">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></Link></h2>
+            <p><Link to="/search?q=">Using the Database</Link></p>
           </section>
 
 

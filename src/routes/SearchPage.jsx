@@ -34,9 +34,12 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
-    ItemActions.preLoadItems();
-    var func = this.preLoadFinished.bind(this);
-    ItemStore.on("PreLoadFinished", func);
+    if (ItemStore.preLoaded()) {
+      this.preLoadFinished();
+    } else {
+      var func = this.preLoadFinished.bind(this);
+      ItemStore.on("PreLoadFinished", func);
+    }
   }
 
   preLoadFinished() {

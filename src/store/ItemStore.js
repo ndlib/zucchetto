@@ -39,6 +39,10 @@ class ItemStore extends EventEmitter {
     }
   }
 
+  preLoaded() {
+    return (this._vatican_finished && this._human_rights_finished);
+  }
+
   parseItems(items) {
     var parseFunction = _.bind(this.parseFunction, this);
 
