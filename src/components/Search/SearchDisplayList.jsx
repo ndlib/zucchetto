@@ -22,7 +22,7 @@ var SearchDisplayList = React.createClass({
   itemList: function() {
     var groupedItems = [];
     if(this.props.items.length > 0){
-      var itemNodes = this.props.items.map(function(item, index) {
+      this.props.items.forEach(function(item, index) {
         var fullItem = ItemStore.getItem(IDFromAtID(item['@id']));
         var itemParent = ItemStore.getItemParent(fullItem);
         var docExists = false;
@@ -37,6 +37,7 @@ var SearchDisplayList = React.createClass({
           groupedItems.push({doc: itemParent.id, paragraphs: [fullItem.id]});
         }
       });
+      var itemNodes = [];
       for(var i = 0;  i < groupedItems.length; i++) {
         itemNodes.push(
           <ListItem
