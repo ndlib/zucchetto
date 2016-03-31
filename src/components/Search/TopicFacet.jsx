@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import TopicFacets from './TopicFacets.jsx';
 import ChildValue from './ChildValue.js';
+import QueryParm from '../../modules/QueryParam.js';
 import { Link } from 'react-router'
 
 class TopicFacet extends Component {
@@ -21,7 +22,8 @@ class TopicFacet extends Component {
   }
 
   getLinkPath() {
-    return '/search' + '?q=' + ChildValue(this.props.topic);
+    var currentSearch = QueryParm('q').split(',');
+    return '/search?q=' + currentSearch[0] + ',' + ChildValue(this.props.topic);
   }
 
   arrowStyle() {
