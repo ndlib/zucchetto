@@ -331,7 +331,9 @@ footer {
 	img.cds {
 		margin-right:15px;
 	}
-
+	img.cchr {
+		display: none;
+	}
 
 }
 
@@ -351,6 +353,7 @@ a.left {
 		}
 	}
 
+
 .index {
 	header {
 		background: none;
@@ -361,10 +364,25 @@ a.left {
 		border: none;
 		margin-top:8vh;
 
+		.col-sm-9 {
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.col-sm-3 {
+			display: none;
+		}
+
 		h1 {
 			color: #fff;
 			font-size: 54px;
+			text-align: center;
+
+			button {
+				display: none !important;
+			}
 		}
+
 
 		p {
 			color: #fff;
@@ -379,6 +397,10 @@ a.left {
 
 		.col-md-4 {
 			display: none;
+		}
+
+		.cchr {
+			display:none;
 		}
 	}
 
@@ -480,6 +502,13 @@ a.left {
 		background: none;
 		nav {
 			display: none;
+		}
+		img.cchr {
+			display: block;
+			float: left;
+		}
+		img {
+			height: 40px;
 		}
 	}
 }

@@ -7,6 +7,7 @@ class Footer extends Component {
       <footer>
         <div className="row">
           <div className="col-sm-12 right">
+            <img src="/resources/images/cchr.png" className="cchr" />
             <img src="/resources/images/undhl-cds.png" className="undhl" />            
           </div>
         </div>

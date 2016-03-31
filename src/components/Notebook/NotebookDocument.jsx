@@ -24,9 +24,10 @@ class NotebookDocument extends Component {
 
   documentBodyStyle() {
     return {
-      overflow: "scroll",
+      overflowY: "auto",
       height: "400px",
       clear: "both",
+      marginBottom: '1em',
     };
   }
 

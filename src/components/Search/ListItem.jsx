@@ -60,9 +60,8 @@ class ListItem extends Component{
       >
         <div
           style={{
-            paddingTop: '10px',
-            position: 'absolute',
-            right: '30px'
+            float: 'right',
+            clear: 'right',
           }}
         >Results in Document: {this._paragraphs.length}</div>
         <AddToCompare
