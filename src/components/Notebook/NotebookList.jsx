@@ -16,6 +16,8 @@ class NotebookList extends Component {
     var allIds = CompareStore.allItems();
 
     this.documentClick = this.documentClick.bind(this);
+    this.documentList = this.documentList.bind(this);
+
     this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
       return item.collection_id == HumanRightsID;
     });
@@ -29,26 +31,44 @@ class NotebookList extends Component {
     event.preventDefault();
   }
 
-  humanRightsDocumentList() {
-    var clickFunc = this.documentClick;
-    return(
-      _.map(this._humanrights_documents, function (item) {
-        return (
-          <DocumentListItem key={item.id} item={item} primaryAction={clickFunc} />
+  documentList(documents) {
+    let clickFunc = this.documentClick;
+    let groupedItems = [];
+    if(documents.length > 0) {
+      documents.forEach(function(item, index) {
+        var itemParent = ItemStore.getItemParent(item);
+        var docExists = false;
+        for(var i = 0; i < groupedItems.length; i++){
+          if(itemParent && groupedItems[i].doc == itemParent) {
+            // found parent
+            docExists = true;
+            groupedItems[i].paragraphs.push(item);
+          }
+        }
+        if(itemParent && !docExists) {
+          groupedItems.push({doc: itemParent, paragraphs: [item]});
+        }
+      });
+      var itemNodes = [];
+      for(var i = 0;  i < groupedItems.length; i++) {
+        let sortedItems = _.sortBy(groupedItems[i].paragraphs, function(o){ return o.metadata.order.values[0].value;});
+        itemNodes.push(
+          <DocumentListItem
+            key={groupedItems[i].doc.id}
+            item={groupedItems[i].doc}
+            subItems={sortedItems}
+            primaryAction={clickFunc}
+          />
         );
-      })
-    );
-  }
+      }
 
-  vaticanDocumentList() {
-    var clickFunc = this.documentClick;
-    return(
-      _.map(this._vatican_douments, function (item) {
-        return (
-          <DocumentListItem key={item.id} item={item} primaryAction={clickFunc} />
-        );
-      })
-    );
+      return(
+        <div>
+          {itemNodes}
+        </div>
+      );
+    }
+    return null;
   }
 
   render() {
@@ -58,14 +78,14 @@ class NotebookList extends Component {
           <ul style={{
               paddingLeft: '0',
           }}>
-            { this.vaticanDocumentList() }
+            { this.documentList(this._vatican_douments) }
           </ul>
 
           <h4>Internactional Human Rights</h4>
             <ul style={{
                 paddingLeft: '0',
             }}>
-              { this.humanRightsDocumentList() }
+              { this.documentList(this._humanrights_documents) }
             </ul>
           <ShareSave />
       </div>
