@@ -26,7 +26,6 @@ var Search = React.createClass({
 
   getInitialState: function() {
     return ({items: [],})
-
   },
 
   searchStoreChanged: function(reason) {
@@ -57,18 +56,18 @@ var Search = React.createClass({
   },
 
   componentWillMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      this.loadSearchItems(this.props.collection);
-    }
+    this.loadSearchItems(this.props.collection, this.props.searchTerm);
   },
 
-  loadSearchItems: function(collection) {
+  componentWillReceiveProps: function(nextProps) {
+    this.loadSearchItems(nextProps.collection, nextProps.searchTerm);
+  },
+
+  loadSearchItems: function(collection, searchTerm) {
     $.ajax({
       context: this,
       type: "GET",
-      url:  collection + '/search?q=' + this.props.searchTerm + '&rows=100',
+      url:  collection + '/search?q=' + searchTerm + '&rows=100',
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
@@ -105,7 +104,6 @@ var Search = React.createClass({
         <Heading title={this.props.title} />
         <SearchDisplayList items={this.state.items}/>
       </div>
-
     );
   }
 });
