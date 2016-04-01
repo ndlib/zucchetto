@@ -8,6 +8,7 @@ import DownloadPDF from './DownloadPDF.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
 import CompareStore from '../../store/CompareStore.js';
+import ParagraphJumpList from './ParagraphJumpList.jsx';
 
 class Document extends Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class Document extends Component {
       // If the item has no parents, we assume it is a parent.
       this._parent = this._item;
     }
+    this.state = {
+      selectedParagraph: null,
+    }
+    this.selectParagraph = this.selectParagraph.bind(this);
   }
 
   paragraphs() {
@@ -26,7 +31,9 @@ class Document extends Component {
 
   paragraph(item) {
     let selectedItem = null;
+    // if we're looking at a whole document
     if(this._parent == this._item) {
+      // check to see if current paragraph is in the store
       if(CompareStore.itemInCompare(item)) {
         selectedItem = item;
       }
@@ -36,6 +43,11 @@ class Document extends Component {
     return (<Paragraph key={ item.id } item={ item } selectedItem={ selectedItem }/>);
   }
 
+  selectParagraph(value) {
+    console.log(value);
+    this.setState({selectedParagraph: value});
+  }
+
   render() {
     return (
       <div className="document">
@@ -43,6 +55,11 @@ class Document extends Component {
           { this.props.children }
         </div>
         <Title item={this._parent} />
+
+        <ParagraphJumpList
+          paragraphs={ this.paragraphs() }
+          primaryAction={ this.selectParagraph }
+        />
         <CopyrightNotification item={ this._parent } />
         <hr />
         <div style={ this.props.bodyStyle } >
