@@ -11,12 +11,14 @@ class Paragraph extends Component {
       var type = this.props.item.metadata.type_of_text.values[0].value;
       if (type == "Heading1") {
         return (<h2 className="heading1" dangerouslySetInnerHTML={ { __html: content } } />);
+      } else if (type == "Heading2") {
+        return (<h2 className="heading2" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Heading3") {
         return (<h3 className="heading3" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading1") {
         return (<h4 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading2") {
-        return (<h5 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h5 className="subheading2" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
     return (<div ref={ this.ref() } className={this.determineClassName()} dangerouslySetInnerHTML={ { __html: content } } />);
@@ -37,9 +39,9 @@ class Paragraph extends Component {
     if(this.props.showCheckBoxes) {
       return (
         <div>
+          <hr />
           <CurrentParagraph item={ this.props.item } />
           <AddToCompare item={ this.props.item } />
-          <hr />
         </div>
       );
     }
@@ -50,12 +52,12 @@ class Paragraph extends Component {
     if (this.props.item.metadata.transcription) {
       return(
         <div>
-          {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
           { this.addButton() }
+          {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
         </div>
       )
     } else {
-      return "";
+      return <div />;
     }
   }
 }
