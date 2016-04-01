@@ -1,4 +1,3 @@
-
 module.exports = function() {
   if(process.env.NODE_ENV == 'production') {
     return 'https://honeycomb.library.nd.edu';
