@@ -29,7 +29,7 @@ class Paragraph extends Component {
 
   determineClassName() {
     if (this.props.selectedItem && this.props.selectedItem.id == this.props.item.id) {
-      return "selected-paragrah";
+      return "selected-paragraph";
     }
     return "";
   }

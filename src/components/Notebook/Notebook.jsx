@@ -32,19 +32,21 @@ class Notebook extends Component {
   renderNotebook() {
     if (this.state.column2 || this.state.column1) {
       return (
-        <div>
-          <div className="col-sm-5 notebook-column left">
-            <NotebookColumn item={ this.state.column1 } />
-          </div>
-          <div className="col-sm-5 notebook-column right">
-            <NotebookColumn item={ this.state.column2 } />
+        <div className="col-sm-9">
+          <div className="row">
+            <div className="col-sm-6 notebook-column left">
+              <NotebookColumn item={ this.state.column1 } />
+            </div>
+            <div className="col-sm-6 notebook-column right">
+              <NotebookColumn item={ this.state.column2 } />
+            </div>
           </div>
         </div>
       );
     } else {
       return (
         <div>
-          <div className="col-sm-10">
+          <div className="col-sm-9">
             <EmptyColumn />
           </div>
         </div>
@@ -57,7 +59,7 @@ class Notebook extends Component {
       <div>
         <Header />
         <div className="row body">
-          <div className="col-sm-2">
+          <div className="col-sm-3">
             <NotebookList />
           </div>
           {  this.renderNotebook() }

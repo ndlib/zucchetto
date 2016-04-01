@@ -14,6 +14,8 @@ body {
   padding: 0.2em 1em;
   color: $documentTextColor;
   font-family: GPCMed, sans-serif;
+  overflow-y: auto;
+  max-height: calc(100vh - 350px);
 }
 
 .notebook-column {
@@ -22,19 +24,14 @@ body {
   float: left;
 }
 
-.notebook-column.left {
-  margin-right: 10px;
-}
-.notebook-column.right {
-  margin-left: 10px;
-}
+
 
 
 .document-title {
   color: $documentTitle;
 }
 
-.selected-paragrah {
+.selected-paragraph {
   background-color: $documentSelectedParagraph;
   color: black;
 }
