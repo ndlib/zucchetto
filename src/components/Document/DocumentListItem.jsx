@@ -8,7 +8,7 @@ class DocumentListItem extends Component {
     super(props);
 
     this.primaryAction = this.primaryAction.bind(this);
-    this.paragraphs = this.paragraphs.bind(this);
+    // this.paragraphs = this.paragraphs.bind(this);
 
     this._item = this.props.item;
     this._subItems = this.props.subItems;
@@ -19,28 +19,25 @@ class DocumentListItem extends Component {
     event.preventDefault();
   }
 
-  paragraphs() {
-    let clickFunc = this.props.primaryAction;
-    let paragraphs = [];
-      this.props.subItems.forEach(function(item, index){
-        paragraphs.push(
-          <DocumentParagraphListItem
-            key={item.id}
-            item={item}
-            primaryAction={clickFunc}
-          />
-        );
-    });
-    return paragraphs;
-  }
+  // paragraphs() {
+  //   let clickFunc = this.props.primaryAction;
+  //   let paragraphs = [];
+  //     this.props.subItems.forEach(function(item, index){
+  //       paragraphs.push(
+  //         <DocumentParagraphListItem
+  //           key={item.id}
+  //           item={item}
+  //           primaryAction={clickFunc}
+  //         />
+  //       );
+  //   });
+  //   return paragraphs;
+  // }
 
   render() {
     return (
       <li style={{margin: "5px"}} >
         <div style={{cursor: 'pointer'}} onClick={this.primaryAction} >{this._item.name}</div>
-        <ul>
-          {this.paragraphs()}
-        </ul>
       </li>
     );
   }
