@@ -24,6 +24,9 @@ var SearchDisplayList = React.createClass({
     if(this.props.items.length > 0){
       this.props.items.forEach(function(item, index) {
         var fullItem = ItemStore.getItem(IDFromAtID(item['@id']));
+        if (!fullItem.metadata.heading) {
+          return;
+        }
         var itemParent = ItemStore.getItemParent(fullItem);
         var docExists = false;
         for(var i = 0; i < groupedItems.length; i++){
@@ -72,5 +75,6 @@ var SearchDisplayList = React.createClass({
     );
   },
 });
+
 
 module.exports = SearchDisplayList;

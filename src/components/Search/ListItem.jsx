@@ -44,7 +44,6 @@ class ListItem extends Component{
       return (
         <div>
           <CopyrightNotification item={ this._doc } />
-          <hr />
           {paragraphs}
         </div>
       );
