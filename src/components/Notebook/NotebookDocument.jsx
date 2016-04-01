@@ -38,7 +38,6 @@ class NotebookDocument extends Component {
         <Document
           documentId={ this.props.document.id }
           bodyStyle={ this.documentBodyStyle() }
-          highlightChildren={true}
         >
           <a href="#" className="remove-document" onClick={ this.removeClick.bind(this) }>
             <mui.FontIcon className="material-icons">clear</mui.FontIcon>

@@ -57,7 +57,6 @@ Document.propTypes = {
   documentId: React.PropTypes.string.isRequired,
   item: React.PropTypes.object,
   parent: React.PropTypes.object,
-  highlightChildren: React.PropTypes.bool,
 }
 
 Document.defaultProps = {
@@ -66,7 +65,6 @@ Document.defaultProps = {
     maxWidth: "32.5em", // Should put it between 70-75 characters at 1em (16px)
     margin: "0 auto",
   },
-  highlightChildren: false,
 };
 
 export default Document;
