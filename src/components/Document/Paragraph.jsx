@@ -7,9 +7,8 @@ import AddToCompare from '../Document/AddToCompare.jsx';
 class Paragraph extends Component {
 
   determineHTMLTag(content) {
-    if (this.props.item.metadata.type) {
-      var type = this.props.item.metadata.type.values[0].value;
-
+    if (this.props.item.metadata.type_of_text) {
+      var type = this.props.item.metadata.type_of_text.values[0].value;
       if (type == "Heading1") {
         return (<h2 className="heading1" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Heading3") {
