@@ -9,7 +9,7 @@ class CurrentParagraph extends Component {
       orderNumber = this.props.item.metadata.order.values[0].value;
     }
 
-    return (<div style={{float:'right', paddingTop: '10px'}}>Paragraph {orderNumber}</div>);
+    return (<div style={{paddingTop: '10px'}}>Paragraph {orderNumber}</div>);
   }
 }
 
