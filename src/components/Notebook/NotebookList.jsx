@@ -76,14 +76,14 @@ class NotebookList extends Component {
       <div className="left-col">
         <h4>Catholic Social Teachings</h4>
           <ul style={{
-              paddingLeft: '0',
+              paddingLeft: '1em',
           }}>
             { this.documentList(this._vatican_douments) }
           </ul>
 
           <h4>international Human Rights</h4>
             <ul style={{
-                paddingLeft: '0',
+                paddingLeft: '1em',
             }}>
               { this.documentList(this._humanrights_documents) }
             </ul>

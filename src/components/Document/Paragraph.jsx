@@ -30,9 +30,9 @@ class Paragraph extends Component {
 
   determineClassName() {
     if (this.props.selectedItem && this.props.selectedItem.id == this.props.item.id) {
-      return "selected-paragraph";
+      return "selected-paragraph paragraph";
     }
-    return "";
+    return "paragraph";
   }
 
   addButton() {
