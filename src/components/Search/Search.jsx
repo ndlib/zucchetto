@@ -67,7 +67,7 @@ var Search = React.createClass({
     $.ajax({
       context: this,
       type: "GET",
-      url:  collection + '/search?q=' + searchTerm + '&rows=100',
+      url:  collection + '/search?q=' + searchTerm + '&rows=10000',
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
