@@ -1,29 +1,31 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var VaticanID = require('../../constants/VaticanID.js');
 var HumanRightsID = require('../../constants/HumanRightsID.js');
 
 var SearchBox = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  getInitialState: function() {
+    return {
+      searchTerm: decodeURIComponent(window.location.search.split(',')[0].replace('?q=', ''))
+    };
+  },
+
   onChange: function(e) {
     this.setTerm(e.target.value);
   },
 
   onClick: function(e) {
-    var url = window.location.origin
-      + "/search?q=" + this.state.searchTerm;
-    window.location = url;
-  },
-
-  componentDidMount: function() {
-    this.setTerm(SearchStore.searchTerm);
+    this.context.router.push("/search?q=" + encodeURIComponent(this.state.searchTerm));
   },
 
   setTerm: function(term) {
-    var cleanTerm = encodeURIComponent(term);
-    this.setState({searchTerm: cleanTerm});
+    this.setState({ searchTerm: term });
   },
 
   inputStyle: function() {
@@ -40,15 +42,12 @@ var SearchBox = React.createClass({
   },
 
   input: function() {
-    var defaultValue = '';
-    if(window.location.search) {
-      defaultValue = window.location.search.split(',')[0].replace('?q=', '')
-    }
+
     return (<input
       placeholder='SEARCH THE DATABASE'
       ref='searchBox'
       onChange={this.onChange}
-      defaultValue={defaultValue}
+      defaultValue={this.state.searchTerm}
       onKeyDown={this.handleKeyDown}
       inputStyle={this.inputStyle()}
       style={{

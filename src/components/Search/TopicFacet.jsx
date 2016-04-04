@@ -2,6 +2,8 @@
 import React, { Component, PropTypes } from 'react';
 import TopicFacets from './TopicFacets.jsx';
 import ChildValue from './ChildValue.js';
+import QueryParm from '../../modules/QueryParam.js';
+import { Link } from 'react-router'
 
 class TopicFacet extends Component {
   constructor(props) {
@@ -13,16 +15,15 @@ class TopicFacet extends Component {
       selected: searchStr.search(this.props.topic.value) > -1,
     }
     this.onArrowClick = this.onArrowClick.bind(this);
-    this.onLabelClick = this.onLabelClick.bind(this);
   }
 
   onArrowClick() {
     this.setState({expanded: !this.state.expanded});
   }
 
-  onLabelClick() {
-    let currentSearch = window.location.search.split(',');
-    window.location.search = currentSearch[0] + ',' + ChildValue(this.props.topic);
+  getLinkPath() {
+    var currentSearch = QueryParm('q').split(',');
+    return '/search?q=' + currentSearch[0] + ',' + ChildValue(this.props.topic);
   }
 
   arrowStyle() {
@@ -40,7 +41,6 @@ class TopicFacet extends Component {
     let arrow = (<div style={{display: 'inline-block', width: '20px'}} />);
     if(this.props.topic){
       if(this.props.topic.children) {
-
         arrow = (
           <i
             className="material-icons"
@@ -51,19 +51,12 @@ class TopicFacet extends Component {
         if(this.state.expanded) {
           children = (<TopicFacets source={this.props.topic.children} />);
         }
-
       }
       return (
         <li>
           <div>
             {arrow}
-            <span
-              onClick={this.onLabelClick}
-              style={{
-                cursor: 'pointer',
-                fontWeight: this.state.selected ? 'bold': 'normal',
-              }}
-            >{this.props.topic.name}</span>
+            <Link to={ this.getLinkPath() }>{this.props.topic.name}</Link>
           </div>
           <ul style={{
               listStyleType: 'none',
