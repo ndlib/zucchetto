@@ -1,5 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import BackgroundIcon from 'material-ui/lib/svg-icons/av/library-books';
+import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
 import QueryParm from '../modules/QueryParam.js';
 import FacetQueryParms from '../modules/FacetQueryParams.js';
@@ -46,6 +48,53 @@ class SearchPage extends Component {
     this.setState({loaded: true});
   }
 
+  renderSearchBody() {
+    var searchTerm = QueryParm('q');
+    if(searchTerm == '') {
+      return (
+        <div className="col-sm-6" style={{ width: "100%" }}>
+          <BackgroundIcon style={{ display: "inline-block", width: "150px", height: "150px" }} color={Colors.grey400}/>
+          <div style={{ display: "inline-block", position: "fixed", paddingTop: "45px" }}>
+            <div style={{ fontSize: "24pt" }}>Get Started</div>
+            <div style={{ fontSize: "14pt" }}>Enter a search query or select a filter to view a list of matching documents.</div>
+            <SearchBox />
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="col-sm-12" style={{ paddingTop: "7px"}}>
+        <SearchBox />
+        <hr className="search-separator" />
+        <div key="catholic" className="col-sm-6">
+          <Search
+            title = {CATHOLIC}
+            collection={HoneycombURL() + "/v1/collections/"
+              + VaticanID}
+            hits={HoneycombURL() + '/v1/collections/' + VaticanID + '/search'}
+            searchTerm={ searchTerm }
+            sortTerm={QueryParm('sort')}
+            facet={FacetQueryParms()}
+            start={parseInt(QueryParm('start'))}
+          />
+        </div>
+        <div key="humanrights" className="col-sm-6" style={this.listStyle()}>
+          <Search
+            title = {HUMANRIGHTS}
+            collection={HoneycombURL() + "/v1/collections/"
+              + HumanRightsID}
+            hits={HoneycombURL() + '/v1/collections/' + HumanRightsID + '/search'}
+            searchTerm={ searchTerm }
+            sortTerm={QueryParm('sort')}
+            facet={FacetQueryParms()}
+            start={parseInt(QueryParm('start'))}
+          />
+        </div>
+      </div>
+    );
+  }
+
   render() {
     if (!this.state.loaded) {
       return (<p>Loading....</p>);
@@ -58,34 +107,7 @@ class SearchPage extends Component {
           <div className="row col-sm-12">
             <SearchSidebar />
             <div className="col-sm-9 right-col" style={this.listStyle()}>
-              <div className="col-sm-12" style={{ paddingTop: "7px"}}>
-                <SearchBox />
-                <hr className="search-separator" />
-              </div>
-              <div className="col-sm-6">
-                <Search
-                  title = {CATHOLIC}
-                  collection={HoneycombURL() + "/v1/collections/"
-                    + VaticanID}
-                  hits={HoneycombURL() + '/v1/collections/' + VaticanID + '/search'}
-                  searchTerm={QueryParm('q')}
-                  sortTerm={QueryParm('sort')}
-                  facet={FacetQueryParms()}
-                  start={parseInt(QueryParm('start'))}
-                />
-              </div>
-              <div className="col-sm-6" style={this.listStyle()}>
-                <Search
-                  title = {HUMANRIGHTS}
-                  collection={HoneycombURL() + "/v1/collections/"
-                    + HumanRightsID}
-                  hits={HoneycombURL() + '/v1/collections/' + HumanRightsID + '/search'}
-                  searchTerm={QueryParm('q')}
-                  sortTerm={QueryParm('sort')}
-                  facet={FacetQueryParms()}
-                  start={parseInt(QueryParm('start'))}
-                />
-              </div>
+              { this.renderSearchBody() }
             </div>
             <div className=" row col-sm-12">
 
