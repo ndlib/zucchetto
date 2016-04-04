@@ -52,7 +52,7 @@ class Drawer extends Component {
     return {
       backgroundColor: '#E4E1D1',
       border: '1px solid #D5B117',
-      bottom: '-1px',
+      bottom: '52px',
       boxShadow: '0px -1px 5px #aaa',
       color: '#224048',
       lineHeight: '30px',
