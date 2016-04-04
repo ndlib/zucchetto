@@ -14,12 +14,27 @@ body {
   padding: 0.2em 1em;
   color: $documentTextColor;
   font-family: GPCMed, sans-serif;
+  overflow-y: auto;
+  position: relative;
+}
+
+.document-head {
+  height: 120px;
+  background-color: $documentBackground;
+  margin: 0.5em 0;
+  padding: 0.2em 1em;
+  font-family: GPCMed, sans-serif;
 }
 
 .notebook-column {
   max-width: 39em;
   font-size: 16px;
   float: left;
+
+  .document {
+    max-height: calc(100vh - 305px);
+    overflow-y: auto;
+  }
 }
 
 

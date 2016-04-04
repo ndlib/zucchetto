@@ -25,7 +25,6 @@ class NotebookDocument extends Component {
   documentBodyStyle() {
     return {
       overflowY: "auto",
-      height: "226px",
       clear: "both",
       marginBottom: '1em',
     };
@@ -33,7 +32,7 @@ class NotebookDocument extends Component {
 
   render() {
     return (
-      <div>
+      <mui.Paper zDepth={0}>
         <Heading title={ this.documentTitle() } />
         <Document
           documentId={ this.props.document.id }
@@ -43,7 +42,7 @@ class NotebookDocument extends Component {
             <mui.FontIcon className="material-icons">clear</mui.FontIcon>
           </a>
         </Document>
-      </div>
+      </mui.Paper>
     );
   }
 }
