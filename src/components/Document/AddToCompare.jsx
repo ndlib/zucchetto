@@ -13,42 +13,34 @@ class AddToCompare extends Component {
     super(props);
     this.addToCompareClick = this.addToCompareClick.bind(this);
     this.setStateFromCompareStore = this.setStateFromCompareStore.bind(this);
-    this.setStateFromCompareStore();
+    this.state = {
+      checked: this.getStateFromCompareStore()
+    }
   }
 
   componentWillMount() {
     CompareStore.on('ItemCompareUpdated', this.setStateFromCompareStore);
   }
 
-  setStateFromCompareStore() {
+  getStateFromCompareStore() {
     if(!this.props.subItems){
-      this.state = {
-        checked: CompareStore.itemInCompare(this.props.item) ? TRUE : FALSE,
-      };
+      return CompareStore.itemInCompare(this.props.item) ? TRUE : FALSE;
     }
     else {
-      let selectedSubItems = 0;
+      let found = false;
       for(var i = 0; i < this.props.subItems.length; i++) {
         if(CompareStore.itemInCompare(this.props.subItems[i])) {
-          selectedSubItems++;
+          return TRUE;
         }
       }
-      if(selectedSubItems === 0) {
-        this.state = {
-          checked: FALSE,
-        };
-      }
-      else if(selectedSubItems === this.props.subItems.length) {
-        this.state = {
-          checked: TRUE,
-        };
-      }
-      else {
-        this.state = {
-          checked: IND,
-        };
-      }
+      return FALSE;
     }
+  }
+
+  setStateFromCompareStore() {
+    this.setState({
+      checked: this.getStateFromCompareStore()
+    });
   }
 
   addToCompareClick() {
