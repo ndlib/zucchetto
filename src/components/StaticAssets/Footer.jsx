@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <footer>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-sm-6 compare">
             <CompareButton />
           </div>
           <div className="col-sm-6 right">
