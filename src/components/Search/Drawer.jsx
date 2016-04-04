@@ -72,7 +72,7 @@ class Drawer extends Component {
     if(CompareStore.drawerOpen()) {
       return (
         <div style={this.style()}>
-          <h4>Select Search Results to Compare.</h4>
+          <h4>Select Results to Compare.</h4>
           <div>{this.state.vatCount} Catholic Social Teachings</div>
           <div>{this.state.humanCount} International Human Rights Laws</div>
           <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />

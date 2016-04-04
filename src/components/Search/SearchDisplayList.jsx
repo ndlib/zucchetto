@@ -51,7 +51,7 @@ var SearchDisplayList = React.createClass({
       }
 
       return (
-        <div>
+        <div className="search-list">
           {itemNodes}
         </div>
       )

@@ -14,7 +14,6 @@ class SearchSidebar extends Component {
     return (
       <div className="col-sm-3 left-col" >
         <SearchByTopic />
-        <ShareSave />
       </div>
     );
   }
