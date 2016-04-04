@@ -1,5 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 import ItemStore from '../../store/ItemStore.js';
 import Paragraph from './Paragraph.jsx';
@@ -40,30 +41,57 @@ class Document extends Component {
     } else {
       selectedItem = this._item;
     }
-    return (<Paragraph key={ item.id } item={ item } selectedItem={ selectedItem }/>);
+    return (
+      <div
+        id={ 'paragraph-' + item.id }
+        ref={ 'paragraph-' + item.id }
+        key={ item.id }
+      >
+        <Paragraph
+          item={ item }
+          selectedItem={ selectedItem }
+        />
+      </div>
+    );
   }
 
   selectParagraph(value) {
-    console.log(value);
     this.setState({selectedParagraph: value});
+
+    // Add up the heights of all paragraphs before this one.
+    let prevSibling = ReactDOM.findDOMNode(this.refs['paragraph-' + value]).previousSibling;
+    let offset = 0;
+    console.log('prevSibling', prevSibling);
+    while(prevSibling) {
+      offset += prevSibling.scrollHeight;
+      prevSibling = ReactDOM.findDOMNode(this.refs[ prevSibling.id]).previousSibling;
+    }
+
+    ReactDOM.findDOMNode(this.refs["document-" + this._parent.id]).scrollTop = offset;
+
+
   }
+
+
 
   render() {
     return (
-      <div className="document">
-        <div style={{ float: "right" }}>
-          { this.props.children }
+      <div>
+        <div className='document-head'>
+          <div style={{ float: "right" }}>
+            { this.props.children }
+          </div>
+          <Title item={this._parent} />
+          <ParagraphJumpList
+            paragraphs={ this.paragraphs() }
+            primaryAction={ this.selectParagraph }
+          />
+          <CopyrightNotification item={ this._parent } />
         </div>
-        <Title item={this._parent} />
-
-        <ParagraphJumpList
-          paragraphs={ this.paragraphs() }
-          primaryAction={ this.selectParagraph }
-        />
-        <CopyrightNotification item={ this._parent } />
-        <hr />
-        <div style={ this.props.bodyStyle } >
-          { this.paragraphs() }
+        <div className="document" ref={"document-" + this._parent.id}>
+          <div style={ this.props.bodyStyle } >
+            { this.paragraphs() }
+          </div>
         </div>
       </div>
     );
