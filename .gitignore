@@ -1,4 +1,5 @@
 node_modules/*
 public/resources/bundle.js
 public/resources/styles.css
+public/resources/cache_data/*
 npm-debug.log
