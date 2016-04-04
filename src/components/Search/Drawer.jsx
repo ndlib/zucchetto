@@ -5,6 +5,7 @@ import ItemStore from '../../store/ItemStore.js';
 import NotebookLink from '../Notebook/NotebookLink.jsx';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
+import mui from 'material-ui';
 
 class Drawer extends Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class Drawer extends Component {
 
   componentWillMount() {
     CompareStore.on('ItemCompareUpdated', this.updateCount);
+  }
+
+  clearAll() {
+    CompareStore.clearAll();
   }
 
   countParents() {
@@ -64,13 +69,17 @@ class Drawer extends Component {
   }
 
   render() {
-    if(this.state.vatCount + this.state.humanCount > 0) {
+    if(CompareStore.drawerOpen()) {
       return (
         <div style={this.style()}>
-          <h4>Select two or more items to compare.</h4>
+          <h4>Select Search Results to Compare.</h4>
           <div>{this.state.vatCount} Catholic Social Teachings</div>
           <div>{this.state.humanCount} International Human Rights Laws</div>
           <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />
+          <mui.FlatButton
+            label="clear"
+            onClick={this.clearAll.bind(this)}
+          />
           <div style={{clear:'both'}}/>
         </div>
       );

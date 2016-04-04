@@ -81,7 +81,7 @@ class NotebookList extends Component {
             { this.documentList(this._vatican_douments) }
           </ul>
 
-          <h4>Internactional Human Rights</h4>
+          <h4>international Human Rights</h4>
             <ul style={{
                 paddingLeft: '0',
             }}>

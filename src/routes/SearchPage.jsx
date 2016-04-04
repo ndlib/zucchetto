@@ -61,7 +61,7 @@ class SearchPage extends Component {
               <div className="col-sm-12" style={{ paddingTop: "7px"}}>
                 <SearchBox />
                 <hr className="search-separator" />
-              </div>
+              </div>              
               <div className="col-sm-6">
                 <Search
                   title = {CATHOLIC}

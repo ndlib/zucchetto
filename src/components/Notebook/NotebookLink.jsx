@@ -39,7 +39,7 @@ class NotebookLink extends Component {
           color: this.props.disabled ? '#cdcdcd' : '#ffffff',
           cursor: this.props.disabled ? 'default' :'pointer',
           display: 'inline-block',
-          float: 'right',
+          float: 'left',
           fontFamily: 'GPCMed, sans-serif',
           fontSize: '0.9em',
           margin: '10px 0',
@@ -47,7 +47,7 @@ class NotebookLink extends Component {
           textAlign: 'center',
           textTransform: 'uppercase',
         }}
-      >View Documents</div>
+      >Compare</div>
     );
   }
 }

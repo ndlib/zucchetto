@@ -16,6 +16,7 @@ class CompareStore extends EventEmitter {
 
     this._column1Item = false;
     this._column2Item = false;
+    this._forceDrawerState = false ;
 
     AppDispatcher.register(this.receiveAction.bind(this));
   }
@@ -43,6 +44,7 @@ class CompareStore extends EventEmitter {
     var collection = item.collection_id
 
     window.localStorage.setItem(id, collection);
+    this.resetDrawer();
     this.emit("ItemCompareUpdated");
   }
 
@@ -51,6 +53,7 @@ class CompareStore extends EventEmitter {
     var collection = item.collection_id
 
     window.localStorage.removeItem(id, collection);
+    this.resetDrawer();
     this.emit("ItemCompareUpdated");
   }
 
@@ -69,10 +72,28 @@ class CompareStore extends EventEmitter {
 
   clearAll() {
     window.localStorage.clear();
+    this._forceDrawerState = "open";
+    this.emit("ItemCompareUpdated");
   }
 
-  windowOpen() {
-    return (window.localStorage.length > 0);
+  drawerOpen() {
+    if (this._forceDrawerState == "closed") {
+      return false;
+    }
+    return (window.localStorage.length > 0 || this._forceDrawerState == "open");
+  }
+
+  resetDrawer() {
+    this._forceDrawerState = false;
+  }
+
+  toggleDrawer() {
+    if (this.drawerOpen()) {
+      this._forceDrawerState = "closed";
+    } else {
+      this._forceDrawerState = "open";
+    }
+    this.emit("ItemCompareUpdated");
   }
 
   setColumnItem(item) {
