@@ -71,6 +71,10 @@ class CompareStore extends EventEmitter {
     window.localStorage.clear();
   }
 
+  windowOpen() {
+    return (window.localStorage.length > 0);
+  }
+
   setColumnItem(item) {
     if (!this._column1Item) {
       this._column1Item = item;
