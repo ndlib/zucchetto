@@ -55,8 +55,8 @@ class SearchPage extends Component {
         <div className="col-sm-6" style={{ width: "100%" }}>
           <BackgroundIcon style={{ display: "inline-block", width: "150px", height: "150px" }} color={Colors.grey400}/>
           <div style={{ display: "inline-block", position: "fixed", paddingTop: "45px" }}>
-            <div style={{ fontSize: "24pt" }}>Get Started</div>
-            <div style={{ fontSize: "14pt" }}>Enter a search query or select a filter to view a list of matching documents.</div>
+            <h1>Get Started</h1>
+            <h2>Enter a search query or select a filter to view a list of matching documents.</h2>
             <SearchBox />
           </div>
         </div>
