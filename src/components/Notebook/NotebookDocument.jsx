@@ -25,7 +25,7 @@ class NotebookDocument extends Component {
   documentBodyStyle() {
     return {
       overflowY: "auto",
-      height: "400px",
+      height: "226px",
       clear: "both",
       marginBottom: '1em',
     };
@@ -35,7 +35,10 @@ class NotebookDocument extends Component {
     return (
       <div>
         <Heading title={ this.documentTitle() } />
-        <Document documentId={ this.props.document.id } bodyStyle={ this.documentBodyStyle() }>
+        <Document
+          documentId={ this.props.document.id }
+          bodyStyle={ this.documentBodyStyle() }
+        >
           <a href="#" className="remove-document" onClick={ this.removeClick.bind(this) }>
             <mui.FontIcon className="material-icons">clear</mui.FontIcon>
           </a>
