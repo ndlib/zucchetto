@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js';
+import CompareStore from '../../store/CompareStore.js';
 
 class ParagraphJumpList extends Component {
   constructor(props) {
@@ -14,15 +15,25 @@ class ParagraphJumpList extends Component {
   }
 
   list() {
-    let listOptions = []
+    let listOptions = [];
+
+    listOptions.push(
+      <option
+      >Go To Selected Paragraph
+    </option>
+    );
+
     for(var i = 0; i < this.props.paragraphs.length; i++) {
-      listOptions.push(
-        <option
-          key={ this.props.paragraphs[i].key }
-          value={ this.props.paragraphs[i].key }
-        >{ ItemStore.getItem(this.props.paragraphs[i].key).name }
-      </option>
-      );
+      let item = ItemStore.getItem(this.props.paragraphs[i].key);
+      if(CompareStore.itemInCompare(item)) {
+        listOptions.push(
+          <option
+            key={ item.id }
+            value={ item.id }
+          >{ item.name }
+        </option>
+        );
+      }
     }
     return (
       <select onChange={this.itemSelect}>{listOptions}</select>)
