@@ -61,7 +61,6 @@ class Document extends Component {
     // Add up the heights of all paragraphs before this one.
     let prevSibling = ReactDOM.findDOMNode(this.refs['paragraph-' + value]).previousSibling;
     let offset = 0;
-    console.log('prevSibling', prevSibling);
     while(prevSibling) {
       offset += prevSibling.scrollHeight;
       prevSibling = ReactDOM.findDOMNode(this.refs[ prevSibling.id]).previousSibling;
