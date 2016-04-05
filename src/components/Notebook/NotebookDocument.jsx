@@ -27,6 +27,7 @@ class NotebookDocument extends Component {
       overflowY: "auto",
       clear: "both",
       marginBottom: '1em',
+      
     };
   }
 

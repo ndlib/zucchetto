@@ -71,6 +71,16 @@ header {
 	.menu span {
 		padding:4px 0;
 		font-size: 18px;
+
+		a {
+			color:#333;
+			padding:4px 0;
+			font-size: 22px;
+			display: block;
+		}
+		a:hover {
+			text-decoration: none;
+		}
 	}
 	.cchr {
 		height: 30px;
@@ -348,6 +358,10 @@ a.left {
 	float: left;
 }
 
+button.right {
+	float: right;
+}
+
 .right {
 		img {
 			float: right;
@@ -522,4 +536,15 @@ a.left {
 	}
 }
 
+.filters {
+	li {
+		padding-bottom: 8px;
+	}
 
+	a {
+		color:#333;
+		font-weight: bold;
+		font-size:16px;
+		vertical-align: middle;
+	}
+}

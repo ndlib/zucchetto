@@ -8,7 +8,7 @@ class SearchByTopic extends Component {
     return (
         <div>
           <h4>Filter By Topic</h4>
-          <ul style={{
+          <ul className='filters' style={{
               listStyleType: 'none',
               paddingLeft: '0',
             }}>

@@ -11,8 +11,8 @@ class Footer extends Component {
             <CompareButton />
           </div>
           <div className="col-sm-6 right">
-            <img src="/resources/images/cchr.png" className="cchr" />
-            <img src="/resources/images/undhl-cds.png" className="undhl" />
+            <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr" /></a>
+            <a href="https://library.nd.edu/cds"><img src="/resources/images/undhl-cds.png" className="undhl" /></a>
           </div>
         </div>
       </footer>

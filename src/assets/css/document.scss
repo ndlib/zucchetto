@@ -2,7 +2,7 @@ $documentTitle: #D5B117;
 $documentBackground: white;
 $documentTextColor: #224048;
 $documentAddToCompareColor: #224048;
-$documentSelectedParagraph: #B2B4B2;
+$documentSelectedParagraph: #D6E3F1;
 
 body {
   height: 100%;
@@ -16,14 +16,16 @@ body {
   font-family: GPCMed, sans-serif;
   overflow-y: auto;
   position: relative;
+  clear: both;
 }
 
 .document-head {
-  height: 120px;
+  
   background-color: $documentBackground;
   margin: 0.5em 0;
   padding: 0.2em 1em;
   font-family: GPCMed, sans-serif;
+  margin-bottom:2.2em;
 }
 
 .notebook-column {
@@ -57,9 +59,15 @@ body {
   margin:1em 0;
 }
 
+
+
 .add-to-compare {
   color: $documentAddToCompareColor;
   padding: 10px 0;
+}
+
+.paragraph-section .add-to-compare {
+  padding: 0;
 }
 
 .add-to-compare-checkbox {
@@ -105,4 +113,33 @@ body {
 .subheading1 {
   text-align: center;
   text-transform: uppercase;
+}
+
+.notebook-list {
+  background: #fff !important;
+  box-shadow: inset 0 0 3px #999;
+
+  h3 {
+    margin-top:0; 
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    background: #cacccb;
+    padding: 4px;
+  }
+
+  ul {
+    margin-bottom: 2em;
+  }
+
+  li {
+    font-weight: bold;
+    li {
+      font-weight: normal;
+    }
+  }
+  li:hover {
+    text-decoration: underline;
+  }
 }

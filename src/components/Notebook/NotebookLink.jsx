@@ -40,12 +40,13 @@ class NotebookLink extends Component {
           cursor: this.props.disabled ? 'default' :'pointer',
           display: 'inline-block',
           float: 'left',
-          fontFamily: 'GPCMed, sans-serif',
+          fontFamily: 'Roboto,​sans-serif',
           fontSize: '0.9em',
-          margin: '10px 0',
-          padding: '5px',
+          margin: '0 0',
+          padding: '0 16px',
           textAlign: 'center',
           textTransform: 'uppercase',
+          lineHeight: '36px',
         }}
       >Compare</div>
     );

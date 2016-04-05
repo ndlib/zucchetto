@@ -24,7 +24,7 @@ class Header extends Component {
       <header>
         <div className="row">
           <div className="col-sm-9">
-            <h1><mui.FlatButton style={ { color: "#D5B117" }}  icon={ icon } onTouchTap={ this.menuClick } />Research Database</h1>
+            <h1><mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }}  icon={ icon } onTouchTap={ this.menuClick } />Research Database</h1>
             <mui.LeftNav
               open={this.state.menuOpen}
               docked={ false }
@@ -39,13 +39,13 @@ class Header extends Component {
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
               </div>
               <p>
-                <img src="/resources/images/cchr.png" className="cchr m" />
-                <img src="/resources/images/undhl-cds.png" className="cds" />
+                <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr m" /></a>
+                <a href="https://library.nd.edu/cds"><img src="/resources/images/undhl-cds.png" className="cds" /></a>
               </p>
             </mui.LeftNav>
           </div>
           <div className="col-sm-3 right">
-            <img src="/resources/images/cchr.png" className="cchr" />
+            <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr" /></a>
           </div>
         </div>
       </header>
