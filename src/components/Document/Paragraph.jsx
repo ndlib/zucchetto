@@ -38,7 +38,7 @@ class Paragraph extends Component {
   addButton() {
     if(this.props.showCheckBoxes) {
       return (
-        <div   id={"paragraph-" + item.id}>
+        <div id={"paragraph-" + this.props.item.id}>
           <hr />
           <CurrentParagraph item={ this.props.item } />
           <AddToCompare item={ this.props.item } />
