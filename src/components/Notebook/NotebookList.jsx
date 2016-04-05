@@ -73,15 +73,16 @@ class NotebookList extends Component {
 
   render() {
     return (
-      <div className="left-col">
-        <h4>Catholic Social Teachings</h4>
+      <div className="left-col notebook-list">
+        <h3>My Notebook</h3>
+        <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
               paddingLeft: '1em',
           }}>
             { this.documentList(this._vatican_douments) }
           </ul>
 
-          <h4>international Human Rights</h4>
+          <h4 className="category">International Human Rights</h4>
             <ul style={{
                 paddingLeft: '1em',
             }}>
