@@ -28,7 +28,7 @@ class ItemActions {
       vaticanUrl = "/resources/cache_data/cst_data.json";
       humanrightsUrl = "/resources/cache_data/ihrl_data.json";
     }
-    
+
     $.ajax({
       context: this,
       type: "GET",

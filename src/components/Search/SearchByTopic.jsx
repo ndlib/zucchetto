@@ -8,6 +8,7 @@ class SearchByTopic extends Component {
     return (
         <div>
           <h4>Filter By Topic</h4>
+          <h5>Actors</h5>
           <ul className='filters' style={{
               listStyleType: 'none',
               paddingLeft: '0',
