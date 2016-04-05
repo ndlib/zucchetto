@@ -9,11 +9,12 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var CompareActionTypes = require("../constants/CompareActionTypes.jsx");
+import LocalStorageExpiration from '../modules/LocalStorageExpiration.js';
 
 class CompareStore extends EventEmitter {
   constructor() {
     super();
-
+    LocalStorageExpiration();
     this._column1Item = false;
     this._column2Item = false;
     this._forceDrawerState = false ;
@@ -63,8 +64,11 @@ class CompareStore extends EventEmitter {
   allItems() {
     let items = [];
     for(var i = 0; i < window.localStorage.length; i++) {
-      items.push(window.localStorage.key(i));
+      if( window.localStorage.key(i) != 'visitTime') {
+        items.push(window.localStorage.key(i));
+      }
     }
+
 
     return items;
   }
