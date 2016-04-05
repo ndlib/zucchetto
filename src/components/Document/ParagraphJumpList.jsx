@@ -19,6 +19,7 @@ class ParagraphJumpList extends Component {
 
     listOptions.push(
       <option
+        key='_'
       >Go To Selected Paragraph
     </option>
     );

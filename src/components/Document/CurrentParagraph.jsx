@@ -4,12 +4,7 @@ import React, { Component, PropTypes } from 'react';
 class CurrentParagraph extends Component {
 
   render() {
-    let orderNumber = 0;
-    if(this.props.item.metadata.order) {
-      orderNumber = this.props.item.metadata.order.values[0].value;
-    }
-
-    return (<div style={{paddingTop: '0', color: '#999', textAlign: 'center'}}>Paragraph {orderNumber}</div>);
+    return (<div style={{paddingTop: '0', color: '#999', textAlign: 'center'}}>{this.props.item.metadata.heading.values[0].value}</div>);
   }
 }
 
