@@ -79,6 +79,7 @@ class Drawer extends Component {
           <mui.FlatButton
             label="clear"
             onClick={this.clearAll.bind(this)}
+            className="right"
           />
           <div style={{clear:'both'}}/>
         </div>

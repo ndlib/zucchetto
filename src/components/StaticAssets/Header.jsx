@@ -39,13 +39,13 @@ class Header extends Component {
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
               </div>
               <p>
-                <img src="/resources/images/cchr.png" className="cchr m" />
-                <img src="/resources/images/undhl-cds.png" className="cds" />
+                <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr m" /></a>
+                <a href="https://library.nd.edu/cds"><img src="/resources/images/undhl-cds.png" className="cds" /></a>
               </p>
             </mui.LeftNav>
           </div>
           <div className="col-sm-3 right">
-            <img src="/resources/images/cchr.png" className="cchr" />
+            <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr" /></a>
           </div>
         </div>
       </header>

@@ -57,9 +57,15 @@ body {
   margin:1em 0;
 }
 
+
+
 .add-to-compare {
   color: $documentAddToCompareColor;
   padding: 10px 0;
+}
+
+.paragraph-section .add-to-compare {
+  padding: 0;
 }
 
 .add-to-compare-checkbox {
