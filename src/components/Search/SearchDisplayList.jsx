@@ -50,11 +50,14 @@ var SearchDisplayList = React.createClass({
         );
       }
 
+
+    }
+    if(groupedItems.length > 0) {
       return (
         <div className="search-list">
           {itemNodes}
         </div>
-      )
+      );
     }
     return (
       <div
