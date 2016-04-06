@@ -24,6 +24,7 @@ class CompareStore extends EventEmitter {
 
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
+    LocalStorageExpiration();
     switch(action.actionType) {
       case CompareActionTypes.ADD_ITEM_TO_COMPARE:
         this.setItem(action.item);
