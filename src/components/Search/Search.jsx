@@ -52,7 +52,7 @@ var Search = React.createClass({
         items.push(item);
       }
     }
-    this.setState({items: items,});
+    this.setState({ loading: false, items: items,});
   },
 
   componentWillMount: function() {
@@ -64,12 +64,14 @@ var Search = React.createClass({
   },
 
   loadSearchItems: function(collection, searchTerm) {
+    this.setState({ loading: true });
     $.ajax({
       context: this,
       type: "GET",
       url:  collection + '/search?q=' + searchTerm + '&rows=10000',
       dataType: "json",
       success: function(result) {
+        this.setState({ loading: false });
         this.setItems(result.hits);
       },
       error: function(request, status, thrownError) {
@@ -102,7 +104,8 @@ var Search = React.createClass({
     return (
       <div>
         <Heading title={this.props.title} />
-        <SearchDisplayList items={this.state.items}/>
+        { this.state.loading && <div>Loading...</div> }
+        { !this.state.loading && <SearchDisplayList items={this.state.items}/> }
       </div>
     );
   }
