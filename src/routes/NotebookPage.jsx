@@ -15,9 +15,7 @@ class NotebookPage extends Component {
   }
 
   componentWillMount() {
-    if (!this.state.loaded) {
-      ItemStore.on("PreLoadFinished", this.preLoadFinished);
-    }
+    ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   componentWillUnmount() {
