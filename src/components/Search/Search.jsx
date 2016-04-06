@@ -85,24 +85,6 @@ var Search = React.createClass({
     });
   },
 
-  // Translates the facet option given in props to the structure the SearchStore expects.
-  facetObject: function() {
-    var facets;
-    if(this.props.facet) {
-      facets = new Array()
-      for(var i = 0; i < this.props.facet.length; i++){
-        var facetKey = Object.keys(this.props.facet[i])[0];
-        var facetValue = Object.keys(this.props.facet[i])[1];
-        facets.push({
-          name: this.props.facet[i][facetKey],
-          value: this.props.facet[i][facetValue]
-        });
-      }
-    }
-    return facets;
-  },
-
-
   render: function() {
     // All children of this object expect the collection and all data to be loaded into the SearchStore.
     // This will prevent mounting them until ready.

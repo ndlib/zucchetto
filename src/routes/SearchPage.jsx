@@ -20,10 +20,11 @@ import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
 
 class SearchPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.preLoadFinished = this.preLoadFinished.bind(this);
     this.state = {
-      loaded: false,
+      loaded: ItemStore.preLoaded(),
     };
   }
 
@@ -36,12 +37,11 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
-    if (ItemStore.preLoaded()) {
-      this.preLoadFinished();
-    } else {
-      var func = this.preLoadFinished.bind(this);
-      ItemStore.on("PreLoadFinished", func);
-    }
+    ItemStore.on("PreLoadFinished", this.preLoadFinished);
+  }
+
+  componentWillUnmount() {
+    ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
   preLoadFinished() {

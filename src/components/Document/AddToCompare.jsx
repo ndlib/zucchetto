@@ -22,6 +22,10 @@ class AddToCompare extends Component {
     CompareStore.on('ItemCompareUpdated', this.setStateFromCompareStore);
   }
 
+  componentWillUnmount() {
+    CompareStore.removeListener("ItemCompareUpdated", this.setStateFromCompareStore);
+  }
+
   getStateFromCompareStore() {
     if(!this.props.subItems){
       return CompareStore.itemInCompare(this.props.item) ? TRUE : FALSE;
