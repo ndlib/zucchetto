@@ -36,6 +36,9 @@ class CompareStore extends EventEmitter {
       case CompareActionTypes.REMOVE_COMPARE_COLUMN_ITEM:
         this.removeColumnItem(action.item);
         break;
+      case CompareActionTypes.CLEAR_COLUMNS:
+        this.clearColumnItems();
+        break;
     }
   }
 
@@ -111,6 +114,12 @@ class CompareStore extends EventEmitter {
     } else if (this._column2Item == item) {
       this._column2Item = false;
     }
+    this.emit("CompareColumnsUpdated");
+  }
+
+  clearColumnItems() {
+    this._column1Item = false;
+    this._column2Item = false;
     this.emit("CompareColumnsUpdated");
   }
 

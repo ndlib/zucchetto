@@ -31,6 +31,12 @@ class CompareActions {
       item: item
     });
   }
+
+  clearColumns() {
+    AppDispatcher.dispatch({
+      actionType: CompareActionTypes.CLEAR_COLUMNS,
+    });
+  }
 }
 
 module.exports = new CompareActions();
