@@ -56,7 +56,8 @@ var Search = React.createClass({
   },
 
   componentWillMount: function() {
-    this.loadSearchItems(this.props.collection, this.props.searchTerm);
+    SearchStore.on("SearchStoreChanged", this.loadSearchItems);
+    this.loadSearchItems();
   },
 
   componentWillReceiveProps: function(nextProps) {
@@ -64,6 +65,12 @@ var Search = React.createClass({
   },
 
   loadSearchItems: function(collection, searchTerm) {
+    if(collection == undefined) {
+      collection = this.props.collection;
+    }
+    if(searchTerm == undefined) {
+      searchTerm = this.props.searchTerm;
+    }
     $.ajax({
       context: this,
       type: "GET",
@@ -71,7 +78,7 @@ var Search = React.createClass({
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
-      },
+      }.bind(this),
       error: function(request, status, thrownError) {
         console.log(thrownError);
       }

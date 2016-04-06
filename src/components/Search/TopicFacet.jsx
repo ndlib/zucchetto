@@ -3,7 +3,9 @@ import React, { Component, PropTypes } from 'react';
 import Checkbox from 'material-ui/lib/checkbox';
 import TopicFacets from './TopicFacets.jsx';
 import ChildValue from './ChildValue.js';
+import SearchActions from '../../actions/SearchActions.js';
 import QueryParm from '../../modules/QueryParam.js';
+import SearchStore from '../../store/SearchStore.js';
 import { Link } from 'react-router'
 
 const styles = {
@@ -27,6 +29,14 @@ class TopicFacet extends Component {
 
   onArrowClick() {
     this.setState({expanded: !this.state.expanded});
+  }
+
+  onCheck(e, checked) {
+    if(checked){
+      SearchActions.addTopic(this.props.topic.value);
+    } else {
+      SearchActions.removeTopic(this.props.topic.value);
+    }
   }
 
   getLinkPath() {
@@ -63,7 +73,7 @@ class TopicFacet extends Component {
       return (
         <li>
           <div>
-            <Checkbox style={ styles.checkbox } />
+            <Checkbox style={ styles.checkbox } onCheck={ this.onCheck.bind(this) } checked={ SearchStore.hasTopic(this.props.topic.value) }/>
             <Link to={ this.getLinkPath() }>{this.props.topic.name} </Link>
             {arrow}
           </div>
