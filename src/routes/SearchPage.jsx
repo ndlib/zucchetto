@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import BackgroundIcon from 'material-ui/lib/svg-icons/av/library-books';
+import BackgroundIcon from 'material-ui/lib/svg-icons/action/find-in-page';
 import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
 import QueryParm from '../modules/QueryParam.js';
