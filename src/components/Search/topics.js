@@ -116,7 +116,7 @@ module.exports = {
           ]
         },
         {name: 'Businesses/Corporations', value: 'businesses corporations'},
-        {name: 'Government/The “State”', value: 'government state'}
+        {name: 'Government/The State', value: 'government state'}
       ]
     },
     {

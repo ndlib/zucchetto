@@ -33,6 +33,8 @@ class TopicFacet extends Component {
       color: '#224048',
       cursor: 'pointer',
       transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(0deg)',
+      position: 'absolute',
+      left: '-20px',
     }
   }
 
@@ -53,11 +55,9 @@ class TopicFacet extends Component {
         }
       }
       return (
-        <li>
-          <div>
-            {arrow}
-            <Link to={ this.getLinkPath() }>{this.props.topic.name}</Link>
-          </div>
+        <li style={{ position: 'relative', textIndent: this.props.topic.children ? '0' : '-20px' }}>
+          {arrow}
+          <Link to={ this.getLinkPath() }>{ this.props.topic.name }</Link>
           <ul style={{
               listStyleType: 'none',
               paddingLeft: '20px',
