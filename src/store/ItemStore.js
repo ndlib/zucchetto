@@ -28,12 +28,17 @@ class ItemStore extends EventEmitter {
       case ItemActionTypes.PRE_LOAD_VATICAN_ITEMS:
         this.parseItems(action.items);
         this._vatican_finished = true;
+        this.emitPreLoadIfFinished();
         break;
       case ItemActionTypes.PRE_LOAD_HUMANRIGHTS_ITEMS:
         this.parseItems(action.items);
         this._human_rights_finished = true;
+        this.emitPreLoadIfFinished();
         break;
     }
+  }
+
+  emitPreLoadIfFinished() {
     if (this._human_rights_finished && this._vatican_finished) {
       this.emit("PreLoadFinished");
     }

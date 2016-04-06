@@ -11,18 +11,19 @@ class DocumentPage extends Component {
   constructor() {
     super();
     this.state = {
-      loaded: false,
+      loaded: ItemStore.preLoaded(),
     };
     this.preLoadFinished = this.preLoadFinished.bind(this)
   }
 
   componentWillMount() {
-    if (ItemStore.preLoaded()) {
-      this.preLoadFinished();
-    } else {
-      var func = this.preLoadFinished.bind(this);
-      ItemStore.on("PreLoadFinished", func);
+    if (!this.state.loaded) {
+      ItemStore.on("PreLoadFinished", this.preLoadFinished);
     }
+  }
+
+  componentWillUnmount() {
+    ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
   preLoadFinished() {
