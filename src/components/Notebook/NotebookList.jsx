@@ -75,6 +75,7 @@ class NotebookList extends Component {
     return (
       <div className="left-col notebook-list">
         <h3>My Notebook</h3>
+        <ShareSave />
         <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
               paddingLeft: '1em',
@@ -88,7 +89,7 @@ class NotebookList extends Component {
             }}>
               { this.documentList(this._humanrights_documents) }
             </ul>
-          <ShareSave />
+          
       </div>
     );
   }
