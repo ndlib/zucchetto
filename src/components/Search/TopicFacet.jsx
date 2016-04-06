@@ -1,9 +1,17 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import Checkbox from 'material-ui/lib/checkbox';
 import TopicFacets from './TopicFacets.jsx';
 import ChildValue from './ChildValue.js';
 import QueryParm from '../../modules/QueryParam.js';
 import { Link } from 'react-router'
+
+const styles = {
+  checkbox: {
+    width: "auto",
+    display: "inline-block"
+  },
+};
 
 class TopicFacet extends Component {
   constructor(props) {
@@ -32,7 +40,7 @@ class TopicFacet extends Component {
       verticalAlign: 'middle',
       color: '#224048',
       cursor: 'pointer',
-      transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(0deg)',
+      transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(180deg)',
     }
   }
 
@@ -55,8 +63,9 @@ class TopicFacet extends Component {
       return (
         <li>
           <div>
+            <Checkbox style={ styles.checkbox } />
+            <Link to={ this.getLinkPath() }>{this.props.topic.name} </Link>
             {arrow}
-            <Link to={ this.getLinkPath() }>{this.props.topic.name}</Link>
           </div>
           <ul style={{
               listStyleType: 'none',
