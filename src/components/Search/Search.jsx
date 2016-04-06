@@ -1,10 +1,16 @@
 'use strict'
 var React = require('react');
+var CircularProgress = require('material-ui/lib/circular-progress');
+var Colors = require('material-ui/lib/styles/colors');
 var PageContent = require('../../layout/PageContent.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
 var Heading = require('../Shared/Heading.jsx');
+
+const styles = {
+  circleProgress: { margin: "0px 0 0 -25px", left: "50%" }
+};
 
 var Search = React.createClass({
 
@@ -71,7 +77,6 @@ var Search = React.createClass({
       url:  collection + '/search?q=' + searchTerm + '&rows=10000',
       dataType: "json",
       success: function(result) {
-        this.setState({ loading: false });
         this.setItems(result.hits);
       },
       error: function(request, status, thrownError) {
@@ -104,7 +109,7 @@ var Search = React.createClass({
     return (
       <div>
         <Heading title={this.props.title} />
-        { this.state.loading && <div>Loading...</div> }
+        { this.state.loading && <CircularProgress style={ styles.circleProgress } color={ Colors.blueGrey700 }/> }
         { !this.state.loading && <SearchDisplayList items={this.state.items}/> }
       </div>
     );
