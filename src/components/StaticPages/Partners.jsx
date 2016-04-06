@@ -58,12 +58,11 @@ var Partners = React.createClass({
     			      <td><img src="/resources/images/partners/eu.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td><img src="/resources/images/partners/au.png" /></td>
+                <td><img src="/resources/images/partners/un.png" /></td>
     			      <td><img src="/resources/images/partners/ilo.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td><img src="/resources/images/partners/un.png" /></td>
-    			      <td><img src="/resources/images/partners/oas.png" /></td>
+    			      <td rowspan="2"><img src="/resources/images/partners/oas.png" /></td>
     			    </tr>
     			  </tbody>
     			</table>
