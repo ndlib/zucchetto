@@ -22,6 +22,14 @@ var SearchFacets = React.createClass({
     SearchStore.removeListener("SearchStoreChanged", this.searchStoreChanged);
   },
 
+  componentDidMount: function() {
+    this.searchStoreChanged();
+  },
+
+  searchStoreChanged: function() {
+    this.setState({ selectedFacet: SearchStore.facetOption });
+  },
+
   facetOnClick: function(e) {
     e.currentTarget.getAttribute("value");
   },
@@ -112,14 +120,6 @@ var SearchFacets = React.createClass({
       }.bind(this)));
     }
     return (<div></div>);
-  },
-
-  componentDidMount: function() {
-    this.searchStoreChanged();
-  },
-
-  searchStoreChanged: function() {
-    this.setState({ selectedFacet: SearchStore.facetOption });
   },
 
   render: function() {
