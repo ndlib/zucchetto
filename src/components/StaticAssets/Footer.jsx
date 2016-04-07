@@ -14,7 +14,7 @@ class Footer extends Component {
           </div>
           <div className="col-sm-6 right">
             <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
-            <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Libriary Center for Digital Scholarship University of Notre Dame" className="undhl" /></a>
+            <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="undhl" /></a>
           </div>
         </div>
       </footer>
