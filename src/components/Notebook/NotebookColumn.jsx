@@ -29,7 +29,7 @@ class NotebookColumn extends Component {
 }
 
 NotebookColumn.propTypes = {
-  item: React.PropTypes.object.isRequired,
+  item: React.PropTypes.object,
 }
 
 NotebookColumn.defaultProps = {
