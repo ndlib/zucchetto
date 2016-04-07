@@ -26,6 +26,14 @@ class DocumentDialog extends Component {
     this.setState({open: false});
   };
 
+  document() {
+    if (this.state.documentId) {
+      return (<Document documentId={ this.state.documentId } />);
+    } else {
+      return (<div />);
+    }
+  }
+
   render() {
     const actions = [
       <mui.FlatButton
@@ -43,10 +51,15 @@ class DocumentDialog extends Component {
           onRequestClose={this.handleClose}
           bodyStyle={{ overflow: 'scroll' }}
         >
-          <Document documentId={ this.state.documentId } />
+        { this.document() }
         </mui.Dialog>
     );
   }
 }
+
+DocumentDialog.defaultProps = {
+  open: false,
+}
+
 
 export default DocumentDialog;

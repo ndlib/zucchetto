@@ -19,12 +19,12 @@ class Header extends Component {
   }
 
   render() {
-    var icon = (<mui.FontIcon className="material-icons">menu</mui.FontIcon>);
+    var icon = (<mui.FontIcon style={ { color: "#D5B117", marginRight: "0px" }} className="material-icons">menu</mui.FontIcon>);
     return (
       <header>
         <div className="row">
           <div className="col-sm-9">
-            <h1><mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }}  icon={ icon } onTouchTap={ this.menuClick } />Research Database</h1>
+            <h1><mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</mui.FlatButton> Research Database</h1>
             <mui.LeftNav
               open={this.state.menuOpen}
               docked={ false }
@@ -39,13 +39,13 @@ class Header extends Component {
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
               </div>
               <p>
-                <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr m" /></a>
-                <a href="https://library.nd.edu/cds"><img src="/resources/images/undhl-cds.png" className="cds" /></a>
+                <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr m" /></a>
+                <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="cds" /></a>
               </p>
             </mui.LeftNav>
           </div>
           <div className="col-sm-3 right">
-            <a href="http://humanrights.nd.edu/"><img src="/resources/images/cchr.png" className="cchr" /></a>
+            <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
           </div>
         </div>
       </header>

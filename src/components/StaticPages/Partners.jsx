@@ -20,24 +20,24 @@ var Partners = React.createClass({
         		<table>
     			  <tbody>
     			    <tr>
-    			      <td><img src="/resources/images/partners/ndls.png" /></td>
-    			      <td><img src="/resources/images/partners/kiis.png" /></td>
+    			      <td><img alt="University of Notre Dame Law School" src="/resources/images/partners/ndls.png" /></td>
+    			      <td><img alt="Kellog Institute for International Studies" src="/resources/images/partners/kiis.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td><img src="/resources/images/partners/bc.png" /></td>
-    			      <td><img src="/resources/images/partners/csc.png" /></td>
+    			      <td><img alt="Boston College" src="/resources/images/partners/bc.png" /></td>
+    			      <td><img alt="Center for Social Concerns" src="/resources/images/partners/csc.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td><img src="/resources/images/partners/ue.png" /></td>
-    			      <td><img src="/resources/images/partners/jstb.png" /></td>
+    			      <td><img alt="University of Exeter" src="/resources/images/partners/ue.png" /></td>
+    			      <td><img alt="Jesuit School of Theology in Berkley" src="/resources/images/partners/jstb.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td><img src="/resources/images/partners/hls.png" /></td>
-    			      <td><img src="/resources/images/partners/tcd.png" /></td>
+    			      <td><img alt="Harvard Law School" src="/resources/images/partners/hls.png" /></td>
+    			      <td><img alt="Trinity College Dublin" src="/resources/images/partners/tcd.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td><img src="/resources/images/partners/mlum.png" /></td>
-    			      <td><img src="/resources/images/partners/uocl.png" /></td>
+    			      <td><img alt="University of Michigan Law School" src="/resources/images/partners/mlum.png" /></td>
+    			      <td><img alt="The University of Oklahoma College of Law" src="/resources/images/partners/uocl.png" /></td>
     			    </tr>
     			  </tbody>
     			</table>
@@ -45,8 +45,8 @@ var Partners = React.createClass({
         		<table>
     			  <tbody>
     			    <tr>
-    			      <td><img src="/resources/images/partners/kiips.png" /></td>
-    			      <td><img src="/resources/images/partners/isla.png" /></td>
+    			      <td><img alt="Kroc Institute for International Peace Studies" src="/resources/images/partners/kiips.png" /></td>
+    			      <td><img alt="Institute for Scholarship in the Liberal Arts" src="/resources/images/partners/isla.png" /></td>
     			    </tr>
     			  </tbody>
     			</table>
@@ -54,15 +54,16 @@ var Partners = React.createClass({
         		<table>
     			  <tbody>
     			    <tr>
-    			      <td><img src="/resources/images/partners/lev.png" /></td>
-    			      <td><img src="/resources/images/partners/eu.png" /></td>
+    			      <td><img alt="Libreria Editrice Vaticana" src="/resources/images/partners/lev.png" /></td>
+    			      <td><img alt="European Union" src="/resources/images/partners/eu.png" /></td>
     			    </tr>
     			    <tr>
-                <td><img src="/resources/images/partners/un.png" /></td>
-    			      <td><img src="/resources/images/partners/ilo.png" /></td>
+                <td><img alt="United Nations" src="/resources/images/partners/un.png" /></td>
+    			      <td><img alt="International Labor Organization" src="/resources/images/partners/ilo.png" /></td>
     			    </tr>
     			    <tr>
-    			      <td rowspan="2"><img src="/resources/images/partners/oas.png" /></td>
+    			      <td><img alt="Organization of American States" src="/resources/images/partners/oas.png" /></td>
+                <td><img alt="International Committee of the Red Cross" src="/resources/images/partners/icrc_logo.png" /></td>
     			    </tr>
     			  </tbody>
     			</table>

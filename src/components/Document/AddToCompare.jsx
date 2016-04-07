@@ -92,7 +92,7 @@ class AddToCompare extends Component {
   }
 
   render() {
-    var label = this.props.subItems ? 'Save Document' : 'Save Section';
+    var label = 'Save For Comparison';
     return (
       <div
         className="add-to-compare"
