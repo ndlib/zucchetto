@@ -2,17 +2,17 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
 class SearchActions {
-  addTopic(topic) {
+  addTopics(topics) {
     AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_ADD_TOPIC,
-      topic: topic
+      actionType: SearchActionTypes.SEARCH_ADD_TOPICS,
+      topics: topics
     });
   }
 
-  removeTopic(topic) {
+  removeTopics(topics) {
     AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_REMOVE_TOPIC,
-      topic: topic
+      actionType: SearchActionTypes.SEARCH_REMOVE_TOPICS,
+      topics: topics
     });
   }
 }

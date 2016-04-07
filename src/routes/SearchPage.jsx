@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import BackgroundIcon from 'material-ui/lib/svg-icons/action/find-in-page';
 import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
+import SearchStore from '../store/SearchStore.js';
 import QueryParm from '../modules/QueryParam.js';
 import FacetQueryParms from '../modules/FacetQueryParams.js';
 import HoneycombURL from '../modules/HoneycombURL.js';
@@ -23,6 +24,7 @@ class SearchPage extends Component {
   constructor(props) {
     super(props);
     this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.forceUpdate = this.forceUpdate.bind(this);
     this.state = {
       loaded: ItemStore.preLoaded(),
     };
@@ -37,10 +39,12 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
+    SearchStore.addChangeListener(this.forceUpdate);
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   componentWillUnmount() {
+    SearchStore.removeChangeListener(this.forceUpdate);
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
@@ -50,7 +54,7 @@ class SearchPage extends Component {
 
   renderSearchBody() {
     var searchTerm = QueryParm('q');
-    if(searchTerm == '') {
+    if(searchTerm == '' && SearchStore.topics.length <= 0) {
       return (
         <div className="col-sm-6" style={{ width: "100%" }}>
           <BackgroundIcon style={{ display: "inline-block", width: "150px", height: "150px" }} color={Colors.grey400}/>

@@ -12,14 +12,26 @@ class SearchStore extends EventEmitter {
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
-  addTopic(topic) {
-    this._topics[topic] = true;
+  addChangeListener(callback) {
+    this.on("SearchStoreChanged", callback);
+  }
+
+  removeChangeListener(callback) {
+    this.removeListener("SearchStoreChanged", callback);
+  }
+
+  emitChange() {
     this.emit("SearchStoreChanged");
   }
 
-  removeTopic(topic) {
-    delete this._topics[topic];
-    this.emit("SearchStoreChanged");
+  addTopics(topics) {
+    topics.forEach(function(topic) { this._topics[topic] = true }.bind(this));
+    this.emitChange();
+  }
+
+  removeTopics(topics) {
+    topics.forEach(function(topic) { delete this._topics[topic] }.bind(this));
+    this.emitChange();
   }
 
   hasTopic(topic) {
@@ -33,11 +45,11 @@ class SearchStore extends EventEmitter {
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
-      case SearchActionTypes.SEARCH_ADD_TOPIC:
-        this.addTopic(action.topic);
+      case SearchActionTypes.SEARCH_ADD_TOPICS:
+        this.addTopics(action.topics);
         break;
-      case SearchActionTypes.SEARCH_REMOVE_TOPIC:
-        this.removeTopic(action.topic);
+      case SearchActionTypes.SEARCH_REMOVE_TOPICS:
+        this.removeTopics(action.topics);
         break;
       default:
         break;

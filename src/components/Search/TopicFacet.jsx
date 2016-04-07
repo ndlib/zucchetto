@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import Checkbox from 'material-ui/lib/checkbox';
+import FlatButton from 'material-ui/lib/flat-button';
 import TopicFacets from './TopicFacets.jsx';
 import ChildValue from './ChildValue.js';
 import SearchActions from '../../actions/SearchActions.js';
@@ -11,14 +12,28 @@ import { Link } from 'react-router'
 const styles = {
   checkbox: {
     width: "auto",
-    display: "inline-block"
+    display: "inline-block",
+    marginRight: "-16px"
   },
+  button: {
+    textTransform: "none",
+    fontWeight: "700",
+    fontSize: "16px",
+    verticalAlign: "middle", fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+    minWidth: "initial",
+    lineHeight: "23px",
+    textAlign: "left"
+  },
+  buttonLabel: {
+    paddingLeft: "0px",
+    paddingRight: "0px"
+  }
 };
 
 class TopicFacet extends Component {
   constructor(props) {
     super(props);
-
+    this.forceUpdate = this.forceUpdate.bind(this);
     let searchStr = window.location.search
     this.state = {
       expanded: searchStr.search(this.props.topic.value) > -1,
@@ -27,15 +42,23 @@ class TopicFacet extends Component {
     this.onArrowClick = this.onArrowClick.bind(this);
   }
 
+  componentWillMount() {
+    SearchStore.addChangeListener(this.forceUpdate);
+  }
+
+  componentWillUnmount() {
+    SearchStore.removeChangeListener(this.forceUpdate);
+  }
+
   onArrowClick() {
     this.setState({expanded: !this.state.expanded});
   }
 
   onCheck(e, checked) {
     if(checked){
-      SearchActions.addTopic(this.props.topic.value);
+      SearchActions.addTopics(ChildValue(this.props.topic).split(','));
     } else {
-      SearchActions.removeTopic(this.props.topic.value);
+      SearchActions.removeTopics(ChildValue(this.props.topic).split(','));
     }
   }
 
@@ -71,11 +94,16 @@ class TopicFacet extends Component {
         }
       }
       return (
-        <li style={{ position: 'relative', textIndent: this.props.topic.children ? '0' : '-20px' }}>
-          <div>
-            <Checkbox style={ styles.checkbox } onCheck={ this.onCheck.bind(this) } checked={ SearchStore.hasTopic(this.props.topic.value) }/>
-            <Link to={ this.getLinkPath() }>{this.props.topic.name} </Link>
-            {arrow}
+        <li style={{ position: 'relative', paddingLeft: this.props.topic.children ? '0' : '-20px' }}>
+          <div style={{ display: "inline-flex" }}>
+            <Checkbox style={ styles.checkbox } onCheck={ this.onCheck.bind(this) } defaultChecked={ SearchStore.hasTopic(this.props.topic.value) }/>
+            <FlatButton
+              label={this.props.topic.name}
+              labelPosition="before"
+              labelStyle={ styles.buttonLabel }
+              style={ styles.button }
+              onClick={this.onArrowClick.bind(this)}
+            />{arrow}
           </div>
           <ul style={{
               listStyleType: 'none',
