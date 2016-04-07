@@ -22,6 +22,10 @@ class Drawer extends Component {
     CompareStore.on('ItemCompareUpdated', this.updateCount);
   }
 
+  componentWillUnmount() {
+    CompareStore.removeListener('ItemCompareUpdated', this.updateCount);
+  }
+
   clearAll() {
     CompareStore.clearAll();
   }

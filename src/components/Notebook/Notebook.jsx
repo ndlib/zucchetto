@@ -22,6 +22,10 @@ class Notebook extends Component {
     CompareStore.on("CompareColumnsUpdated", this.updateColumns.bind(this));
   }
 
+  componentWillUnmount() {
+    CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns.bind(this));
+  }
+
   updateColumns() {
     this.setState({
       column1: CompareStore.getColumn1(),

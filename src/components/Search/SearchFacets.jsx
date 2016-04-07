@@ -118,6 +118,10 @@ var SearchFacets = React.createClass({
     SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
   },
 
+  componentWillUnMount: function() {
+    SearchStore.removeListener("SearchStoreChanged", this.searchStoreChanged);
+  },
+
   render: function() {
     return (
       <div>
