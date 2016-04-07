@@ -114,7 +114,7 @@ class SearchPage extends Component {
             </div>
           </div>
         </div>
-      <Footer/>
+      <Footer showCompareButton={ true } />
       <div>
         <div className="col-sm-12" >
           <Drawer />
