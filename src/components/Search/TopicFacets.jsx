@@ -11,7 +11,7 @@ class TopicFacets extends Component {
     if(topics) {
       let topicList = topics.map(function(topic, index){
         return(
-          <TopicFacet topic={topic}/>
+          <TopicFacet key={ "topic-" + index } topic={topic}/>
         );
       });
       return topicList;

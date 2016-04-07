@@ -1,0 +1,28 @@
+.topic-checkbox {
+  width: auto;
+  font-size: 18px;
+  vertical-align: text-top;
+  padding-right: 4px;
+}
+
+.topic-expand {
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: left;
+}
+
+.topic-expand-label {
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline-flex;
+}
+
+.topic-arrow {
+  vertical-align: middle;
+  font-size: 20px;
+  color: #224048;
+  cursor: pointer;
+}
