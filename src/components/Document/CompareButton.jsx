@@ -11,6 +11,7 @@ class CompareButton extends Component {
     this.state = {
       drawerOpen: CompareStore.drawerOpen()
     }
+    this.updateDrawer = this.updateDrawer.bind(this);
   }
 
   toggleDrawer() {
@@ -24,7 +25,11 @@ class CompareButton extends Component {
   }
 
   componentWillMount() {
-    CompareStore.on('ItemCompareUpdated', this.updateDrawer.bind(this));
+    CompareStore.on('ItemCompareUpdated', this.updateDrawer);
+  }
+
+  componentWillUnmount() {
+    CompareStore.removeListener('ItemCompareUpdated', this.updateDrawer);
   }
 
   icon() {
