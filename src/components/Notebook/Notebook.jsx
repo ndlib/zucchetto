@@ -12,6 +12,7 @@ import EmptyColumn from './EmptyColumn.jsx'
 class Notebook extends Component {
   constructor() {
     super();
+    this.updateColumns = this.updateColumns.bind(this);
     this.state = {
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
@@ -19,11 +20,11 @@ class Notebook extends Component {
   }
 
   componentWillMount() {
-    CompareStore.on("CompareColumnsUpdated", this.updateColumns.bind(this));
+    CompareStore.on("CompareColumnsUpdated", this.updateColumns);
   }
 
   componentWillUnmount() {
-    CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns.bind(this));
+    CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns);
   }
 
   updateColumns() {
