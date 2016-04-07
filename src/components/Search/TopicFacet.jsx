@@ -2,13 +2,15 @@
 import React, { Component, PropTypes } from 'react';
 import TopicFacets from './TopicFacets.jsx';
 import ChildValue from './ChildValue.js';
+import SearchActions from '../../actions/SearchActions.js';
 import QueryParm from '../../modules/QueryParam.js';
+import SearchStore from '../../store/SearchStore.js';
 import { Link } from 'react-router'
 
 class TopicFacet extends Component {
   constructor(props) {
     super(props);
-
+    this.forceUpdate = this.forceUpdate.bind(this);
     let searchStr = window.location.search
     this.state = {
       expanded: searchStr.search(this.props.topic.value) > -1,
@@ -17,8 +19,24 @@ class TopicFacet extends Component {
     this.onArrowClick = this.onArrowClick.bind(this);
   }
 
+  componentWillMount() {
+    SearchStore.addChangeListener(this.forceUpdate);
+  }
+
+  componentWillUnmount() {
+    SearchStore.removeChangeListener(this.forceUpdate);
+  }
+
   onArrowClick() {
     this.setState({expanded: !this.state.expanded});
+  }
+
+  onCheck(e, checked) {
+    if(SearchStore.hasTopic(this.props.topic.value)){
+      SearchActions.removeTopics(ChildValue(this.props.topic).split(','));
+    } else {
+      SearchActions.addTopics(ChildValue(this.props.topic).split(','));
+    }
   }
 
   getLinkPath() {
@@ -26,42 +44,50 @@ class TopicFacet extends Component {
     return '/search?q=' + currentSearch[0] + ',' + ChildValue(this.props.topic);
   }
 
-  arrowStyle() {
-    return {
-      fontSize: '20px',
-      verticalAlign: 'middle',
-      color: '#224048',
-      cursor: 'pointer',
-      transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(0deg)',
-      position: 'absolute',
-      left: '-20px',
+  checkbox() {
+    if(SearchStore.hasTopic(this.props.topic.value)) {
+      return (<i className="material-icons topic-checkbox">check_box</i>);
+    } else {
+      return (<i className="material-icons topic-checkbox">check_box_outline_blank</i>);
     }
   }
 
-  render() {
-    let children = null;
-    let arrow = (<div style={{display: 'inline-block', width: '20px'}} />);
-    if(this.props.topic){
-      if(this.props.topic.children) {
-        arrow = (
-          <i
-            className="material-icons"
-            style={this.arrowStyle()}
-            onClick={this.onArrowClick.bind(this)}
-            >play_arrow</i>
-        );
-        if(this.state.expanded) {
-          children = (<TopicFacets source={this.props.topic.children} />);
-        }
-      }
+  arrow() {
+    if(this.props.topic.children) {
       return (
-        <li style={{ position: 'relative', textIndent: this.props.topic.children ? '0' : '-20px' }}>
-          {arrow}
-          <Link to={ this.getLinkPath() }>{ this.props.topic.name }</Link>
-          <ul style={{
-              listStyleType: 'none',
-              paddingLeft: '20px',
-            }}>{children}</ul>
+        <i
+          className="material-icons topic-arrow"
+          style={{ transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(180deg)' }}
+          onClick={this.onArrowClick.bind(this)}
+          >play_arrow</i>
+      );
+    }
+    return null;
+  }
+
+  children() {
+    if(this.props.topic.children && this.state.expanded) {
+      return (<TopicFacets source={this.props.topic.children} />);
+    }
+    return null;
+  }
+
+  render() {
+    if(this.props.topic){
+      return (
+        <li style={{ position: 'relative', paddingLeft: this.props.topic.children ? '0' : '-20px' }}>
+          <div style={{ display: "inline-flex" }}>
+            <div style={{ cursor: "pointer" }} onClick={ this.onCheck.bind(this) }>
+              { this.checkbox() }
+            </div>
+            <div className="topic-expand" onClick={this.onArrowClick.bind(this)}>
+              <div className="topic-expand-label">{this.props.topic.name}</div>
+              { this.arrow() }
+            </div>
+          </div>
+          <ul style={{ listStyleType: 'none', paddingLeft: '20px' }}>
+            { this.children() }
+          </ul>
         </li>
       );
     }

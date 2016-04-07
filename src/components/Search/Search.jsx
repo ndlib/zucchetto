@@ -34,12 +34,6 @@ var Search = React.createClass({
     return ({items: [],})
   },
 
-  searchStoreChanged: function(reason) {
-    this.setState({
-      readyToRender: true,
-    });
-  },
-
   // Callback from LoadRemoteMixin when remote collection is loaded
   setValues: function(collection) {
     if(collection && collection.hits){
@@ -69,16 +63,36 @@ var Search = React.createClass({
     this.loadSearchItems(nextProps.collection, nextProps.searchTerm);
   },
 
+
+  // Using logical operators
+  buildQuery: function(searchTerm) {
+    var qualifiedTopics = SearchStore.topics.map(function(v,i) { return '"' + v +'"' });
+    var unionTopics = qualifiedTopics.join(" OR ");
+    var q = "(" + unionTopics + ")";
+    if(searchTerm != "") {
+      q += " AND \"" + searchTerm + '"';
+    }
+    return encodeURIComponent(q);
+  },
+
+/*
+  // Using comma delimited
+  buildQuery: function(searchTerm) {
+    var q = searchTerm + ',' + SearchStore.topics.join();
+    return encodeURIComponent(q);
+  },
+*/
+
   loadSearchItems: function(collection, searchTerm) {
     this.setState({ loading: true });
     $.ajax({
       context: this,
       type: "GET",
-      url:  collection + '/search?q=' + searchTerm + '&rows=10000',
+      url:  collection + '/search?q=' + this.buildQuery(searchTerm) + '&rows=10000',
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
-      },
+      }.bind(this),
       error: function(request, status, thrownError) {
         console.log(thrownError);
       }
