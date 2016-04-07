@@ -24,10 +24,8 @@ class ItemActions {
     var vaticanUrl = HoneycombURL() + "/v1/collections/vatican/items";
     var humanrightsUrl = HoneycombURL() + "/v1/collections/humanrights/items";
 
-//    if (process.env.NODE_ENV != 'development') {
-      vaticanUrl = "/resources/cache_data/cst_data.json";
-      humanrightsUrl = "/resources/cache_data/ihrl_data.json";
-//    }
+    vaticanUrl = "/resources/cache_data/cst_data.json";
+    humanrightsUrl = "/resources/cache_data/ihrl_data.json";
 
     $.ajax({
       context: this,
