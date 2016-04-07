@@ -64,7 +64,7 @@ class Notebook extends Component {
           </div>
           {  this.renderNotebook() }
         </div>
-        <Footer />
+        <Footer showBackToSearchButton={ true } />
       </div>
     );
   }

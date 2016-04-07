@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import BackgroundIcon from 'material-ui/lib/svg-icons/av/library-books';
+import BackgroundIcon from 'material-ui/lib/svg-icons/action/find-in-page';
 import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
 import QueryParm from '../modules/QueryParam.js';
@@ -20,10 +20,11 @@ import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
 
 class SearchPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.preLoadFinished = this.preLoadFinished.bind(this);
     this.state = {
-      loaded: false,
+      loaded: ItemStore.preLoaded(),
     };
   }
 
@@ -36,12 +37,11 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
-    if (ItemStore.preLoaded()) {
-      this.preLoadFinished();
-    } else {
-      var func = this.preLoadFinished.bind(this);
-      ItemStore.on("PreLoadFinished", func);
-    }
+    ItemStore.on("PreLoadFinished", this.preLoadFinished);
+  }
+
+  componentWillUnmount() {
+    ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
   preLoadFinished() {
@@ -114,7 +114,7 @@ class SearchPage extends Component {
             </div>
           </div>
         </div>
-      <Footer/>
+      <Footer showCompareButton={ true } />
       <div>
         <div className="col-sm-12" >
           <Drawer />

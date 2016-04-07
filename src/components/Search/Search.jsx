@@ -1,10 +1,16 @@
 'use strict'
 var React = require('react');
+var CircularProgress = require('material-ui/lib/circular-progress');
+var Colors = require('material-ui/lib/styles/colors');
 var PageContent = require('../../layout/PageContent.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
 var Heading = require('../Shared/Heading.jsx');
+
+const styles = {
+  circleProgress: { margin: "0px 0 0 -25px", left: "50%" }
+};
 
 var Search = React.createClass({
 
@@ -52,7 +58,7 @@ var Search = React.createClass({
         items.push(item);
       }
     }
-    this.setState({items: items,});
+    this.setState({ loading: false, items: items,});
   },
 
   componentWillMount: function() {
@@ -71,6 +77,7 @@ var Search = React.createClass({
     if(searchTerm == undefined) {
       searchTerm = this.props.searchTerm;
     }
+    this.setState({ loading: true });
     $.ajax({
       context: this,
       type: "GET",
@@ -85,31 +92,14 @@ var Search = React.createClass({
     });
   },
 
-  // Translates the facet option given in props to the structure the SearchStore expects.
-  facetObject: function() {
-    var facets;
-    if(this.props.facet) {
-      facets = new Array()
-      for(var i = 0; i < this.props.facet.length; i++){
-        var facetKey = Object.keys(this.props.facet[i])[0];
-        var facetValue = Object.keys(this.props.facet[i])[1];
-        facets.push({
-          name: this.props.facet[i][facetKey],
-          value: this.props.facet[i][facetValue]
-        });
-      }
-    }
-    return facets;
-  },
-
-
   render: function() {
     // All children of this object expect the collection and all data to be loaded into the SearchStore.
     // This will prevent mounting them until ready.
     return (
       <div>
         <Heading title={this.props.title} />
-        <SearchDisplayList items={this.state.items}/>
+        { this.state.loading && <CircularProgress style={ styles.circleProgress } color={ Colors.blueGrey700 }/> }
+        { !this.state.loading && <SearchDisplayList items={this.state.items}/> }
       </div>
     );
   }

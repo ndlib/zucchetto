@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 class ShareSave extends Component {
 
   render() {
-    return (<a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'text-top'}}>mail_outline</i>Share/Save</a>);
+    return (<a href="#" className="top-links"><i className="material-icons" style={{verticalAlign: 'middle'}}>mail_outline</i>Share/Save</a>);
   }
 }
 

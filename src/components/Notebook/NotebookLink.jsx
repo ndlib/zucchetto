@@ -2,10 +2,12 @@
 import React, { Component, PropTypes } from 'react';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
+import CompareStore from '../../store/CompareStore.js';
 
 class NotebookLink extends Component {
 
   clickAction() {
+    CompareStore.clearColumnItems();
     if(!this.props.disabled) {
       let vaticanItems = [];
       let humanRightItems = [];

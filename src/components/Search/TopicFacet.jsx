@@ -71,7 +71,7 @@ class TopicFacet extends Component {
         }
       }
       return (
-        <li>
+        <li style={{ position: 'relative', textIndent: this.props.topic.children ? '0' : '-20px' }}>
           <div>
             <Checkbox style={ styles.checkbox } onCheck={ this.onCheck.bind(this) } checked={ SearchStore.hasTopic(this.props.topic.value) }/>
             <Link to={ this.getLinkPath() }>{this.props.topic.name} </Link>
