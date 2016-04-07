@@ -123,11 +123,13 @@ body {
   h3 {
     margin-top:0; 
     margin-bottom: 20px;
+    float: left;
   }
 
   h4 {
     background: #cacccb;
     padding: 4px;
+    clear: both;
   }
 
   ul {
@@ -142,5 +144,14 @@ body {
   }
   li:hover {
     text-decoration: underline;
+  }
+  .top-links {
+    float: right;
+    i {
+      font-size:18px;
+    }
+    span {
+      font-size:14px;
+    }
   }
 }
