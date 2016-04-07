@@ -9,6 +9,8 @@ import ItemStore from '../store/ItemStore.js';
 class NotebookPage extends Component {
   constructor(props) {
     super(props);
+    this.preLoadFinished = this.preLoadFinished.bind(this);
+
     this.state = {
       loaded: ItemStore.preLoaded(),
     };
