@@ -1,11 +1,11 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import TopicFacets from './TopicFacets.jsx';
-import ChildValue from './ChildValue.js';
 import SearchActions from '../../actions/SearchActions.js';
 import QueryParm from '../../modules/QueryParam.js';
 import SearchStore from '../../store/SearchStore.js';
 import { Link } from 'react-router'
+import TopicNode from './TopicNode.js';
 
 class TopicFacet extends Component {
   constructor(props) {
@@ -15,16 +15,40 @@ class TopicFacet extends Component {
     this.state = {
       expanded: searchStr.search(this.props.topic.value) > -1,
       selected: searchStr.search(this.props.topic.value) > -1,
+      values: TopicNode.flattenValues(this.props.topic),
     }
     this.onArrowClick = this.onArrowClick.bind(this);
   }
 
   componentWillMount() {
     SearchStore.addChangeListener(this.forceUpdate);
+    this.expandIfChildSelected(this.props.topic);
   }
 
   componentWillUnmount() {
     SearchStore.removeChangeListener(this.forceUpdate);
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      values: TopicNode.flattenValues(nextProps.topic),
+    });
+    this.expandIfChildSelected(nextProps.topic);
+  }
+
+  // Expands the node if it contains any children that are in the selected topics.
+  // Note: This is terribly inefficient, since we are doing recursive finds using
+  // arrays of values for each node in the tree, and does not handle duplicate values.
+  // Ex: If there are two different trees with the same leaf value:
+  //     A/B/C/dupvalue, X/Y/Z/dupvalue
+  // and "dupvalue" exists in SearchStore.topics, then both trees will be expanded.
+  // If we have duplicates or have performance problems, we need
+  // to start storing the paths of the selected topics in some way so that it's
+  // easier to find which nodes have children that are selected.
+  expandIfChildSelected(topic) {
+    if(TopicNode.hasChild(topic, SearchStore.topics)) {
+      this.setState({expanded: true});
+    }
   }
 
   onArrowClick() {
@@ -33,15 +57,15 @@ class TopicFacet extends Component {
 
   onCheck(e, checked) {
     if(SearchStore.hasTopic(this.props.topic.value)){
-      SearchActions.removeTopics(ChildValue(this.props.topic).split(','));
+      SearchActions.removeTopics(this.state.values);
     } else {
-      SearchActions.addTopics(ChildValue(this.props.topic).split(','));
+      SearchActions.addTopics(this.state.values);
     }
   }
 
   getLinkPath() {
     var currentSearch = QueryParm('q').split(',');
-    return '/search?q=' + currentSearch[0] + ',' + ChildValue(this.props.topic);
+    return '/search?q=' + currentSearch[0] + ',' + this.state.values.join(',');
   }
 
   checkbox() {
