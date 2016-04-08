@@ -5,7 +5,6 @@ import TopicFacets from './TopicFacets.jsx';
 import SearchActions from '../../actions/SearchActions.js';
 import QueryParm from '../../modules/QueryParam.js';
 import SearchStore from '../../store/SearchStore.js';
-import { Link } from 'react-router'
 import TopicNode from './TopicNode.js';
 
 class TopicFacet extends Component {
@@ -22,12 +21,7 @@ class TopicFacet extends Component {
   }
 
   componentWillMount() {
-    SearchStore.addChangeListener(this.forceUpdate);
     this.expandIfChildSelected(this.props.topic);
-  }
-
-  componentWillUnmount() {
-    SearchStore.removeChangeListener(this.forceUpdate);
   }
 
   componentWillReceiveProps(nextProps){
@@ -62,11 +56,6 @@ class TopicFacet extends Component {
     } else {
       SearchActions.addTopics(this.state.values);
     }
-  }
-
-  getLinkPath() {
-    var currentSearch = QueryParm('q').split(',');
-    return '/search?q=' + currentSearch[0] + ',' + this.state.values.join(',');
   }
 
   checkbox() {

@@ -9,6 +9,9 @@ class SearchStore extends EventEmitter {
     this._topics = {};
     Object.defineProperty(this, "topics", { get: this.getTopics });
 
+    this._searchTerm = "";
+    Object.defineProperty(this, "searchTerm", { get: function() { return this._searchTerm; } });
+
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
@@ -26,12 +29,10 @@ class SearchStore extends EventEmitter {
 
   addTopics(topics) {
     topics.forEach(function(topic) { this._topics[topic] = true }.bind(this));
-    this.emitChange();
   }
 
   removeTopics(topics) {
     topics.forEach(function(topic) { delete this._topics[topic] }.bind(this));
-    this.emitChange();
   }
 
   hasTopic(topic) {
@@ -42,14 +43,29 @@ class SearchStore extends EventEmitter {
     return Object.keys(this._topics);
   }
 
+  searchUri() {
+    return '/search?q=' + this._searchTerm + '&t=' + this.getTopics().join(',');
+  }
+
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
+      case SearchActionTypes.SEARCH_SET_PARAMS:
+        this.addTopics(action.topics);
+        this._searchTerm = action.searchTerm;
+        this.emitChange();
+        break;
+      case SearchActionTypes.SEARCH_SET_TERM:
+        this._searchTerm = action.searchTerm;
+        this.emitChange();
+        break;
       case SearchActionTypes.SEARCH_ADD_TOPICS:
         this.addTopics(action.topics);
+        this.emitChange();
         break;
       case SearchActionTypes.SEARCH_REMOVE_TOPICS:
         this.removeTopics(action.topics);
+        this.emitChange();
         break;
       default:
         break;

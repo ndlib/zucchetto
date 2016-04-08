@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import BackgroundIcon from 'material-ui/lib/svg-icons/action/find-in-page';
 import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
+import SearchActions from '../actions/SearchActions.js';
 import SearchStore from '../store/SearchStore.js';
 import QueryParm from '../modules/QueryParam.js';
 import FacetQueryParms from '../modules/FacetQueryParams.js';
@@ -21,10 +22,10 @@ import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
 
 class SearchPage extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.preLoadFinished = this.preLoadFinished.bind(this);
-    this.forceUpdate = this.forceUpdate.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
     this.state = {
       loaded: ItemStore.preLoaded(),
     };
@@ -39,13 +40,20 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
-    SearchStore.addChangeListener(this.forceUpdate);
+    console.log("SearchPage.componentWillMount");
+console.trace();
+    SearchStore.addChangeListener(this.handleSearchChange);
+    SearchActions.setParamsFromUri();
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   componentWillUnmount() {
-    SearchStore.removeChangeListener(this.forceUpdate);
+    SearchStore.removeChangeListener(this.handleSearchChange);
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
+  }
+
+  handleSearchChange(){
+    this.context.router.push(SearchStore.searchUri());
   }
 
   preLoadFinished() {
@@ -130,5 +138,9 @@ class SearchPage extends Component {
     )
   }
 }
+
+SearchPage.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default SearchPage;
