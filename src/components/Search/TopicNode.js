@@ -1,4 +1,4 @@
-import _ from 'underscore'
+import _ from 'underscore';
 
 // Helper methods for operating on topic nodes.
 class TopicNode {

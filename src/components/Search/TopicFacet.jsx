@@ -1,4 +1,5 @@
 'use strict'
+import _ from 'underscore';
 import React, { Component, PropTypes } from 'react';
 import TopicFacets from './TopicFacets.jsx';
 import SearchActions from '../../actions/SearchActions.js';
@@ -46,7 +47,7 @@ class TopicFacet extends Component {
   // to start storing the paths of the selected topics in some way so that it's
   // easier to find which nodes have children that are selected.
   expandIfChildSelected(topic) {
-    if(TopicNode.hasChild(topic, SearchStore.topics)) {
+    if(_.intersection(this.state.values, SearchStore.topics).length > 0) {
       this.setState({expanded: true});
     }
   }
