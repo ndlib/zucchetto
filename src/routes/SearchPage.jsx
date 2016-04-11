@@ -40,8 +40,6 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
-    console.log("SearchPage.componentWillMount");
-console.trace();
     SearchStore.addChangeListener(this.handleSearchChange);
     SearchActions.setParamsFromUri();
     ItemStore.on("PreLoadFinished", this.preLoadFinished);

@@ -56,20 +56,11 @@ var Search = React.createClass({
   },
 
   componentWillMount: function() {
-    console.log("Search.componentWillMount");
-console.trace();
     this.loadSearchItems(this.props.collection, this.props.searchTerm);
   },
 
   componentWillReceiveProps: function(nextProps) {
-    console.log("Search.componentWillReceiveProps");
-console.trace();
     this.loadSearchItems(nextProps.collection, nextProps.searchTerm);
-  },
-
-  componentDidUpdate: function(prevProps) {
-    console.log("Search.componentDidUpdate");
-console.trace();
   },
 
   // Using logical operators
