@@ -15,6 +15,7 @@ class ItemStore extends EventEmitter {
   constructor() {
     super();
     this._items = {};
+    this._parentItems = [];
     this._user_defined2_item_id = {};
     this._parent2children = {};
     this._vatican_finished = false;
@@ -63,6 +64,8 @@ class ItemStore extends EventEmitter {
         this._parent2children[parent_id] = [];
       }
       this._parent2children[parent_id].push(item.id);
+    } else {
+      this._parentItems.push(item);
     }
   }
 
@@ -108,6 +111,10 @@ class ItemStore extends EventEmitter {
         return 0;
       }
     });
+  }
+
+  getParentItems() {
+    return this._parentItems;
   }
 }
 
