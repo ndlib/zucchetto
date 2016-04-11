@@ -1,6 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var QueryParam = require('../../modules/QueryParam.js');
+var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var VaticanID = require('../../constants/VaticanID.js');
 var HumanRightsID = require('../../constants/HumanRightsID.js');
@@ -12,7 +14,7 @@ var SearchBox = React.createClass({
 
   getInitialState: function() {
     return {
-      searchTerm: decodeURIComponent(window.location.search.split(',')[0].replace('?q=', ''))
+      searchTerm: SearchStore.searchTerm
     };
   },
 
@@ -21,7 +23,7 @@ var SearchBox = React.createClass({
   },
 
   onClick: function(e) {
-    this.context.router.push("/search?q=" + encodeURIComponent(this.state.searchTerm));
+    SearchActions.setTerm(this.state.searchTerm);
   },
 
   setTerm: function(term) {

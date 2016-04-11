@@ -63,7 +63,6 @@ var Search = React.createClass({
     this.loadSearchItems(nextProps.collection, nextProps.searchTerm);
   },
 
-
   // Using logical operators
   buildQuery: function(searchTerm) {
     var qualifiedTopics = SearchStore.topics.map(function(v,i) { return '"' + v +'"' });
