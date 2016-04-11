@@ -36,5 +36,35 @@ class SearchActions {
       topics: topics
     });
   }
+
+  performSearch(collection, topics, searchTerm) {
+    $.ajax({
+      context: this,
+      type: "GET",
+      url:  collection + '/search?q=' + this.buildQuery(topics, searchTerm) + '&rows=10000',
+      dataType: "json",
+      success: function(result) {
+        AppDispatcher.dispatch({
+          actionType: SearchActionTypes.SEARCH_SET_HITS,
+          collection: collection,
+          hits: result.hits
+        });
+      }.bind(this),
+      error: function(request, status, thrownError) {
+        console.log(thrownError);
+      }
+    });
+  }
+
+  // Using logical operators
+  buildQuery(topics, searchTerm) {
+    var qualifiedTopics = topics.map(function(v,i) { return '"' + v +'"' });
+    var unionTopics = qualifiedTopics.join(" OR ");
+    var q = "(" + unionTopics + ")";
+    if(searchTerm != "") {
+      q += " AND \"" + searchTerm + '"';
+    }
+    return encodeURIComponent(q);
+  }
 }
 module.exports = new SearchActions();
