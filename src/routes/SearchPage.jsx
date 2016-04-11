@@ -58,7 +58,6 @@ class SearchPage extends Component {
   }
 
   handleQueryChange(){
-    console.log("SearchPage.handleQueryChange");
     this.setState({
       queryingCatholic: true,
       queryingHumanRights: true,
