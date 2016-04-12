@@ -10,7 +10,6 @@ var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var ItemActionTypes = require("../constants/ItemActionTypes.jsx");
 var _ = require("underscore");
-import LocalStorageExpiration from '../modules/LocalStorageExpiration.js';
 
 class ItemStore extends EventEmitter {
   constructor() {
