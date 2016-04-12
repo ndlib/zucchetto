@@ -10,6 +10,7 @@ var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var ItemActionTypes = require("../constants/ItemActionTypes.jsx");
 var _ = require("underscore");
+import LocalStorageExpiration from '../modules/LocalStorageExpiration.js';
 
 class ItemStore extends EventEmitter {
   constructor() {
@@ -21,6 +22,7 @@ class ItemStore extends EventEmitter {
     this._vatican_finished = false;
     this._human_rights_finished = false;
     AppDispatcher.register(this.receiveAction.bind(this));
+    this.validItem = this.validItem.bind(this);
   }
 
   // Receives actions sent by the AppDispatcher
@@ -57,10 +59,6 @@ class ItemStore extends EventEmitter {
 
   parseFunction(item) {
     this._items[item.id] = item;
-    if(!item) {
-      localStorage.clear();
-      location.reload();
-    }
     this._user_defined2_item_id[item.user_defined_id] = item.id;
     if (item.metadata.parent_id) {
       var parent_id = item.metadata.parent_id.values[0].value;
@@ -71,6 +69,13 @@ class ItemStore extends EventEmitter {
     } else {
       this._parentItems.push(item);
     }
+  }
+
+  validItem(id) {
+    if(this.getItem(id)) {
+      return true;
+    }
+    else return false;
   }
 
   getItem(id) {

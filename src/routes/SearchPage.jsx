@@ -5,6 +5,8 @@ import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
 import SearchActions from '../actions/SearchActions.js';
 import SearchStore from '../store/SearchStore.js';
+import CompareStore from '../store/CompareStore.js';
+import QueryParm from '../modules/QueryParam.js';
 import FacetQueryParms from '../modules/FacetQueryParams.js';
 import HoneycombURL from '../modules/HoneycombURL.js';
 import VaticanID from '../constants/VaticanID.js';
@@ -63,6 +65,7 @@ class SearchPage extends Component {
 
   preLoadFinished() {
     this.setState({loaded: true});
+    CompareStore.verifyStore();
   }
 
   renderSearchBody() {
