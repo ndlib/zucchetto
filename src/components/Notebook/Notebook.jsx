@@ -101,7 +101,8 @@ class Notebook extends Component {
             open={this.state.showColumnErrorDialog}
             onRequestClose={this.closeDialog}
           >
-            You have opened the maximum number of documents that can be compared at one time. Please close one of the documents before choosing another.
+            <i className="material-icons"
+              style={{ color: '#ccc', float: 'left', fontSize: '5em', }}>warning</i>You have opened the maximum number of documents that can be compared at one time. Please close one of the documents before choosing another.
           </Dialog>
 
           { this.renderNotebook() }
