@@ -15,11 +15,12 @@ import Footer from '../components/StaticAssets/Footer.jsx';
 import SearchBox from '../components/Search/SearchBox.jsx';
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
 import Drawer from '../components/Search/Drawer.jsx';
-const CATHOLIC = 'Catholic Social Teaching';
-const HUMANRIGHTS = 'International Human Rights Law';
-
 import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
+import { Link } from 'react-router';
+
+const CATHOLIC = 'Catholic Social Teaching';
+const HUMANRIGHTS = 'International Human Rights Law';
 
 class SearchPage extends Component {
   constructor(props, context) {
@@ -68,6 +69,8 @@ class SearchPage extends Component {
             <h1>Get Started</h1>
             <h2>Enter a search query or select a filter to view a list of matching documents.</h2>
             <SearchBox />
+            <p>See <Link to="/documents">document index</Link></p>
+
           </div>
         </div>
       );
