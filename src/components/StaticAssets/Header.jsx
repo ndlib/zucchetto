@@ -34,6 +34,7 @@ class Header extends Component {
               <div  className="menu">
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/">Home</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/search?q=">Search Database</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/documents">Document Index</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/about">About Database</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/partners">Project Partners</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
