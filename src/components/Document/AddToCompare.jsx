@@ -19,7 +19,6 @@ class AddToCompare extends Component {
   }
 
   componentWillMount() {
-    require('events').EventEmitter.defaultMaxListeners = 100000;
     CompareStore.on('ItemCompareUpdated', this.setStateFromCompareStore);
   }
 
