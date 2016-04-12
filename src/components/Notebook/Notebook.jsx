@@ -40,10 +40,10 @@ class Notebook extends Component {
         <div className="col-sm-9">
           <div className="row">
             <div className="col-sm-6 notebook-column left">
-              <NotebookColumn item={ this.state.column1 } />
+              <NotebookColumn item={ this.state.column1 } columnNumber= { 1 } />
             </div>
             <div className="col-sm-6 notebook-column right">
-              <NotebookColumn item={ this.state.column2 } />
+              <NotebookColumn item={ this.state.column2 } columnNumber={ 2 } />
             </div>
           </div>
         </div>
