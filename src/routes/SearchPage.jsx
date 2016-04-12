@@ -82,14 +82,12 @@ class SearchPage extends Component {
         <div key="catholic" className="col-sm-6">
           <Search
             title = { CATHOLIC }
-            loading = { this.state.queryingCatholic }
             collection={ CATHOLIC_COLLECTION }
           />
         </div>
         <div key="humanrights" className="col-sm-6" style={this.listStyle()}>
           <Search
             title = { HUMANRIGHTS }
-            loading = { this.state.queryingHumanRights }
             collection={ HUMANRIGHTS_COLLECTION }
           />
         </div>

@@ -56,7 +56,6 @@ class SearchActions {
     });
   }
 
-  // Using logical operators
   buildQuery(topics, searchTerm) {
     var qualifiedTopics = topics.map(function(v,i) { return '"' + v +'"' });
     var unionTopics = qualifiedTopics.join(" OR ");
