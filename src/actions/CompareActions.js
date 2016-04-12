@@ -25,10 +25,10 @@ class CompareActions {
     });
   }
 
-  removeColumnItem(item) {
+  removeColumnItem(columnNumber) {
     AppDispatcher.dispatch({
       actionType: CompareActionTypes.REMOVE_COMPARE_COLUMN_ITEM,
-      item: item
+      columnNumber: columnNumber
     });
   }
 
