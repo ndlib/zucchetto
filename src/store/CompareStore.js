@@ -31,11 +31,11 @@ class CompareStore extends EventEmitter {
   }
 
   verifyStore() {
-    // if store is invalid clear everything in the CompareStore and reload page
     if(!this.validStore()) {
       console.log('Invalid collection item found.');
-      this.clearAll();
-      window.location.reload();
+      LocalStorageExpiration(true);
+      this.resetDrawer();
+      this.emit("ItemCompareUpdated");
     }
   }
 

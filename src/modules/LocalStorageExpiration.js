@@ -1,17 +1,17 @@
 import VaticanID from '../constants/VaticanID.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
 module.exports = function(force) {
-  if(!force) {
+  if(force == null) {
     force = false;
   }
   // clear localStorage if the is no previousVisit Time or visitTime > 1 day
-  if(!localStorage.getItem('visitTime') || localStorage.getItem('visitTime' || force) <  new Date(Date.now - 24*60*60000)) {
+  if(force || !localStorage.getItem('visitTime')) {
     localStorage.clear();
   }
-  if(!localStorage.getItem(VaticanID) || force) {
+  if(force || !localStorage.getItem(VaticanID)) {
     localStorage.setItem(VaticanID, '{}')
   }
-  if(!localStorage.getItem(HumanRightsID) || force) {
+  if(force || !localStorage.getItem(HumanRightsID)) {
     localStorage.setItem(HumanRightsID, '{}');
   }
   localStorage.setItem('visitTime', Date.now());
