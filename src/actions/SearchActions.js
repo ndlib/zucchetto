@@ -10,7 +10,7 @@ class SearchActions {
     var topics = topicsParam == null ? [] : decodeURIComponent(topicsParam).split(',');
     var searchTerm = searchTermParam == null ? "" : decodeURIComponent(searchTermParam);
     AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_SET_PARAMS,
+      actionType: SearchActionTypes.SEARCH_INI_PARAMS,
       topics: topics,
       searchTerm: searchTerm,
     });

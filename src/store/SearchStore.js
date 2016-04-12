@@ -86,10 +86,9 @@ class SearchStore extends EventEmitter {
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
-      case SearchActionTypes.SEARCH_SET_PARAMS:
+      case SearchActionTypes.SEARCH_INI_PARAMS:
         this.addTopics(action.topics);
         this._searchTerm = action.searchTerm;
-        this.emitQueryChange();
         break;
       case SearchActionTypes.SEARCH_SET_TERM:
         this._searchTerm = action.searchTerm;

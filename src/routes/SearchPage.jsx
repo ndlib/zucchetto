@@ -28,11 +28,8 @@ class SearchPage extends Component {
     super(props, context);
     this.preLoadFinished = this.preLoadFinished.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
-    this.handleResultsChange = this.handleResultsChange.bind(this);
     this.state = {
       loaded: ItemStore.preLoaded(),
-      queryingCatholic: false,
-      queryingHumanRights: false,
     };
   }
 
@@ -46,38 +43,18 @@ class SearchPage extends Component {
 
   componentWillMount() {
     SearchStore.addQueryChangeListener(this.handleQueryChange);
-    SearchStore.addResultsChangeListener(this.handleResultsChange);
     SearchActions.setParamsFromUri();
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   componentWillUnmount() {
     SearchStore.removeQueryChangeListener(this.handleQueryChange);
-    SearchStore.removeResultsChangeListener(this.handleResultsChange);
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
   handleQueryChange(){
-    this.setState({
-      queryingCatholic: true,
-      queryingHumanRights: true,
-    });
-    SearchActions.performSearch(CATHOLIC_COLLECTION, SearchStore.topics, SearchStore.searchTerm);
-    SearchActions.performSearch(HUMANRIGHTS_COLLECTION, SearchStore.topics, SearchStore.searchTerm);
+    // If the query has changed, use the router to update the uri params
     this.context.router.push(SearchStore.searchUri());
-  }
-
-  handleResultsChange(collection){
-    if(collection == CATHOLIC_COLLECTION){
-      this.setState({
-        queryingCatholic: false,
-      });
-    }
-    if(collection == HUMANRIGHTS_COLLECTION){
-      this.setState({
-        queryingHumanRights: false,
-      });
-    }
   }
 
   preLoadFinished() {
@@ -85,8 +62,7 @@ class SearchPage extends Component {
   }
 
   renderSearchBody() {
-    var searchTerm = QueryParm('q');
-    if(searchTerm == '' && SearchStore.topics.length <= 0) {
+    if(SearchStore.searchTerm == '' && SearchStore.topics.length <= 0) {
       return (
         <div className="col-sm-6" style={{ width: "100%" }}>
           <BackgroundIcon style={{ display: "inline-block", width: "150px", height: "150px" }} color={Colors.grey400}/>

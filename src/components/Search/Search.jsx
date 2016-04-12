@@ -13,11 +13,40 @@ const styles = {
 };
 
 var Search = React.createClass({
-
   propTypes: {
     title: React.PropTypes.string,
     collection: React.PropTypes.string,
-    loading: React.PropTypes.bool
+  },
+
+  getInitialState: function() {
+    return ({ loading: true });
+  },
+
+  componentWillMount: function() {
+    SearchStore.addResultsChangeListener(this.handleResultsChange);
+    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm);
+  },
+
+  componentWillUnmount: function() {
+    SearchStore.removeResultsChangeListener(this.handleResultsChange);
+  },
+
+  componentWillReceiveProps: function(nextProps){
+    // SearchPage is going to use the router to push a new uri with params anytime the query changes.
+    // Since we rely on the router to rerender these components, rerun the search here
+    // instead of directly listening for query changes from the store
+    this.setState({
+      loading: true,
+    });
+    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm);
+  },
+
+  handleResultsChange: function(collection){
+    if(collection == this.props.collection){
+      this.setState({
+        loading: false,
+      });
+    }
   },
 
   render: function() {
@@ -26,8 +55,8 @@ var Search = React.createClass({
     return (
       <div>
         <Heading title={this.props.title} />
-        { this.props.loading && <CircularProgress style={ styles.circleProgress } color={ Colors.blueGrey700 }/> }
-        { !this.props.loading && <SearchDisplayList items={SearchStore.getHits(this.props.collection)}/> }
+        { this.state.loading && <CircularProgress style={ styles.circleProgress } color={ Colors.blueGrey700 }/> }
+        { !this.state.loading && <SearchDisplayList items={SearchStore.getHits(this.props.collection)}/> }
       </div>
     );
   }
