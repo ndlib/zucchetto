@@ -105,9 +105,7 @@ class CompareStore extends EventEmitter {
     } else if(!this._column2Item) {
       this._column2Item = item;
     }
-    else {
-      alert('Too many compare items!!!');
-    }
+
     this.emit("CompareColumnsUpdated");
   }
 
