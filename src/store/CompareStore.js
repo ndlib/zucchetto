@@ -114,25 +114,21 @@ class CompareStore extends EventEmitter {
     this.emit("ItemCompareUpdated");
   }
 
-  allItems() {
-    var vaticanItems = [];
-    if(window.localStorage.getItem(VaticanID)) {
-      var vaticanObject = JSON.parse(window.localStorage.getItem(VaticanID));
-      if(vaticanObject.items) {
-        vaticanItems = vaticanObject.items;
+  collectionItems(collection_id) {
+    var items = [];
+    if(window.localStorage.getItem(collection_id)) {
+      var obj = JSON.parse(window.localStorage.getItem(collection_id));
+      if(obj.items) {
+        items = obj.items;
       }
     }
-
-    var humanRightsItems = [];
-    if(window.localStorage.getItem(HumanRightsID)) {
-      var humanRightsObject = JSON.parse(window.localStorage.getItem(HumanRightsID));
-      if(humanRightsObject.items) {
-        humanRightsItems = humanRightsObject.items;
-      }
-    }
-
-    var items = vaticanItems.concat(humanRightsItems);
     return items;
+  }
+
+  allItems() {
+    var vaticanItems = this.collectionItems(VaticanID);
+    var humanRightsItems = this.collectionItems(HumanRightsID);
+    return vaticanItems.concat(humanRightsItems);
   }
 
   itemInCompare(item) {
