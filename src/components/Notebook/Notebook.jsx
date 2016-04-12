@@ -2,29 +2,38 @@
 import React, { Component, PropTypes } from 'react';
 import Header  from '../StaticAssets/Header.jsx';
 import Footer from '../StaticAssets/Footer.jsx';
-import ItemActions from '../../actions/ItemActions.jsx'
-import ItemStore from '../../store/ItemStore.js'
-import CompareStore from '../../store/CompareStore.js'
-import NotebookColumn from './NotebookColumn.jsx'
-import NotebookList from './NotebookList.jsx'
-import EmptyColumn from './EmptyColumn.jsx'
+import ItemActions from '../../actions/ItemActions.jsx';
+import ItemStore from '../../store/ItemStore.js';
+import CompareStore from '../../store/CompareStore.js';
+import NotebookColumn from './NotebookColumn.jsx';
+import NotebookList from './NotebookList.jsx';
+import EmptyColumn from './EmptyColumn.jsx';
+
+import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
 
 class Notebook extends Component {
   constructor() {
     super();
     this.updateColumns = this.updateColumns.bind(this);
+    this.alertColumnError = this.alertColumnError.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
+
     this.state = {
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
+      showColumnErrorDialog: false,
     };
   }
 
   componentWillMount() {
     CompareStore.on("CompareColumnsUpdated", this.updateColumns);
+    CompareStore.on("CompareColumnsCannotBeUpdated", this.alertColumnError);
   }
 
   componentWillUnmount() {
     CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns);
+    CompareStore.removeListener("CompareColumnsCannotBeUpdated", this.alertColumnError);
   }
 
   updateColumns() {
@@ -32,6 +41,14 @@ class Notebook extends Component {
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
     });
+  }
+
+  alertColumnError() {
+    this.setState({showColumnErrorDialog: true});
+  }
+
+  closeDialog() {
+    this.setState({showColumnErrorDialog: false});
   }
 
   renderNotebook() {
@@ -60,6 +77,16 @@ class Notebook extends Component {
   }
 
   render() {
+    const actions = [
+
+      <FlatButton
+        label="OK"
+        labelStyle={{ color: 'white' }}
+        onTouchTap={ this.closeDialog }
+        backgroundColor={ '#224048' }
+      />,
+    ];
+
     return (
       <div>
         <Header />
@@ -67,7 +94,17 @@ class Notebook extends Component {
           <div className="col-sm-3">
             <NotebookList />
           </div>
-          {  this.renderNotebook() }
+          <Dialog
+            title="Please close one of your open documents"
+            actions={actions}
+            modal={true}
+            open={this.state.showColumnErrorDialog}
+            onRequestClose={this.closeDialog}
+          >
+            You have opened the maximum number of documents that can be compared at one time. Please close one of the documents before choosing another.
+          </Dialog>
+
+          { this.renderNotebook() }
         </div>
         <Footer showBackToSearchButton={ true } />
       </div>
