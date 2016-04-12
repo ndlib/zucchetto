@@ -33,23 +33,40 @@ class CompareButton extends Component {
   }
 
   icon() {
-    if (this.state.drawerOpen) {
+    if (this.props.shortText) {
+      return (<mui.FontIcon className="material-icons">clear</mui.FontIcon>);
+    } else if (this.state.drawerOpen) {
       return (<mui.FontIcon className="material-icons">keyboard_arrow_up</mui.FontIcon>);
     } else {
       return (<mui.FontIcon className="material-icons">keyboard_arrow_left</mui.FontIcon>);
     }
   }
 
+  label() {
+    if (this.props.shortText) {
+      return "";
+    } else {
+      return "Compare Documents";
+    }
+  }
+
   render() {
     return (<mui.FlatButton
-      label="Compare Documents"
+      label={this.label()}
       labelPosition="before"
       icon={ this.icon() }
       onClick={ this.toggleDrawer.bind(this) }
       />
     );
   }
+}
 
+CompareButton.propTypes = {
+  shortText: React.PropTypes.bool,
+}
+
+CompareButton.defaultProps = {
+  shortText: false
 }
 
 export default CompareButton;
