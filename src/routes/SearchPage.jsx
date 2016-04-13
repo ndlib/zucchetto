@@ -5,7 +5,6 @@ import Colors from 'material-ui/lib/styles/colors';
 import Search from '../components/Search/Search.jsx';
 import SearchActions from '../actions/SearchActions.js';
 import SearchStore from '../store/SearchStore.js';
-import QueryParm from '../modules/QueryParam.js';
 import FacetQueryParms from '../modules/FacetQueryParams.js';
 import HoneycombURL from '../modules/HoneycombURL.js';
 import VaticanID from '../constants/VaticanID.js';
@@ -20,13 +19,15 @@ import ItemStore from '../store/ItemStore.js';
 import { Link } from 'react-router';
 
 const CATHOLIC = 'Catholic Social Teaching';
+const CATHOLIC_COLLECTION = HoneycombURL() + "/v1/collections/" + VaticanID;
 const HUMANRIGHTS = 'International Human Rights Law';
+const HUMANRIGHTS_COLLECTION = HoneycombURL() + "/v1/collections/" + HumanRightsID;
 
 class SearchPage extends Component {
   constructor(props, context) {
     super(props, context);
     this.preLoadFinished = this.preLoadFinished.bind(this);
-    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleQueryChange = this.handleQueryChange.bind(this);
     this.state = {
       loaded: ItemStore.preLoaded(),
     };
@@ -41,17 +42,22 @@ class SearchPage extends Component {
   }
 
   componentWillMount() {
-    SearchStore.addChangeListener(this.handleSearchChange);
+    SearchStore.addQueryChangeListener(this.handleQueryChange);
     SearchActions.setParamsFromUri();
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   componentWillUnmount() {
-    SearchStore.removeChangeListener(this.handleSearchChange);
+    SearchStore.removeQueryChangeListener(this.handleQueryChange);
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
-  handleSearchChange(){
+  componentWillReceiveProps(nextProps){
+    SearchActions.setParamsFromUri();
+  }
+
+  handleQueryChange(){
+    // If the query has changed, use the router to update the uri params
     this.context.router.push(SearchStore.searchUri());
   }
 
@@ -60,8 +66,7 @@ class SearchPage extends Component {
   }
 
   renderSearchBody() {
-    var searchTerm = QueryParm('q');
-    if(searchTerm == '' && SearchStore.topics.length <= 0) {
+    if(SearchStore.searchTerm == '' && SearchStore.topics.length <= 0) {
       return (
         <div className="col-sm-6" style={{ width: "100%" }}>
           <BackgroundIcon style={{ display: "inline-block", width: "150px", height: "150px" }} color={Colors.grey400}/>
@@ -82,26 +87,14 @@ class SearchPage extends Component {
         <hr className="search-separator" />
         <div key="catholic" className="col-sm-6">
           <Search
-            title = {CATHOLIC}
-            collection={HoneycombURL() + "/v1/collections/"
-              + VaticanID}
-            hits={HoneycombURL() + '/v1/collections/' + VaticanID + '/search'}
-            searchTerm={ searchTerm }
-            sortTerm={QueryParm('sort')}
-            facet={FacetQueryParms()}
-            start={parseInt(QueryParm('start'))}
+            title = { CATHOLIC }
+            collection={ CATHOLIC_COLLECTION }
           />
         </div>
         <div key="humanrights" className="col-sm-6" style={this.listStyle()}>
           <Search
-            title = {HUMANRIGHTS}
-            collection={HoneycombURL() + "/v1/collections/"
-              + HumanRightsID}
-            hits={HoneycombURL() + '/v1/collections/' + HumanRightsID + '/search'}
-            searchTerm={ searchTerm }
-            sortTerm={QueryParm('sort')}
-            facet={FacetQueryParms()}
-            start={parseInt(QueryParm('start'))}
+            title = { HUMANRIGHTS }
+            collection={ HUMANRIGHTS_COLLECTION }
           />
         </div>
       </div>

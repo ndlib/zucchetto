@@ -12,19 +12,35 @@ class SearchStore extends EventEmitter {
     this._searchTerm = "";
     Object.defineProperty(this, "searchTerm", { get: function() { return this._searchTerm; } });
 
+    this._hits = {};
+
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
-  addChangeListener(callback) {
-    this.on("SearchStoreChanged", callback);
+  // Adds a callback to listen for changes to the topics or the search term
+  addQueryChangeListener(callback) {
+    this.on("SearchStoreQueryChanged", callback);
   }
 
-  removeChangeListener(callback) {
-    this.removeListener("SearchStoreChanged", callback);
+  removeQueryChangeListener(callback) {
+    this.removeListener("SearchStoreQueryChanged", callback);
   }
 
-  emitChange() {
-    this.emit("SearchStoreChanged");
+  emitQueryChange() {
+    this.emit("SearchStoreQueryChanged");
+  }
+
+  // Adds a callback to listen for changes to the resulting hits for a collection
+  addResultsChangeListener(callback) {
+    this.on("SearchStoreResultsChanged", callback);
+  }
+
+  removeResultsChangeListener(callback) {
+    this.removeListener("SearchStoreResultsChanged", callback);
+  }
+
+  emitResultsChange(collection) {
+    this.emit("SearchStoreResultsChanged", collection);
   }
 
   addTopics(topics) {
@@ -43,6 +59,26 @@ class SearchStore extends EventEmitter {
     return Object.keys(this._topics);
   }
 
+  getHits(collection) {
+    if(this._hits[collection]) {
+      return this._hits[collection];
+    }
+    return null;
+  }
+
+  setHits(collection, hits) {
+    var items = [];
+    for (var h in hits.hit) {
+      if (hits.hit.hasOwnProperty(h)){
+        var hit = hits.hit[h];
+        var item = hit;
+        item.collection = collection
+        items.push(item);
+      }
+    }
+    this._hits[collection] = items;
+  }
+
   searchUri() {
     return '/search?q=' + this._searchTerm + '&t=' + this.getTopics().join(',');
   }
@@ -50,22 +86,26 @@ class SearchStore extends EventEmitter {
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
-      case SearchActionTypes.SEARCH_SET_PARAMS:
+      case SearchActionTypes.SEARCH_INI_PARAMS:
+        this._topics = {};
         this.addTopics(action.topics);
         this._searchTerm = action.searchTerm;
-        this.emitChange();
         break;
       case SearchActionTypes.SEARCH_SET_TERM:
         this._searchTerm = action.searchTerm;
-        this.emitChange();
+        this.emitQueryChange();
+        break;
+      case SearchActionTypes.SEARCH_SET_HITS:
+        this.setHits(action.collection, action.hits);
+        this.emitResultsChange(action.collection);
         break;
       case SearchActionTypes.SEARCH_ADD_TOPICS:
         this.addTopics(action.topics);
-        this.emitChange();
+        this.emitQueryChange();
         break;
       case SearchActionTypes.SEARCH_REMOVE_TOPICS:
         this.removeTopics(action.topics);
-        this.emitChange();
+        this.emitQueryChange();
         break;
       default:
         break;

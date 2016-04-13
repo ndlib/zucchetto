@@ -9,7 +9,7 @@ import EmptyColumn from './EmptyColumn.jsx'
 class NotebookColumn extends Component {
 
   removeDocumentClick(event) {
-    CompareActions.removeColumnItem(this.props.item);
+    CompareActions.removeColumnItem(this.props.columnNumber);
   }
 
   render() {
@@ -30,6 +30,7 @@ class NotebookColumn extends Component {
 
 NotebookColumn.propTypes = {
   item: React.PropTypes.object,
+  columnNumber: React.PropTypes.number,
 }
 
 NotebookColumn.defaultProps = {
