@@ -52,6 +52,10 @@ class SearchPage extends Component {
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
+  componentWillReceiveProps(nextProps){
+    SearchActions.setParamsFromUri();
+  }
+
   handleQueryChange(){
     // If the query has changed, use the router to update the uri params
     this.context.router.push(SearchStore.searchUri());
