@@ -87,6 +87,7 @@ class SearchStore extends EventEmitter {
   receiveAction(action) {
     switch(action.actionType) {
       case SearchActionTypes.SEARCH_INI_PARAMS:
+        this._topics = {};
         this.addTopics(action.topics);
         this._searchTerm = action.searchTerm;
         break;

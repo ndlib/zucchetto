@@ -3,7 +3,6 @@ import _ from 'underscore';
 import React, { Component, PropTypes } from 'react';
 import TopicFacets from './TopicFacets.jsx';
 import SearchActions from '../../actions/SearchActions.js';
-import QueryParm from '../../modules/QueryParam.js';
 import SearchStore from '../../store/SearchStore.js';
 import TopicNode from './TopicNode.js';
 
