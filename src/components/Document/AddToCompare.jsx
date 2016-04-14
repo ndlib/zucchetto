@@ -18,12 +18,8 @@ class AddToCompare extends Component {
     }
   }
 
-  componentWillMount() {
-    CompareStore.on('ItemCompareUpdated', this.setStateFromCompareStore);
-  }
-
-  componentWillUnmount() {
-    CompareStore.removeListener("ItemCompareUpdated", this.setStateFromCompareStore);
+  componentWillReceiveProps(nextProps){
+    this.setStateFromCompareStore();
   }
 
   getStateFromCompareStore() {

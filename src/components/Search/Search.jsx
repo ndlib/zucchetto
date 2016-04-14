@@ -3,6 +3,7 @@ var React = require('react');
 var CircularProgress = require('material-ui/lib/circular-progress');
 var Colors = require('material-ui/lib/styles/colors');
 var PageContent = require('../../layout/PageContent.jsx');
+var CompareStore = require("../../store/CompareStore.js");
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
@@ -23,11 +24,13 @@ var Search = React.createClass({
   },
 
   componentWillMount: function() {
+    CompareStore.on("ItemCompareUpdated", this.handleCompareChange);
     SearchStore.addResultsChangeListener(this.handleResultsChange);
     SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm);
   },
 
   componentWillUnmount: function() {
+    CompareStore.removeListener("ItemCompareUpdated", this.handleCompareChange);
     SearchStore.removeResultsChangeListener(this.handleResultsChange);
   },
 
@@ -47,6 +50,10 @@ var Search = React.createClass({
         loading: false,
       });
     }
+  },
+
+  handleCompareChange: function(){
+    this.forceUpdate();
   },
 
   render: function() {
