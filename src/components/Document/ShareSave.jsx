@@ -22,7 +22,10 @@ class ShareSave extends Component {
   }
 
   closeDialog() {
-    this.setState({ open: false });
+    this.setState({
+      open: false,
+      copyMessage: null
+    });
   }
 
   copyToClipBoard() {
