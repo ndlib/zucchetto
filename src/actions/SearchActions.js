@@ -57,11 +57,17 @@ class SearchActions {
   }
 
   buildQuery(topics, searchTerm) {
-    var qualifiedTopics = topics.map(function(v,i) { return '"' + v +'"' });
-    var unionTopics = qualifiedTopics.join(" OR ");
-    var q = "(" + unionTopics + ")";
-    if(searchTerm != "") {
-      q += " AND \"" + searchTerm + '"';
+    var q = "";
+    if(topics.length > 0) {
+      var qualifiedTopics = topics.map(function(v,i) { return '"' + v +'"' });
+      var unionTopics = qualifiedTopics.join(" OR ");
+      q += "(" + unionTopics + ")";
+    }
+    if(searchTerm !== "") {
+      if(q !== ""){
+        q += " AND ";
+      }
+      q += searchTerm;
     }
     return encodeURIComponent(q);
   }
