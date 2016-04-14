@@ -32,7 +32,6 @@ class ShareSave extends Component {
         this.setState({ copyMessage: true});
       }
     catch (err) {
-      alert('Please press Ctrl/Cmd+C to copy.');
       this.setState({ copyMessage: false});
     }
   }
