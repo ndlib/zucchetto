@@ -102,11 +102,14 @@ class CompareStore extends EventEmitter {
   setColumnItem(item) {
     if (!this._column1Item) {
       this._column1Item = item;
+      this.emit("CompareColumnsUpdated");
     } else if(!this._column2Item) {
       this._column2Item = item;
+      this.emit("CompareColumnsUpdated");
     }
-
-    this.emit("CompareColumnsUpdated");
+    else {
+      this.emit("CompareColumnsCannotBeUpdated");
+    }
   }
 
   removeColumnItem(columnNumber) {
