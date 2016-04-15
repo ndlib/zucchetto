@@ -20,14 +20,11 @@ ga.initialize('UA-2118378-43');
 function logPageView() {
 
   if(this.state.location.search === "") {
-    console.log(this.state.location.pathname);
     ga.pageview(this.state.location.pathname);
   }
   else {
-    console.log(this.state.location.pathname + '/' + this.state.location.search);
     ga.pageview(this.state.location.pathname + '/' + this.state.location.search);
   }
-
 }
 
 export default function() {
