@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import CompareStore from '../../store/CompareStore.js';
 import ItemStore from '../../store/ItemStore.js';
 import NotebookLink from '../Notebook/NotebookLink.jsx';
+import CompareButton from '../Document/CompareButton.jsx';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import mui from 'material-ui';
@@ -64,30 +65,59 @@ class Drawer extends Component {
       bottom: '52px',
       boxShadow: '0px -1px 5px #aaa',
       color: '#224048',
-      lineHeight: '30px',
-      minHeight: '40px',
-      padding: '0 20px',
+      height: '55px',
+      width: "100%",
+      padding: '10px 20px',
       position: 'fixed',
       zIndex: '2',
+      marginRight: 0,
+      marginLeft: 0,
     }
+  }
+
+  emptyDrawer() {
+    return (
+      <div style={this.style()} className="row">
+        <div className="col-sm-11">
+          <p>Select "Save for Comparison" in a document you wish to compare</p>
+        </div>
+        <div classNAme="col-sm-1">
+          <CompareButton shortText={true} />
+        </div>
+      </div>
+    );
+  }
+
+  drawer() {
+    return (
+      <div style={this.style()} className="row">
+        <div className="col-sm-1">
+          <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />
+        </div>
+        <div className="col-sm-3">
+          { this.state.vatCount } Catholic Social Teachings<br />
+          { this.state.humanCount } International Human Rights Laws
+        </div>
+        <div className="col-sm-7">
+          <mui.FlatButton
+            label="clear all documents"
+            onClick={this.clearAll.bind(this)}
+          />
+        </div>
+        <div classNAme="col-sm-1">
+          <CompareButton shortText={true} />
+        </div>
+      </div>
+    );
   }
 
   render() {
     if(CompareStore.drawerOpen()) {
-      return (
-        <div style={this.style()}>
-          <h4>Select Results to Compare.</h4>
-          <div>{this.state.vatCount} Catholic Social Teachings</div>
-          <div>{this.state.humanCount} International Human Rights Laws</div>
-          <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />
-          <mui.FlatButton
-            label="clear"
-            onClick={this.clearAll.bind(this)}
-            className="right"
-          />
-          <div style={{clear:'both'}}/>
-        </div>
-      );
+      if (this.state.vatCount == 0 && this.state.vatCount == 0) {
+        return (this.emptyDrawer());
+      } else {
+        return this.drawer();
+      }
     }
     else {
       return (<div/>);

@@ -40,7 +40,7 @@ class NotebookLink extends Component {
           backgroundColor: this.props.disabled ? '#dddddd': '#224048',
           color: this.props.disabled ? '#cdcdcd' : '#ffffff',
           cursor: this.props.disabled ? 'default' :'pointer',
-          display: 'inline-block',
+          display: 'inline',
           float: 'left',
           fontFamily: 'Roboto,​sans-serif',
           fontSize: '0.9em',
