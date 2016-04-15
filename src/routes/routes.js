@@ -14,10 +14,23 @@ import DocumentPage from './DocumentPage.jsx';
 import AllDocumentsPage from './AllDocumentsPage.jsx';
 import Page from './Page.jsx';
 
+var ga = require('react-ga');
+ga.initialize('UA-2118378-43');
+
+function logPageView() {
+
+  if(this.state.location.search === "") {
+    ga.pageview(this.state.location.pathname);
+  }
+  else {
+    ga.pageview(this.state.location.pathname + '/' + this.state.location.search);
+  }
+}
 
 export default function() {
+
   return (
-    <Router history={ browserHistory }>
+    <Router history={ browserHistory } onUpdate={logPageView}>
       <Route path="/" component={ Page }>
         <IndexRoute component={ SiteIndexPage } />
         <Route path="/about" component={ AboutPage } />
