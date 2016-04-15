@@ -87,9 +87,9 @@ class Document extends Component {
             primaryAction={ this.selectParagraph }
           />
           <CopyrightNotification item={ this._parent } />
-          <DocumentType item={this._parent} />
         </div>
         <div className="document" ref={"document-" + this._parent.id}>
+          <DocumentType item={this._parent} />
           <div style={ this.props.bodyStyle } >
             { this.paragraphs() }
           </div>

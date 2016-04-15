@@ -5,7 +5,7 @@ class DocumentType extends Component {
 
   render() {
     if (this.props.item.metadata.type_of_document) {
-      return (<h3>{this.props.item.metadata.type_of_document.values[0].value}</h3>);
+      return (<i>{this.props.item.metadata.type_of_document.values[0].value}</i>);
     }
     return (<div />);
   }
