@@ -81,7 +81,7 @@ class Drawer extends Component {
         <div className="col-sm-11">
           <p>Select "Save for Comparison" in a document you wish to compare</p>
         </div>
-        <div classNAme="col-sm-1">
+        <div className="col-sm-1">
           <CompareButton shortText={true} />
         </div>
       </div>

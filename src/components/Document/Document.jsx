@@ -6,6 +6,7 @@ import ItemStore from '../../store/ItemStore.js';
 import Paragraph from './Paragraph.jsx';
 import Title from './Title.jsx';
 import DownloadPDF from './DownloadPDF.jsx';
+import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
 import CompareStore from '../../store/CompareStore.js';
@@ -86,6 +87,7 @@ class Document extends Component {
             primaryAction={ this.selectParagraph }
           />
           <CopyrightNotification item={ this._parent } />
+          <DocumentType item={this._parent} />
         </div>
         <div className="document" ref={"document-" + this._parent.id}>
           <div style={ this.props.bodyStyle } >
@@ -106,7 +108,7 @@ Document.propTypes = {
 Document.defaultProps = {
   bodyStyle: {
     fontSize: "16px",
-    maxWidth: "32.5em", // Should put it between 70-75 characters at 1em (16px)
+    maxWidth: "40em", // Should put it between 70-75 characters at 1em (16px)
     margin: "0 auto",
   },
 };
