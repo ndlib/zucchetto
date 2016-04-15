@@ -8,6 +8,7 @@ import Title from './Title.jsx';
 import DownloadPDF from './DownloadPDF.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
+import ViewOriginal from './ViewOriginal.jsx';
 import CompareStore from '../../store/CompareStore.js';
 import ParagraphJumpList from './ParagraphJumpList.jsx';
 
@@ -86,6 +87,7 @@ class Document extends Component {
             primaryAction={ this.selectParagraph }
           />
           <CopyrightNotification item={ this._parent } />
+          <ViewOriginal item={ this._parent } />
         </div>
         <div className="document" ref={"document-" + this._parent.id}>
           <div style={ this.props.bodyStyle } >
