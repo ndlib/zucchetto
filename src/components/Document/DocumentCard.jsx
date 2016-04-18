@@ -44,13 +44,10 @@ class DocumentCard extends Component {
     return (
       <div className="document">
         <DocumentDialog ref="DocumentDialog"/>
-        <div style={{ float: "right "}} className="view-document" onClick={ this.viewDocument.bind(this) }>
-          <i className="material-icons view-document-icon">description</i>
-          <span>Full Document</span>
-        </div>
-        <div  style={{cursor: 'pointer'}} onClick={this.primaryAction}>
+        <div  style={{cursor: 'pointer', textDecoration: "underline"}} onClick={this.primaryAction}>
           <Title item={this._doc} />
         </div>
+        
         {this.props.children}
       </div>
     );

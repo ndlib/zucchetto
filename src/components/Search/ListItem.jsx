@@ -57,12 +57,10 @@ class ListItem extends Component{
         paragraphs={ this._paragraphs }
         primaryAction={ this.titleOnClick }
       >
-        <div
-          style={{
-            float: 'right',
-            clear: 'right',
-          }}
-        >Results in Document: {this._paragraphs.length}</div>
+        <p>
+          <span style={{ color: "lightgrey" }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard...</span>
+          <br /><span style={{ textDecoration: "underline" }}>View Results ({this._paragraphs.length})</span>.
+        </p>
         <AddToCompare
           item={ this._doc }
           subItems={ this._paragraphs }
