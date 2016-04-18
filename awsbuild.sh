@@ -4,6 +4,8 @@ PROJECT=csthr
 BUCKET=${PROJECT}.library.nd.edu
 ENV_ALIAS=honeycomb
 
+git pull
+
 npm run build
 
 cd ./public
