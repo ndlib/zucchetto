@@ -98,7 +98,7 @@ var Result = React.createClass({
                       </p>
                     </article>
                     <article className="result">
-                      <h4><a href="#" className="open" data-toggle="collapse" href="#firstDocument" aria-expanded="false" aria-controls="firstDocument">Document Title</a></h4>
+                      <h4><a className="open" data-toggle="collapse" href="#firstDocument" aria-expanded="false" aria-controls="firstDocument">Document Title</a></h4>
                       <div className="paragraphNumber">Paragraph 235</div>
                       <div className=" blurb" id="firstDocument">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -123,7 +123,7 @@ var Result = React.createClass({
                   <h3>International Human Rights Law</h3>
 
                   <article className="result">
-                      <h4><a href="#" className="closed" data-toggle="collapse" href="#firstDocument" aria-expanded="false" aria-controls="firstDocument">Document Title</a></h4>
+                      <h4><a className="closed" data-toggle="collapse" href="#firstDocument" aria-expanded="false" aria-controls="firstDocument">Document Title</a></h4>
                       <div className="paragraphNumber">Paragraph 235</div>
                       <div className="collapse blurb" id="firstDocument">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -144,7 +144,7 @@ var Result = React.createClass({
                       </p>
                     </article>
                     <article className="result">
-                      <h4><a href="#" className="closed" data-toggle="collapse" href="#firstDocument" aria-expanded="false" aria-controls="firstDocument">Document Title</a></h4>
+                      <h4><a className="closed" data-toggle="collapse" href="#firstDocument" aria-expanded="false" aria-controls="firstDocument">Document Title</a></h4>
                       <div className="paragraphNumber">Paragraph 235</div>
                       <div className="collapse blurb" id="firstDocument">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
