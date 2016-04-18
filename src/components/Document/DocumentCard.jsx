@@ -14,9 +14,7 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 
 
 const iconButtonElement = (
-  <IconButton
-    touch={true}
-  >
+  <IconButton touch={true}>
     <MoreVertIcon color={Colors.grey400} />
   </IconButton>
 );
@@ -36,16 +34,8 @@ class DocumentCard extends Component {
     this.props.primaryAction(event, this._doc);
   }
 
-  moreAction(event, child) {
-    switch(child.key) {
-      case "ViewDocument":
-        this.refs.DocumentDialog.handleOpen(child.props.documentId);
-        break;
-      case "DownloadPDF":
-        break;
-      default:
-        break;
-    }
+  viewDocument(event) {
+    this.refs.DocumentDialog.handleOpen(this._doc.id);
   }
 
   render() {
@@ -54,11 +44,9 @@ class DocumentCard extends Component {
     return (
       <div className="document">
         <DocumentDialog ref="DocumentDialog"/>
-        <div style={{ float: "right "}}>
-          <IconMenu iconButtonElement={iconButtonElement} onItemTouchTap={ this.moreAction.bind(this) }>
-            <MenuItem key="ViewDocument" documentId={ this._doc.id }>View Document</MenuItem>
-            <MenuItem key="DownloadPDF">Download PDF</MenuItem>
-          </IconMenu>
+        <div style={{ float: "right "}} className="view-document" onClick={ this.viewDocument.bind(this) }>
+          <i className="material-icons view-document-icon">description</i>
+          <span>Full Document</span>
         </div>
         <div  style={{cursor: 'pointer'}} onClick={this.primaryAction}>
           <Title item={this._doc} />

@@ -20,7 +20,7 @@ body {
 }
 
 .document-head {
-  
+
   background-color: $documentBackground;
   margin: 0.5em 0;
   padding: 0.2em 1em;
@@ -121,7 +121,7 @@ body {
   box-shadow: inset 0 0 3px #999;
 
   h3 {
-    margin-top:0; 
+    margin-top:0;
     margin-bottom: 20px;
     float: left;
   }
@@ -154,4 +154,18 @@ body {
       font-size:14px;
     }
   }
+}
+
+.view-document {
+  font-size: 14px;
+  color: #224048;
+  cursor: pointer;
+  padding: 1px;
+}
+
+.view-document-icon {
+  font-size: 16px;
+  vertical-align: middle;
+  color: #224048;
+  cursor: pointer;
 }
