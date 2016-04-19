@@ -74,7 +74,6 @@ class SearchPage extends Component {
           <div style={{ display: "inline-block", position: "fixed", paddingTop: "45px" }}>
             <h1>Get Started</h1>
             <h2>Enter a search query or select a filter to view a list of matching documents.</h2>
-
             <TokenSearchBox />
             <p>See <Link to="/documents">document index</Link></p>
 

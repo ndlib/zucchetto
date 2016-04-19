@@ -14,7 +14,7 @@ var TopicsForAutoComplete = require('./TopicsForAutoComplete.js');
 var TokenSearchBox = React.createClass({
   getInitialState: function() {
     return {
-      input: '',
+      input: SearchStore.searchTerm,
       loading: false,
       selected: [],
       options: TopicsForAutoComplete,
@@ -68,6 +68,10 @@ var TokenSearchBox = React.createClass({
       terms.push(this.state.selected[i].id)
     }
     SearchActions.setTerm(terms.join(','));
+  },
+
+  onSubmit: function(e) {
+    SearchActions.setTerm(this.state.searchTerm);
   },
 
   filterTags: function(userInput) {
@@ -136,6 +140,7 @@ var TokenSearchBox = React.createClass({
             selected={ this.state.selected }
             placeholder={ this.state.selected.length > 0 ? '' : 'SEARCH THE DATABASE' }
             value={ this.state.searchTerm }
+            onSubmit={ this.onSubmit }
             />
           </div>
           <RaisedButton
