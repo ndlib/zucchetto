@@ -12,11 +12,16 @@ var HumanRightsID = require('../../constants/HumanRightsID.js');
 var TopicsForAutoComplete = require('./TopicsForAutoComplete.js');
 
 var TokenSearchBox = React.createClass({
+
   getInitialState: function() {
+    var selectedTerms = [];
+    if(SearchStore.searchTerm.length > 0) {
+      selectedTerms = SearchStore.searchTerm.split(',').map(function(x){ return {name: x, id: x}});
+    }
     return {
       input: SearchStore.searchTerm,
       loading: false,
-      selected: [],
+      selected: selectedTerms,
       options: TopicsForAutoComplete,
       searchTerm: SearchStore.searchTerm
     };
@@ -68,10 +73,6 @@ var TokenSearchBox = React.createClass({
       terms.push(this.state.selected[i].id)
     }
     SearchActions.setTerm(terms.join(','));
-  },
-
-  onSubmit: function(e) {
-    SearchActions.setTerm(this.state.searchTerm);
   },
 
   filterTags: function(userInput) {
@@ -139,8 +140,7 @@ var TokenSearchBox = React.createClass({
             onRemove={ this.handleRemove }
             selected={ this.state.selected }
             placeholder={ this.state.selected.length > 0 ? '' : 'SEARCH THE DATABASE' }
-            value={ this.state.searchTerm }
-            onSubmit={ this.onSubmit }
+            onSubmit={ this.onClick }
             />
           </div>
           <RaisedButton
