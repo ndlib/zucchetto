@@ -69,11 +69,7 @@ class Document extends Component {
     }
 
     ReactDOM.findDOMNode(this.refs["document-" + this._parent.id]).scrollTop = offset;
-
-
   }
-
-
 
   render() {
     return (

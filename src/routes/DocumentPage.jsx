@@ -29,18 +29,32 @@ class DocumentPage extends Component {
   }
 
   renderDocument() {
-    if (this.state.loaded) {
-      return (<Document documentId={ this.props.params.id } />);
-    } else {
-      return (<p>Loading....</p>);
-    }
+    return (<Document documentId={ this.props.params.id } />);
   }
 
   render() {
+    if (!this.state.loaded) {
+      return (<p>Loading....</p>);
+    }
+
     return (
       <mui.Paper zDepth={ 0 }>
         <Header/>
-        { this.renderDocument() }
+        <br /><br /><br />
+        <mui.Tabs style={{ top: "70px" }}>
+          <mui.Tab label="Search Results">
+            Search Results
+          </mui.Tab>
+          <mui.Tab label="Full Document">
+            { this.renderDocument() }
+          </mui.Tab>
+          <mui.Tab label="Metadata">
+            Metadata HI!
+          </mui.Tab>
+          <mui.Tab label="Download">
+
+          </mui.Tab>
+        </mui.Tabs>
       </mui.Paper>
     );
   }

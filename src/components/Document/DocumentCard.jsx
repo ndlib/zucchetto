@@ -24,6 +24,7 @@ class DocumentCard extends Component {
     super(props);
 
     this.primaryAction = this.primaryAction.bind(this);
+    this.viewDocument = this.viewDocument.bind(this);
     this._doc = this.props.doc;
     this._paragraphs = this.props.paragraphs;
 
@@ -44,7 +45,7 @@ class DocumentCard extends Component {
     return (
       <article className="result document">
         <DocumentDialog ref="DocumentDialog"/>
-        <div  style={{cursor: 'pointer', textDecoration: "underline"}} onClick={this.primaryAction}>
+        <div  style={{cursor: 'pointer', textDecoration: "underline"}} onClick={this.viewDocument}>
           <Title item={this._doc} />
         </div>
 

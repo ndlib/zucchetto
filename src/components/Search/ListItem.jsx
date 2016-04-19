@@ -63,19 +63,12 @@ class ListItem extends Component{
       >
         <div className="blurb">
           <p>
-            { this.blurb() }
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard...
           </p>
           <a href="#">
             { this._paragraphs.length } Search Results in Document
           </a>
         </div>
-        <hr />
-        <p>
-          <AddToCompare
-            item={ this._doc }
-            subItems={ this._paragraphs }
-          />
-        </p>
         { this.paragraphs() }
       </DocumentCard>
     );
