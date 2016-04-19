@@ -7,6 +7,7 @@ import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
 
+
 class ListItem extends Component{
   constructor(props) {
     super(props);
