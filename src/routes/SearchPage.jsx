@@ -11,7 +11,8 @@ import VaticanID from '../constants/VaticanID.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
-import SearchBox from '../components/Search/SearchBox.jsx';
+
+import TokenSearchBox from '../components/Search/TokenSearchBox.jsx';
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
 import Drawer from '../components/Search/Drawer.jsx';
 import ItemActions from '../actions/ItemActions.jsx';
@@ -73,7 +74,8 @@ class SearchPage extends Component {
           <div style={{ display: "inline-block", position: "fixed", paddingTop: "45px" }}>
             <h1>Get Started</h1>
             <h2>Enter a search query or select a filter to view a list of matching documents.</h2>
-            <SearchBox />
+
+            <TokenSearchBox />
             <p>See <Link to="/documents">document index</Link></p>
 
           </div>
@@ -83,7 +85,8 @@ class SearchPage extends Component {
 
     return (
       <div className="col-sm-12" style={{ paddingTop: "7px"}}>
-        <SearchBox />
+
+        <TokenSearchBox />
         <hr className="search-separator" />
         <div key="catholic" className="col-sm-6">
           <Search
