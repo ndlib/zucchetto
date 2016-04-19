@@ -50,6 +50,10 @@ class ListItem extends Component{
     }
   }
 
+  blurb() {
+    this._paragraphs[0].metadata.transcription.values[0].value.substring(0, 100);
+  }
+
   render() {
     return (
       <DocumentCard
@@ -57,14 +61,21 @@ class ListItem extends Component{
         paragraphs={ this._paragraphs }
         primaryAction={ this.titleOnClick }
       >
+        <div className="blurb">
+          <p>
+            { this.blurb() }
+          </p>
+          <a href="#">
+            { this._paragraphs.length } Search Results in Document
+          </a>
+        </div>
+        <hr />
         <p>
-          <span style={{ color: "lightgrey" }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard...</span>
-          <br /><span style={{ textDecoration: "underline" }}>View Results ({this._paragraphs.length})</span>.
+          <AddToCompare
+            item={ this._doc }
+            subItems={ this._paragraphs }
+          />
         </p>
-        <AddToCompare
-          item={ this._doc }
-          subItems={ this._paragraphs }
-        />
         { this.paragraphs() }
       </DocumentCard>
     );

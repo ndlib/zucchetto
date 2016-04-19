@@ -42,14 +42,14 @@ class DocumentCard extends Component {
     var icon = (<mui.FontIcon className="material-icons">menu</mui.FontIcon>);
 
     return (
-      <div className="document">
+      <article className="result document">
         <DocumentDialog ref="DocumentDialog"/>
         <div  style={{cursor: 'pointer', textDecoration: "underline"}} onClick={this.primaryAction}>
           <Title item={this._doc} />
         </div>
-        
+
         {this.props.children}
-      </div>
+      </article>
     );
   }
 }
