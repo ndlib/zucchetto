@@ -67,7 +67,6 @@ var TokenSearchBox = React.createClass({
   },
 
   onClick: function(e) {
-    console.log(this.state.selected);
     var terms = [];
     for(var i = 0; i < this.state.selected.length; i++) {
       terms.push(this.state.selected[i].id)
