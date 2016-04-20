@@ -16,7 +16,11 @@ var TokenSearchBox = React.createClass({
   getInitialState: function() {
     var selectedTerms = [];
     if(SearchStore.searchTerm.length > 0) {
-      selectedTerms = SearchStore.searchTerm.split(',').map(function(x){ return {name: x, id: x}});
+      selectedTerms = SearchStore.searchTerm.split(',').map(
+        function(x){
+          x = x.replace(/\"/gi, '');
+          return {name: x, id: x}
+      });
     }
     return {
       input: SearchStore.searchTerm,
@@ -69,7 +73,7 @@ var TokenSearchBox = React.createClass({
   onClick: function(e) {
     var terms = [];
     for(var i = 0; i < this.state.selected.length; i++) {
-      terms.push(this.state.selected[i].id)
+      terms.push('"' + this.state.selected[i].id + '"')
     }
     SearchActions.setTerm(terms.join(','));
   },
@@ -77,7 +81,7 @@ var TokenSearchBox = React.createClass({
   filterTags: function(userInput) {
     if (userInput === '')
       return this.setState({options: []});
-    var filter = new RegExp('^'+userInput, 'i');
+    var filter = new RegExp(userInput, 'i');
     var filteredNames = TopicsForAutoComplete.filter(function(state) {
       return filter.test(state.name); // || filter.test(state.id);
     }).filter(function(state) {
