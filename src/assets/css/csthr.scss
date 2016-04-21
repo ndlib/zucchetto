@@ -153,6 +153,7 @@ nav {
 	.right-col {
 		padding-right: 0;
 
+
 		h1 {
 			font-size: 22px;
 		}
@@ -209,6 +210,10 @@ nav {
 			font-size: 22px;
 		}
 	}
+}
+
+.doc-list {
+	margin-bottom:100px;
 }
 
 .search {
@@ -306,10 +311,15 @@ nav {
 	}
 }
 
+.filters {
+	overflow-y: scroll;
+	max-height: calc(100vh - 250px);
+}
+
 .partners {
 	table {
 		width: 100%;
-		margin-bottom:2em;
+		margin-bottom:4em;
 
 		td {
 			width: 50%;
@@ -334,6 +344,7 @@ footer {
   position: fixed;
   bottom: 0px;
   background-color: $tan;
+  z-index: 4;
 	img.undhl {
 		vertical-align: bottom;
 		margin-right: 15px;
