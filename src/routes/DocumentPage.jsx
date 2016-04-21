@@ -5,12 +5,16 @@ import mui from 'material-ui';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
 import Document from '../components/Document/Document.jsx';
+import Title from '../components/Document/Title.jsx';
+
 import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from '../store/ItemStore.js'
 
 class DocumentPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this._item = false;
+    this._parent = false;
     this.state = {
       loaded: ItemStore.preLoaded(),
     };
@@ -38,26 +42,41 @@ class DocumentPage extends Component {
       return (<p>Loading....</p>);
     }
 
+    var parent = ItemStore.getItem(this.props.params.id);
     return (
       <mui.Paper zDepth={ 0 }>
-        <Header/>
+        <Header />
         <br /><br /><br />
-        <mui.Tabs style={{ top: "70px" }}>
-          <mui.Tab label="Search Results">
-            <h2>Search Results</h2>
-            <p> These would be the selected paragraphs in order of relavance. Options include compare this paragraph. </p>
-          </mui.Tab>
-          <mui.Tab label="Full Document">
-            { this.renderDocument() }
-          </mui.Tab>
-          <mui.Tab label="Metadata">
-            <h2> Metadata </h2>
-            the full document metadata.
-          </mui.Tab>
-          <mui.Tab label="Download">
+        <mui.Toolbar>
+          <mui.ToolbarTitle text={ parent.name } />
+          <mui.ToolbarGroup float="right">
+            <mui.FlatButton label="Download PDF" />
+          </mui.ToolbarGroup>
+          <mui.ToolbarGroup float="right">
+            <mui.FlatButton label="Metadata" />
+          </mui.ToolbarGroup>
+          <mui.ToolbarGroup float="right">
+            <mui.FlatButton label="Document" />
+          </mui.ToolbarGroup>
+        </mui.Toolbar>
 
-          </mui.Tab>
-        </mui.Tabs>
+        <mui.Paper zDepth={ 0 } style={{ width: "70%", float: "left" }}>
+          { this.renderDocument() }
+        </mui.Paper>
+        <mui.Paper zDepth={ 0 } style={{ width: "30%", float: "left" }}>
+          <div style={{ padding: "25px 0" }}>
+            <mui.RaisedButton label="Add to Research" />
+          </div>
+          <h4>Highlight Paragraphs</h4>
+          <div className="right"> <mui.Toggle label="Only Show Hightlighed Paragraphs" labelPosition="right" /> </div>
+          <mui.Menu>
+            <mui.MenuItem primaryText="Search Results (14)" />
+            <mui.Divider />
+            <mui.MenuItem primaryText="Family (23)" />
+            <mui.MenuItem primaryText="Child Works (2)" />
+            <mui.MenuItem primaryText="Baseball (0)" />
+          </mui.Menu>
+        </mui.Paper>
         <Footer />
       </mui.Paper>
     );

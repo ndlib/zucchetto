@@ -104,7 +104,7 @@ class Drawer extends Component {
             onClick={this.clearAll.bind(this)}
           />
         </div>
-        <div classNAme="col-sm-1">
+        <div className="col-sm-1">
           <CompareButton shortText={true} />
         </div>
       </div>
