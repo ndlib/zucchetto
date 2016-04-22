@@ -33,13 +33,13 @@ var TokenSearchBox = React.createClass({
 
   handleChange: function(value) {
     this.setState({
-      selected: value
-    })
+      selected: value,
+    }, this.onSubmit);
   },
 
   handleRemove: function(value) {
     var selectedOptions = uniq(without(this.state.selected,value))
-    this.handleChange(selectedOptions)
+    this.handleChange(selectedOptions);
   },
 
   handleSelect: function(value, combobox) {
@@ -70,7 +70,7 @@ var TokenSearchBox = React.createClass({
     }.bind(this), 500)
   },
 
-  onClick: function(e) {
+  onSubmit: function(e) {
     var terms = [];
     for(var i = 0; i < this.state.selected.length; i++) {
       terms.push('"' + this.state.selected[i].id + '"')
@@ -143,7 +143,7 @@ var TokenSearchBox = React.createClass({
             onRemove={ this.handleRemove }
             selected={ this.state.selected }
             placeholder={ this.state.selected.length > 0 ? '' : 'SEARCH THE DATABASE' }
-            onSubmit={ this.onClick }
+            onSubmit={ this.onSubmit }
             />
           </div>
           <RaisedButton
