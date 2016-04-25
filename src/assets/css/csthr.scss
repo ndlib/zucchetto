@@ -147,7 +147,7 @@ nav {
 		}
 		ul ul {
       		padding-left: 1em !important;
-    	}	
+    	}
 	}
 
 	.right-col {
@@ -267,6 +267,9 @@ nav {
 			a.open {
 				background: url(/resources/images/open.png) no-repeat right 8px;
 			}
+      a:hover {
+        text-decoration: underline;
+      }
 
 		}
 
@@ -365,8 +368,8 @@ button.right {
 .right {
 		img {
 			float: right;
-			
-			
+
+
 		}
 	}
 

@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js';
 import Document from '../Document/Document.jsx';
+import DocumentDialog from '../Document/DocumentDialog.jsx';
 import Paragraph from '../Document/Paragraph.jsx';
 import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
@@ -14,6 +15,7 @@ class ListItem extends Component{
     this.state = {
       showDocument: false,
     };
+    this.resultsOnClick = this.resultsOnClick.bind(this);
     this.titleOnClick = this.titleOnClick.bind(this);
     this.paragraphs = this.paragraphs.bind(this);
 
@@ -24,8 +26,13 @@ class ListItem extends Component{
     }
   }
 
-  titleOnClick() {
+  resultsOnClick(event) {
+    event.preventDefault();
     this.setState({showDocument: !this.state.showDocument});
+  }
+
+  titleOnClick(event) {
+    this.refs.DocumentDialog.handleOpen(this._doc.id);
   }
 
   paragraphs() {
@@ -51,33 +58,36 @@ class ListItem extends Component{
   }
 
   blurb() {
-    this._paragraphs[0].metadata.transcription.values[0].value.substring(0, 100);
+    return this._paragraphs[0].metadata.transcription.values[0].value.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
   render() {
     return (
-      <DocumentCard
-        doc={ this._doc }
-        paragraphs={ this._paragraphs }
-        primaryAction={ this.titleOnClick }
-      >
-        <div className="blurb">
+      <div>
+        <DocumentDialog ref="DocumentDialog" />
+        <DocumentCard
+          doc={ this._doc }
+          paragraphs={ this._paragraphs }
+          primaryAction={ this.titleOnClick }
+        >
+          <div className="blurb">
+            <p style={{ textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
+              { this.blurb() }
+            </p>
+            <a href="#" onClick={ this.resultsOnClick } >
+              { this._paragraphs.length } Search Results in Document
+            </a>
+          </div>
+          <hr />
           <p>
-            { this.blurb() }
+            <AddToCompare
+              item={ this._doc }
+              subItems={ this._paragraphs }
+            />
           </p>
-          <a href="#">
-            { this._paragraphs.length } Search Results in Document
-          </a>
-        </div>
-        <hr />
-        <p>
-          <AddToCompare
-            item={ this._doc }
-            subItems={ this._paragraphs }
-          />
-        </p>
-        { this.paragraphs() }
-      </DocumentCard>
+          { this.paragraphs() }
+        </DocumentCard>
+      </div>
     );
   }
 };

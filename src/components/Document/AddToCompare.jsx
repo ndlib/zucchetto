@@ -43,7 +43,8 @@ class AddToCompare extends Component {
     });
   }
 
-  addToCompareClick() {
+  addToCompareClick(event) {
+    event.preventDefault();
     if(this.state.checked === TRUE || this.state.checked === IND) {
       this.setState({ checked: FALSE  }, this.runCompareAction.bind(this));
     }
@@ -91,7 +92,7 @@ class AddToCompare extends Component {
     if(this.state.checked === TRUE) {
       return "Clear";
     } else {
-      return "Compare All Search Results";
+      return "Compare";
     }
   }
 
