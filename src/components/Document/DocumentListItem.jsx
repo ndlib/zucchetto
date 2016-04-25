@@ -19,21 +19,6 @@ class DocumentListItem extends Component {
     event.preventDefault();
   }
 
-  // paragraphs() {
-  //   let clickFunc = this.props.primaryAction;
-  //   let paragraphs = [];
-  //     this.props.subItems.forEach(function(item, index){
-  //       paragraphs.push(
-  //         <DocumentParagraphListItem
-  //           key={item.id}
-  //           item={item}
-  //           primaryAction={clickFunc}
-  //         />
-  //       );
-  //   });
-  //   return paragraphs;
-  // }
-
   render() {
     return (
       <li style={{margin: "5px"}} >

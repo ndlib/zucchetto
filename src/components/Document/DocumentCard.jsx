@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import ItemStore from '../../store/ItemStore.js';
 import CurrentParagraph from '../Document/CurrentParagraph.jsx';
-import DocumentDialog from '../Document/DocumentDialog.jsx';
 import Title from '../Document/Title.jsx';
 import mui from 'material-ui';
 import Colors from 'material-ui/lib/styles/colors';
@@ -31,28 +30,21 @@ class DocumentCard extends Component {
   }
 
   primaryAction(event) {
+    event.preventDefault();
     this.props.primaryAction(event, this._doc);
-  }
-
-  viewDocument(event) {
-    this.refs.DocumentDialog.handleOpen(this._doc.id);
   }
 
   render() {
     var icon = (<mui.FontIcon className="material-icons">menu</mui.FontIcon>);
 
     return (
-      <div className="document">
-        <DocumentDialog ref="DocumentDialog"/>
-        <div style={{ float: "right "}} className="view-document" onClick={ this.viewDocument.bind(this) }>
-          <i className="material-icons view-document-icon">description</i>
-          <span>Full Document</span>
-        </div>
-        <div  style={{cursor: 'pointer'}} onClick={this.primaryAction}>
+      <article className="result document">
+        <a href="#" onClick={this.primaryAction}>
           <Title item={this._doc} />
-        </div>
+        </a>
+
         {this.props.children}
-      </div>
+      </article>
     );
   }
 }

@@ -43,7 +43,8 @@ class AddToCompare extends Component {
     });
   }
 
-  addToCompareClick() {
+  addToCompareClick(event) {
+    event.preventDefault();
     if(this.state.checked === TRUE || this.state.checked === IND) {
       this.setState({ checked: FALSE  }, this.runCompareAction.bind(this));
     }
@@ -77,26 +78,34 @@ class AddToCompare extends Component {
 
   checked() {
     if(this.state.checked === TRUE) {
-      return (<i className="material-icons add-to-compare-checkbox">check_box</i>);
+      return (<i className="material-icons add-to-compare-checkbox">clear</i>);
     }
     else if(this.state.checked === FALSE) {
-      return (<i className="material-icons add-to-compare-checkbox">check_box_outline_blank</i>);
+      return (<i className="material-icons add-to-compare-checkbox">add_box</i>);
     }
     else {
       return (<i className="material-icons add-to-compare-checkbox">indeterminate_check_box</i>);
     }
   }
 
+  label() {
+    if(this.state.checked === TRUE) {
+      return "Clear";
+    } else {
+      return "Compare";
+    }
+  }
+
   render() {
-    var label = 'Save For Comparison';
     return (
-      <div
+      <a
+        href="#"
         className="add-to-compare"
         onClick={this.addToCompareClick}
         style={{cursor: 'pointer'}}
         >
-          { this.checked() }{ label }
-        </div>
+          { this.checked() }{ this.label() }
+        </a>
       );
   }
 }
