@@ -27,7 +27,13 @@ class NotebookList extends Component {
   }
 
   documentClick(event, item) {
-    CompareActions.setColumnItem(item);
+    if(CompareStore.getColumn1() === item) {
+      CompareStore.removeColumnItem(1);
+    } else if(CompareStore.getColumn2() === item) {
+      CompareStore.removeColumnItem(2);
+    } else {
+      CompareActions.setColumnItem(item);
+    }
     event.preventDefault();
   }
 
@@ -78,18 +84,20 @@ class NotebookList extends Component {
         <ShareSave />
         <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
-              paddingLeft: '1em',
+            listStyleType: 'none',
+            paddingLeft: '1em',
           }}>
             { this.documentList(this._vatican_douments) }
           </ul>
 
           <h4 className="category">International Human Rights</h4>
             <ul style={{
-                paddingLeft: '1em',
+              listStyleType: 'none',
+              paddingLeft: '1em',
             }}>
               { this.documentList(this._humanrights_documents) }
             </ul>
-          
+
       </div>
     );
   }
