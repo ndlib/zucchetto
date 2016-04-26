@@ -17,6 +17,7 @@ class NotebookList extends Component {
 
     this.documentClick = this.documentClick.bind(this);
     this.documentList = this.documentList.bind(this);
+    this.updateColumnState = this.updateColumnState.bind(this);
 
     this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
       return item.collection_id == HumanRightsID;
@@ -28,6 +29,22 @@ class NotebookList extends Component {
       column1: null,
       column2: null,
     };
+  }
+
+  componentWillMount() {
+    CompareStore.on('CompareColumnsUpdated', this.updateColumnState);
+  }
+
+  componentWillUnmount() {
+    CompareStore.removeListener('CompareColumnsUpdated', this.updateColumnState);
+  }
+
+  updateColumnState(columnNumber) {
+    if(columnNumber === 1) {
+      this.setState({column1: null});
+    } else if(columnNumber === 2) {
+      this.setState({column2: null});
+    }
   }
 
   documentClick(event, item) {

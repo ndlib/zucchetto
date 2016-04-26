@@ -118,7 +118,7 @@ class CompareStore extends EventEmitter {
     } else if (columnNumber == 2) {
       this._column2Item = false;
     }
-    this.emit("CompareColumnsUpdated");
+    this.emit("CompareColumnsUpdated", columnNumber);
   }
 
   clearColumnItems() {
