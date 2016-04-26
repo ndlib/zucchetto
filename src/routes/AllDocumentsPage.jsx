@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui from 'material-ui';
+import { Link } from 'react-router';
 
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
@@ -57,8 +58,12 @@ class AllDocumentsPage extends Component {
     }.bind(this));
   }
 
+  documentURL(item){
+    return "/document/" + item.id;
+  }
+
   listItem(item) {
-    return (<li>{item.name}</li>);
+    return (<li><Link to={this.documentURL(item)}>{item.name}</Link></li>);
   }
 
   render() {
