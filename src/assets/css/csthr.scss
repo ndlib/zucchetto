@@ -57,6 +57,12 @@ header {
 		* {
 			vertical-align: top;
 		}
+    a {
+      color: inherit;
+    }
+    a:hover {
+      color: inherit;
+    }
 	}
 	.tagline {
 		color: $yellow;
@@ -147,7 +153,7 @@ nav {
 		}
 		ul ul {
       		padding-left: 1em !important;
-    	}	
+    	}
 	}
 
 	.right-col {
@@ -376,8 +382,8 @@ button.right {
 .right {
 		img {
 			float: right;
-			
-			
+
+
 		}
 	}
 

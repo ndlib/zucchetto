@@ -4,8 +4,10 @@ import mui from 'material-ui';
 import { Link } from 'react-router'
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleUpdateSelectedIndex = this.handleUpdateSelectedIndex.bind(this);
     this.state = { menuOpen: false }
     this.menuClick = this.menuClick.bind(this);
   }
@@ -18,13 +20,21 @@ class Header extends Component {
     this.setState({ menuOpen: open });
   }
 
+  handleUpdateSelectedIndex(e, url) {
+    console.log(url);
+    this.context.router.push(url);
+  }
+
   render() {
     var icon = (<mui.FontIcon style={ { color: "#D5B117", marginRight: "0px" }} className="material-icons">menu</mui.FontIcon>);
     return (
       <header>
         <div className="row">
           <div className="col-sm-9">
-            <h1><mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</mui.FlatButton> Research Database</h1>
+            <h1>
+              <mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</mui.FlatButton>
+              <Link to="/">Research Database</Link>
+            </h1>
             <mui.LeftNav
               open={this.state.menuOpen}
               docked={ false }
@@ -32,9 +42,23 @@ class Header extends Component {
             >
               <p className="tagline"></p>
               <div  className="menu">
-              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/">Home</Link></mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/search?q=">Search Database</Link></mui.MenuItem>
-              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/documents">Document Index</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}>Research Database</mui.MenuItem>
+              <mui.Divider />
+              <mui.MenuItem onTouchTap={this.menuClick} leftIcon={<mui.FontIcon className="material-icons">search</mui.FontIcon>}>
+                <Link to="/search?q=">Search Database</Link>
+              </mui.MenuItem>
+              <mui.MenuItem
+                onTouchTap={this.menuClick}
+                leftIcon={<mui.FontIcon
+                className="material-icons">subject</mui.FontIcon>}
+                primaryText="Document Index"
+                value="/documents"
+                valueLink={{
+                  value: "/documents",
+                  requestChange: this.handleUpdateSelectedIndex,
+                }}
+                 />
+              <mui.Divider />
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/about">About Database</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/partners">Project Partners</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
@@ -55,3 +79,7 @@ class Header extends Component {
 }
 
 export default Header;
+
+Header.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
