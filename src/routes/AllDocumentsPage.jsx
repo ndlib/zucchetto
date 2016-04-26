@@ -69,13 +69,13 @@ class AllDocumentsPage extends Component {
           <div className="col-sm-12">
             <h2>Document Index</h2>
           </div>
-          <div className="col-sm-6 notebook-column left">
+          <div className="col-sm-6 notebook-column left doc-list">
             <Heading title="Catholic Social Teachings" />
             <ul>
               {this.catholicDocuments()}
             </ul>
           </div>
-          <div className="col-sm-6 notebook-column right">
+          <div className="col-sm-6 notebook-column right doc-list">
             <Heading title="International Human Rights" />
             <ul>
               {this.ihrDocuments()}

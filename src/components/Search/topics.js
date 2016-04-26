@@ -9,15 +9,15 @@ module.exports = {
           name: 'Criminals',
           value: 'criminals',
           children: [
-            {name: 'Accused/Alleged', value: 'accused alleged'},
-            {name: 'Offender/Convicted', value: 'offender convicted'}
+            {name: 'Accused/Alleged', value: 'Accused/Alleged'},
+            {name: 'Offender/Convicted', value: 'Offender/Convicted'}
           ]
         },
         {
           name: 'Economic Categories',
           value: 'economic categories',
           children: [
-            {name: 'Workers/Employees', value: 'workers employees'},
+            {name: 'Workers/Employees', value: 'Workers/Employees'},
             {name: 'Employers', value: 'employers'}
           ]
         },
@@ -35,28 +35,28 @@ module.exports = {
           name: 'Special Categories',
           value: 'special categories',
           children: [
-            {name: 'Children/Youth', value: 'children youth'},
+            {name: 'Children/Youth', value: 'Children/Youth'},
             {name: 'Elderly', value: 'elderly'},
-            {name: 'Indigenous/Native', value: 'indigenous native'},
+            {name: 'Indigenous/Native', value: 'Indigenous/Native'},
             {name: 'LGBTI', value: 'LGBTI'},
             {name: 'Persons with Disabilities', value: 'persons with disabilities'},
             {name: 'Religious', value: 'religious'},
-            {name: 'Ethnic/Racial', value: 'ethnic racial'},
-            {name: 'Sick/Wounded', value: 'sick wounded'},
-            {name: 'Unborn/Fetus', value: 'unborn fetus'}
+            {name: 'Ethnic/Racial', value: 'Ethnic/Racial'},
+            {name: 'Sick/Wounded', value: 'Sick/Wounded'},
+            {name: 'Unborn/Fetus', value: 'Unborn/Fetus'}
           ]
         },
         {
           name: 'Political Categories',
           value: 'political categories',
           children: [
-            {name: 'Detained Persons/Imprisoned Persons', value: 'detained imprisoned persons'},
-            {name: 'Missing Persons/Disappeared Persons', value: 'missing disappeared persons'},
+            {name: 'Detained Persons/Imprisoned Persons', value: 'Detained Persons/Imprisoned Persons'},
+            {name: 'Missing Persons/Disappeared Persons', value: 'Missing Persons/Disappeared Persons'},
             {
               name: 'People on the move/Itinerant',
-              value: 'people on the move itinerant',
+              value: 'People on the move/Itinerant',
               children: [
-                {name: 'Asylum Seekers/Asylees', value: 'asylum seekers asylees'},
+                {name: 'Asylum Seekers/Asylees', value: 'Asylum Seekers/Asylees'},
                 {name: 'Immigrants', value: 'immigrants'},
                 {name: 'Migrants', value: 'migrants'},
                 {name: 'Refugees', value: 'refugees'},
@@ -64,16 +64,16 @@ module.exports = {
                 {name: 'Displaced Persons', value: 'displaced persons'}
               ]
             },
-            {name: 'Political leaders/Public officials', value: 'political leaders public officials'},
-            {name: 'Courts/Judicial authorities', value: 'courts judicial authorities'},
+            {name: 'Political leaders/Public officials', value: 'Political leaders/Public officials'},
+            {name: 'Courts/Judicial authorities', value: 'Courts/Judicial authorities'},
             {name: 'Police', value: 'police'},
-            {name: 'Armed forces/Military', value: 'armed forces military'},
+            {name: 'Armed forces/Military', value: 'Armed forces/Militaryy'},
             {name: 'Civilians', value: 'civilians'},
             {name: 'Prisoners of War', value: 'prisoners of war'}
           ]
         },
         {name: 'Victims', value: 'Victims'},
-        {name: 'Vulnerable/Poor', value: 'vulnerable poor'},
+        {name: 'Vulnerable/Poor', value: 'Vulnerable/Poor'},
         {
           name: 'Women',
           value: 'women',
@@ -88,7 +88,7 @@ module.exports = {
       value: 'international entities',
       children: [
         {name: 'International Organizations', value: 'international organizations'},
-        {name: 'International Tribunals/Courts', value: 'international tribunals courts'},
+        {name: 'International Tribunals/Courts', value: 'International Tribunals/Courts'},
         {name: 'Political alliances', value: 'political alliances'},
         {name: 'Economic unions', value: 'economic unions'},
         {name: 'Multinational corporations', value: 'multinational corporations'}
@@ -104,9 +104,9 @@ module.exports = {
           children: [
             {
               name: 'Religious institutions/Faith-based organizations',
-              value: 'religious institutions faith-based organizations',
+              value: 'Religious institutions/Faith-based organizations',
               children: [
-                {name: 'The Catholic Church', value: 'catholic church'}
+                {name: 'The Catholic Church', value: 'The Catholic Church'}
               ]
             },
             {name: 'NGOs', value: 'NGOs'},
@@ -115,8 +115,8 @@ module.exports = {
             {name: 'Unions', value: 'unions'}
           ]
         },
-        {name: 'Businesses/Corporations', value: 'businesses corporations'},
-        {name: 'Government/The State', value: 'government state'}
+        {name: 'Businesses/Corporations', value: 'Businesses/Corporations'},
+        {name: 'Government/The State', value: 'Government/The State'}
       ]
     },
     {
