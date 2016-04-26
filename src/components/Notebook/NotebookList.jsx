@@ -24,10 +24,28 @@ class NotebookList extends Component {
     this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
       return item.collection_id == VaticanID;
     });
+    this.state = {
+      column1: null,
+      column2: null,
+    };
   }
 
   documentClick(event, item) {
-    CompareActions.setColumnItem(item);
+    if(CompareStore.getColumn1() === item) {
+      this.setState({column1: null});
+      CompareStore.removeColumnItem(1);
+    } else if(CompareStore.getColumn2() === item) {
+      this.setState({column2: null});
+      CompareStore.removeColumnItem(2);
+    } else {
+      if(this.state.column1 === null) {
+        this.setState({column1: item});
+      }
+      else if(this.state.column2 === null) {
+        this.setState({column2: item});
+      }
+      CompareActions.setColumnItem(item);
+    }
     event.preventDefault();
   }
 
@@ -51,13 +69,15 @@ class NotebookList extends Component {
       });
       var itemNodes = [];
       for(var i = 0;  i < groupedItems.length; i++) {
-        let sortedItems = _.sortBy(groupedItems[i].paragraphs, function(o){ return o.metadata.order.values[0].value;});
+        var sortedItems = _.sortBy(groupedItems[i].paragraphs, function(o){ return o.metadata.order.values[0].value;});
+        var checked = this.state.column1 === groupedItems[i].doc || this.state.column2 === groupedItems[i].doc;
         itemNodes.push(
           <DocumentListItem
             key={groupedItems[i].doc.id}
             item={groupedItems[i].doc}
             subItems={sortedItems}
             primaryAction={clickFunc}
+            checked={checked}
           />
         );
       }
@@ -78,18 +98,20 @@ class NotebookList extends Component {
         <ShareSave />
         <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
-              paddingLeft: '1em',
+            listStyleType: 'none',
+            paddingLeft: '1em',
           }}>
             { this.documentList(this._vatican_douments) }
           </ul>
 
           <h4 className="category">International Human Rights</h4>
             <ul style={{
-                paddingLeft: '1em',
+              listStyleType: 'none',
+              paddingLeft: '1em',
             }}>
               { this.documentList(this._humanrights_documents) }
             </ul>
-          
+
       </div>
     );
   }
