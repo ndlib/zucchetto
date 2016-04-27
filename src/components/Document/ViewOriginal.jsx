@@ -7,8 +7,6 @@ class ViewOriginal extends Component {
 
   render() {
     let doc = ItemStore.getItem(this.props.documentId);
-    console.log(doc);
-    console.log(this.props);
     if (doc && doc.metadata.url) {
       return (
         <mui.FlatButton linkButton={true} href={ doc.metadata.url.values[0].value } target="_blank" label="View PDF" />

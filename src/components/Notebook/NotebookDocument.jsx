@@ -1,6 +1,9 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import Document from '../Document/Document.jsx';
+import Title from '../Document/Title.jsx';
+import ParagraphJumpList from '../Document/ParagraphJumpList.jsx';
+
 import Heading from '../Shared/Heading.jsx';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
@@ -35,16 +38,22 @@ class NotebookDocument extends Component {
   render() {
     return (
       <mui.Paper zDepth={0}>
-        <Heading title={ this.documentTitle() } />
-        <Document
-          documentId={ this.props.document.id }
-          bodyStyle={ this.documentBodyStyle() }
-          selectedParagraphIds={ CompareStore.allItems() }
-        >
-          <a href="#" className="remove-document" onClick={ this.removeClick.bind(this) }>
-            <mui.FontIcon className="material-icons">clear</mui.FontIcon>
-          </a>
-        </Document>
+        <div className='document-head'>
+          <Heading title={ this.documentTitle() } />
+          <div className='document-head'>
+            <Title item={this.props.document} />
+            <ParagraphJumpList
+              paragraphs={ [] }
+              primaryAction={ [] }
+            />
+          </div>
+
+          <Document
+            documentId={ this.props.document.id }
+            bodyStyle={ this.documentBodyStyle() }
+            selectedParagraphIds={ CompareStore.allItems() }
+          />
+        </div>
       </mui.Paper>
     );
   }

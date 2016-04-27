@@ -64,18 +64,8 @@ class Document extends Component {
   render() {
     return (
       <div>
-        <div className='document-head'>
-          <div style={{ float: "right" }}>
-            { this.props.children }
-          </div>
-          <Title item={this._parent} />
-          <ParagraphJumpList
-            paragraphs={ this.paragraphs() }
-            primaryAction={ this.selectParagraph }
-          />
-          <CopyrightNotification item={ this._parent } />
-        </div>
         <div className="document" ref={"document-" + this._parent.id}>
+          <CopyrightNotification item={ this._parent } />
           <DocumentType item={this._parent} />
           <div style={ this.props.bodyStyle } >
             { this.paragraphs() }

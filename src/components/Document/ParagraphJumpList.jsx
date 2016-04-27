@@ -44,7 +44,13 @@ class ParagraphJumpList extends Component {
   render() {
     return (
       <div style={{float:'right'}}>
-        {this.list()}
+        <select>
+          <option
+            key='_'
+            >Go To Selected Paragraph
+          </option>
+          <option>Temp Disabled</option>
+        </select>
       </div>
     )
   }
