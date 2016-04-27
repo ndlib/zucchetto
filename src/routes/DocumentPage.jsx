@@ -11,12 +11,19 @@ import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from '../store/ItemStore.js'
 
 class DocumentPage extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this._item = false;
     this._parent = false;
+
+    let baseState = "none";
+    if (this.props.location.query.searchIds) {
+      baseState = "search"
+    }
+
     this.state = {
       loaded: ItemStore.preLoaded(),
+      highlightedIndex: baseState,
     };
     this.preLoadFinished = this.preLoadFinished.bind(this)
   }
@@ -34,7 +41,22 @@ class DocumentPage extends Component {
   }
 
   renderDocument() {
-    return (<Document documentId={ this.props.params.id } />);
+    return (
+      <Document
+        documentId={ this.props.params.id }
+        selectedParagraphIds={ this.highlightedDocumentIds() }
+      />
+    );
+  }
+
+  highlightSelectedParagraphs(event, value) {
+    this.setState({highlightedIndex: value});
+  }
+
+  highlightedDocumentIds() {
+    if (this.state.highlightedIndex == "search") {
+      return this.props.location.query.searchIds.split(",");
+    }
   }
 
   render() {
@@ -70,7 +92,7 @@ class DocumentPage extends Component {
           <h4>Highlight Paragraphs</h4>
           <div className="right"> <mui.Toggle label="Only Show Hightlighed Paragraphs" labelPosition="right" /> </div>
           <mui.Menu>
-            <mui.MenuItem primaryText="Search Results (14)" />
+            <mui.MenuItem onTouchTap={ this.highlightSelectedParagraphs } primaryText="Search Results (14)" />
             <mui.Divider />
             <mui.MenuItem primaryText="Family (23)" />
             <mui.MenuItem primaryText="Child Works (2)" />
@@ -82,5 +104,9 @@ class DocumentPage extends Component {
     );
   }
 }
+
+DocumentPage.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default DocumentPage;

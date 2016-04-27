@@ -10,7 +10,6 @@ import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
 import ViewOriginal from './ViewOriginal.jsx';
-import CompareStore from '../../store/CompareStore.js';
 import ParagraphJumpList from './ParagraphJumpList.jsx';
 
 class Document extends Component {
@@ -33,16 +32,8 @@ class Document extends Component {
   }
 
   paragraph(item) {
-    let selectedItem = null;
-    // if we're looking at a whole document
-    if(this._parent == this._item) {
-      // check to see if current paragraph is in the store
-      if(CompareStore.itemInCompare(item)) {
-        selectedItem = item;
-      }
-    } else {
-      selectedItem = this._item;
-    }
+    let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
+
     return (
       <div
         id={ 'paragraph-' + item.id }
@@ -51,7 +42,7 @@ class Document extends Component {
       >
         <Paragraph
           item={ item }
-          selectedItem={ selectedItem }
+          selected={ selected }
         />
       </div>
     );
@@ -99,8 +90,8 @@ class Document extends Component {
 
 Document.propTypes = {
   documentId: React.PropTypes.string.isRequired,
-  item: React.PropTypes.object,
-  parent: React.PropTypes.object,
+  bodyStyle: React.PropTypes.object,
+  selectedParagraphIds: React.PropTypes.array,
 }
 
 Document.defaultProps = {

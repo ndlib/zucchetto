@@ -5,6 +5,7 @@ import Heading from '../Shared/Heading.jsx';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import mui from 'material-ui';
+import CompareStore from '../../store/CompareStore.js';
 const CATHOLIC = 'Catholic Social Teaching';
 const HUMANRIGHTS = 'International Human Rights Law';
 
@@ -27,7 +28,7 @@ class NotebookDocument extends Component {
       overflowY: "auto",
       clear: "both",
       marginBottom: '1em',
-      
+
     };
   }
 
@@ -38,6 +39,7 @@ class NotebookDocument extends Component {
         <Document
           documentId={ this.props.document.id }
           bodyStyle={ this.documentBodyStyle() }
+          selectedParagraphIds={ CompareStore.allItems() }
         >
           <a href="#" className="remove-document" onClick={ this.removeClick.bind(this) }>
             <mui.FontIcon className="material-icons">clear</mui.FontIcon>

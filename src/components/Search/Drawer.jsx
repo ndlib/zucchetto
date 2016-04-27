@@ -60,14 +60,14 @@ class Drawer extends Component {
 
   style() {
     return {
-      
+
 
       bottom: '45px',
-      
+
       color: '#224048',
       height: '90px',
       width: '66%',
-      
+
       position: 'fixed',
       left: "1vw",
       zIndex: '2',
@@ -93,25 +93,6 @@ class Drawer extends Component {
 
   drawer() {
     return (
-<<<<<<< HEAD
-      <div style={this.style()} className="row">
-        <div className="col-sm-1">
-          <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />
-        </div>
-        <div className="col-sm-3">
-          { this.state.vatCount } Catholic Social Teachings<br />
-          { this.state.humanCount } International Human Rights Laws
-        </div>
-        <div className="col-sm-7">
-          <mui.FlatButton
-            label="clear all documents"
-            onClick={this.clearAll.bind(this)}
-          />
-        </div>
-        <div className="col-sm-1">
-          <CompareButton shortText={true} />
-=======
-      
       <div style={this.style()} className="row drawer">
         <div className="drop">
           <div className="col-sm-2 first">
@@ -130,7 +111,6 @@ class Drawer extends Component {
           <div className="col-sm-1 last">
             <CompareButton shortText={true} />
           </div>
->>>>>>> master
         </div>
       </div>
     );

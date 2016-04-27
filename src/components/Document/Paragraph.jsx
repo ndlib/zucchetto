@@ -21,7 +21,12 @@ class Paragraph extends Component {
         return (<h5 className="subheading2" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
-    return (<div ref={ this.ref() } className={this.determineClassName()} dangerouslySetInnerHTML={ { __html: content } } />);
+    return (
+      <div
+        ref={ this.ref() }
+        className={this.determineClassName()}
+        dangerouslySetInnerHTML={ { __html: content } } />
+    );
   }
 
   ref() {
@@ -29,7 +34,7 @@ class Paragraph extends Component {
   }
 
   determineClassName() {
-    if (this.props.selectedItem && this.props.selectedItem.id == this.props.item.id) {
+    if (this.props.selected) {
       return "selected-paragraph paragraph";
     }
     return "paragraph";
@@ -64,7 +69,7 @@ class Paragraph extends Component {
 
 Paragraph.propTypes = {
   item: React.PropTypes.object,
-  selectedItem: React.PropTypes.object,
+  selected: React.PropTypes.bool,
   showCheckBoxes: React.PropTypes.bool,
 }
 

@@ -7,6 +7,8 @@ import Paragraph from '../Document/Paragraph.jsx';
 import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
+import Title from '../Document/Title.jsx';
+import { Link } from 'react-router';
 
 
 class ListItem extends Component{
@@ -62,44 +64,35 @@ class ListItem extends Component{
     return this._paragraphs[0].metadata.transcription.values[0].value.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
+  selectedParagraphIds() {    
+    return this._paragraphs.map(function (p) {
+      return p.id;
+    });
+  }
+
   render() {
     return (
-      <div>
-        <DocumentDialog ref="DocumentDialog" />
-        <DocumentCard
-          doc={ this._doc }
-          paragraphs={ this._paragraphs }
-          primaryAction={ this.titleOnClick }
-        >
-          <div className="blurb">
-            <p style={{ textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
-              { this.blurb() }
-            </p>
-            <a href="#" onClick={ this.resultsOnClick } >
-              { this._paragraphs.length } Search Results in Document
-            </a>
-          </div>
-          <hr />
-          <p>
-<<<<<<< HEAD
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard...
+      <article className="result document">
+        <Link to={ "/document/" + this._doc.id + "?searchIds=" + this.selectedParagraphIds() }>
+          <Title item={this._doc} />
+        </Link>
+        <div className="blurb">
+          <p style={{ textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
+            { this.blurb() }
           </p>
-          <a href="#">
+          <a href="#" onClick={ this.resultsOnClick } >
             { this._paragraphs.length } Search Results in Document
           </a>
         </div>
+        <hr />
+        <p>
+          <AddToCompare
+            item={ this._doc }
+            subItems={ this._paragraphs }
+          />
+        </p>
         { this.paragraphs() }
-      </DocumentCard>
-=======
-            <AddToCompare
-              item={ this._doc }
-              subItems={ this._paragraphs }
-            />
-          </p>
-          { this.paragraphs() }
-        </DocumentCard>
-      </div>
->>>>>>> master
+      </article>
     );
   }
 };

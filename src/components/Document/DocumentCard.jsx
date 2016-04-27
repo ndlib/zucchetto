@@ -23,7 +23,6 @@ class DocumentCard extends Component {
     super(props);
 
     this.primaryAction = this.primaryAction.bind(this);
-    this.viewDocument = this.viewDocument.bind(this);
     this._doc = this.props.doc;
     this._paragraphs = this.props.paragraphs;
 
@@ -40,16 +39,9 @@ class DocumentCard extends Component {
 
     return (
       <article className="result document">
-<<<<<<< HEAD
-        <DocumentDialog ref="DocumentDialog"/>
         <Link to={ "/document/" + this._doc.id }>
           <Title item={this._doc} />
         </Link>
-=======
-        <a href="#" onClick={this.primaryAction}>
-          <Title item={this._doc} />
-        </a>
->>>>>>> master
 
         {this.props.children}
       </article>
