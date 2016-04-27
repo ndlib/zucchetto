@@ -9,7 +9,6 @@ import DownloadPDF from './DownloadPDF.jsx';
 import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
-import ViewOriginal from './ViewOriginal.jsx';
 import ParagraphJumpList from './ParagraphJumpList.jsx';
 
 class Document extends Component {
@@ -75,7 +74,6 @@ class Document extends Component {
             primaryAction={ this.selectParagraph }
           />
           <CopyrightNotification item={ this._parent } />
-          <ViewOriginal item={ this._parent } />
         </div>
         <div className="document" ref={"document-" + this._parent.id}>
           <DocumentType item={this._parent} />

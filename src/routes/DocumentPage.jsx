@@ -10,11 +10,11 @@ import Title from '../components/Document/Title.jsx';
 import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from '../store/ItemStore.js'
 
+import ViewOriginal from '../components/Document/ViewOriginal.jsx';
+
 class DocumentPage extends Component {
   constructor(props, context) {
     super(props, context);
-    this._item = false;
-    this._parent = false;
 
     let baseState = "none";
     if (this.props.location.query.searchIds) {
@@ -72,7 +72,7 @@ class DocumentPage extends Component {
         <mui.Toolbar>
           <mui.ToolbarTitle text={ parent.name } />
           <mui.ToolbarGroup float="right">
-            <mui.FlatButton label="Download PDF" />
+            <ViewOriginal documentId={ this.props.params.id } />
           </mui.ToolbarGroup>
           <mui.ToolbarGroup float="right">
             <mui.FlatButton label="Metadata" />
