@@ -27,6 +27,7 @@ class DocumentPage extends Component {
     this.state = {
       loaded: ItemStore.preLoaded(),
       highlightedIndex: baseState,
+      showAllParagraphs: true,
     };
     this.preLoadFinished = this.preLoadFinished.bind(this);
     this.highlightSelectedParagraphs = this.highlightSelectedParagraphs.bind(this);
@@ -57,12 +58,23 @@ class DocumentPage extends Component {
     this.setState({highlightedIndex: value});
   }
 
+  toggleHightlightedParagraphs() {
+    this.setState({showAllParagraphs: !this.state.showAllParagraphs});
+  }
+
   highlightedDocumentIds() {
     if (this.state.highlightedIndex == "search") {
       return this._searchIds;
     }
 
     return [];
+  }
+
+  collapsedParagraphsClassName() {
+    if (!this.state.showAllParagraphs) {
+      return "collapsed-paragraphs";
+    }
+    return ""
   }
 
   render() {
@@ -89,7 +101,9 @@ class DocumentPage extends Component {
         </mui.Toolbar>
 
         <mui.Paper zDepth={ 0 } style={{ width: "70%", float: "left" }}>
-          { this.renderDocument() }
+          <div className={this.collapsedParagraphsClassName()}>
+            { this.renderDocument() }
+          </div>
         </mui.Paper>
         <mui.Paper zDepth={ 0 } style={{ width: "30%", float: "left" }}>
           <DocumentNav
@@ -97,6 +111,7 @@ class DocumentPage extends Component {
             numSearchResults={this._searchIds.length}
             showSelectedParagraphs={true}
             selectedParagraphClick={ this.highlightSelectedParagraphs.bind(this) }
+            toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </mui.Paper>
         <Footer />

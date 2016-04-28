@@ -202,3 +202,12 @@ body {
   color: #224048;
   cursor: pointer;
 }
+
+
+.collapsed-paragraphs .document-content {
+  display: none;
+}
+
+.collapsed-paragraphs .selected-paragraph {
+  display: block;
+}

@@ -22,7 +22,12 @@ class DocumentNav extends Component {
           <mui.RaisedButton label="Add to Research" />
         </div>
         <h4>Highlight Paragraphs</h4>
-        <div className="right"> <mui.Toggle label="Only Show Hightlighed Paragraphs" labelPosition="right" /> </div>
+        <div className="right">
+          <mui.Toggle
+            label="Only Show Hightlighed Paragraphs"
+            labelPosition="right"
+            onToggle={ this.props.toggleOnClick } />
+        </div>
         <mui.Menu>
           { searchMenuItem }
           <mui.Divider />
@@ -38,6 +43,7 @@ class DocumentNav extends Component {
 
 DocumentNav.propTypes = {
   selectedParagraphClick: React.PropTypes.func.isRequired,
+  toggleOnClick: React.PropTypes.func.isRequired,
   listedTopics: React.PropTypes.array,
   showSearch: React.PropTypes.bool,
   numSearchResults: React.PropTypes.int,

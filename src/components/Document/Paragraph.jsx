@@ -10,15 +10,15 @@ class Paragraph extends Component {
     if (this.props.item.metadata.type_of_text) {
       var type = this.props.item.metadata.type_of_text.values[0].value;
       if (type == "Heading1") {
-        return (<h2 className="heading1" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h2 className="heading1 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Heading2") {
-        return (<h2 className="heading2" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h2 className="heading2 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Heading3") {
-        return (<h3 className="heading3" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h3 className="heading3 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading1") {
-        return (<h4 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h4 className="subheading1 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading2") {
-        return (<h5 className="subheading2" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h5 className="subheading2 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
     return (
@@ -35,9 +35,9 @@ class Paragraph extends Component {
 
   determineClassName() {
     if (this.props.selected) {
-      return "selected-paragraph paragraph";
+      return "selected-paragraph paragraph document-content";
     }
-    return "paragraph";
+    return "paragraph document-content";
   }
 
   addButton() {
