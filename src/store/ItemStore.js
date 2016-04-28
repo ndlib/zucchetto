@@ -21,6 +21,7 @@ class ItemStore extends EventEmitter {
     this._vatican_finished = false;
     this._human_rights_finished = false;
     AppDispatcher.register(this.receiveAction.bind(this));
+    this.validItem = this.validItem.bind(this);
   }
 
   // Receives actions sent by the AppDispatcher
@@ -67,6 +68,13 @@ class ItemStore extends EventEmitter {
     } else {
       this._parentItems.push(item);
     }
+  }
+
+  validItem(id) {
+    if(this.getItem(id)) {
+      return true;
+    }
+    else return false;
   }
 
   getItem(id) {

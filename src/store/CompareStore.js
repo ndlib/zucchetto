@@ -9,10 +9,19 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var CompareActionTypes = require("../constants/CompareActionTypes.jsx");
+import LocalStorageExpiration from '../modules/LocalStorageExpiration.js';
+import VaticanID from '../constants/VaticanID.js';
+import HumanRightsID from '../constants/HumanRightsID.js';
+import ItemActions from '../actions/ItemActions.jsx'
+import ItemStore from './ItemStore.js';
 
 class CompareStore extends EventEmitter {
   constructor() {
     super();
+    this.validStore = this.validStore.bind(this);
+    this.validCollection = this.validCollection.bind(this);
+    this.verifyStore = this.verifyStore.bind(this);
+    LocalStorageExpiration();
 
     this._column1Item = false;
     this._column2Item = false;
@@ -21,8 +30,38 @@ class CompareStore extends EventEmitter {
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
+  verifyStore() {
+    if(!this.validStore()) {
+      console.log('Invalid collection item found.');
+      LocalStorageExpiration(true);
+      this.resetDrawer();
+      this.emit("ItemCompareUpdated");
+    }
+  }
+
+  validStore() {
+    if(!this.validCollection(VaticanID) || !this.validCollection(HumanRightsID)) {
+      return false;
+    }
+    return true;
+  }
+
+  validCollection(collection_id) {
+    var obj = JSON.parse(window.localStorage.getItem(collection_id));
+    if(obj.items) {
+      var items = obj.items;
+      for(var i = 0; i < items.length; i++) {
+        if(!ItemStore.validItem(items[i])) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
+    LocalStorageExpiration();
     switch(action.actionType) {
       case CompareActionTypes.ADD_ITEM_TO_COMPARE:
         this.setItem(action.item);
@@ -44,37 +83,64 @@ class CompareStore extends EventEmitter {
 
   setItem(item) {
     var id = item.id;
-    var collection = item.collection_id
-
-    window.localStorage.setItem(id, collection);
+    var collection = item.collection_id;
+    var savedItems = JSON.parse(window.localStorage.getItem(collection));
+    var savedItemsArray = savedItems.items;
+    if(!savedItemsArray) {
+      savedItems = { items: [id] };
+    } else {
+      if(savedItemsArray.indexOf(id) < 0) {
+        savedItemsArray.push(id);
+        savedItems = { items: savedItemsArray };
+      }
+    }
+    window.localStorage.setItem(collection, JSON.stringify(savedItems))
     this.resetDrawer();
     this.emit("ItemCompareUpdated");
   }
 
   removeItem(item) {
     var id = item.id;
-    var collection = item.collection_id
+    var collection = item.collection_id;
+    var savedItems = JSON.parse(window.localStorage.getItem(collection));
+    var savedItemsArray = savedItems.items;
 
-    window.localStorage.removeItem(id, collection);
+    if(savedItemsArray && savedItemsArray.indexOf(id) > -1) {
+      savedItemsArray.splice(savedItemsArray.indexOf(id), 1)
+      savedItems = { items: savedItemsArray };
+    }
+    window.localStorage.setItem(collection, JSON.stringify(savedItems))
     this.resetDrawer();
     this.emit("ItemCompareUpdated");
   }
 
-  allItems() {
-    let items = [];
-    for(var i = 0; i < window.localStorage.length; i++) {
-      items.push(window.localStorage.key(i));
+  collectionItems(collection_id) {
+    var items = [];
+    if(window.localStorage.getItem(collection_id)) {
+      var obj = JSON.parse(window.localStorage.getItem(collection_id));
+      if(obj.items) {
+        items = obj.items;
+      }
     }
-
     return items;
   }
 
+  allItems() {
+    var vaticanItems = this.collectionItems(VaticanID);
+    var humanRightsItems = this.collectionItems(HumanRightsID);
+    return vaticanItems.concat(humanRightsItems);
+  }
+
   itemInCompare(item) {
-    return window.localStorage.getItem(item.id);
+    var itemArray = window.localStorage.getItem(item.collection_id);
+    if(itemArray && itemArray.indexOf(item.id) > -1) {
+      return item.id;
+    }
+    return null;
   }
 
   clearAll() {
-    window.localStorage.clear();
+    LocalStorageExpiration(true);
     this._forceDrawerState = "open";
     this.emit("ItemCompareUpdated");
   }
@@ -83,7 +149,7 @@ class CompareStore extends EventEmitter {
     if (this._forceDrawerState == "closed") {
       return false;
     }
-    return (window.localStorage.length > 0 || this._forceDrawerState == "open");
+    return (this.allItems().length > 0 || this._forceDrawerState == "open");
   }
 
   resetDrawer() {
