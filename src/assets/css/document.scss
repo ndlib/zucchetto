@@ -17,6 +17,11 @@ body {
   overflow-y: auto;
   position: relative;
   clear: both;
+
+  * {
+    border:solid 1px red;
+    -ms-overflow-style: none;
+  }
 }
 
 .document-head {
