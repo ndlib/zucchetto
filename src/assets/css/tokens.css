@@ -143,8 +143,9 @@
 }
 
 .ic-token-delete-button {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-right: 5px;
+  margin-top: 2px;
   cursor: pointer;
 }
 
