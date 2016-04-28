@@ -101,7 +101,6 @@ class AllDocumentsPage extends Component {
     var documentList = []
     for(var i = 0; i < Object.keys(documents).length; i++) {
       var group = Object.keys(documents)[i];
-      console.log(group, documents[group]);
       documentList.push(this.ihrHeader(group));
       documentList.push(documents[group].map(function(item) {
         return this.listItem(item);
