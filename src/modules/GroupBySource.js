@@ -1,4 +1,6 @@
 import OrderKeys from './OrderKeys.js';
+import HumanRightsID from '../constants/HumanRightsID.js';
+import VaticanID from '../constants/VaticanID.js';
 /*
  * Takes an array of items and returns an object with a mapping of
  * group to items. Also takes a type of either 'humanrights' or 'vatican'.
@@ -8,7 +10,14 @@ module.exports = function(items, type) {
   var groupedDocuments = {};
   items.map(function(item) {
     if (item.collection_id === type) {
-      var source = 'Unidentified Source';
+      var source;
+
+      if(type === HumanRightsID) {
+        source = 'Unidentified Source';
+      } else if (type === VaticanID) {
+        source = 'Libreria Editrice Vaticana';
+      }
+
       if(item.metadata.source) {
          source = item.metadata.source.values[0].value;
         source = source.replace(/\(*([0-9]+(th|st|nd|rd))(\s*(regular|special)*\s*session\)*\s*(of)*\s*(the)*)*/gi, '').trim();

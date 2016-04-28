@@ -7,9 +7,10 @@ import Heading from '../components/Shared/Heading.jsx';
 
 import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
+import HumanRightsID from '../constants/HumanRightsID.js';
+import VaticanID from '../constants/VaticanID.js';
 
-import CatholicDocumentList from '../components/Document/CatholicDocumentList.jsx';
-import HumanRightsDocumentList from '../components/Document/HumanRightsDocumentList.jsx';
+import DocumentList from '../components/Document/DocumentList.jsx';
 
 class AllDocumentsPage extends Component {
   constructor() {
@@ -43,13 +44,19 @@ class AllDocumentsPage extends Component {
           <div className="col-sm-6 notebook-column left doc-list">
             <Heading title="Catholic Social Teachings" />
             <ul>
-              <CatholicDocumentList items={ItemStore.getParentItems()} />
+              <DocumentList
+                items={ItemStore.getParentItems()}
+                type={ VaticanID }
+              />
             </ul>
           </div>
           <div className="col-sm-6 notebook-column right doc-list">
             <Heading title="International Human Rights" />
             <ul>
-              <HumanRightsDocumentList items={ItemStore.getParentItems()} />
+              <DocumentList
+                items={ItemStore.getParentItems()}
+                type ={ HumanRightsID }
+              />
             </ul>
           </div>
         </div>
