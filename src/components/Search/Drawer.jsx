@@ -36,15 +36,17 @@ class Drawer extends Component {
     let parentsVat = [];
     let parentsHu = [];
     for (var i = 0; i < compareItems.length; i++) {
-      let parent = ItemStore.getItemParent(ItemStore.getItem(compareItems[i]));
-      if(parent.collection_id === VaticanID) {
-        if(parentsVat.indexOf(parent) < 0) {
-          parentsVat.push(parent);
+      if(ItemStore.getItem(compareItems[i])) {
+        let parent = ItemStore.getItemParent(ItemStore.getItem(compareItems[i]));
+        if(parent.collection_id === VaticanID) {
+          if(parentsVat.indexOf(parent) < 0) {
+            parentsVat.push(parent);
+          }
         }
-      }
-      if(parent.collection_id === HumanRightsID) {
-        if(parentsHu.indexOf(parent) < 0) {
-          parentsHu.push(parent);
+        if(parent.collection_id === HumanRightsID) {
+          if(parentsHu.indexOf(parent) < 0) {
+            parentsHu.push(parent);
+          }
         }
       }
     }

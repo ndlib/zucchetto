@@ -9,18 +9,8 @@ class NotebookLink extends Component {
   clickAction() {
     CompareStore.clearColumnItems();
     if(!this.props.disabled) {
-      let vaticanItems = [];
-      let humanRightItems = [];
-      if(window.localStorage.length > 0) {
-        for(var i = 0; i < window.localStorage.length; i++) {
-          if(window.localStorage.getItem(window.localStorage.key(i)) === VaticanID) {
-            vaticanItems.push(window.localStorage.key(i));
-          }
-          else if (window.localStorage.getItem(window.localStorage.key(i)) === HumanRightsID) {
-            humanRightItems.push(window.localStorage.key(i));
-          }
-        }
-      }
+      let vaticanItems = CompareStore.collectionItems(VaticanID);
+      let humanRightItems = CompareStore.collectionItems(HumanRightsID);
 
       let vString = 'v=' + vaticanItems.join('|');
       let hString = 'h=' + humanRightItems.join('|');
