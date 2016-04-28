@@ -53,6 +53,7 @@ class Drawer extends Component {
 
     return {vatCount: parentsVat.length, humanCount: parentsHu.length};
   }
+
   updateCount() {
     this.setState({
       vatCount: this.countParents().vatCount,
@@ -62,14 +63,14 @@ class Drawer extends Component {
 
   style() {
     return {
-      
+
 
       bottom: '45px',
-      
+
       color: '#224048',
       height: '90px',
       width: '66%',
-      
+
       position: 'fixed',
       left: "1vw",
       zIndex: '2',
@@ -95,7 +96,7 @@ class Drawer extends Component {
 
   drawer() {
     return (
-      
+
       <div style={this.style()} className="row drawer">
         <div className="drop">
           <div className="col-sm-2 first">
@@ -121,7 +122,7 @@ class Drawer extends Component {
 
   render() {
     if(CompareStore.drawerOpen()) {
-      if (this.state.vatCount == 0 && this.state.vatCount == 0) {
+      if (this.state.vatCount === 0 && this.state.humanCount === 0) {
         return (this.emptyDrawer());
       } else {
         return this.drawer();
