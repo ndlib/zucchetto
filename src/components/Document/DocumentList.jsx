@@ -18,7 +18,7 @@ class DocumentList extends Component {
     return (<DocumentLink item={item} key={item.id} />);
   }
 
-  ihrHeader(grouping) {
+  header(grouping) {
     return (<h4 key={'heading-' + this.props.type + this._headerCount++}>{grouping}</h4>);
   }
 
@@ -27,7 +27,7 @@ class DocumentList extends Component {
     var documentList = []
     for(var i = 0; i < Object.keys(documents).length; i++) {
       var group = Object.keys(documents)[i];
-      documentList.push(this.ihrHeader(group));
+      documentList.push(this.header(group));
       documentList.push(documents[group].map(function(item) {
         return this.listItem(item);
       }.bind(this)));
