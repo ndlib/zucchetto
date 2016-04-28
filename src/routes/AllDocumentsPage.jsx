@@ -50,12 +50,64 @@ class AllDocumentsPage extends Component {
     }.bind(this));
   }
 
-  ihrDocuments() {
-    return this.sortedParents().map(function(item) {
+  orderKeys(obj, expected) {
+
+    var keys = Object.keys(obj).sort(function keyOrder(k1, k2) {
+        if (k1 < k2) return -1;
+        else if (k1 > k2) return +1;
+        else return 0;
+    });
+
+    var i, after = {};
+    for (i = 0; i < keys.length; i++) {
+      after[keys[i]] = obj[keys[i]];
+      delete obj[keys[i]];
+    }
+
+    for (i = 0; i < keys.length; i++) {
+      obj[keys[i]] = after[keys[i]];
+    }
+    return obj;
+  }
+
+  groupIhrDocuments() {
+    var groupedDocuments = {};
+    this.sortedParents().map(function(item) {
       if (item.collection_id == "humanrights") {
-        return this.listItem(item);
+        var source = 'Unidentified Source';
+        if(item.metadata.source) {
+           source = item.metadata.source.values[0].value;
+          source = source.replace(/\(*([0-9]+(th|st|nd|rd))(\s*(regular|special)*\s*session\)*\s*(of)*\s*(the)*)*/gi, '').trim();
+        }
+        if(Object.keys(groupedDocuments).indexOf(source) < 0){
+          groupedDocuments[source] = [item];
+        }
+        else {
+          groupedDocuments[source].push(item);
+        }
+        return;
       }
     }.bind(this));
+    groupedDocuments = this.orderKeys(groupedDocuments);
+    return groupedDocuments;
+  }
+
+  ihrHeader(grouping) {
+    return (<h4>{grouping}</h4>);
+  }
+
+  ihrDocuments() {
+    var documents = this.groupIhrDocuments();
+    var documentList = []
+    for(var i = 0; i < Object.keys(documents).length; i++) {
+      var group = Object.keys(documents)[i];
+      console.log(group, documents[group]);
+      documentList.push(this.ihrHeader(group));
+      documentList.push(documents[group].map(function(item) {
+        return this.listItem(item);
+      }.bind(this)));
+    }
+    return documentList;
   }
 
   documentURL(item){
