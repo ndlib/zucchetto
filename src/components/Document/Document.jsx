@@ -65,9 +65,9 @@ class Document extends Component {
     return (
       <div>
         <div className="document" ref={"document-" + this._parent.id}>
-          <CopyrightNotification item={ this._parent } />
-          <DocumentType item={this._parent} />
           <div style={ this.props.bodyStyle } >
+            <CopyrightNotification item={ this._parent } />
+            <DocumentType item={this._parent} />
             { this.paragraphs() }
           </div>
         </div>

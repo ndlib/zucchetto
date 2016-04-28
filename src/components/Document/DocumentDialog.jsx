@@ -28,7 +28,6 @@ class DocumentDialog extends Component {
 
   document() {
     if (this.state.documentId) {
-      console.log(this.state.documentId);
       return (
         <mui.Tabs>
           <mui.Tab label="Search Results">

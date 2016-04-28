@@ -5,6 +5,7 @@ import mui from 'material-ui';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
 import Document from '../components/Document/Document.jsx';
+import DocumentNav from '../components/Document/DocumentNav.jsx';
 import Title from '../components/Document/Title.jsx';
 
 import ItemActions from '../actions/ItemActions.jsx'
@@ -17,15 +18,18 @@ class DocumentPage extends Component {
     super(props, context);
 
     let baseState = "none";
+    this._searchIds = [];
     if (this.props.location.query.searchIds) {
       baseState = "search"
+      this._searchIds = this.props.location.query.searchIds.split(",");
     }
 
     this.state = {
       loaded: ItemStore.preLoaded(),
       highlightedIndex: baseState,
     };
-    this.preLoadFinished = this.preLoadFinished.bind(this)
+    this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.highlightSelectedParagraphs = this.highlightSelectedParagraphs.bind(this);
   }
 
   componentWillMount() {
@@ -49,14 +53,16 @@ class DocumentPage extends Component {
     );
   }
 
-  highlightSelectedParagraphs(event, value) {
+  highlightSelectedParagraphs(value, event) {
     this.setState({highlightedIndex: value});
   }
 
   highlightedDocumentIds() {
     if (this.state.highlightedIndex == "search") {
-      return this.props.location.query.searchIds.split(",");
+      return this._searchIds;
     }
+
+    return [];
   }
 
   render() {
@@ -86,18 +92,12 @@ class DocumentPage extends Component {
           { this.renderDocument() }
         </mui.Paper>
         <mui.Paper zDepth={ 0 } style={{ width: "30%", float: "left" }}>
-          <div style={{ padding: "25px 0" }}>
-            <mui.RaisedButton label="Add to Research" />
-          </div>
-          <h4>Highlight Paragraphs</h4>
-          <div className="right"> <mui.Toggle label="Only Show Hightlighed Paragraphs" labelPosition="right" /> </div>
-          <mui.Menu>
-            <mui.MenuItem onTouchTap={ this.highlightSelectedParagraphs } primaryText="Search Results (14)" />
-            <mui.Divider />
-            <mui.MenuItem primaryText="Family (23)" />
-            <mui.MenuItem primaryText="Child Works (2)" />
-            <mui.MenuItem primaryText="Baseball (0)" />
-          </mui.Menu>
+          <DocumentNav
+            showSearch={true}
+            numSearchResults={this._searchIds.length}
+            showSelectedParagraphs={true}
+            selectedParagraphClick={ this.highlightSelectedParagraphs.bind(this) }
+          />
         </mui.Paper>
         <Footer />
       </mui.Paper>
