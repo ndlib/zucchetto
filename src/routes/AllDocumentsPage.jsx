@@ -56,6 +56,25 @@ class AllDocumentsPage extends Component {
         return this.listItem(item);
       }
     }.bind(this));
+    groupedDocuments = this.orderKeys(groupedDocuments);
+    return groupedDocuments;
+  }
+
+  ihrHeader(grouping) {
+    return (<h4>{grouping}</h4>);
+  }
+
+  ihrDocuments() {
+    var documents = this.groupIhrDocuments();
+    var documentList = []
+    for(var i = 0; i < Object.keys(documents).length; i++) {
+      var group = Object.keys(documents)[i];
+      documentList.push(this.ihrHeader(group));
+      documentList.push(documents[group].map(function(item) {
+        return this.listItem(item);
+      }.bind(this)));
+    }
+    return documentList;
   }
 
   documentURL(item){
