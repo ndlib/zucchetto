@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import IDFromAtID from "../../modules/IDFromAtID.js";
 import CompareStore from "../../store/CompareStore.js";
 import CompareActions from "../../actions/CompareActions.js";
-import mui from 'material-ui';
+import mui, { FlatButton, FontIcon, IconButton } from 'material-ui';
 
 class CompareButton extends Component {
   constructor(props) {
@@ -33,12 +33,10 @@ class CompareButton extends Component {
   }
 
   icon() {
-    if (this.props.shortText) {
-      return (<mui.FontIcon className="material-icons">clear</mui.FontIcon>);
-    } else if (this.state.drawerOpen) {
-      return (<mui.FontIcon className="material-icons">keyboard_arrow_up</mui.FontIcon>);
+    if (this.state.drawerOpen) {
+      return (<FontIcon className="material-icons">keyboard_arrow_up</FontIcon>);
     } else {
-      return (<mui.FontIcon className="material-icons">keyboard_arrow_left</mui.FontIcon>);
+      return (<FontIcon className="material-icons">keyboard_arrow_left</FontIcon>);
     }
   }
 
@@ -51,13 +49,23 @@ class CompareButton extends Component {
   }
 
   render() {
-    return (<mui.FlatButton
-      label={this.label()}
-      labelPosition="before"
-      icon={ this.icon() }
-      onClick={ this.toggleDrawer.bind(this) }
-      />
-    );
+    if (this.props.shortText) {
+      return (<IconButton
+        iconClassName="material-icons"
+        onClick={ this.toggleDrawer.bind(this) }
+        >clear</IconButton>
+      );
+    }
+    else {
+      return (<FlatButton
+        label={this.label()}
+        labelPosition="before"
+        icon={ this.icon() }
+        onClick={ this.toggleDrawer.bind(this) }
+        />
+      );
+    }
+
   }
 }
 
