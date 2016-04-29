@@ -64,7 +64,7 @@ class ListItem extends Component{
     return this._paragraphs[0].metadata.transcription.values[0].value.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
-  selectedParagraphIds() {    
+  selectedParagraphIds() {
     return this._paragraphs.map(function (p) {
       return p.id;
     });
@@ -78,11 +78,12 @@ class ListItem extends Component{
         </Link>
         <div className="blurb">
           <p style={{ textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
+            <a href="#" onClick={ this.resultsOnClick } >
+              { this._paragraphs.length } Search Results in Document
+            </a>
+            <br />
             { this.blurb() }
           </p>
-          <a href="#" onClick={ this.resultsOnClick } >
-            { this._paragraphs.length } Search Results in Document
-          </a>
         </div>
         <hr />
         <p>

@@ -53,6 +53,7 @@ class Drawer extends Component {
 
     return {vatCount: parentsVat.length, humanCount: parentsHu.length};
   }
+
   updateCount() {
     this.setState({
       vatCount: this.countParents().vatCount,
@@ -100,11 +101,11 @@ class Drawer extends Component {
           <div className="col-sm-2 first">
             <NotebookLink disabled={this.state.vatCount + this.state.humanCount < 1} />
           </div>
-          <div className="col-sm-3">
+          <div className="col-sm-4">
             { this.state.vatCount } Catholic Social Teachings<br />
             { this.state.humanCount } International Human Rights Laws
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-5">
             <mui.FlatButton
               label="clear all documents"
               onClick={this.clearAll.bind(this)}
@@ -120,7 +121,7 @@ class Drawer extends Component {
 
   render() {
     if(CompareStore.drawerOpen()) {
-      if (this.state.vatCount == 0 && this.state.vatCount == 0) {
+      if (this.state.vatCount === 0 && this.state.humanCount === 0) {
         return (this.emptyDrawer());
       } else {
         return this.drawer();
