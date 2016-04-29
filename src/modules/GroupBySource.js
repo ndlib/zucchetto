@@ -19,8 +19,7 @@ module.exports = function(items, type) {
       }
 
       if(item.metadata.source) {
-         source = item.metadata.source.values[0].value;
-        source = source.replace(/\(*([0-9]+(th|st|nd|rd))(\s*(regular|special)*\s*session\)*\s*(of)*\s*(the)*)*/gi, '').trim();
+         source = item.metadata.rights_holder.values[0].value
       }
       if(Object.keys(groupedDocuments).indexOf(source) < 0){
         groupedDocuments[source] = [item];
