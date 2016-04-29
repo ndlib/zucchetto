@@ -71,12 +71,14 @@ class ListItem extends Component{
           primaryAction={ this.titleOnClick }
         >
           <div className="blurb">
-            <p style={{ textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
+            <p>
+              <a href="#" onClick={ this.resultsOnClick } >
+                { this._paragraphs.length } Search Results in Document
+              </a>
+            </p>
+            <p style={{ fontSize: '12px', textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
               { this.blurb() }
             </p>
-            <a href="#" onClick={ this.resultsOnClick } >
-              { this._paragraphs.length } Search Results in Document
-            </a>
           </div>
           <hr />
           <p>
