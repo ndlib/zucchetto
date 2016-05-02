@@ -19,6 +19,10 @@ class Paragraph extends Component {
         return (<h4 className="subheading1 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading2") {
         return (<h5 className="subheading2 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
+      } else if (type == "Subheading3") {
+        return (<h6 className="subheading3 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
+      } else if (type == "Subheading4") {
+        return (<h6 className="subheading4 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
     return (
