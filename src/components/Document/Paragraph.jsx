@@ -48,9 +48,8 @@ class Paragraph extends Component {
     if(this.props.showCheckBoxes) {
       return (
         <div id={"paragraph-" + this.props.item.id} className="paragraph-section">
-          <hr />
-          <CurrentParagraph item={ this.props.item } />
           <AddToCompare item={ this.props.item } />
+          <CurrentParagraph item={ this.props.item } />
         </div>
       );
     }
