@@ -68,41 +68,41 @@ class ListItem extends Component{
   blurb() {
     var blurb = [];
     if(this._doc.metadata.alternative_title && this._doc.metadata.document_symbol) {
-        blurb.push(<p>{this._doc.metadata.alternative_title.values[0].value} - {this._doc.metadata.document_symbol.values[0].value}</p>);
+        blurb.push(this._doc.metadata.alternative_title.values[0].value + ' - ' +  this._doc.metadata.document_symbol.values[0].value + '; ');
     }
     else {
       if(this._doc.metadata.alternative_title) {
-        blurb.push(<p>{this._doc.metadata.alternative_title.values[0].value}</p>);
+        blurb.push(this._doc.metadata.alternative_title.values[0].value + '; ');
       }
       if(this._doc.metadata.document_symbol) {
-        blurb.push(<p>{this._doc.metadata.document_symbol.values[0].value}</p>);
+        blurb.push(this._doc.metadata.document_symbol.values[0].value + '; ');
       }
     }
 
 
     if(this._doc.metadata.type_of_document) {
       if(this._doc.metadata.promulgated_by) {
-        blurb.push(<p>{this._doc.metadata.type_of_document.values[0].value}, Promulgated By {this._doc.metadata.promulgated_by.values[0].value}.</p>);
+        blurb.push(this._doc.metadata.type_of_document.values[0].value + ', Promulgated By ' +  this._doc.metadata.promulgated_by.values[0].value + '.');
       }
       else if(this._doc.metadata.entry_into_force) {
-        blurb.push(<p>{this._doc.metadata.type_of_document.values[0].value}, Entered Into Force On {this._doc.metadata.entry_into_force.values[0].value}.</p>);
+        blurb.push(this._doc.metadata.type_of_document.values[0].value + ', Entered Into Force On ' + this._doc.metadata.entry_into_force.values[0].value + '.');
       }
       else {
-        blurb.push(<p>{this._doc.metadata.type_of_document.values[0].value}</p>);
+        blurb.push(this._doc.metadata.type_of_document.values[0].value);
       }
     } else {
       if(this._doc.metadata.promulgated_by) {
-        blurb.push(<p>Promulgated By {this._doc.metadata.promulgated_by.values[0].value}.</p>);
+        blurb.push('Promulgated By ' + this._doc.metadata.promulgated_by.values[0].value + '.');
       }
       else if(this._doc.metadata.entry_into_force) {
-        blurb.push(<p>Entered Into Force On {this._doc.metadata.entry_into_force.values[0].value}.</p>);
+        blurb.push('Entered Into Force On ' + this._doc.metadata.entry_into_force.values[0].value + '.');
       }
     }
 
     if(blurb.length !== 0) {
-      return blurb;
+      return (<p>{blurb}</p>);
     } else {
-      return (<p>NO BLURB</p>);
+      return (<p></p>);
     }
 
 
