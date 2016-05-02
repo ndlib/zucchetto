@@ -107,6 +107,7 @@ class DocumentPage extends Component {
         </mui.Paper>
         <mui.Paper zDepth={ 0 } style={{ width: "30%", float: "left" }}>
           <DocumentNav
+            parent={parent}
             showSearch={true}
             numSearchResults={this._searchIds.length}
             showSelectedParagraphs={true}

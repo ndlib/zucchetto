@@ -1,11 +1,25 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui from 'material-ui';
+import _ from 'underscore';
+
+import TopicsInDocuments from '../../modules/TopicsInDocument.js'
 
 class DocumentNav extends Component {
 
   menuClick(value, event) {
     this.props.selectedParagraphClick(value, event)
+  }
+
+  topicList() {
+    let topics = TopicsInDocuments(this.props.parent);
+    return _.pairs(topics).map(function (topic) {
+      var title = topic[0] + " (" + topic[1] + ")";
+      return (<mui.MenuItem
+                primaryText={title}
+                onTouchTap={ this.menuClick.bind(this, topic[0]) } />);
+
+    }.bind(this));
   }
 
   render() {
@@ -15,7 +29,6 @@ class DocumentNav extends Component {
         primaryText={ "Search Results ("+ this.props.numSearchResults +")" }
       />
     );
-
     return (
       <div>
         <div style={{ padding: "25px 0" }}>
@@ -31,9 +44,7 @@ class DocumentNav extends Component {
         <mui.Menu>
           { searchMenuItem }
           <mui.Divider />
-          <mui.MenuItem primaryText="Family (23)" onTouchTap={ this.menuClick.bind(this, "family") } />
-          <mui.MenuItem primaryText="Child Works (2)" />
-          <mui.MenuItem primaryText="Baseball (0)" />
+          { this.topicList() }
         </mui.Menu>
       </div>
     );
@@ -42,6 +53,7 @@ class DocumentNav extends Component {
 }
 
 DocumentNav.propTypes = {
+  parent:  React.PropTypes.object,
   selectedParagraphClick: React.PropTypes.func.isRequired,
   toggleOnClick: React.PropTypes.func.isRequired,
   listedTopics: React.PropTypes.array,
