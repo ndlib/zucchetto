@@ -91,21 +91,26 @@ class AddToCompare extends Component {
   label() {
     if(this.state.checked === TRUE) {
       return "Clear";
-    } else {
+    } else if (this.props.document) {
+      return "Compare All"
+    }
+    else {
       return "Compare";
     }
   }
 
   render() {
     return (
-      <a
-        href="#"
-        className="add-to-compare"
-        onClick={this.addToCompareClick}
-        style={{cursor: 'pointer'}}
-        >
-          { this.checked() }{ this.label() }
-        </a>
+      <p style={{clear: 'left'}}>
+        <a
+          href="#"
+          className="add-to-compare"
+          onClick={this.addToCompareClick}
+          style={{cursor: 'pointer'}}
+          >
+            { this.checked() }{ this.label() }
+          </a>
+        </p>
       );
   }
 }
@@ -113,6 +118,11 @@ class AddToCompare extends Component {
 AddToCompare.propTypes = {
   item: React.PropTypes.object,
   subItems: React.PropTypes.array,
+  document: React.PropTypes.bool,
+}
+
+AddToCompare.defaultProps = {
+  document: false,
 }
 
 export default AddToCompare;
