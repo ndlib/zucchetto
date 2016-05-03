@@ -33,6 +33,10 @@ h1, h2, h3, h4, h5 {
 	font-weight: bold;
 }
 
+.feedback {
+	display:none;
+}
+
 header {
   border-bottom: double 3px $grey;
   margin-bottom: 4px;
@@ -79,6 +83,26 @@ header {
 			display: block;
 		}
 		a:hover {
+			text-decoration: none;
+		}
+	}
+
+	.feedback {
+	position:absolute;
+	right:190px;
+	top:18px;
+	z-index:1;
+	display:block;
+		a {
+			font-size:13px;
+			background: rgba(153, 153, 153, .2);
+			padding:8px;
+			border-radius: 5px;
+			text-transform:uppercase;
+			color:$grey;
+		}
+		a:hover {
+			background: rgba(153, 153, 153, .5);
 			text-decoration: none;
 		}
 	}
@@ -353,6 +377,7 @@ footer {
   bottom: 0px;
   background-color: $tan;
   z-index: 4;
+
 	img.undhl {
 		vertical-align: bottom;
 		margin-right: 15px;
@@ -413,6 +438,7 @@ button.right {
 			color: #fff;
 			font-size: 54px;
 			text-align: center;
+			text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
 
 			button {
 				display: none !important;
@@ -512,6 +538,7 @@ button.right {
 		max-height: 80vh;
 		overflow: hidden;
 
+
 		.fader {
 			background: -moz-linear-gradient(top,  rgba(248,246,237,0) 0%, rgba(248,246,237,1) 100%); /* FF3.6-15 */
 			background: -webkit-linear-gradient(top,  rgba(248,246,237,0) 0%,rgba(248,246,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -549,15 +576,37 @@ button.right {
 		.compare {
 			display:none;
 		}
-		.col-sm-6 {
+		.col-sm-5 {
 			width: 100%;
+			margin-top:-3em;
 		}
+		.col-sm-2 {
+			width: 100%;
+			text-align: center;
+			padding-top: 1em;
+			z-index: 5;
+		}
+		.feedback {
+  			display:inline-block;
+  		}
+
+	}
+}
+
+
+
+.tearms {
+	font-size:11px;
+	color:#333;
+	a {
+		color:#333;
 	}
 }
 
 .filters {
 	li {
 		padding-bottom: 8px;
+
 	}
 
 	a {
@@ -565,5 +614,14 @@ button.right {
 		font-weight: bold;
 		font-size:16px;
 		vertical-align: middle;
+	}
+}
+
+.slider-slide {
+	overflow: hidden;
+	height:90vh !important;
+	img {
+		display:block;
+		margin-top:-20vh;
 	}
 }
