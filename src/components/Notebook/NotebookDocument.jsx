@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Document from '../Document/Document.jsx';
+import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import Title from '../Document/Title.jsx';
 import ParagraphJumpList from '../Document/ParagraphJumpList.jsx';
 import Paragraph from '../../components/Document/Paragraph.jsx';
@@ -60,6 +61,8 @@ class NotebookDocument extends Component {
               paragraphs={ ItemStore.getItemChildrenInOrder(this.props.document) }
               primaryAction={ this.selectParagraph }
             />
+          <CopyrightNotification item={ this.props.document } />
+
           </div>
 
           <Document
