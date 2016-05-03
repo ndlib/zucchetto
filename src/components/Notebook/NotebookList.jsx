@@ -9,6 +9,7 @@ import _ from 'underscore'
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import ItemQueryParams from '../../modules/ItemQueryParams.js';
+import GroupItemsByParent from '../../modules/GroupItemsByParent.js';
 
 class NotebookList extends Component {
   constructor(props) {
@@ -68,31 +69,16 @@ class NotebookList extends Component {
 
   documentList(documents) {
     let clickFunc = this.documentClick;
-    let groupedItems = [];
+    let groupedItems = GroupItemsByParent(documents);
     if(documents.length > 0) {
-      documents.forEach(function(item, index) {
-        var itemParent = ItemStore.getItemParent(item);
-        var docExists = false;
-        for(var i = 0; i < groupedItems.length; i++){
-          if(itemParent && groupedItems[i].doc == itemParent) {
-            // found parent
-            docExists = true;
-            groupedItems[i].paragraphs.push(item);
-          }
-        }
-        if(itemParent && !docExists) {
-          groupedItems.push({doc: itemParent, paragraphs: [item]});
-        }
-      });
       var itemNodes = [];
       for(var i = 0;  i < groupedItems.length; i++) {
-        var sortedItems = _.sortBy(groupedItems[i].paragraphs, function(o){ return o.metadata.order.values[0].value;});
         var checked = this.state.column1 === groupedItems[i].doc || this.state.column2 === groupedItems[i].doc;
         itemNodes.push(
           <DocumentListItem
             key={groupedItems[i].doc.id}
             item={groupedItems[i].doc}
-            subItems={sortedItems}
+            subItems={groupedItems[i].paragraphs}
             primaryAction={clickFunc}
             checked={checked}
           />

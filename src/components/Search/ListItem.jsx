@@ -54,6 +54,7 @@ class ListItem extends Component{
       }
       return (
         <div>
+          <CopyrightNotification item={ this._doc } />
           {paragraphs}
         </div>
       );
@@ -115,7 +116,6 @@ class ListItem extends Component{
     return (
       <p>
         <a href="#" onClick={ this.resultsOnClick } >
-
           <span
             style={{ fontSize: '15px' }}
           >{ this._paragraphs.length }
@@ -144,8 +144,7 @@ class ListItem extends Component{
           <Title item={this._doc} />
         </Link>
         <div className="blurb">
-          <p style={{ textOverflow: "ellipsis", height: "3em", overflow: "hidden"}}>
-            <CopyrightNotification item={ this._doc } />
+          <p>
             { this.blurb() }
             { this.resultCount() }
           </p>

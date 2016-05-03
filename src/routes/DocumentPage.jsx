@@ -11,6 +11,7 @@ import Title from '../components/Document/Title.jsx';
 
 import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from '../store/ItemStore.js'
+import CompareStore from '../store/CompareStore.js'
 
 import ViewOriginal from '../components/Document/ViewOriginal.jsx';
 
@@ -33,6 +34,8 @@ class DocumentPage extends Component {
       highlightedIndex: baseState,
       showAllParagraphs: true,
     };
+
+    this._comparedItems = CompareStore.allItems();
     this.preLoadFinished = this.preLoadFinished.bind(this);
     this.highlightSelectedParagraphs = this.highlightSelectedParagraphs.bind(this);
   }
@@ -72,6 +75,8 @@ class DocumentPage extends Component {
 
     if (this.state.highlightedIndex == "search") {
       return this._searchIds;
+    } else if (this.state.highlightedIndex == "compare") {
+      return this._comparedItems;
     } else if (topics[this.state.highlightedIndex]) {
       return topics[this.state.highlightedIndex];
     }
@@ -124,6 +129,7 @@ class DocumentPage extends Component {
             parent={parent}
             showSearch={ (this._searchIds.length > 0)}
             numSearchResults={this._searchIds.length}
+            numCompareResults={ this._comparedItems.length }
             selectedMenuItem={this.state.highlightedIndex}
             showSelectedParagraphs={true}
             listedTopics={topics}
