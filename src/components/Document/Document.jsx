@@ -1,7 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-
 import ItemStore from '../../store/ItemStore.js';
 import Paragraph from './Paragraph.jsx';
 import Title from './Title.jsx';
@@ -9,7 +8,6 @@ import DownloadPDF from './DownloadPDF.jsx';
 import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
-import ParagraphJumpList from './ParagraphJumpList.jsx';
 
 class Document extends Component {
   constructor(props) {
@@ -20,10 +18,6 @@ class Document extends Component {
       // If the item has no parents, we assume it is a parent.
       this._parent = this._item;
     }
-    this.state = {
-      selectedParagraph: null,
-    }
-    this.selectParagraph = this.selectParagraph.bind(this);
   }
 
   paragraphs() {
@@ -47,23 +41,9 @@ class Document extends Component {
     );
   }
 
-  selectParagraph(value) {
-    this.setState({selectedParagraph: value});
-
-    // Add up the heights of all paragraphs before this one.
-    let prevSibling = ReactDOM.findDOMNode(this.refs['paragraph-' + value]).previousSibling;
-    let offset = 0;
-    while(prevSibling) {
-      offset += prevSibling.scrollHeight;
-      prevSibling = ReactDOM.findDOMNode(this.refs[ prevSibling.id]).previousSibling;
-    }
-
-    ReactDOM.findDOMNode(this.refs["document-" + this._parent.id]).scrollTop = offset;
-  }
-
   render() {
     return (
-      <div className="document" ref={"document-" + this._parent.id}>
+      <div className="document" >
         <div style={ this.props.bodyStyle } >
           <CopyrightNotification item={ this._parent } />
           <DocumentType item={this._parent} />
