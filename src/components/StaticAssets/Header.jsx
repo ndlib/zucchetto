@@ -49,7 +49,10 @@ class Header extends Component {
             <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
           </div>
         </div>
+        <div className="feedback"><a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform" target="_blank">Project Feedback</a></div>
+
       </header>
+
     );
   }
 }
