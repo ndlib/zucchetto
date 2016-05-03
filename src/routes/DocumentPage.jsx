@@ -6,6 +6,7 @@ import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
 import Document from '../components/Document/Document.jsx';
 import DocumentNav from '../components/Document/DocumentNav.jsx';
+import CopyrightNotification from '../components/Document/CopyrightNotification.jsx';
 import Title from '../components/Document/Title.jsx';
 
 import ItemActions from '../actions/ItemActions.jsx'
@@ -111,6 +112,9 @@ class DocumentPage extends Component {
         </mui.Toolbar>
 
         <mui.Paper zDepth={ 0 } style={{ width: "70%", float: "left" }}>
+          <p>
+            <CopyrightNotification item={ parent } />
+          </p>
           <div className={this.collapsedParagraphsClassName()}>
             { this.renderDocument() }
           </div>
