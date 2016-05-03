@@ -11,6 +11,7 @@ class DocumentSection extends Component {
     super(props, context);
 
     let baseState = this.props.baseState;
+    this._topics = TopicsInDocuments(this.props.parent);
     this._searchIds = [];
     if (baseState !== 'none') {
       this._searchIds = this.props.searchIds;
@@ -30,19 +31,7 @@ class DocumentSection extends Component {
     this.setState({showAllParagraphs: !this.state.showAllParagraphs});
   }
 
-
-  renderDocument() {
-    return (
-      <Document
-        documentId={ this.props.parent.id }
-        selectedParagraphIds={ this.highlightedDocumentIds() }
-      />
-    );
-  }
-
   highlightedDocumentIds() {
-    let topics = TopicsInDocuments(this.props.parent);
-
     if (this.state.highlightedIndex == "search") {
       return this._searchIds;
     } else if (this.state.highlightedIndex == "compare") {
@@ -50,10 +39,8 @@ class DocumentSection extends Component {
     } else if (topics[this.state.highlightedIndex]) {
       return topics[this.state.highlightedIndex];
     }
-
     return [];
   }
-
 
   collapsedParagraphsClassName() {
     if (!this.state.showAllParagraphs) {
@@ -63,10 +50,6 @@ class DocumentSection extends Component {
   }
 
   render() {
-
-    let parent = this.props.parent;
-    let topics = TopicsInDocuments(parent);
-
     return (
       <Paper>
         <Paper zDepth={ 0 } style={{ width: "70%", float: "left" }}>
@@ -74,18 +57,21 @@ class DocumentSection extends Component {
             <CopyrightNotification item={ parent } />
           </p>
           <div className={this.collapsedParagraphsClassName()}>
-            { this.renderDocument() }
+            <Document
+              documentId={ this.props.parent.id }
+              selectedParagraphIds={ this.highlightedDocumentIds() }
+            />
           </div>
         </Paper>
         <Paper zDepth={ 0 } style={{ width: "30%", float: "left" }}>
           <DocumentNav
-            parent={parent}
+            parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
-            numSearchResults={this._searchIds.length}
+            numSearchResults={ this._searchIds.length }
             numCompareResults={ this.props.comparedItems.length }
-            selectedMenuItem={this.state.highlightedIndex}
-            showSelectedParagraphs={true}
-            listedTopics={topics}
+            selectedMenuItem={ this.state.highlightedIndex }
+            showSelectedParagraphs={ true }
+            listedTopics={ this._topics }
             selectedParagraphClick={ this.highlightSelectedParagraphs.bind(this) }
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
