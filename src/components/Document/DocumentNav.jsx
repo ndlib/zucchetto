@@ -25,13 +25,25 @@ class DocumentNav extends Component {
   }
 
   render() {
-    let searchMenuItem = (
+    let searchMenuItem = "";
+    
+    if (this.props.showSearch) {
+      searchMenuItem = (
+        <mui.ListItem
+          key={"search"}
+          value={"search"}
+          primaryText={ "Search Results ("+ this.props.numSearchResults +")" }
+        />
+      );
+    }
+
+    let comparedMenuItem = (
       <mui.ListItem
-        key={"search"}
-        value={"search"}
-        primaryText={ "Search Results ("+ this.props.numSearchResults +")" }
+        key={"compare"}
+        value={"compare"}
+        primaryText={ "Saved for Compare ("+ this.props.numCompareResults +")" }
       />
-    );
+    )
 
     return (
       <div>
@@ -49,6 +61,7 @@ class DocumentNav extends Component {
             requestChange: this.menuClick.bind(this)
           }}>
           { searchMenuItem }
+          { comparedMenuItem }
           <mui.Divider />
           { this.topicList() }
         </SelectableList>
