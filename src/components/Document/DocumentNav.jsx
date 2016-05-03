@@ -26,7 +26,7 @@ class DocumentNav extends Component {
 
   render() {
     let searchMenuItem = "";
-    
+
     if (this.props.showSearch) {
       searchMenuItem = (
         <mui.ListItem
@@ -74,10 +74,10 @@ class DocumentNav extends Component {
 DocumentNav.propTypes = {
   selectedParagraphClick: React.PropTypes.func.isRequired,
   toggleOnClick: React.PropTypes.func.isRequired,
-  listedTopics: React.PropTypes.array,
+  listedTopics: React.PropTypes.object,
   selectedMenuItem: React.PropTypes.string,
   showSearch: React.PropTypes.bool,
-  numSearchResults: React.PropTypes.int,
+  numSearchResults: React.PropTypes.number,
   showSelectedParagraphs: React.PropTypes.bool,
 }
 
