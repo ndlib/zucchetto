@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import Document from '../Document/Document.jsx';
+import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import Title from '../Document/Title.jsx';
 import ParagraphJumpList from '../Document/ParagraphJumpList.jsx';
 
@@ -46,6 +47,8 @@ class NotebookDocument extends Component {
               paragraphs={ [] }
               primaryAction={ [] }
             />
+          <CopyrightNotification item={ this.props.document } />
+
           </div>
 
           <Document
