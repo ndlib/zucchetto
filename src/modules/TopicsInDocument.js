@@ -10,9 +10,9 @@ module.exports = function(parent) {
       item.metadata.actors.values.map(function (actor) {
         var topic = actor.value;
         if (!topics[topic]) {
-          topics[topic] = 1
+          topics[topic] = [ item.id ]
         } else {
-          topics[topic] += 1;
+          topics[topic].push(item.id);
         }
       });
     }

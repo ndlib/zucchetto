@@ -13,6 +13,9 @@ import ItemStore from '../store/ItemStore.js'
 
 import ViewOriginal from '../components/Document/ViewOriginal.jsx';
 
+import TopicsInDocuments from '../modules/TopicsInDocument.js'
+
+
 class DocumentPage extends Component {
   constructor(props, context) {
     super(props, context);
@@ -54,7 +57,7 @@ class DocumentPage extends Component {
     );
   }
 
-  highlightSelectedParagraphs(value, event) {
+  highlightSelectedParagraphs(event, value) {
     this.setState({highlightedIndex: value});
   }
 
@@ -63,8 +66,13 @@ class DocumentPage extends Component {
   }
 
   highlightedDocumentIds() {
+    let parent = ItemStore.getItem(this.props.params.id);
+    let topics = TopicsInDocuments(parent);
+
     if (this.state.highlightedIndex == "search") {
       return this._searchIds;
+    } else if (topics[this.state.highlightedIndex]) {
+      return topics[this.state.highlightedIndex];
     }
 
     return [];
@@ -82,7 +90,9 @@ class DocumentPage extends Component {
       return (<p>Loading....</p>);
     }
 
-    var parent = ItemStore.getItem(this.props.params.id);
+    let parent = ItemStore.getItem(this.props.params.id);
+    let topics = TopicsInDocuments(parent);
+
     return (
       <mui.Paper zDepth={ 0 }>
         <Header />
@@ -108,9 +118,11 @@ class DocumentPage extends Component {
         <mui.Paper zDepth={ 0 } style={{ width: "30%", float: "left" }}>
           <DocumentNav
             parent={parent}
-            showSearch={true}
+            showSearch={ (this._searchIds.length > 0)}
             numSearchResults={this._searchIds.length}
+            selectedMenuItem={this.state.highlightedIndex}
             showSelectedParagraphs={true}
+            listedTopics={topics}
             selectedParagraphClick={ this.highlightSelectedParagraphs.bind(this) }
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />

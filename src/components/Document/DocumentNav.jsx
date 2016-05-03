@@ -3,37 +3,38 @@ import React, { Component, PropTypes } from 'react';
 import mui from 'material-ui';
 import _ from 'underscore';
 
-import TopicsInDocuments from '../../modules/TopicsInDocument.js'
+import List from 'material-ui/lib/lists/list';
+import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance';
+let SelectableList = SelectableContainerEnhance(List);
 
 class DocumentNav extends Component {
 
-  menuClick(value, event) {
-    this.props.selectedParagraphClick(value, event)
+  menuClick(event, value) {
+    this.props.selectedParagraphClick(event, value);
   }
 
   topicList() {
-    let topics = TopicsInDocuments(this.props.parent);
-    return _.pairs(topics).map(function (topic) {
-      var title = topic[0] + " (" + topic[1] + ")";
-      return (<mui.MenuItem
-                primaryText={title}
-                onTouchTap={ this.menuClick.bind(this, topic[0]) } />);
+    return _.pairs(this.props.listedTopics).map(function (topic) {
+      var title = topic[0] + " (" + topic[1].length + ")";
+      return (<mui.ListItem
+                key={topic[0]}
+                value={topic[0]}
+                primaryText={title} />);
 
     }.bind(this));
   }
 
   render() {
     let searchMenuItem = (
-      <mui.MenuItem
-        onTouchTap={ this.menuClick.bind(this, "search") }
+      <mui.ListItem
+        key={"search"}
+        value={"search"}
         primaryText={ "Search Results ("+ this.props.numSearchResults +")" }
       />
     );
+
     return (
       <div>
-        <div style={{ padding: "25px 0" }}>
-          <mui.RaisedButton label="Add to Research" />
-        </div>
         <h4>Highlight Paragraphs</h4>
         <div className="right">
           <mui.Toggle
@@ -41,11 +42,16 @@ class DocumentNav extends Component {
             labelPosition="right"
             onToggle={ this.props.toggleOnClick } />
         </div>
-        <mui.Menu>
+        <SelectableList
+          subheader="Show Topical Paragraphs"
+          valueLink={{
+            value: this.props.selectedMenuItem,
+            requestChange: this.menuClick.bind(this)
+          }}>
           { searchMenuItem }
           <mui.Divider />
           { this.topicList() }
-        </mui.Menu>
+        </SelectableList>
       </div>
     );
   }
@@ -53,10 +59,10 @@ class DocumentNav extends Component {
 }
 
 DocumentNav.propTypes = {
-  parent:  React.PropTypes.object,
   selectedParagraphClick: React.PropTypes.func.isRequired,
   toggleOnClick: React.PropTypes.func.isRequired,
   listedTopics: React.PropTypes.array,
+  selectedMenuItem: React.PropTypes.string,
   showSearch: React.PropTypes.bool,
   numSearchResults: React.PropTypes.int,
   showSelectedParagraphs: React.PropTypes.bool,
