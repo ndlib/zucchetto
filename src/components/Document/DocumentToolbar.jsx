@@ -32,7 +32,7 @@ class DocumentToolbar extends Component {
         <ToolbarGroup float="left">
             <FlatButton
               onClick={ this.goBack }
-            ><i className="material-icons" style={{fontSize: '12px'}}>arrow_back</i> Back</FlatButton>
+            ><i className="material-icons" style={{fontSize: '12px'}}>backspace</i> Back</FlatButton>
         </ToolbarGroup>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
