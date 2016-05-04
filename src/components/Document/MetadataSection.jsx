@@ -7,10 +7,10 @@ class MetadataSection extends Component {
   constructor(props) {
     super(props);
     this._metadata = this.props.document.metadata;
+    this.metadataList = this.metadataList.bind(this);
   }
 
-
-  render() {
+  metadataList() {
     var data = [];
 
     for (var prop in this._metadata) {
@@ -29,13 +29,18 @@ class MetadataSection extends Component {
     for(var item in data) {
       values.push(data[item].value);
     }
+    return values;
+  }
+
+
+  render() {
 
     return (
       <Paper>
         <Paper zDepth={ 0 } style={{ width: "100%" }}>
           <h2 className='heading1'>Metadata</h2>
           <div style={{ margin: '0 auto', maxWidth: '60vw' }}>
-            {values}
+            { this.metadataList() }
           </div>
         </Paper>
       </Paper>
