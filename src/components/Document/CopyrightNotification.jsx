@@ -11,7 +11,7 @@ class CopyrightNotification extends Component {
         </p>
       );
     }
-    return (<div />);
+    return null;
   }
 }
 
