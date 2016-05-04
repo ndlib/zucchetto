@@ -7,6 +7,16 @@ class DocumentToolbar extends Component {
 
   constructor(props) {
     super(props);
+    this.clickMetaData = this.clickMetaData.bind(this);
+    this.clickDocument = this.clickDocument.bind(this);
+  }
+
+  clickMetaData() {
+    this.props.buttonFunction('meta');
+  }
+
+  clickDocument() {
+    this.props.buttonFunction('document');
   }
 
   render() {
@@ -17,10 +27,16 @@ class DocumentToolbar extends Component {
           <ViewOriginal documentId={ this.props.document.id } />
         </ToolbarGroup>
         <ToolbarGroup float="right">
-          <FlatButton label="Metadata" />
+          <FlatButton
+            label="Metadata"
+            onClick={ this.clickMetaData }
+            />
         </ToolbarGroup>
         <ToolbarGroup float="right">
-          <FlatButton label="Document" />
+          <FlatButton
+            label="Document"
+            onClick={ this.clickDocument }
+          />
         </ToolbarGroup>
       </Toolbar>
      );
@@ -29,6 +45,7 @@ class DocumentToolbar extends Component {
 
 DocumentToolbar.propTypes = {
   document: React.PropTypes.object,
+  buttonFunction: React.PropTypes.func,
 }
 
 DocumentToolbar.defaultProps = {

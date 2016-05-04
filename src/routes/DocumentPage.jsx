@@ -23,9 +23,12 @@ class DocumentPage extends Component {
 
     this.state = {
       loaded: ItemStore.preLoaded(),
+      showSection: 'document',
     };
 
     this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.contentSection = this.contentSection.bind(this);
 
   }
 
@@ -41,6 +44,30 @@ class DocumentPage extends Component {
     this.setState({ loaded: true });
   }
 
+  onClick(section) {
+    if(section !== this.state.showSection) {
+      this.setState({ showSection: section });
+    }
+  }
+
+  contentSection(section){
+    if(section === 'document') {
+      return (
+        <DocumentSection
+          baseState={ this._baseState }
+          searchIds={ this._searchIds }
+          comparedItems={ CompareStore.allItems() }
+          parent={ ItemStore.getItem(this.props.params.id) }
+        />
+      );
+    } else if (section === 'meta') {
+      return (
+        <MetadataSection document={ ItemStore.getItem(this.props.params.id) } />
+      );
+    }
+    return (<p>Loading...</p>)
+  }
+
   render() {
     if (!this.state.loaded) {
       return (<p>Loading....</p>);
@@ -50,13 +77,11 @@ class DocumentPage extends Component {
       <Paper zDepth={ 0 }>
         <Header />
         <br /><br /><br />
-        <DocumentToolbar document={ parent } />
-        <DocumentSection
-          baseState={ this._baseState }
-          searchIds={ this._searchIds }
-          comparedItems={ CompareStore.allItems() }
-          parent={ ItemStore.getItem(this.props.params.id) }
+        <DocumentToolbar
+          document={ parent }
+          buttonFunction={ this.onClick }
         />
+      { this.contentSection(this.state.showSection) }
         <Footer />
       </Paper>
     );
