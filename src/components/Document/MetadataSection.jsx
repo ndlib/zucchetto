@@ -36,12 +36,13 @@ class MetadataSection extends Component {
   render() {
 
     return (
-      <Paper>
+      <Paper style={{ height: 'calc(100% - 200px)'}}>
         <Paper zDepth={ 0 } style={{ width: "100%" }}>
           <h2 className='heading1'>Metadata</h2>
           <div style={{ margin: '0 auto', maxWidth: '60vw' }}>
             { this.metadataList() }
           </div>
+          <p></p>
         </Paper>
       </Paper>
      );
