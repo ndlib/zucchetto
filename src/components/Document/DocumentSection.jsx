@@ -4,6 +4,8 @@ import DocumentNav from './DocumentNav.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
 import Document from './Document.jsx';
 import TopicsInDocuments from '../../modules/TopicsInDocument.js';
+import CompareResultsInDocument from '../../modules/CompareResultsInDocument.js';
+
 import mui, { Paper } from 'material-ui';
 
 class DocumentSection extends Component {
@@ -68,7 +70,7 @@ class DocumentSection extends Component {
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
             numSearchResults={ this._searchIds.length }
-            numCompareResults={ this.props.comparedItems.length }
+            numCompareResults={ CompareResultsInDocument(this.props.parent, this.props.comparedItems) }
             selectedMenuItem={ this.state.highlightedIndex }
             showSelectedParagraphs={ true }
             listedTopics={ this._topics }
