@@ -36,8 +36,8 @@ class DocumentSection extends Component {
       return this._searchIds;
     } else if (this.state.highlightedIndex == "compare") {
       return this.props.comparedItems;
-    } else if (topics[this.state.highlightedIndex]) {
-      return topics[this.state.highlightedIndex];
+    } else if (this._topics[this.state.highlightedIndex]) {
+      return this._topics[this.state.highlightedIndex];
     }
     return [];
   }

@@ -8,10 +8,14 @@ class MetadataSection extends Component {
   }
 
   render() {
+    console.log(this.props.document)
     return (
-       <p/> 
+       <p/>
      );
   }
+}
+MetadataSection.propTypes = {
+  document: React.PropTypes.object.isRequired,
 }
 
 export default MetadataSection;
