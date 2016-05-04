@@ -144,10 +144,10 @@ class ListItem extends Component{
           <Title item={this._doc} />
         </Link>
         <div className="blurb">
-          <p>
+          <div>
             { this.blurb() }
             { this.resultCount() }
-          </p>
+          </div>
         </div>
         { this.paragraphsOrCompare(this.state.showDocument) }
 
