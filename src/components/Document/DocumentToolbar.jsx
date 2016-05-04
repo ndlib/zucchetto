@@ -5,10 +5,11 @@ import ViewOriginal from './ViewOriginal.jsx';
 
 class DocumentToolbar extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.clickMetaData = this.clickMetaData.bind(this);
     this.clickDocument = this.clickDocument.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   clickMetaData() {
@@ -19,10 +20,20 @@ class DocumentToolbar extends Component {
     this.props.buttonFunction('document');
   }
 
+  goBack() {
+    this.context.router.goBack()
+  }
+
+
   render() {
     return (
       <Toolbar>
         <ToolbarTitle text={ this.props.document.name } />
+        <ToolbarGroup float="left">
+            <FlatButton
+              onClick={ this.goBack }
+            ><i className="material-icons" style={{fontSize: '12px'}}>arrow_back</i> Back</FlatButton>
+        </ToolbarGroup>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
         </ToolbarGroup>
@@ -51,5 +62,9 @@ DocumentToolbar.propTypes = {
 DocumentToolbar.defaultProps = {
   document: {},
 }
+
+DocumentToolbar.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default DocumentToolbar;
