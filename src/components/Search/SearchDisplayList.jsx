@@ -7,6 +7,8 @@ var ListItem = require('./ListItem.jsx');
 import ItemStore from '../../store/ItemStore.js';
 import IDFromAtID from "../../modules/IDFromAtID.js";
 
+var nodeCount = 0;
+
 var SearchDisplayList = React.createClass({
 
   propTypes: {
@@ -41,6 +43,7 @@ var SearchDisplayList = React.createClass({
         }
       });
       var itemNodes = [];
+      nodeCount = groupedItems.length;
       for(var i = 0;  i < groupedItems.length; i++) {
         itemNodes.push(
           <ListItem
@@ -54,8 +57,11 @@ var SearchDisplayList = React.createClass({
     }
     if(groupedItems.length > 0) {
       return (
-        <div className="search-list results">
-          {itemNodes}
+        <div>
+          <p style={{ fontSize: '12px', margin: '0' }}>{nodeCount} results found</p>
+          <div className="search-list results">
+            {itemNodes}
+          </div>
         </div>
       );
     }
