@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5 {
 	font-weight: bold;
 }
 
-.feedback {
+.index header .feedback {
 	display:none;
 }
 
@@ -239,6 +239,8 @@ nav {
 .doc-list {
 	margin-bottom:100px;
 }
+
+
 
 .search {
 	input {
@@ -601,13 +603,15 @@ button.right {
     }
 		}
 		.feedback {
-  			display:inline-block;
+  			display:block;
   		}
 
 	}
 }
 
-
+footer .feedback {
+	display: none;
+}
 
 .tearms {
 	font-size:11px;
