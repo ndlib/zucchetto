@@ -18,8 +18,8 @@ class Footer extends Component {
             <span className="tearms"><a href="#">Terms of Service</a> | <a href="/Privacy">Privacy Policy</a></span>
           </div>
           <div className="col-sm-4 right">
-            <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
-            <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="undhl" /></a>
+            <Link to="http://humanrights.nd.edu/" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></Link>
+            <Link to="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="undhl" /></Link>
           </div>
         </div>
       </footer>
