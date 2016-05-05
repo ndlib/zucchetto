@@ -15,7 +15,7 @@ class Footer extends Component {
           </div>
           <div className="col-sm-2">
             <a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"  className="feedback" target="_blank">Project Feedback<br /></a>
-            <span className="tearms"><a href="#">Tearms of Service</a> | <a href="#">Privacy Policy</a></span>
+            <span className="tearms"><a href="#">Terms of Service</a> | <a href="/Privacy">Privacy Policy</a></span>
           </div>
           <div className="col-sm-5 right">
             <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
