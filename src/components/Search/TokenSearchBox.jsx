@@ -18,7 +18,6 @@ var TokenSearchBox = React.createClass({
     if(SearchStore.searchTerm.length > 0) {
       selectedTerms = SearchStore.searchTerm.split(',').map(
         function(x){
-          x = x.replace(/\"/gi, '');
           return {name: x, id: x}
       });
     }
@@ -73,7 +72,7 @@ var TokenSearchBox = React.createClass({
   onSubmit: function(e) {
     var terms = [];
     for(var i = 0; i < this.state.selected.length; i++) {
-      terms.push('"' + this.state.selected[i].id + '"')
+      terms.push(this.state.selected[i].id)
     }
     SearchActions.setTerm(terms.join(','));
   },
