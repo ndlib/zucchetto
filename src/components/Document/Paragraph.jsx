@@ -44,12 +44,21 @@ class Paragraph extends Component {
     return "paragraph document-content";
   }
 
+  showHeading(show) {
+    if(show) {
+      return (
+        <CurrentParagraph item={ this.props.item } />
+      )
+    }
+    return null;
+  }
   addButton() {
+
     if(this.props.showCheckBoxes) {
       return (
         <div id={"paragraph-" + this.props.item.id} className="paragraph-section">
           <AddToCompare item={ this.props.item } />
-          <CurrentParagraph item={ this.props.item } />
+          {this.showHeading(this.props.showHeadings)}
         </div>
       );
     }
@@ -74,9 +83,11 @@ Paragraph.propTypes = {
   item: React.PropTypes.object,
   selected: React.PropTypes.bool,
   showCheckBoxes: React.PropTypes.bool,
+  showHeadings: React.PropTypes.bool,
 }
 
 Paragraph.defaultProps = {
   showCheckBoxes: false,
+  showHeadings: false,
 }
 export default Paragraph;

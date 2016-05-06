@@ -44,13 +44,6 @@ class DocumentSection extends Component {
     return [];
   }
 
-  collapsedParagraphsClassName() {
-    if (!this.state.showAllParagraphs) {
-      return "collapsed-paragraphs";
-    }
-    return ""
-  }
-
   render() {
     return (
       <Paper>
@@ -58,7 +51,7 @@ class DocumentSection extends Component {
           <p>
             <CopyrightNotification item={ parent } />
           </p>
-          <div className={this.collapsedParagraphsClassName()}>
+          <div>
             <Document
               documentId={ this.props.parent.id }
               selectedParagraphIds={ this.highlightedDocumentIds() }

@@ -24,9 +24,11 @@ class DocumentPage extends Component {
     this.state = {
       loaded: ItemStore.preLoaded(),
       showSection: 'document',
+      comparedItems: CompareStore.allItems(),
     };
 
     this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.updateCompare = this.updateCompare.bind(this);
     this.onClick = this.onClick.bind(this);
     this.contentSection = this.contentSection.bind(this);
 
@@ -34,10 +36,16 @@ class DocumentPage extends Component {
 
   componentWillMount() {
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    CompareStore.on('ItemCompareUpdated', this.updateCompare);
   }
 
   componentWillUnmount() {
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
+    CompareStore.removeListener('ItemCompareUpdated', this.updateCompare);
+  }
+
+  updateCompare() {
+    this.setState({ comparedItems: CompareStore.allItems() })
   }
 
   preLoadFinished() {
@@ -56,7 +64,7 @@ class DocumentPage extends Component {
         <DocumentSection
           baseState={ this._baseState }
           searchIds={ this._searchIds }
-          comparedItems={ CompareStore.allItems() }
+          comparedItems={ this.state.comparedItems }
           parent={ ItemStore.getItem(this.props.params.id) }
         />
       );

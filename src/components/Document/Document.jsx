@@ -8,6 +8,7 @@ import DownloadPDF from './DownloadPDF.jsx';
 import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
+import AddToCompare from './AddToCompare.jsx';
 
 class Document extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Document extends Component {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
 
     if(!selected && !this.props.showOnlySelected) {
-      return (<div
+      return (<div key={ item.id }
         style={{
           backgroundColor: '#E8E8E8',
           color: '#999999',
@@ -37,9 +38,10 @@ class Document extends Component {
           padding: '2px 0',
           textAlign: 'center',
         }}
-      ><i>(content not displayed)</i></div>)
+      ><i>(paragraph not displayed)</i></div>)
     }
     return (
+
       <div
         id={ 'paragraph-' + item.id }
         ref={ 'paragraph-' + item.id }
@@ -48,6 +50,7 @@ class Document extends Component {
         <Paragraph
           item={ item }
           selected={ selected }
+          showCheckBoxes={ item.metadata.type_of_text.values[0].value === 'BodyText' }
         />
       </div>
     );

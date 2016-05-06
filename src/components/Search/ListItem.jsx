@@ -48,6 +48,7 @@ class ListItem extends Component{
             <Paragraph
               item={ this._paragraphs[i] }
               showCheckBoxes={ true }
+              showHeadings={ true }
             />
           </div>
         );
