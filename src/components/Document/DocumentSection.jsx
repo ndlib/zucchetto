@@ -62,6 +62,7 @@ class DocumentSection extends Component {
             <Document
               documentId={ this.props.parent.id }
               selectedParagraphIds={ this.highlightedDocumentIds() }
+              showOnlySelected={ this.state.showAllParagraphs}
             />
           </div>
         </Paper>

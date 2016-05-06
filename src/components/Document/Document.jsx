@@ -27,6 +27,18 @@ class Document extends Component {
   paragraph(item) {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
 
+    if(!selected && !this.props.showOnlySelected) {
+      return (<div
+        style={{
+          backgroundColor: '#E8E8E8',
+          color: '#999999',
+          fontSize: '.7em',
+          margin: '4px 0',
+          padding: '2px 0',
+          textAlign: 'center',
+        }}
+      ><i>(content not displayed)</i></div>)
+    }
     return (
       <div
         id={ 'paragraph-' + item.id }
@@ -58,6 +70,7 @@ Document.propTypes = {
   documentId: React.PropTypes.string.isRequired,
   bodyStyle: React.PropTypes.object,
   selectedParagraphIds: React.PropTypes.array,
+  showOnlySelected: React.PropTypes.bool,
 }
 
 Document.defaultProps = {
@@ -66,6 +79,7 @@ Document.defaultProps = {
     maxWidth: "40em", // Should put it between 70-75 characters at 1em (16px)
     margin: "0 auto",
   },
+  showOnlySelected: false,
 };
 
 export default Document;
