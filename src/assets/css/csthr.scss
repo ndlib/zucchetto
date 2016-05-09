@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5 {
 	font-weight: bold;
 }
 
-.feedback {
+.index header .feedback {
 	display:none;
 }
 
@@ -99,7 +99,7 @@ header {
 			padding:8px;
 			border-radius: 5px;
 			text-transform:uppercase;
-			color:$grey;
+			color:$green;
 		}
 		a:hover {
 			background: rgba(153, 153, 153, .5);
@@ -239,6 +239,8 @@ nav {
 .doc-list {
 	margin-bottom:100px;
 }
+
+
 
 .search {
 	input {
@@ -466,6 +468,10 @@ button.right {
 		}
 	}
 
+  .feedback {
+    display: none;
+  }
+
 	.search {
 		background: rgba(212,176,47,.3);
 		width: 100%;
@@ -586,14 +592,26 @@ button.right {
 			padding-top: 1em;
 			z-index: 5;
 		}
+   .col-sm-4 {
+			width: 100%;
+			text-align: center;
+			padding-top: 1em;
+			z-index: 5;
+      
+    &.right {
+      margin-top:-3em;
+    }
+		}
 		.feedback {
-  			display:inline-block;
+  			display:block;
   		}
 
 	}
 }
 
-
+footer .feedback {
+	display: none;
+}
 
 .tearms {
 	font-size:11px;

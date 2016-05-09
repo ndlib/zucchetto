@@ -5,6 +5,7 @@ import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 
 import SiteIndexPage from './SiteIndexPage.jsx';
 import AboutPage from './AboutPage.jsx';
+import PrivacyPage from './PrivacyPage.jsx';
 import PartnersPage from './PartnersPage.jsx';
 import ContactPage from './ContactPage.jsx';
 import ResultPage from './ResultPage.jsx';
@@ -41,6 +42,7 @@ export default function() {
         <Route path="/documents" component={AllDocumentsPage} />
         <Route path="/notebook" component={NotebookPage} />
         <Route path="/document/:id" component={DocumentPage} />
+        <Route path="/privacy" component={ PrivacyPage } />
       </Route>
     </Router>
   );

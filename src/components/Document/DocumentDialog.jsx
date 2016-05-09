@@ -28,7 +28,24 @@ class DocumentDialog extends Component {
 
   document() {
     if (this.state.documentId) {
-      return (<Document documentId={ this.state.documentId } />);
+      return (
+        <mui.Tabs>
+          <mui.Tab label="Search Results">
+            <h2>Search Results</h2>
+            <p> These would be the selected paragraphs in order of relavance. Options include compare this paragraph. </p>
+          </mui.Tab>
+          <mui.Tab label="Full Document">
+            <Document documentId={ this.state.documentId } />
+          </mui.Tab>
+          <mui.Tab label="Metadata">
+            <h2> Metadata </h2>
+            the full document metadata.
+          </mui.Tab>
+          <mui.Tab label="Download PDF">
+
+          </mui.Tab>
+        </mui.Tabs>
+      );
     } else {
       return (<div />);
     }

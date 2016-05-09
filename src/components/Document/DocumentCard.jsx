@@ -10,7 +10,7 @@ import IconButton from 'material-ui/lib/icon-button';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
-
+import { Link } from 'react-router';
 
 const iconButtonElement = (
   <IconButton touch={true}>
@@ -39,9 +39,9 @@ class DocumentCard extends Component {
 
     return (
       <article className="result document">
-        <a href="#" onClick={this.primaryAction}>
+        <Link to={ "/document/" + this._doc.id }>
           <Title item={this._doc} />
-        </a>
+        </Link>
 
         {this.props.children}
       </article>

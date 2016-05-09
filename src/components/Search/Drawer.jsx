@@ -96,7 +96,6 @@ class Drawer extends Component {
 
   drawer() {
     return (
-
       <div style={this.style()} className="row drawer">
         <div className="drop">
           <div className="col-sm-2 first">
@@ -108,7 +107,7 @@ class Drawer extends Component {
           </div>
           <div className="col-sm-4">
             <mui.FlatButton
-              label="clear all documents"
+              label="clear all"
               onClick={this.clearAll.bind(this)}
             />
           </div>

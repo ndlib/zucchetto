@@ -1,49 +1,103 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import mui from 'material-ui';
-
+import mui, { Paper } from 'material-ui';
 import Header from '../components/StaticAssets/Header.jsx';
-import Document from '../components/Document/Document.jsx';
-import ItemActions from '../actions/ItemActions.jsx'
-import ItemStore from '../store/ItemStore.js'
+import Footer from '../components/StaticAssets/Footer.jsx';
+import ItemActions from '../actions/ItemActions.jsx';
+import ItemStore from '../store/ItemStore.js';
+import CompareStore from '../store/CompareStore.js'
+import DocumentSection from '../components/Document/DocumentSection.jsx';
+import MetadataSection from '../components/Document/MetadataSection.jsx';
+import DocumentToolbar from '../components/Document/DocumentToolbar.jsx';
 
 class DocumentPage extends Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
+
+    this._baseState = "none";
+    this._searchIds = [];
+    if (this.props.location.query.searchIds) {
+      this._baseState = "search"
+      this._searchIds = this.props.location.query.searchIds.split(",");
+    }
+
     this.state = {
       loaded: ItemStore.preLoaded(),
+      showSection: 'document',
+      comparedItems: CompareStore.allItems(),
     };
-    this.preLoadFinished = this.preLoadFinished.bind(this)
+
+    this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.updateCompare = this.updateCompare.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.contentSection = this.contentSection.bind(this);
+
   }
 
   componentWillMount() {
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    CompareStore.on('ItemCompareUpdated', this.updateCompare);
   }
 
   componentWillUnmount() {
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
+    CompareStore.removeListener('ItemCompareUpdated', this.updateCompare);
+  }
+
+  updateCompare() {
+    this.setState({ comparedItems: CompareStore.allItems() })
   }
 
   preLoadFinished() {
     this.setState({ loaded: true });
   }
 
-  renderDocument() {
-    if (this.state.loaded) {
-      return (<Document documentId={ this.props.params.id } />);
-    } else {
-      return (<p>Loading....</p>);
+  onClick(section) {
+    if(section !== this.state.showSection) {
+      this.setState({ showSection: section });
     }
   }
 
+  contentSection(section){
+    if(section === 'document') {
+      return (
+        <DocumentSection
+          baseState={ this._baseState }
+          searchIds={ this._searchIds }
+          comparedItems={ this.state.comparedItems }
+          parent={ ItemStore.getItem(this.props.params.id) }
+        />
+      );
+    } else if (section === 'meta') {
+      return (
+        <MetadataSection document={ ItemStore.getItem(this.props.params.id) } />
+      );
+    }
+    return (<p>Loading...</p>)
+  }
+
   render() {
+    if (!this.state.loaded) {
+      return (<p>Loading....</p>);
+    }
+
     return (
-      <mui.Paper zDepth={ 0 }>
-        <Header/>
-        { this.renderDocument() }
-      </mui.Paper>
+      <Paper zDepth={ 0 }>
+        <Header />
+        <br /><br /><br />
+        <DocumentToolbar
+          document={ parent }
+          buttonFunction={ this.onClick }
+        />
+      { this.contentSection(this.state.showSection) }
+        <Footer />
+      </Paper>
     );
   }
 }
+
+DocumentPage.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default DocumentPage;

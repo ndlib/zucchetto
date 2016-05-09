@@ -29,7 +29,10 @@ class NotebookColumn extends Component {
 }
 
 NotebookColumn.propTypes = {
-  item: React.PropTypes.object,
+  item: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.bool
+  ]),
   columnNumber: React.PropTypes.number,
 }
 
