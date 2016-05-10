@@ -84,7 +84,6 @@ class DocumentPage extends Component {
     return (
       <Paper zDepth={ 0 }>
         <Header />
-        <br /><br /><br />
         <DocumentToolbar
           document={ ItemStore.getItem(this.props.params.id) }
           buttonFunction={ this.onClick }

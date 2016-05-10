@@ -46,7 +46,7 @@ class DocumentNav extends Component {
     )
 
     return (
-      <div>
+      <div style={{margin: '1em'}}>
         <h4>Highlight Paragraphs</h4>
         <div className="right">
           <mui.Toggle
