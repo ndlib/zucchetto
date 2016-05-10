@@ -41,7 +41,6 @@ class Document extends Component {
       ><i>(paragraph not displayed)</i></div>)
     }
     return (
-
       <div
         id={ 'paragraph-' + item.id }
         ref={ 'paragraph-' + item.id }
