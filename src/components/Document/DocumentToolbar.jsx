@@ -26,9 +26,8 @@ class DocumentToolbar extends Component {
 
 
   render() {
-    console.log(this.props.document.id)
     return (
-      <Toolbar>
+      <Toolbar style={{position: 'fixed', top: '55px', zIndex: '1'}}>
         <ToolbarTitle text={ this.props.document.name } style={{fontSize: '16px'}}/>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
