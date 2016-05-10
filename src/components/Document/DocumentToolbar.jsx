@@ -26,14 +26,10 @@ class DocumentToolbar extends Component {
 
 
   render() {
+    console.log(this.props.document.id)
     return (
       <Toolbar>
-        <ToolbarTitle text={ this.props.document.name } />
-        <ToolbarGroup float="left">
-            <FlatButton
-              onClick={ this.goBack }
-            ><i className="material-icons" style={{fontSize: '12px'}}>backspace</i> Back</FlatButton>
-        </ToolbarGroup>
+        <ToolbarTitle text={ this.props.document.name } style={{fontSize: '16px'}}/>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
         </ToolbarGroup>

@@ -86,7 +86,7 @@ class DocumentPage extends Component {
         <Header />
         <br /><br /><br />
         <DocumentToolbar
-          document={ parent }
+          document={ ItemStore.getItem(this.props.params.id) }
           buttonFunction={ this.onClick }
         />
       { this.contentSection(this.state.showSection) }
