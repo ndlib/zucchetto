@@ -59,7 +59,7 @@ class SearchActions {
   buildQuery(topics, searchTerm) {
     var q = "";
     if(topics.length > 0) {
-      var qualifiedTopics = topics.map(function(v,i) { return '"' + v +'"' });
+      var qualifiedTopics = topics.map(function(v,i) { return v });
       var unionTopics = qualifiedTopics.join(" OR ");
       q += "(" + unionTopics + ")";
     }
