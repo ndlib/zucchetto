@@ -1,14 +1,15 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import ItemStore from '../../store/ItemStore.js'
+import mui from 'material-ui';
 
 class ViewOriginal extends Component {
 
   render() {
-    if (this.props.item.metadata.url) {
+    let doc = ItemStore.getItem(this.props.documentId);
+    if (doc && doc.metadata.url) {
       return (
-        <p>
-          <a href={ this.props.item.metadata.url.values[0].value } target="_blank" className="view-original">View PDF</a>
-        </p>
+        <mui.FlatButton linkButton={true} href={ doc.metadata.url.values[0].value } target="_blank" label="View PDF" />
       );
     }
     return (<div />);
@@ -16,7 +17,7 @@ class ViewOriginal extends Component {
 }
 
 ViewOriginal.propTypes = {
-  item: React.PropTypes.object,
+  docuementId: React.PropTypes.object,
 }
 
 export default ViewOriginal;

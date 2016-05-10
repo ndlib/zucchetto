@@ -10,18 +10,27 @@ class Paragraph extends Component {
     if (this.props.item.metadata.type_of_text) {
       var type = this.props.item.metadata.type_of_text.values[0].value;
       if (type == "Heading1") {
-        return (<h2 className="heading1" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h2 className="heading1 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Heading2") {
-        return (<h2 className="heading2" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h2 className="heading2 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Heading3") {
-        return (<h3 className="heading3" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h3 className="heading3 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading1") {
-        return (<h4 className="subheading1" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h4 className="subheading1 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       } else if (type == "Subheading2") {
-        return (<h5 className="subheading2" dangerouslySetInnerHTML={ { __html: content } } />);
+        return (<h5 className="subheading2 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
+      } else if (type == "Subheading3") {
+        return (<h6 className="subheading3 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
+      } else if (type == "Subheading4") {
+        return (<h6 className="subheading4 document-content" dangerouslySetInnerHTML={ { __html: content } } />);
       }
     }
-    return (<div ref={ this.ref() } className={this.determineClassName()} dangerouslySetInnerHTML={ { __html: content } } />);
+    return (
+      <div
+        ref={ this.ref() }
+        className={this.determineClassName()}
+        dangerouslySetInnerHTML={ { __html: content } } />
+    );
   }
 
   ref() {
@@ -29,18 +38,27 @@ class Paragraph extends Component {
   }
 
   determineClassName() {
-    if (this.props.selectedItem && this.props.selectedItem.id == this.props.item.id) {
-      return "selected-paragraph paragraph";
+    if (this.props.selected) {
+      return "selected-paragraph paragraph document-content";
     }
-    return "paragraph";
+    return "paragraph document-content";
   }
 
+  showHeading(show) {
+    if(show) {
+      return (
+        <CurrentParagraph item={ this.props.item } />
+      )
+    }
+    return null;
+  }
   addButton() {
+
     if(this.props.showCheckBoxes) {
       return (
         <div id={"paragraph-" + this.props.item.id} className="paragraph-section">
           <AddToCompare item={ this.props.item } />
-          <CurrentParagraph item={ this.props.item } />
+          {this.showHeading(this.props.showHeadings)}
         </div>
       );
     }
@@ -63,11 +81,13 @@ class Paragraph extends Component {
 
 Paragraph.propTypes = {
   item: React.PropTypes.object,
-  selectedItem: React.PropTypes.object,
+  selected: React.PropTypes.bool,
   showCheckBoxes: React.PropTypes.bool,
+  showHeadings: React.PropTypes.bool,
 }
 
 Paragraph.defaultProps = {
   showCheckBoxes: false,
+  showHeadings: false,
 }
 export default Paragraph;

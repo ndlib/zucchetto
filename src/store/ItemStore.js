@@ -91,6 +91,10 @@ class ItemStore extends EventEmitter {
   }
 
   getItemParent(item) {
+    if (this._parent2children[item.user_defined_id]) {
+      return item;
+    }
+
     if (!item.metadata.parent_id) {
       return null;
     }

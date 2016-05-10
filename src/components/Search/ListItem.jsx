@@ -7,6 +7,9 @@ import Paragraph from '../Document/Paragraph.jsx';
 import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
+import Title from '../Document/Title.jsx';
+import { Link } from 'react-router';
+
 
 class ListItem extends Component{
   constructor(props) {
@@ -45,12 +48,14 @@ class ListItem extends Component{
             <Paragraph
               item={ this._paragraphs[i] }
               showCheckBoxes={ true }
+              showHeadings={ true }
             />
           </div>
         );
       }
       return (
         <div>
+          <CopyrightNotification item={ this._doc } />
           {paragraphs}
         </div>
       );
@@ -112,7 +117,6 @@ class ListItem extends Component{
     return (
       <p>
         <a href="#" onClick={ this.resultsOnClick } >
-
           <span
             style={{ fontSize: '15px' }}
           >{ this._paragraphs.length }
@@ -128,24 +132,27 @@ class ListItem extends Component{
     );
   }
 
+  selectedParagraphIds() {
+    return this._paragraphs.map(function (p) {
+      return p.id;
+    });
+  }
+
   render() {
     return (
-      <div>
-        <DocumentDialog ref="DocumentDialog" />
-        <DocumentCard
-          doc={ this._doc }
-          paragraphs={ this._paragraphs }
-          primaryAction={ this.titleOnClick }
-        >
-          <div className="blurb">
-            <CopyrightNotification item={ this._doc } />
+      <article className="result document">
+        <Link to={ "/document/" + this._doc.id + "?searchIds=" + this.selectedParagraphIds() }>
+          <Title item={this._doc} />
+        </Link>
+        <div className="blurb">
+          <div>
             { this.blurb() }
             { this.resultCount() }
           </div>
+        </div>
+        { this.paragraphsOrCompare(this.state.showDocument) }
 
-          { this.paragraphsOrCompare(this.state.showDocument) }
-        </DocumentCard>
-      </div>
+      </article>
     );
   }
 };

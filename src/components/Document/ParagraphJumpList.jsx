@@ -25,7 +25,7 @@ class ParagraphJumpList extends Component {
     );
 
     for(var i = 0; i < this.props.paragraphs.length; i++) {
-      let item = ItemStore.getItem(this.props.paragraphs[i].key);
+      let item = ItemStore.getItem(this.props.paragraphs[i].id);
       if(CompareStore.itemInCompare(item)) {
         listOptions.push(
           <option

@@ -17,8 +17,7 @@ var Contact = React.createClass({
           	<div className="col-sm-9 right-col">
               <h1>Contact Us</h1>
               <p>
-                For more information, contact Project Manager Christina Leblang via email at
-                <a href="mailto:Christina.M.Leblang.6@nd.edu">Christina.M.Leblang.6@nd.edu</a>
+                For more information, contact Project Manager Christina Leblang via email at <a href="mailto:csthr@nd.edu">csthr@nd.edu</a>
               </p>
             </div>
           </div>
