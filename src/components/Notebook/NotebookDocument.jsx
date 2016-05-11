@@ -12,6 +12,7 @@ import HumanRightsID from '../../constants/HumanRightsID.js';
 import mui from 'material-ui';
 import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
+import { Link } from 'react-router';
 const CATHOLIC = 'Catholic Social Teaching';
 const HUMANRIGHTS = 'International Human Rights Law';
 
@@ -56,7 +57,9 @@ class NotebookDocument extends Component {
         <div className='document-head'>
           <Heading title={ this.documentTitle() } />
           <div className='document-head'>
-            <Title item={this.props.document} />
+            <Link to={ "/document/" + this.props.document.id }>
+              <Title item={this.props.document} />
+            </Link>
             <ParagraphJumpList
               paragraphs={ ItemStore.getItemChildrenInOrder(this.props.document) }
               primaryAction={ this.selectParagraph }
