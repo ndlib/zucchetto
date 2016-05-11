@@ -9,7 +9,6 @@ class DocumentToolbar extends Component {
     super(props, context);
     this.clickMetaData = this.clickMetaData.bind(this);
     this.clickDocument = this.clickDocument.bind(this);
-    this.goBack = this.goBack.bind(this);
   }
 
   clickMetaData() {
@@ -19,11 +18,6 @@ class DocumentToolbar extends Component {
   clickDocument() {
     this.props.buttonFunction('document');
   }
-
-  goBack() {
-    this.context.router.goBack()
-  }
-
 
   render() {
     return (
