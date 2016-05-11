@@ -95,6 +95,7 @@ class DocumentSection extends Component {
             numSearchResults={ this._searchIds.length }
             numCompareResults={ CompareResultsInDocument(this.props.parent, this.props.comparedItems) }
             selectedMenuItem={ this.state.highlightedIndex }
+            selectedParagraphIds={ this.highlightedDocumentIds() }
             showSelectedParagraphs={ true }
             listedTopics={ this._topics }
             selectedParagraphClick={ this.highlightSelectedParagraphs.bind(this) }

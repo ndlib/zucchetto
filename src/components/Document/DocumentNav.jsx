@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import mui from 'material-ui';
 import _ from 'underscore';
+import ItemStore from '../../store/ItemStore.js';
 
 import List from 'material-ui/lib/lists/list';
 import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance';
@@ -16,25 +17,21 @@ class DocumentNav extends Component {
   topicList() {
     return _.pairs(this.props.listedTopics).map(function (topic) {
       var title = topic[0] + " (" + topic[1].length + ")";
-      console.log(this.props.selectedMenuItem);
-      console.log(topic[0]);
       return (<mui.ListItem
                 key={topic[0]}
                 value={topic[0]}
                 primaryText={title}
-                nestedItems={  this.individualParagraphs() }
+                nestedItems={ (this.props.selectedMenuItem == topic[0]) ? this.individualParagraphs() : [] }
               />);
 
     }.bind(this));
   }
 
   individualParagraphs() {
-    return [
-          <mui.ListItem
-            primaryText="team1" />,
-          <mui.ListItem
-            primaryText="team2" />,
-        ];
+    return this.props.selectedParagraphIds.map(function (id) {
+      let item = ItemStore.getItem(id);
+      return (<mui.ListItem primaryText={id} value={item.name} key={id} />);
+    });
   }
 
   render() {
@@ -61,7 +58,7 @@ class DocumentNav extends Component {
     )
 
     return (
-      <div style={{margin: '1em'}}>
+      <div>
         <h4>Highlight Paragraphs</h4>
         <div className="right">
           <mui.Toggle
@@ -91,6 +88,7 @@ DocumentNav.propTypes = {
   toggleOnClick: React.PropTypes.func.isRequired,
   listedTopics: React.PropTypes.object,
   selectedMenuItem: React.PropTypes.string,
+  selectedParagraphIds: React.PropTypes.array,
   showSearch: React.PropTypes.bool,
   numSearchResults: React.PropTypes.number,
   showSelectedParagraphs: React.PropTypes.bool,
