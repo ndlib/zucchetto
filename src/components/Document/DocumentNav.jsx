@@ -14,22 +14,27 @@ class DocumentNav extends Component {
   }
 
   topicList() {
-    let subItems = [
-      <mui.ListItem
-        primaryText="team1" />,
-      <mui.ListItem
-        primaryText="team2" />,
-    ];
-
     return _.pairs(this.props.listedTopics).map(function (topic) {
       var title = topic[0] + " (" + topic[1].length + ")";
+      console.log(this.props.selectedMenuItem);
+      console.log(topic[0]);
       return (<mui.ListItem
                 key={topic[0]}
                 value={topic[0]}
                 primaryText={title}
-                nestedItems={subItems} />);
+                nestedItems={  this.individualParagraphs() }
+              />);
 
     }.bind(this));
+  }
+
+  individualParagraphs() {
+    return [
+          <mui.ListItem
+            primaryText="team1" />,
+          <mui.ListItem
+            primaryText="team2" />,
+        ];
   }
 
   render() {
@@ -41,6 +46,7 @@ class DocumentNav extends Component {
           key={"search"}
           value={"search"}
           primaryText={ "Search Results ("+ this.props.numSearchResults +")" }
+          nestedItems={ (this.props.selectedMenuItem == "search") ? this.individualParagraphs() : [] }
         />
       );
     }
@@ -50,6 +56,7 @@ class DocumentNav extends Component {
         key={"compare"}
         value={"compare"}
         primaryText={ "Saved for Compare ("+ this.props.numCompareResults +")" }
+        nestedItems={ (this.props.selectedMenuItem == "compare") ? this.individualParagraphs() : [] }
       />
     )
 
