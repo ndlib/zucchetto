@@ -9,7 +9,6 @@ class DocumentToolbar extends Component {
     super(props, context);
     this.clickMetaData = this.clickMetaData.bind(this);
     this.clickDocument = this.clickDocument.bind(this);
-    this.goBack = this.goBack.bind(this);
   }
 
   clickMetaData() {
@@ -20,20 +19,10 @@ class DocumentToolbar extends Component {
     this.props.buttonFunction('document');
   }
 
-  goBack() {
-    this.context.router.goBack()
-  }
-
-
   render() {
     return (
-      <Toolbar>
-        <ToolbarTitle text={ this.props.document.name } />
-        <ToolbarGroup float="left">
-            <FlatButton
-              onClick={ this.goBack }
-            ><i className="material-icons" style={{fontSize: '12px'}}>backspace</i> Back</FlatButton>
-        </ToolbarGroup>
+      <Toolbar style={{position: 'fixed', top: '55px', zIndex: '1'}}>
+        <ToolbarTitle text={ this.props.document.name } style={{fontSize: '16px'}}/>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
         </ToolbarGroup>

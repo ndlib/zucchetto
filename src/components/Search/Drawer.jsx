@@ -84,7 +84,7 @@ class Drawer extends Component {
       <div style={this.style()} className="row drawer">
         <div className="drop">
           <div className="col-sm-11">
-            <p>Select "Save for Comparison" in a document you wish to compare</p>
+            <p>Add sections from one or more documents that you wish to compare</p>
           </div>
           <div className="col-sm-1 last">
             <CompareButton shortText={true} />
