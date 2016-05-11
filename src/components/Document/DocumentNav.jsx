@@ -14,12 +14,20 @@ class DocumentNav extends Component {
   }
 
   topicList() {
+    let subItems = [
+      <mui.ListItem
+        primaryText="team1" />,
+      <mui.ListItem
+        primaryText="team2" />,
+    ];
+
     return _.pairs(this.props.listedTopics).map(function (topic) {
       var title = topic[0] + " (" + topic[1].length + ")";
       return (<mui.ListItem
                 key={topic[0]}
                 value={topic[0]}
-                primaryText={title} />);
+                primaryText={title}
+                nestedItems={subItems} />);
 
     }.bind(this));
   }

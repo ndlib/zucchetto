@@ -17,8 +17,10 @@ class DocumentPage extends Component {
     this._baseState = "none";
     this._searchIds = [];
     if (this.props.location.query.searchIds) {
-      this._baseState = "search"
+      this._baseState = "search";
       this._searchIds = this.props.location.query.searchIds.split(",");
+    } else {
+      this._baseState = "compare";
     }
 
     this.state = {
@@ -31,7 +33,6 @@ class DocumentPage extends Component {
     this.updateCompare = this.updateCompare.bind(this);
     this.onClick = this.onClick.bind(this);
     this.contentSection = this.contentSection.bind(this);
-
   }
 
   componentWillMount() {
