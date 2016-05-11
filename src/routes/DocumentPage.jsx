@@ -9,6 +9,7 @@ import CompareStore from '../store/CompareStore.js'
 import DocumentSection from '../components/Document/DocumentSection.jsx';
 import MetadataSection from '../components/Document/MetadataSection.jsx';
 import DocumentToolbar from '../components/Document/DocumentToolbar.jsx';
+import Drawer from '../components/Search/Drawer.jsx';
 
 class DocumentPage extends Component {
   constructor(props, context) {
@@ -31,7 +32,6 @@ class DocumentPage extends Component {
     this.updateCompare = this.updateCompare.bind(this);
     this.onClick = this.onClick.bind(this);
     this.contentSection = this.contentSection.bind(this);
-
   }
 
   componentWillMount() {
@@ -89,7 +89,8 @@ class DocumentPage extends Component {
           buttonFunction={ this.onClick }
         />
       { this.contentSection(this.state.showSection) }
-        <Footer />
+        <Footer showCompareButton={ true }/>
+        <Drawer />
       </Paper>
     );
   }
