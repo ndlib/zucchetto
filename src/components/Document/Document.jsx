@@ -40,6 +40,10 @@ class Document extends Component {
         }}
       ><i>(paragraph not displayed)</i></div>)
     }
+    console.log("----");
+    console.log(this.props.showCompareButton);
+    console.log(item.metadata.type_of_text.values[0].value === 'BodyText' );
+    console.log("+++++")
     return (
       <div
         id={ 'paragraph-' + item.id }
@@ -49,7 +53,7 @@ class Document extends Component {
         <Paragraph
           item={ item }
           selected={ selected }
-          showCheckBoxes={ item.metadata.type_of_text.values[0].value === 'BodyText' }
+          showCheckBoxes={ ( item.metadata.type_of_text.values[0].value === 'BodyText' && this.props.showCompareButton ) }
         />
       </div>
     );
@@ -73,6 +77,7 @@ Document.propTypes = {
   bodyStyle: React.PropTypes.object,
   selectedParagraphIds: React.PropTypes.array,
   showOnlySelected: React.PropTypes.bool,
+  showCompareButton: React.PropTypes.bool,
 }
 
 Document.defaultProps = {
@@ -82,6 +87,7 @@ Document.defaultProps = {
     margin: "0 auto",
   },
   showOnlySelected: false,
+  showCompareButton: true
 };
 
 export default Document;

@@ -70,6 +70,8 @@ class NotebookDocument extends Component {
             documentId={ this.props.document.id }
             bodyStyle={ this.documentBodyStyle() }
             selectedParagraphIds={ CompareStore.allItems() }
+            showOnlySelected={true}
+            showCompareButton={false}
           />
         </div>
       </mui.Paper>
