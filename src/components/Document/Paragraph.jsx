@@ -56,7 +56,7 @@ class Paragraph extends Component {
 
     if(this.props.showCheckBoxes) {
       return (
-        <div id={"paragraph-" + this.props.item.id} className="paragraph-section">
+        <div className="paragraph-section">
           <AddToCompare item={ this.props.item } />
           {this.showHeading(this.props.showHeadings)}
         </div>
@@ -68,7 +68,7 @@ class Paragraph extends Component {
   render() {
     if (this.props.item.metadata.transcription) {
       return(
-        <div>
+        <div id={"paragraph-" + this.props.item.id}>
           { this.addButton() }
           {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
         </div>
