@@ -38,6 +38,8 @@ class Header extends Component {
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/about">About Database</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/partners">Project Partners</Link></mui.MenuItem>
               <mui.MenuItem onTouchTap={this.menuClick}><Link to="/contact">Contact Us</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/privacy">Privacy Policy</Link></mui.MenuItem>
+              <mui.MenuItem onTouchTap={this.menuClick}><Link to="/terms">Terms of Service</Link></mui.MenuItem>
               </div>
               <p>
                 <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr m" /></a>
