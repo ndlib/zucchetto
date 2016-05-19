@@ -13,6 +13,7 @@ import SearchPage from './SearchPage.jsx';
 import NotebookPage from './NotebookPage.jsx';
 import DocumentPage from './DocumentPage.jsx';
 import AllDocumentsPage from './AllDocumentsPage.jsx';
+import TermsOfServicePage from './TermsOfServicePage.jsx';
 import Page from './Page.jsx';
 
 var ga = require('react-ga');
@@ -35,14 +36,15 @@ export default function() {
       <Route path="/" component={ Page }>
         <IndexRoute component={ SiteIndexPage } />
         <Route path="/about" component={ AboutPage } />
-        <Route path="/partners" component={ PartnersPage} />
-        <Route path="/contact" component={ ContactPage} />
+        <Route path="/partners" component={ PartnersPage } />
+        <Route path="/contact" component={ ContactPage } />
         <Route path="/result" component={ ResultPage} />
-        <Route path="/search" component={SearchPage} />
-        <Route path="/documents" component={AllDocumentsPage} />
-        <Route path="/notebook" component={NotebookPage} />
-        <Route path="/document/:id" component={DocumentPage} />
+        <Route path="/search" component={ SearchPage } />
+        <Route path="/documents" component={ AllDocumentsPage } />
+        <Route path="/notebook" component={ NotebookPage } />
+        <Route path="/document/:id" component={ DocumentPage } />
         <Route path="/privacy" component={ PrivacyPage } />
+        <Route path="/terms" component={ TermsOfServicePage } />
       </Route>
     </Router>
   );

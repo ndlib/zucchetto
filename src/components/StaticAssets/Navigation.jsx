@@ -14,7 +14,13 @@ class Navigation extends Component {
             <Link to="/partners">Project Partners</Link>
           </li>
           <li>
-            <Link to="/Contact">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/privacy">Privacy Policy</Link>
+          </li>
+          <li>
+            <Link to="/terms">Terms of Service</Link>
           </li>
         </ul>
       </nav>

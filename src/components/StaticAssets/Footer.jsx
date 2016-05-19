@@ -15,7 +15,7 @@ class Footer extends Component {
           </div>
           <div className="col-sm-4" style={{textAlign: 'center', zIndex: '6'}} >
             <Link to="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"  className="feedback" target="_blank">Project Feedback<br /></Link>
-            <span className="tearms"><a href="#">Terms of Service</a> | <Link to="/privacy">Privacy Policy</Link></span>
+            <span className="tearms"><Link to='/terms'>Terms of Service</Link> | <Link to="/privacy">Privacy Policy</Link></span>
           </div>
           <div className="col-sm-4 right">
             <Link to="http://humanrights.nd.edu/" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></Link>
