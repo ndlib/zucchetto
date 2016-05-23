@@ -215,3 +215,10 @@ body {
 .collapsed-paragraphs .selected-paragraph {
   display: block;
 }
+
+.mini-map .document {
+  width: 750px;
+  left: -275px;
+  height: 0px;
+  overflow: visible;
+}
