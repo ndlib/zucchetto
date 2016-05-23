@@ -6,7 +6,6 @@ import CopyrightNotification from './CopyrightNotification.jsx';
 import Document from './Document.jsx';
 import TopicsInDocuments from '../../modules/TopicsInDocument.js';
 import CompareResultsInDocument from '../../modules/CompareResultsInDocument.js';
-import MiniMap from './MiniMap.jsx';
 
 import mui, { Paper } from 'material-ui';
 
@@ -24,33 +23,19 @@ class DocumentSection extends Component {
       highlightedIndex: baseState,
       showAllParagraphs: true,
       height: window.innerHeight - 150,
-      scrollTop: 0
     };
     this.highlightSelectedParagraphs = this.highlightSelectedParagraphs.bind(this);
     this.resize = this.resize.bind(this);
     this.goBack = this.goBack.bind(this);
     this.goToTop = this.goToTop.bind(this);
-    this.doc = this.doc.bind(this);
-    this.mapClick = this.mapClick.bind(this);
-    this.scrollWindow = this.scrollWindow.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    ReactDOM.findDOMNode(this.refs.docBody).addEventListener('scroll', this.scrollWindow);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resize);
-    ReactDOM.findDOMNode(this.refs.docBody).removeEventListener('scroll', this.scrollWindow);
   }
 
   resize(e) {
     this.setState({height: window.innerHeight - 150})
-  }
-
-  scrollWindow() {
-    this.setState({scrollTop: ReactDOM.findDOMNode(this.refs.docBody).scrollTop});
   }
 
   highlightSelectedParagraphs(event, value) {
@@ -80,24 +65,30 @@ class DocumentSection extends Component {
     ReactDOM.findDOMNode(this.refs.docBody).scrollTop = 0;
   }
 
-  doc() {
-    return (
-        <Document
-          documentId={ this.props.parent.id }
-          selectedParagraphIds={ this.highlightedDocumentIds() }
-          showOnlySelected={ this.state.showAllParagraphs}
-        />
-    );
-  }
-
-  mapClick(screenY){
-    ReactDOM.findDOMNode(this.refs.docBody).scrollTop = screenY;
-  }
-
   render() {
     return (
       <Paper style={{position: 'fixed', top: '110px', width: '100%'}}>
-        <Paper zDepth={ 0 } style={{ width: "25%", float: "left", overflow: 'scroll',  height: this.state.height}}>
+        <Paper zDepth={ 0 } style={{ width: "70%", float: "left", overflow: 'scroll',  height: this.state.height}} ref='docBody'>
+
+          <div style={{margin: '1em'}}>
+            <div>
+              <CopyrightNotification item={ this.props.parent } />
+            </div>
+            <Document
+              documentId={ this.props.parent.id }
+              selectedParagraphIds={ this.highlightedDocumentIds() }
+              showOnlySelected={ this.state.showAllParagraphs}
+            />
+          </div>
+          <div style={{ cursor: 'pointer', position: 'absolute', top: '20px', left: '20px', textAlign: 'center'}} onClick={ this.goBack }>
+            <i className="material-icons">arrow_back</i><br/>
+          </div>
+          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '20px', left: '20px', textAlign: 'center'}} onClick={ this.goToTop }>
+            <i className="material-icons">vertical_align_top</i><br/>
+            <p>Top</p>
+          </div>
+        </Paper>
+        <Paper zDepth={ 0 } style={{ width: "30%", float: "left", overflow: 'scroll',  height: this.state.height}}>
           <DocumentNav
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
@@ -110,28 +101,6 @@ class DocumentSection extends Component {
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "75%", float: "left", overflow: 'scroll',  height: this.state.height}} ref='docBody'>
-          <div ref='docContent'>
-              <div style={{ marginTop: '1em'}} >
-                <CopyrightNotification item={ this.props.parent } />
-              </div>
-            {this.doc()}
-          </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', top: '20px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goBack }>
-            <i className="material-icons">arrow_back</i><br/>
-          </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '60px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
-            <i className="material-icons">vertical_align_top</i><br/>
-            <p>Top</p>
-          </div>
-        </Paper>
-        <Paper zDepth={ 0 } style={{ width: "10%", right: '0', overflow: 'scroll',  height: this.state.height, position: 'absolute'}}>
-          <MiniMap
-            onClick={ this.mapClick }
-            scrollTop={ this.state.scrollTop }
-          >{ this.doc() }</MiniMap>
-        </Paper>
-
       </Paper>
      );
   }
