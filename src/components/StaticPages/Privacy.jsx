@@ -31,6 +31,18 @@ var Privacy = React.createClass({
 
 <h2>THIRD PARTY LINKS</h2>
 <p>At our discretion, we may include links to other websites or offers of other products or services on our website. Any third party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.</p>
+
+  <h2>TERMS AND CONDITIONS</h2>
+  <p>Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website.</p>
+  <h2>YOUR CONSENT</h2>
+  <p>By using our site, you consent to our website Privacy Policy and Website Terms.
+  </p>
+  <h2>CHANGES TO OUR PRIVACY POLICY</h2>
+  <p>This policy was last updated on the date shown at the top of this policy. The Project reserves the right to change, modify or amend this policy at will and without notice. We therefore encourage you to review this Policy regularly to inform yourself about how your Personal Information is collected, used and shared by the Project. To the fullest extent allowed under Federal law, your use of our website after the Effective date means that you are subject to the Policy then in effect.</p>
+
+  <h2>CONTACTING US</h2>
+  <p>Please contact the Project regarding any privacy concerns or questions you have via <a href="mailto:csthr@nd.edu">email</a>.
+  </p>
     	<p>&nbsp;</p>
     	<p>&nbsp;</p>
     	<p>&nbsp;</p>

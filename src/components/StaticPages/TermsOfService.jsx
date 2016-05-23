@@ -14,17 +14,6 @@ var TermsOfService = React.createClass({
             <Navigation/>
           </div>
           <div className="col-sm-9 right-col">
-            <h2>TERMS AND CONDITIONS</h2>
-            <p>Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website.</p>
-            <h2>YOUR CONSENT</h2>
-            <p>By using our site, you consent to our website Privacy Policy and Website Terms.
-            </p>
-            <h2>CHANGES TO OUR PRIVACY POLICY</h2>
-            <p>This policy was last updated on the date shown at the top of this policy. The Project reserves the right to change, modify or amend this policy at will and without notice. We therefore encourage you to review this Policy regularly to inform yourself about how your Personal Information is collected, used and shared by the Project. To the fullest extent allowed under Federal law, your use of our website after the Effective date means that you are subject to the Policy then in effect.</p>
-
-            <h2>CONTACTING US</h2>
-            <p>Please contact the Project regarding any privacy concerns or questions you have via <a href="mailto:csthr@nd.edu">email</a>.
-            </p>
             <h2>Terms and Conditions</h2>
             <p>This is the website of: the Catholic Social Teaching and International Human Rights Comparative Database Project (the “Project”), in the Center for Civil and Human Rights at the University of Notre Dame.</p>
             <p>Set out below are the rules that will apply to your use of our website. In using our website you are agreeing to comply with these rules including our Privacy Policy. We may amend the rules at any time by posting the amended rules on our website. All amended rules will apply from the time they are posted on our website. Your continued use of the website signifies your agreement to the terms contained herein at any time.</p>
