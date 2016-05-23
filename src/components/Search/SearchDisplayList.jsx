@@ -58,7 +58,7 @@ var SearchDisplayList = React.createClass({
     if(groupedItems.length > 0) {
       return (
         <div>
-          <p style={{ fontSize: '12px', margin: '0' }}>{nodeCount} documents found</p>
+          <p style={{ fontSize: '12px', margin: '0', paddingRight: '1.5em', textAlign: 'right'}}>{nodeCount} documents found</p>
           <div className="search-list results">
             {itemNodes}
           </div>
