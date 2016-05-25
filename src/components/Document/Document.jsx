@@ -40,10 +40,6 @@ class Document extends Component {
         }}
       ><i>(paragraph not displayed)</i></div>)
     }
-    console.log("----");
-    console.log(this.props.showCompareButton);
-    console.log(item.metadata.type_of_text.values[0].value === 'BodyText' );
-    console.log("+++++")
     return (
       <div
         id={ 'paragraph-' + item.id }
