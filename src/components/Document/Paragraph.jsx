@@ -70,7 +70,7 @@ class Paragraph extends Component {
   render() {
     if (this.props.item.metadata.transcription) {
       return(
-        <div id={"paragraph-" + this.props.item.id}>
+        <div>
           { this.addButton() }
           {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
         </div>

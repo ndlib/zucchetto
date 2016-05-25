@@ -101,7 +101,7 @@ class AddToCompare extends Component {
 
   render() {
     return (
-      <p style={{clear: 'left'}}>
+      <p style={{clear: 'left', margin: 0}}>
         <a
           href="#"
           className="add-to-compare"
