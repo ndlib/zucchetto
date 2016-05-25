@@ -27,7 +27,6 @@ class MetadataSection extends Component {
 
     var values = []
     for(var item in data) {
-      console.log(data[item])
       values.push(data[item].value);
     }
     values.unshift((<p key='source' >Source: <a href={this._metadata.rights_holder_website.values[0].value}>{this._metadata.rights_holder.values[0].value}</a></p>));
