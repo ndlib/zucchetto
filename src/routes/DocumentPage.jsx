@@ -82,16 +82,16 @@ class DocumentPage extends Component {
     }
 
     return (
-      <Paper zDepth={ 0 }>
+      <div zDepth={ 0 } className="body">
         <Header />
         <DocumentToolbar
           document={ ItemStore.getItem(this.props.params.id) }
           buttonFunction={ this.onClick }
         />
-      { this.contentSection(this.state.showSection) }
+        { this.contentSection(this.state.showSection) }
         <Footer showCompareButton={ true }/>
         <Drawer />
-      </Paper>
+      </div>
     );
   }
 }

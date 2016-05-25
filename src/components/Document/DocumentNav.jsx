@@ -17,6 +17,7 @@ class DocumentNav extends Component {
     return _.pairs(this.props.listedTopics).map(function (topic) {
       var title = topic[0] + " (" + topic[1].length + ")";
       return (<mui.ListItem
+                style={{ backgroundColor: "inherit" }}
                 key={topic[0]}
                 value={topic[0]}
                 primaryText={title} />);
@@ -30,6 +31,7 @@ class DocumentNav extends Component {
     if (this.props.showSearch) {
       searchMenuItem = (
         <mui.ListItem
+          style={{ backgroundColor: "inherit" }}
           key={"search"}
           value={"search"}
           primaryText={ "Search Results ("+ this.props.numSearchResults +")" }
@@ -37,16 +39,8 @@ class DocumentNav extends Component {
       );
     }
 
-    let comparedMenuItem = (
-      <mui.ListItem
-        key={"compare"}
-        value={"compare"}
-        primaryText={ "Saved for Compare ("+ this.props.numCompareResults +")" }
-      />
-    )
-
     return (
-      <div style={{margin: '1em'}}>
+      <div style={{margin: '1em'}} className="left-col">
         <h4>Highlight Paragraphs</h4>
         <div className="right">
           <mui.Toggle
@@ -55,13 +49,12 @@ class DocumentNav extends Component {
             onToggle={ this.props.toggleOnClick } />
         </div>
         <SelectableList
-          subheader="Show Topical Paragraphs"
+          style={{ backgroundColor: "inherit" }}
           valueLink={{
             value: this.props.selectedMenuItem,
             requestChange: this.menuClick.bind(this)
           }}>
           { searchMenuItem }
-          { comparedMenuItem }
           <mui.Divider />
           { this.topicList() }
         </SelectableList>
