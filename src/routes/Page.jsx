@@ -6,7 +6,7 @@ import ItemStore from '../store/ItemStore.js'
 
 class Page extends Component {
   componentWillMount() {
-    ItemActions.preLoadItems();    
+    ItemActions.preLoadItems();
   }
 
   render() {

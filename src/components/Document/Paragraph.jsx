@@ -40,6 +40,8 @@ class Paragraph extends Component {
   determineClassName() {
     if (this.props.selected) {
       return "selected-paragraph paragraph document-content";
+    } else if (this.props.highlighted) {
+      return "highlighted-paragraph paragraph document-content";
     }
     return "paragraph document-content";
   }
@@ -82,6 +84,7 @@ class Paragraph extends Component {
 Paragraph.propTypes = {
   item: React.PropTypes.object,
   selected: React.PropTypes.bool,
+  highlighted: React.PropTypes.bool,
   showCheckBoxes: React.PropTypes.bool,
   showHeadings: React.PropTypes.bool,
 }
@@ -89,5 +92,7 @@ Paragraph.propTypes = {
 Paragraph.defaultProps = {
   showCheckBoxes: false,
   showHeadings: false,
+  highlighted: false,
+  selected: false,
 }
 export default Paragraph;
