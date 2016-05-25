@@ -155,38 +155,6 @@ nav {
 	flex-direction: row;
 	align-items: stretch;
 
-	.left-col {
-		padding-left: 0;
-		background: $tan;
-		margin-top: 5px;
-		margin-bottom: 5em;
-		padding: 15px;
-
-		h2 {
-			font-size:22px;
-		}
-
-		label {
-			color: $green;
-		}
-		ul ul {
-      		padding-left: 1em !important;
-    	}
-	}
-
-	.right-col {
-		padding-right: 0;
-
-
-		h1 {
-			font-size: 22px;
-		}
-
-		h2 {
-			font-size: 18px;
-		}
-	}
-
 	nav {
 		a {
 			color: $green;
@@ -597,7 +565,7 @@ button.right {
 			text-align: center;
 			padding-top: 1em;
 			z-index: 5;
-      
+
     &.right {
       margin-top:-3em;
     }
@@ -642,4 +610,36 @@ footer .feedback {
 		display:block;
 		margin-top:-20vh;
 	}
+}
+
+.left-col {
+  padding-left: 0;
+  background: $tan;
+  margin-top: 5px;
+  margin-bottom: 5em;
+  padding: 15px;
+
+  h2 {
+    font-size:22px;
+  }
+
+  label {
+    color: $green;
+  }
+  ul ul {
+        padding-left: 1em !important;
+    }
+}
+
+.right-col {
+  padding-right: 0;
+
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
 }

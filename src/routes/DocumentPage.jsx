@@ -82,7 +82,7 @@ class DocumentPage extends Component {
     }
 
     return (
-      <div zDepth={ 0 } className="body">
+      <div zDepth={ 0 }>
         <Header />
         <DocumentToolbar
           document={ ItemStore.getItem(this.props.params.id) }
