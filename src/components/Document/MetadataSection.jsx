@@ -27,8 +27,10 @@ class MetadataSection extends Component {
 
     var values = []
     for(var item in data) {
+      console.log(data[item])
       values.push(data[item].value);
     }
+    values.unshift((<p key='source' >Source: <a href={this._metadata.rights_holder_website.values[0].value}>{this._metadata.rights_holder.values[0].value}</a></p>));
     return values;
   }
 
@@ -36,7 +38,7 @@ class MetadataSection extends Component {
   render() {
 
     return (
-      <Paper style={{ height: 'calc(100% - 200px)'}}>
+      <Paper style={{ height: 'calc(100% - 200px)', marginTop: '111px'}}>
         <Paper zDepth={ 0 } style={{ width: "100%" }}>
           <h2 className='heading1'>Metadata</h2>
           <div style={{ margin: '0 auto', maxWidth: '60vw' }}>
