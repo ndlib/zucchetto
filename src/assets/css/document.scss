@@ -64,7 +64,7 @@ body {
 
 .paragraph {
   padding:2px 5px;
-  margin:1em 0;
+  margin:0;
   font-family: Roboto,sans-serif;
 
   ol {
@@ -72,6 +72,9 @@ body {
   }
 }
 
+div[id^='paragraph-'] {
+  margin: 1em 0;
+}
 
 
 .add-to-compare {
