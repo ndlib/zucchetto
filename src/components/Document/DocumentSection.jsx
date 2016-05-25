@@ -64,8 +64,6 @@ class DocumentSection extends Component {
   highlightedDocumentIds() {
     if (this.state.highlightedIndex == "search") {
       return this._searchIds;
-    } else if (this.state.highlightedIndex == "compare") {
-      return this.props.comparedItems;
     } else if (this._topics[this.state.highlightedIndex]) {
       return this._topics[this.state.highlightedIndex];
     }
@@ -84,7 +82,8 @@ class DocumentSection extends Component {
     return (
         <Document
           documentId={ this.props.parent.id }
-          selectedParagraphIds={ this.highlightedDocumentIds() }
+          selectedParagraphIds={ this.props.comparedItems }
+          highlightedParagraphIds={ this.highlightedDocumentIds() }
           showOnlySelected={ this.state.showAllParagraphs}
         />
     );

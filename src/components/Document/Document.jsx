@@ -27,7 +27,8 @@ class Document extends Component {
 
   paragraph(item) {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
-
+    let highlighted = (this.props.highlightedParagraphIds.indexOf(item.id) !== -1)
+    
     if(!selected && !this.props.showOnlySelected) {
       return (<div key={ item.id }
         style={{
@@ -50,6 +51,7 @@ class Document extends Component {
         <Paragraph
           item={ item }
           selected={ selected }
+          highlighted = { highlighted }
           showCheckBoxes={ ( item.metadata.type_of_text.values[0].value === 'BodyText' && this.props.showCompareButton ) }
         />
       </div>
@@ -73,6 +75,7 @@ Document.propTypes = {
   documentId: React.PropTypes.string.isRequired,
   bodyStyle: React.PropTypes.object,
   selectedParagraphIds: React.PropTypes.array,
+  highlightedParagraphIds: React.PropTypes.array,
   showOnlySelected: React.PropTypes.bool,
   showCompareButton: React.PropTypes.bool,
 }
@@ -84,7 +87,9 @@ Document.defaultProps = {
     margin: "0 auto",
   },
   showOnlySelected: false,
-  showCompareButton: true
+  showCompareButton: true,
+  selectedParagraphIds: [],
+  highlightedParagraphIds: []
 };
 
 export default Document;
