@@ -61,7 +61,7 @@ class NotebookDocument extends Component {
               paragraphs={ ItemStore.getItemChildrenInOrder(this.props.document) }
               primaryAction={ this.selectParagraph }
             />
-          <CopyrightNotification item={ this.props.document } />
+          <CopyrightNotification item={ this.props.document } align='left' />
 
           </div>
 
