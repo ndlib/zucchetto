@@ -14,7 +14,14 @@ class MetadataSection extends Component {
     var data = [];
 
     for (var prop in this._metadata) {
-      data.push({label: this._metadata[prop].label.toLowerCase(), value: (<p key={ prop } >{this._metadata[prop].label}: {this._metadata[prop].values[0].value}</p>)});
+      var value = this._metadata[prop].values[0].value;
+      if(value.startsWith('http')) {
+        value = (<a href={value} target='_blank'>{value}</a>);
+      }
+      var html = (
+        <p key={ prop } ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>{this._metadata[prop].label}:</span> {value}</p>)
+      ;
+      data.push({label: this._metadata[prop].label.toLowerCase(), value: html});
     }
 
     data = data.sort(function(a,b) {
@@ -29,7 +36,7 @@ class MetadataSection extends Component {
     for(var item in data) {
       values.push(data[item].value);
     }
-    values.unshift((<p key='source' >Source: <a href={this._metadata.rights_holder_website.values[0].value}>{this._metadata.rights_holder.values[0].value}</a></p>));
+    values.unshift((<p key='source' ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>Source:</span> <a href={this._metadata.rights_holder_website.values[0].value}>{this._metadata.rights_holder.values[0].value}</a></p>));
     return values;
   }
 
@@ -37,15 +44,29 @@ class MetadataSection extends Component {
   render() {
 
     return (
-      <Paper style={{ height: 'calc(100% - 200px)', marginTop: '111px'}}>
-        <Paper zDepth={ 0 } style={{ width: "100%" }}>
-          <h2 className='heading1'>Metadata</h2>
-          <div style={{ margin: '0 auto', maxWidth: '60vw' }}>
+        <Paper zDepth={ 0 } style={{
+            backgroundColor: 'transparent',
+            height: 'calc(100% - 200px)',
+            marginTop: '111px',
+            width: "100%"
+        }}>
+          <div style={{
+              margin: '0 auto',
+              maxWidth: '60vw'
+          }}>
+            <h2 className='heading1'
+              style={{
+                padding: '1em 0',
+                textAlign: 'left'
+              }}
+            >Document Information</h2>
             { this.metadataList() }
           </div>
-          <p></p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
         </Paper>
-      </Paper>
      );
   }
 }
