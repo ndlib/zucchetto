@@ -28,8 +28,8 @@ class Document extends Component {
   paragraph(item) {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
     let highlighted = (this.props.highlightedParagraphIds.indexOf(item.id) !== -1)
-    
-    if(!selected && !this.props.showOnlySelected) {
+
+    if(!highlighted && !this.props.showOnlySelected) {
       return (<div key={ item.id }
         style={{
           backgroundColor: '#E8E8E8',

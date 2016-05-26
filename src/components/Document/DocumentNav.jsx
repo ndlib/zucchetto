@@ -8,6 +8,10 @@ import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance
 let SelectableList = SelectableContainerEnhance(List);
 
 class DocumentNav extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.goBack = this.goBack.bind(this);
+  }
 
   menuClick(event, value) {
     this.props.selectedParagraphClick(event, value);
@@ -23,6 +27,11 @@ class DocumentNav extends Component {
                 primaryText={title} />);
 
     }.bind(this));
+  }
+
+  goBack(event) {
+    event.preventDefault();
+    this.context.router.goBack()
   }
 
   render() {
@@ -41,6 +50,10 @@ class DocumentNav extends Component {
 
     return (
       <div style={{margin: '1em'}} className="left-col">
+        <a href="#" style={{ textAlign: 'center', color: "black"}} onClick={ this.goBack }>
+          <i className="material-icons">arrow_back</i>
+        </a>
+        <hr />
         <h4>Highlight Paragraphs</h4>
         <div className="right">
           <mui.Toggle
@@ -78,5 +91,9 @@ DocumentNav.defaultProps = {
   showSearch: false,
   showSelectedParagraphs: true,
 }
+
+DocumentNav.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default DocumentNav;

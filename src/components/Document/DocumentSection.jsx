@@ -28,7 +28,6 @@ class DocumentSection extends Component {
     };
     this.highlightSelectedParagraphs = this.highlightSelectedParagraphs.bind(this);
     this.resize = this.resize.bind(this);
-    this.goBack = this.goBack.bind(this);
     this.goToTop = this.goToTop.bind(this);
     this.doc = this.doc.bind(this);
     this.mapClick = this.mapClick.bind(this);
@@ -68,10 +67,6 @@ class DocumentSection extends Component {
       return this._topics[this.state.highlightedIndex];
     }
     return [];
-  }
-
-  goBack() {
-    this.context.router.goBack()
   }
 
   goToTop() {
@@ -116,9 +111,7 @@ class DocumentSection extends Component {
               </div>
             {this.doc()}
           </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', top: '20px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goBack }>
-            <i className="material-icons">arrow_back</i><br/>
-          </div>
+
           <div style={{ cursor: 'pointer', position: 'absolute', bottom: '60px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
             <i className="material-icons">vertical_align_top</i><br/>
             <p>Top</p>
