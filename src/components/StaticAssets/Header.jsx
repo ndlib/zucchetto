@@ -24,7 +24,7 @@ class Header extends Component {
       <header>
         <div className="row">
           <div className="col-sm-9">
-            <h1><mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</mui.FlatButton> Research Database</h1>
+            <h1><mui.FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</mui.FlatButton> <Link to="/" style={{color: '#D5B117'}}>Research Database</Link></h1>
             <mui.LeftNav
               open={this.state.menuOpen}
               docked={ false }
