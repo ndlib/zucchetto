@@ -14,14 +14,20 @@ class MetadataSection extends Component {
     var data = [];
 
     for (var prop in this._metadata) {
+      var label = this._metadata[prop].label;
       var value = this._metadata[prop].values[0].value;
+
       if(value.startsWith('http')) {
         value = (<a href={value} target='_blank'>{value}</a>);
       }
+
       var html = (
-        <p key={ prop } ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>{this._metadata[prop].label}:</span> {value}</p>)
-      ;
-      data.push({label: this._metadata[prop].label.toLowerCase(), value: html});
+        <p key={ prop } ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>{label}:</span> {value}</p>
+      );
+      
+      if(label !== 'Coverage Temporal') {
+        data.push({label: label.toLowerCase(), value: html});
+      }
     }
 
     data = data.sort(function(a,b) {
