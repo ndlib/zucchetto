@@ -7,7 +7,12 @@ class CopyrightNotification extends Component {
     if (this.props.item.metadata && this.props.item.metadata.rights_holder && this.props.item.metadata.rights_holder_website) {
       return (
         <div style={{ clear: 'left', textAlign: this.props.align }}>
-          <a href={ this.props.item.metadata.rights_holder_website.values[0].value } target="_blank" className="copyright-notification">{ this.props.item.metadata.rights_holder.values[0].value }</a>
+          <a
+            href={ this.props.item.metadata.rights_holder_website.values[0].value }
+            target="_blank"
+            className="copyright-notification"
+            style={{color: '#224048'}}
+          >{ this.props.item.metadata.rights_holder.values[0].value }</a>
           <hr style={{background: '#dddddd'}}/>
         </div>
       );

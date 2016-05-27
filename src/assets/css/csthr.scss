@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5 {
 header {
   border-bottom: double 3px $grey;
   margin-bottom: 4px;
-	background: $tan;
+	background: $green;
 	padding: 11px;
 	position: fixed;
 	top: 0;
@@ -95,14 +95,14 @@ header {
 	display:block;
 		a {
 			font-size:13px;
-			background: rgba(153, 153, 153, .2);
+			background: $tan;
 			padding:8px;
 			border-radius: 5px;
 			text-transform:uppercase;
 			color:$green;
 		}
 		a:hover {
-			background: rgba(153, 153, 153, .5);
+			background: $khaki;
 			text-decoration: none;
 		}
 	}
