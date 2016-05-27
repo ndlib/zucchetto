@@ -87,6 +87,7 @@ class DocumentPage extends Component {
         <DocumentToolbar
           document={ ItemStore.getItem(this.props.params.id) }
           buttonFunction={ this.onClick }
+          activeSection={ this.state.showSection}
         />
         { this.contentSection(this.state.showSection) }
         <Footer showCompareButton={ true }/>
