@@ -1,13 +1,20 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import mui from 'material-ui';
+import mui, { Divider, ListItem, Toggle } from 'material-ui';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import _ from 'underscore';
-
 import List from 'material-ui/lib/lists/list';
 import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance';
+var theme = require("../../themes/vatican.jsx");
 let SelectableList = SelectableContainerEnhance(List);
 
 class DocumentNav extends Component {
+
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(theme)
+    };
+  }
 
   menuClick(event, value) {
     this.props.selectedParagraphClick(event, value);
@@ -30,7 +37,7 @@ class DocumentNav extends Component {
 
     if (this.props.showSearch) {
       searchMenuItem = (
-        <mui.ListItem
+        <ListItem
           style={{ backgroundColor: "inherit" }}
           key={"search"}
           value={"search"}
@@ -43,10 +50,14 @@ class DocumentNav extends Component {
       <div style={{margin: '1em'}} className="left-col">
         <h4>Highlight Paragraphs</h4>
         <div className="right">
-          <mui.Toggle
+          <Toggle
             label="Only Show Hightlighed Paragraphs"
             labelPosition="right"
-            onToggle={ this.props.toggleOnClick } />
+            onToggle={ this.props.toggleOnClick }
+            primary={ false }
+            secondary={ false }
+
+          />
         </div>
         <SelectableList
           style={{ backgroundColor: "inherit" }}
@@ -55,13 +66,16 @@ class DocumentNav extends Component {
             requestChange: this.menuClick.bind(this)
           }}>
           { searchMenuItem }
-          <mui.Divider />
+          <Divider />
           { this.topicList() }
         </SelectableList>
       </div>
     );
   }
 
+}
+DocumentNav.childContextTypes = {
+  muiTheme: React.PropTypes.object
 }
 
 DocumentNav.propTypes = {

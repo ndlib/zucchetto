@@ -21,7 +21,7 @@ class DocumentToolbar extends Component {
 
   render() {
     return (
-      <Toolbar style={{position: 'fixed', top: '55px', zIndex: '1', backgroundColor: '#F8F6ED', borderBottom: "solid 1px #979694" }}>
+      <Toolbar style={{position: 'fixed', top: '55px', zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
         <ToolbarTitle text={ this.props.document.name } style={{fontSize: '16px'}}/>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
@@ -37,7 +37,7 @@ class DocumentToolbar extends Component {
           <FlatButton
             label="Text"
             onClick={ this.clickDocument }
-            backgroundColor={ this.props.activeSection === 'document' ? '#E4E1D1' : 'transparent'}
+            backgroundColor={ this.props.activeSection === 'document' ? '#F8F6ED' : 'transparent'}
           />
         </ToolbarGroup>
       </Toolbar>
