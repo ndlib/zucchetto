@@ -1,28 +1,39 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router'
+import mui, { MenuItem } from 'material-ui';
+import { Link } from 'react-router';
 
 class Navigation extends Component {
   render() {
     return (
       <nav>
-        <ul>
-          <li>
-            <Link to="/about">About the Database</Link>
-          </li>
-          <li>
-            <Link to="/partners">Project Partners</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li>
-            <Link to="/privacy">Privacy Policy</Link>
-          </li>
-          <li>
-            <Link to="/terms">Terms of Service</Link>
-          </li>
-        </ul>
+        <MenuItem>
+          <Link to="/">Home</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/search?q=">Search Database</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/documents">Document Index</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/about">About the Database</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/using">Using the Database</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/partners">Project Partners</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/privacy">Privacy Policy</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/terms">Terms of Service</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/contact">Contact Us</Link>
+        </MenuItem>
       </nav>
     );
   }

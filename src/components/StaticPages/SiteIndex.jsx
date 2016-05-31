@@ -2,7 +2,7 @@
 var React = require('react');
 var Carousel = require('nuka-carousel');
 var Header = require('../StaticAssets/Header.jsx');
-var Navigation = require('../StaticAssets/Navigation.jsx');
+var HomePageNavigation = require('../StaticAssets/HomePageNavigation.jsx');
 var Footer = require('../StaticAssets/Footer.jsx');
 
 import { Link } from 'react-router';
@@ -54,7 +54,7 @@ var SiteIndex = React.createClass({
             <p><Link to="/search?q=">Using the Database</Link></p>
           </section>
 
-        <Navigation/>
+        <HomePageNavigation/>
         <div className="home-frame">
           <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
             <ul className="carousel-indicators" style={{color: 'transparent'}}>

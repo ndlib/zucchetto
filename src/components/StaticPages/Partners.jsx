@@ -23,7 +23,7 @@ var Partners = React.createClass({
         		<h1>Project Partners</h1>
         		<table>
     			  <tbody>
-            <tr><td colspan='2' style={ headingStyle }><h2>Consultants</h2></td></tr>
+            <tr><td colSpan='2' style={ headingStyle }><h2>Consultants</h2></td></tr>
     			    <tr>
     			      <td><img alt="University of Notre Dame Law School" src="/resources/images/partners/ndls.png" /></td>
     			      <td><img alt="Kellog Institute for International Studies" src="/resources/images/partners/kiis.png" /></td>
@@ -49,7 +49,7 @@ var Partners = React.createClass({
 
         <table style={{ backgroundColor: '#E4E1D1'}}>
     			  <tbody>
-              <tr><td colspan='2' style={ headingStyle }><h2>Funding</h2></td></tr>
+              <tr><td colSpan='2' style={ headingStyle }><h2>Funding</h2></td></tr>
     			    <tr>
     			      <td><img alt="Kroc Institute for International Peace Studies" src="/resources/images/partners/kiips.png" /></td>
     			      <td><img alt="Institute for Scholarship in the Liberal Arts" src="/resources/images/partners/isla.png" /></td>
@@ -58,7 +58,7 @@ var Partners = React.createClass({
     			</table>
         		<table>
     			  <tbody>
-            <tr><td colspan='2' style={ headingStyle }><h2>Documents</h2></td></tr>
+            <tr><td colSpan='2' style={ headingStyle }><h2>Documents</h2></td></tr>
     			    <tr>
     			      <td><img alt="Libreria Editrice Vaticana" src="/resources/images/partners/lev.png" /></td>
     			      <td><img alt="Council of Europe" src="/resources/images/partners/eu.png" /></td>
