@@ -51,7 +51,7 @@ var SiteIndex = React.createClass({
         <Header />
       		<section className="search">
             <h2><Link to="/search?q=">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></Link></h2>
-            <p><Link to="/search?q=">Using the Database</Link></p>
+            <p><Link to="/using">Using the Database</Link></p>
           </section>
 
         <HomePageNavigation/>
