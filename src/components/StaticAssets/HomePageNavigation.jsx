@@ -8,6 +8,14 @@ class HomePageNavigation extends Component {
       <nav>
         <ul>
           <li>
+            <Link to="/using">Using the Database</Link>
+          </li>
+          <li>
+            <Link to="/documents">Document Index</Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
             <Link to="/about">About the Database</Link>
           </li>
           <li>

@@ -81,6 +81,7 @@ header {
 			padding:4px 0;
 			font-size: 22px;
 			display: block;
+
 		}
 		a:hover {
 			text-decoration: none;
@@ -387,6 +388,10 @@ button.right {
 
 
 .index {
+  a.main-heading {
+    color: white;
+  }
+
 	header {
 		background: none;
 		padding: 0;
@@ -482,14 +487,16 @@ button.right {
 		width: 100%;
 		background: rgba(11,34,63,.1);
 		padding: 12px 0;
-		margin-top:10vh;
+		margin-top: 5vh;
 
 		ul {
 			width: 960px;
 			margin:0 auto;
+    padding-bottom: 15px;
+    text-align: center;
 
 			li {
-				float: left;
+				display: inline-block;
 				padding: 0 75px;
 
 				a {
@@ -562,13 +569,12 @@ button.right {
 			z-index: 5;
 		}
    .col-sm-4 {
-			width: 100%;
 			text-align: center;
 			padding-top: 1em;
 			z-index: 5;
 
-    &.right {
-      margin-top:-3em;
+    a {
+      color: $green;
     }
 		}
 		.feedback {
@@ -643,4 +649,8 @@ footer .feedback {
   h2 {
     font-size: 18px;
   }
+}
+
+a.main-heading {
+  color: $yellow;
 }

@@ -25,7 +25,7 @@ class Header extends Component {
       <header>
         <div className="row">
           <div className="col-sm-9">
-            <h1><FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</FlatButton> <Link to="/" style={{color: '#D5B117'}}>Research Database</Link></h1>
+            <h1><FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</FlatButton> <Link to="/" className='main-heading'>Research Database</Link></h1>
             <LeftNav
               open={this.state.menuOpen}
               docked={ false }
@@ -42,7 +42,7 @@ class Header extends Component {
             </LeftNav>
           </div>
           <div className="col-sm-3 right">
-            <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
+            <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr-alt.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
           </div>
         </div>
         <div className="feedback"><a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform" target="_blank">Project Feedback</a></div>
