@@ -4,6 +4,11 @@ var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var Footer = require('../StaticAssets/Footer.jsx');
 
+var headingStyle = {
+  paddingLeft: '1em',
+  textAlign: 'left',
+}
+
 var Partners = React.createClass({
 
   render: function() {
@@ -16,9 +21,9 @@ var Partners = React.createClass({
         	</div>
         	<div className="col-sm-9 right-col">
         		<h1>Project Partners</h1>
-        		<h2>Consultants</h2>
         		<table>
     			  <tbody>
+            <tr><td colspan='2' style={ headingStyle }><h2>Consultants</h2></td></tr>
     			    <tr>
     			      <td><img alt="University of Notre Dame Law School" src="/resources/images/partners/ndls.png" /></td>
     			      <td><img alt="Kellog Institute for International Studies" src="/resources/images/partners/kiis.png" /></td>
@@ -40,22 +45,23 @@ var Partners = React.createClass({
     			      <td><img alt="The University of Oklahoma College of Law" src="/resources/images/partners/uocl.png" /></td>
     			    </tr>
     			  </tbody>
-    			</table>
-        		<h2>Funding</h2>
-        		<table>
+        </table>
+
+        <table style={{ backgroundColor: '#E4E1D1'}}>
     			  <tbody>
+              <tr><td colspan='2' style={ headingStyle }><h2>Funding</h2></td></tr>
     			    <tr>
     			      <td><img alt="Kroc Institute for International Peace Studies" src="/resources/images/partners/kiips.png" /></td>
     			      <td><img alt="Institute for Scholarship in the Liberal Arts" src="/resources/images/partners/isla.png" /></td>
     			    </tr>
     			  </tbody>
     			</table>
-        		<h2>Documents</h2>
         		<table>
     			  <tbody>
+            <tr><td colspan='2' style={ headingStyle }><h2>Documents</h2></td></tr>
     			    <tr>
     			      <td><img alt="Libreria Editrice Vaticana" src="/resources/images/partners/lev.png" /></td>
-    			      <td><img alt="European Union" src="/resources/images/partners/eu.png" /></td>
+    			      <td><img alt="Council of Europe" src="/resources/images/partners/eu.png" /></td>
     			    </tr>
     			    <tr>
                 <td><img alt="United Nations" src="/resources/images/partners/un.png" /></td>
