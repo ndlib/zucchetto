@@ -486,7 +486,7 @@ button.right {
 		float: left;
 		width: 100%;
 		background: rgba(11,34,63,.3);
-		padding: 12vh 0 16vh;
+		padding: 30px 0;
 
 		ul {
 			width: 960px;
@@ -538,6 +538,10 @@ button.right {
 			max-width: initial;
 		}
 	}
+  .carousel-indicators {
+    bottom: 20px;
+    z-index: 20;
+  }
 
 	footer {
 		max-width: 960px;
@@ -613,7 +617,12 @@ footer .feedback {
 .slider-slide {
 	overflow: hidden;
 	height:90vh !important;
-	img {
+	& > img {
+    min-width: 100%;
+    min-height: 120vh;
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
 		display:block;
 		margin-top:-20vh;
 	}
