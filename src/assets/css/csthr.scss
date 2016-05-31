@@ -485,9 +485,8 @@ button.right {
 	nav {
 		float: left;
 		width: 100%;
-		background: rgba(11,34,63,.1);
-		padding: 12px 0;
-		margin-top: 5vh;
+		background: rgba(11,34,63,.3);
+		padding: 12vh 0 16vh;
 
 		ul {
 			width: 960px;
@@ -517,8 +516,8 @@ button.right {
 	}
 
 	.carousel {
-		max-height: 90vh;
-   min-height: 90vh;
+		max-height: 86vh;
+   min-height: 86vh;
 		overflow: hidden;
 
 
@@ -542,7 +541,7 @@ button.right {
 
 	footer {
 		max-width: 960px;
-		margin:0 auto 0;
+		margin: 3vh auto 0;
 		clear: both;
 		position: static;
 		background: none;
