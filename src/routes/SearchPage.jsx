@@ -13,6 +13,7 @@ import VaticanID from '../constants/VaticanID.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
+import LandingContent from '../components/Search/LandingContent.jsx';
 
 import TokenSearchBox from '../components/Search/TokenSearchBox.jsx';
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
@@ -72,16 +73,7 @@ class SearchPage extends Component {
   renderSearchBody() {
     if(SearchStore.searchTerm == '' && SearchStore.topics.length <= 0) {
       return (
-        <div className="col-sm-6" style={{ width: "100%" }}>
-          <BackgroundIcon style={{ display: "inline-block", width: "150px", height: "150px" }} color={Colors.grey400}/>
-          <div style={{ display: "inline-block", position: "fixed", paddingTop: "45px" }}>
-            <h1>Get Started</h1>
-            <h2>Enter a search query or select a filter to view a list of matching documents.</h2>
-            <TokenSearchBox />
-            <p>See <Link to="/documents">document index</Link></p>
-
-          </div>
-        </div>
+        <LandingContent />
       );
     }
 
