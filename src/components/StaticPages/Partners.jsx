@@ -61,7 +61,7 @@ var Partners = React.createClass({
             <tr><td colSpan='2' style={ headingStyle }><h2>Documents</h2></td></tr>
     			    <tr>
     			      <td><img alt="Libreria Editrice Vaticana" src="/resources/images/partners/lev.png" /></td>
-    			      <td><img alt="Council of Europe" src="/resources/images/partners/eu.png" /></td>
+    			      <td><img alt="Council of Europe" src="/resources/images/partners/coe.png" /></td>
     			    </tr>
     			    <tr>
                 <td><img alt="United Nations" src="/resources/images/partners/un.png" /></td>
@@ -71,6 +71,10 @@ var Partners = React.createClass({
     			      <td><img alt="Organization of American States" src="/resources/images/partners/oas.png" /></td>
                 <td><img alt="International Committee of the Red Cross" src="/resources/images/partners/icrc_logo.png" /></td>
     			    </tr>
+            <tr>
+  			      <td><img alt="African Union" src="/resources/images/partners/au.png" /></td>
+              <td>&nbsp;</td>
+  			    </tr>
     			  </tbody>
     			</table>
         	</div>
