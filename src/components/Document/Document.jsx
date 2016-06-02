@@ -28,7 +28,7 @@ class Document extends Component {
   paragraph(item) {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
     let highlighted = (this.props.highlightedParagraphIds.indexOf(item.id) !== -1)
-    
+
     if(!selected && !this.props.showOnlySelected) {
       return (<div key={ item.id }
         style={{
@@ -62,6 +62,7 @@ class Document extends Component {
     return (
       <div className="document" style={{ backgroundColor: "inherit" }}>
         <div style={ this.props.bodyStyle } >
+          { this.props.children }
           <DocumentType item={this._parent} />
           { this.paragraphs() }
           <CopyrightNotification item={ this._parent } />
