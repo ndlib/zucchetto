@@ -61,8 +61,6 @@ class NotebookDocument extends Component {
               paragraphs={ ItemStore.getItemChildrenInOrder(this.props.document) }
               primaryAction={ this.selectParagraph }
             />
-          <CopyrightNotification item={ this.props.document } align='left' />
-
           </div>
 
           <Document
@@ -72,7 +70,9 @@ class NotebookDocument extends Component {
             selectedParagraphIds={ CompareStore.allItems() }
             showOnlySelected={true}
             showCompareButton={false}
-          />
+          >
+            <CopyrightNotification item={ this.props.document } align='center' />
+          </Document>
         </div>
       </mui.Paper>
     );

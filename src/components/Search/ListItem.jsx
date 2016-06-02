@@ -142,7 +142,7 @@ class ListItem extends Component{
     return (
       <article className="result document">
         <Link to={ "/document/" + this._doc.id + "?searchIds=" + this.selectedParagraphIds() }>
-          <Title item={this._doc} />
+          <Title item={ this._doc } shouldLink={ false }/>
         </Link>
         <div className="blurb">
           <div>

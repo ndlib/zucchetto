@@ -24,7 +24,7 @@ class MetadataSection extends Component {
       var html = (
         <p key={ prop } ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>{label}:</span> {value}</p>
       );
-      
+
       if(label !== 'Coverage Temporal') {
         data.push({label: label.toLowerCase(), value: html});
       }
@@ -42,7 +42,7 @@ class MetadataSection extends Component {
     for(var item in data) {
       values.push(data[item].value);
     }
-    values.unshift((<p key='source' ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>Source:</span> <a href={this._metadata.rights_holder_website.values[0].value}>{this._metadata.rights_holder.values[0].value}</a></p>));
+    values.unshift((<p key='source' ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>Source:</span> {this._metadata.organization.values[0].value}</p>));
     return values;
   }
 

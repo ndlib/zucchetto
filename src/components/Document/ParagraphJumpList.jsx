@@ -43,7 +43,7 @@ class ParagraphJumpList extends Component {
 
   render() {
     return (
-      <div style={{float:'right'}}>
+      <div style={{float:'right', marginBottom: '1em'}}>
         {this.list()}
       </div>
     )

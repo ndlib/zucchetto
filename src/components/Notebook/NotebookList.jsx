@@ -27,8 +27,8 @@ class NotebookList extends Component {
       return item.collection_id == VaticanID;
     });
     this.state = {
-      column1: null,
-      column2: null,
+      column1: CompareStore.getColumn1() ?  CompareStore.getColumn1() : null,
+      column2: CompareStore.getColumn2() ?  CompareStore.getColumn2() : null,
     };
   }
 
