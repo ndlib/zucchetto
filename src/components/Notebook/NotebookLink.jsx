@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import CompareStore from '../../store/CompareStore.js';
+import mui from "material-ui"
 
 class NotebookLink extends Component {
   constructor(props) {
@@ -49,13 +50,12 @@ class NotebookLink extends Component {
     let totalCount = CompareStore.allItems().length;
 
     return (
-      <div onClick={this.clickAction.bind(this)}
+      <mui.FlatButton onClick={this.clickAction.bind(this)}
         style={{
           backgroundColor: this.disabled() ? '#dddddd': '#224048',
           color: this.disabled() ? '#cdcdcd' : '#ffffff',
           cursor: this.disabled() ? 'default' :'pointer',
           display: 'inline',
-          float: 'left',
           fontFamily: 'Roboto,​sans-serif',
           fontSize: '0.9em',
           margin: '0 0',
@@ -64,7 +64,7 @@ class NotebookLink extends Component {
           textTransform: 'uppercase',
           lineHeight: '36px',
         }}
-      >Compare ({ totalCount })</div>
+      >Compare ({ totalCount } Paragraphs)</mui.FlatButton>
     );
   }
 }

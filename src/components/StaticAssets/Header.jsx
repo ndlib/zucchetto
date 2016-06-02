@@ -25,7 +25,7 @@ class Header extends Component {
     return (
       <header>
         <div className="row">
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <h1><FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</FlatButton> <Link to="/" className='main-heading'>Research Database</Link></h1>
             <LeftNav
               open={this.state.menuOpen}
@@ -42,11 +42,17 @@ class Header extends Component {
               </p>
             </LeftNav>
           </div>
-          <div className="col-sm-2">
-            <div className="feedback"><a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform" target="_blank">Project Feedback</a></div>
-          </div>
-          <div className="col-sm-2 right">
-            <NotebookLink />
+          <div className="col-sm-6">
+            <div style={{float: "right", paddingTop: "8px"}}>
+              <mui.FlatButton
+                backgroundColor="#E4E1D1"
+                className="feedback"
+                href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"
+                target="blank" linkButton="true">
+                  Project Feedback
+              </mui.FlatButton>
+              <NotebookLink />
+            </div>
           </div>
         </div>
 

@@ -89,19 +89,17 @@ header {
 	}
 
 	.feedback {
-		a {
 			font-size:13px;
 			background: $tan;
 			padding:8px;
 			border-radius: 5px;
 			text-transform:uppercase;
 			color:$green;
-		}
-		a:hover {
-			background: $khaki;
-			text-decoration: none;
-		}
 	}
+  .feedback:hover {
+    background: $khaki;
+    text-decoration: none;
+  }
 	.cchr {
 		height: 30px;
 		margin-bottom: 0px;

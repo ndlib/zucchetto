@@ -8,8 +8,8 @@ import HumanRightsID from '../../constants/HumanRightsID.js';
 import mui from 'material-ui';
 
 class Drawer extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.updateCount = this.updateCount.bind(this);
     this.state = {
       totalCount: CompareStore.allItems().length,
@@ -30,6 +30,16 @@ class Drawer extends Component {
     CompareStore.clearAll();
   }
 
+  url() {
+    let vaticanItems = CompareStore.collectionItems(VaticanID);
+    let humanRightItems = CompareStore.collectionItems(HumanRightsID);
+
+    let vString = 'v=' + vaticanItems.join('|');
+    let hString = 'h=' + humanRightItems.join('|');
+
+    return '/notebook' + '?' + vString + '&' + hString;
+  }
+
   updateCount() {
     let length = CompareStore.allItems().length
 
@@ -46,6 +56,8 @@ class Drawer extends Component {
     this.setState({
       open: false,
     });
+    this.context.router.push(this.url());
+
   };
 
   handleChangeDuration = (event) => {
@@ -70,12 +82,19 @@ class Drawer extends Component {
     return "";
   }
 
+  action() {
+    if (this.state.countChange > 0) {
+      return "View";
+    }
+    return "";
+  }
+
   render() {
     return (
       <mui.Snackbar
           open={ this.state.open }
           message={ this.message() }
-          action="Compare"
+          action={ this.action() }
           autoHideDuration={ 4000 }
           onActionTouchTap={this.handleActionTouchTap}
           onRequestClose={this.handleRequestClose}
@@ -95,5 +114,10 @@ class Drawer extends Component {
 
   }
 }
+
+Drawer.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
 
 export default Drawer;
