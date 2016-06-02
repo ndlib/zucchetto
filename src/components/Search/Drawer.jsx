@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import CompareStore from '../../store/CompareStore.js';
 import ItemStore from '../../store/ItemStore.js';
 import NotebookLink from '../Notebook/NotebookLink.jsx';
-import CompareButton from '../Document/CompareButton.jsx';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import mui from 'material-ui';

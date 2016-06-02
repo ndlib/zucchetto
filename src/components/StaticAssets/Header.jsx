@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui, { FlatButton, FontIcon, LeftNav } from 'material-ui';
+import NotebookLink from "../Notebook/NotebookLink.jsx"
 import { Link } from 'react-router'
 import Navigation from './Navigation.jsx'
 
@@ -24,7 +25,7 @@ class Header extends Component {
     return (
       <header>
         <div className="row">
-          <div className="col-sm-9">
+          <div className="col-sm-8">
             <h1><FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</FlatButton> <Link to="/" className='main-heading'>Research Database</Link></h1>
             <LeftNav
               open={this.state.menuOpen}
@@ -41,11 +42,13 @@ class Header extends Component {
               </p>
             </LeftNav>
           </div>
-          <div className="col-sm-3 right">
-            <a href="http://humanrights.nd.edu/" target="_blank"><img src="/resources/images/cchr-alt.png" alt="The Center For Civil and Human Rights" className="cchr" /></a>
+          <div className="col-sm-2">
+            <div className="feedback"><a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform" target="_blank">Project Feedback</a></div>
+          </div>
+          <div className="col-sm-2 right">
+            <NotebookLink />
           </div>
         </div>
-        <div className="feedback"><a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform" target="_blank">Project Feedback</a></div>
 
       </header>
 
