@@ -14,7 +14,7 @@ var TermsOfService = React.createClass({
             <Navigation/>
           </div>
           <div className="col-sm-9 right-col">
-            <h2>Terms and Conditions</h2>
+            <h1>Terms and Conditions – last modified 21 April 2016</h1>
             <p>This is the website of: the Catholic Social Teaching and International Human Rights Comparative Database Project (the “Project”), in the Center for Civil and Human Rights at the University of Notre Dame.</p>
             <p>Set out below are the rules that will apply to your use of our website. In using our website you are agreeing to comply with these rules including our Privacy Policy. We may amend the rules at any time by posting the amended rules on our website. All amended rules will apply from the time they are posted on our website. Your continued use of the website signifies your agreement to the terms contained herein at any time.</p>
 
