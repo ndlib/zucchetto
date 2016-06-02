@@ -5,10 +5,33 @@ import HumanRightsID from '../../constants/HumanRightsID.js';
 import CompareStore from '../../store/CompareStore.js';
 
 class NotebookLink extends Component {
+  constructor(props) {
+    super(props);
+    this.updateCount = this.updateCount.bind(this);
+    this.state = {
+      totalCount: CompareStore.allItems().length,
+    }
+  }
+
+  componentWillMount() {
+    CompareStore.on('ItemCompareUpdated', this.updateCount);
+  }
+
+  componentWillUnmount() {
+    CompareStore.removeListener('ItemCompareUpdated', this.updateCount);
+  }
+
+  disabled() {
+    return (this.state.totalCount == 0);
+  }
+
+  updateCount() {
+    this.setState({ totalCount: CompareStore.allItems().length })
+  }
 
   clickAction() {
     CompareStore.clearColumnItems();
-    if(!this.props.disabled) {
+    if(!this.disabled()) {
       let vaticanItems = CompareStore.collectionItems(VaticanID);
       let humanRightItems = CompareStore.collectionItems(HumanRightsID);
 
@@ -20,16 +43,17 @@ class NotebookLink extends Component {
     else {
       // disabled do nothing
     }
-
   }
 
   render() {
+    let totalCount = CompareStore.allItems().length;
+
     return (
       <div onClick={this.clickAction.bind(this)}
         style={{
-          backgroundColor: this.props.disabled ? '#dddddd': '#224048',
-          color: this.props.disabled ? '#cdcdcd' : '#ffffff',
-          cursor: this.props.disabled ? 'default' :'pointer',
+          backgroundColor: this.disabled() ? '#dddddd': '#224048',
+          color: this.disabled() ? '#cdcdcd' : '#ffffff',
+          cursor: this.disabled() ? 'default' :'pointer',
           display: 'inline',
           float: 'left',
           fontFamily: 'Roboto,​sans-serif',
@@ -40,7 +64,7 @@ class NotebookLink extends Component {
           textTransform: 'uppercase',
           lineHeight: '36px',
         }}
-      >Compare</div>
+      >Compare ({ totalCount })</div>
     );
   }
 }

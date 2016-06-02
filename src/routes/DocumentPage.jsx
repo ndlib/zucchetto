@@ -91,7 +91,6 @@ class DocumentPage extends Component {
         />
         { this.contentSection(this.state.showSection) }
         <Footer showCompareButton={ true }/>
-        <Drawer />
       </div>
     );
   }

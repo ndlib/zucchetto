@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import IDFromAtID from "../../modules/IDFromAtID.js";
 import CompareStore from "../../store/CompareStore.js";
 import CompareActions from "../../actions/CompareActions.js";
+import mui from 'material-ui';
 
 let TRUE = 'true';
 let FALSE = 'false';
