@@ -344,7 +344,6 @@ footer {
   padding-left: 10px;
   padding-right: 10px;
   border-top: double 3px $yellow;
-  position: fixed;
   bottom: 0px;
   background-color: $tan;
   z-index: 4;
@@ -360,9 +359,11 @@ footer {
 		margin-right:15px;
 	}
 	img.cchr {
-		display: none;
+    vertical-align: bottom;
+		margin-left: 15px;
+		margin-bottom: 5px;
+		height:35px;
 	}
-
 }
 
 a.right {
@@ -440,10 +441,6 @@ button.right {
 			display:none;
 		}
 	}
-
-  .feedback {
-    display: none;
-  }
 
 	.search {
 		background: rgba(212,176,47,.3);
@@ -576,19 +573,20 @@ button.right {
 			padding-top: 1em;
 			z-index: 5;
 
-    a {
-      color: $green;
-    }
+      a {
+        color: $green;
+      }
 		}
 		.feedback {
+        color: #333;
   			display:block;
-  		}
-
-	}
+    }
+	 }
 }
 
-footer .feedback {
-	display: none;
+.feedback {
+    color: #333;
+    display:block;
 }
 
 .tearms {

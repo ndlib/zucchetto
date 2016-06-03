@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import Header from '../components/StaticAssets/Header.jsx';
-import Footer from '../components/StaticAssets/Footer.jsx';
+import FooterHome from '../components/StaticAssets/FooterHome.jsx';
 import Heading from '../components/Shared/Heading.jsx';
 
 import ItemActions from '../actions/ItemActions.jsx';
@@ -61,7 +61,7 @@ class AllDocumentsPage extends Component {
           </div>
         </div>
 
-        <Footer />
+        <FooterHome />
       </div>
     );
   }
