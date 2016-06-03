@@ -96,7 +96,7 @@ class DocumentSection extends Component {
   render() {
     return (
       <Paper style={{ width: '100%', backgroundColor: "inherit" }}>
-        <Paper zDepth={ 0 } style={{ width: "25%", float: "left", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, backgroundColor: "inherit"}} >
+        <Paper zDepth={ 0 } style={{ width: "25vw", float: "left", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, backgroundColor: "#E4E1D1"}} >
           <DocumentNav
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
@@ -109,7 +109,7 @@ class DocumentSection extends Component {
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "64%", float: "left", overflowX: 'hidden', overflowY: 'scroll', height: this.state.height, backgroundColor: "inherit"}} ref='docBody'>
+        <Paper zDepth={ 0 } style={{ width: "65vw", float: "left", overflowX: 'hidden', overflowY: 'scroll', height: this.state.height, backgroundColor: "inherit"}} ref='docBody'>
           <div ref='docContent'>
               <div style={{ marginTop: '1em'}} >
                 <CopyrightNotification item={ this.props.parent } />
@@ -124,7 +124,7 @@ class DocumentSection extends Component {
             <p>Top</p>
           </div>
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "10%", right: '0', marginRight: "5px", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, position: 'absolute'}}>
+        <Paper zDepth={ 0 } style={{ width: "10vw", right: '0', marginRight: "0", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, position: 'absolute'}}>
           <MiniMap
             onClick={ this.mapClick }
             scrollTop={ this.state.scrollTop }
