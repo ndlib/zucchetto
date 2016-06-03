@@ -52,8 +52,8 @@ class NotebookLink extends Component {
     return (
       <mui.FlatButton onClick={this.clickAction.bind(this)}
         style={{
-          backgroundColor: this.disabled() ? '#dddddd': '#224048',
-          color: this.disabled() ? '#cdcdcd' : '#ffffff',
+          backgroundColor: this.disabled() ? '#224048': '#D5B117',
+          color: this.disabled() ? '#cdcdcd' : '#224048',
           cursor: this.disabled() ? 'default' :'pointer',
           display: 'inline',
           fontFamily: 'Roboto,​sans-serif',
@@ -62,7 +62,9 @@ class NotebookLink extends Component {
           padding: '0 16px',
           textAlign: 'center',
           textTransform: 'uppercase',
-          lineHeight: '36px',
+          lineHeight: '50px',
+          borderLeft: '1px solid white',
+          borderRight: '1px solid white'
         }}
       >Compare ({ totalCount } Paragraphs)</mui.FlatButton>
     );
