@@ -47,7 +47,7 @@ class DocumentNav extends Component {
     }
 
     return (
-      <div style={{margin: '1em'}} className="left-col">
+      <div style={{margin: '0'}} className="left-col">
         <h4>Highlight Paragraphs</h4>
         <div className="right">
           <Toggle
