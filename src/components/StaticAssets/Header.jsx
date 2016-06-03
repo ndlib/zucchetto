@@ -44,13 +44,6 @@ class Header extends Component {
           </div>
           <div className="col-sm-6">
             <div style={{float: "right", paddingTop: "8px"}}>
-              <mui.FlatButton
-                backgroundColor="#E4E1D1"
-                className="feedback"
-                href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"
-                target="blank" linkButton="true">
-                  Project Feedback
-              </mui.FlatButton>
               <NotebookLink />
             </div>
           </div>

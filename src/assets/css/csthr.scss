@@ -33,6 +33,12 @@ h1, h2, h3, h4, h5 {
 	font-weight: bold;
 }
 
+.vertical-text {
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+}
+
+
 .index header .feedback {
 	display:none;
 }
