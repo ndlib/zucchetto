@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import mui, { FlatButton, FontIcon, LeftNav } from 'material-ui';
+import { browserHistory } from 'react-router';
+import mui, { AppBar, FlatButton, FontIcon, LeftNav } from 'material-ui';
 import NotebookLink from "../Notebook/NotebookLink.jsx"
 import { Link } from 'react-router'
 import Navigation from './Navigation.jsx'
@@ -16,41 +17,66 @@ class Header extends Component {
     this.setState({ menuOpen: !this.state.menuOpen });
   }
 
+  titleClick() {
+    browserHistory.push('/');
+  }
+
   requestChange(open) {
     this.setState({ menuOpen: open });
   }
 
   render() {
-    var icon = (<FontIcon style={ { color: "#D5B117", marginRight: "0px" }} className="material-icons">menu</FontIcon>);
+    var icon = (
+      <FontIcon style={{
+          color: '#D5B117',
+          cursor: 'pointer',
+          marginTop: '4px',
+        }}
+        className="material-icons"
+        onClick={ this.menuClick }
+      >menu</FontIcon>
+    );
     return (
-      <header>
-        <div className="row">
-          <div className="col-sm-8">
-            <h1><FlatButton style={ { color: "#D5B117", marginRight: "10px" }} label="" onTouchTap={ this.menuClick } >{ icon }</FlatButton> <Link to="/" className='main-heading'>Research Database</Link></h1>
-            <LeftNav
-              open={this.state.menuOpen}
-              docked={ false }
-              onRequestChange={ this.requestChange.bind(this) }
-            >
-              <p className="tagline"></p>
-              <div  className="menu">
-                <Navigation/>
-              </div>
-              <p>
-                <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr m" /></a>
-                <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="cds" /></a>
-              </p>
-            </LeftNav>
-          </div>
-          <div className="col-sm-2">
-            <div className="feedback"><a href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform" target="_blank">Project Feedback</a></div>
-          </div>
-          <div className="col-sm-2 right">
-            <NotebookLink />
-          </div>
-        </div>
+      <div>
+        <AppBar
+          title="Research Database"
+          onLeftIconButtonTouchTap={ this.menuClick }
+          onTitleTouchTap={ this.titleClick }
+          style={{
+            backgroundColor: '#224048',
+            height: '50px',
+            minHeight: '50px',
+          }}
+          titleStyle={{
+            color: '#D5B117',
+            cursor: 'pointer',
+            lineHeight: '50px',
+          }}
+          iconElementLeft={ icon }
+          iconElementRight={ (<NotebookLink />) }
 
-      </header>
+        />
+        <LeftNav
+          open={this.state.menuOpen}
+          docked={ false }
+          onRequestChange={ this.requestChange.bind(this) }
+        >
+          <p className="tagline"></p>
+          <div  className="menu">
+            <Navigation/>
+          </div>
+          <p
+            style={{
+                position: 'fixed',
+                bottom: '0',
+                margin: '10px',
+            }}
+          >
+            <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr m" /></a>
+            <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="cds" /></a>
+          </p>
+        </LeftNav>
+      </div>
 
     );
   }

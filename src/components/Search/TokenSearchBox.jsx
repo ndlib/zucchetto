@@ -119,7 +119,7 @@ var TokenSearchBox = React.createClass({
     return (
       <div style={{
           display: 'block',
-          margin: '0',
+          margin: '1em 0 0 0',
           width: '100%'}}
       >
         <div
