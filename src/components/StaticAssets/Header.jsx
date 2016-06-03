@@ -53,7 +53,7 @@ class Header extends Component {
             lineHeight: '50px',
           }}
           iconElementLeft={ icon }
-          iconElementRight={ (<NotebookLink />) }
+          iconElementRight={ (<div style={{marginTop: '-8px'}}><NotebookLink /></div>) }
 
         />
         <LeftNav
@@ -62,7 +62,7 @@ class Header extends Component {
           onRequestChange={ this.requestChange.bind(this) }
         >
           <p className="tagline"></p>
-          <div  className="menu">
+          <div className="menu">
             <Navigation/>
           </div>
           <p
