@@ -11,9 +11,9 @@ class Page extends Component {
 
   render() {
     return (
-      <div>
-        <FeedbackLink />
+      <div className='page'>
         { this.props.children }
+        <FeedbackLink />  
       </div>
     );
   }
