@@ -22,7 +22,14 @@ class DocumentToolbar extends Component {
   render() {
     return (
       <Toolbar style={{ zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
-        <ToolbarTitle text={ this.props.document.name } style={{fontSize: '16px'}}/>
+        <ToolbarTitle text={ this.props.document.name }
+          style={{
+            fontSize: '16px',
+            maxWidth: 'calc(100vw - 520px)',
+            whiteSpace: 'nowrap',
+            overflowX: 'hidden',
+            textOverflow: 'ellipsis',
+          }}/>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
         </ToolbarGroup>
