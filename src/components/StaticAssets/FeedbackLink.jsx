@@ -13,7 +13,7 @@ class FeedbackLink extends Component {
         href="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"
         target="blank"
         linkButton="true">
-          Project Feedback
+          Feedback
       </mui.FlatButton>
     );
   }
