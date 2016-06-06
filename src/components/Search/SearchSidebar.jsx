@@ -11,8 +11,9 @@ import ShareSave from '../Document/ShareSave.jsx';
 class SearchSidebar extends Component {
 
   render() {
+    var height = window.innerHeight - 51;
     return (
-      <div className="col-sm-3 left-col" >
+      <div className="col-sm-3 left-col" style={{ height: height}}>
         <SearchByTopic />
       </div>
     );

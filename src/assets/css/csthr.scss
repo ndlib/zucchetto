@@ -37,6 +37,21 @@ h1, h2, h3, h4, h5 {
 	display:none;
 }
 
+.menu {
+  font-size: 18px;
+
+  a {
+    color:#333;
+    padding:4px 0;
+    font-size: 22px;
+    display: block;
+
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
 header {
   border-bottom: double 3px $grey;
   margin-bottom: 4px;
@@ -69,31 +84,9 @@ header {
 		text-transform: uppercase;
 		margin: 0;
 	}
-	.menu {
-		padding:15px 0;
-	}
-	.menu span {
-		padding:4px 0;
-		font-size: 18px;
 
-		a {
-			color:#333;
-			padding:4px 0;
-			font-size: 22px;
-			display: block;
-
-		}
-		a:hover {
-			text-decoration: none;
-		}
-	}
 
 	.feedback {
-	position:absolute;
-	right:190px;
-	top:18px;
-	z-index:1;
-	display:block;
 		a {
 			font-size:13px;
 			background: $tan;
@@ -150,8 +143,8 @@ nav {
 }
 
 .body {
-	width: 98vw;
-	margin:56px auto 5px;
+	width: 100vw;
+	margin:0 auto;
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
@@ -317,7 +310,7 @@ nav {
 
 .filters {
 	overflow-y: scroll;
-	max-height: calc(100vh - 250px);
+	max-height: calc(100vh - 139px);
 }
 
 .partners {
@@ -631,8 +624,7 @@ footer .feedback {
 .left-col {
   padding-left: 0;
   background: $tan;
-  margin-top: 5px;
-  margin-bottom: 5em;
+  margin-top: 0;
   padding: 15px;
 
   h2 {

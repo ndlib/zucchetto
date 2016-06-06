@@ -76,10 +76,8 @@ class SearchPage extends Component {
         <LandingContent />
       );
     }
-
     return (
-      <div className="col-sm-12" style={{ paddingTop: "7px"}}>
-
+      <div className="col-sm-12" style={{ paddingTop: "0"}}>
         <TokenSearchBox />
         <hr className="search-separator" />
         <div key="catholic" className="col-sm-6">
@@ -107,18 +105,14 @@ class SearchPage extends Component {
       <div>
         <Header/>
         <div className="row body" style={{display: 'block'}}>
-          <div className="row col-sm-12">
+          <div className="row col-sm-12" style={{ paddingTop: "0"}}>
             <SearchSidebar />
             <div className="col-sm-9 right-col" style={this.listStyle()}>
               { this.renderSearchBody() }
             </div>
-            <div className=" row col-sm-12">
-
-            </div>
           </div>
         </div>
         <Footer showCompareButton={ true } />
-        <Drawer />
       {this.props.children}
     </div>
 

@@ -53,7 +53,7 @@ class MetadataSection extends Component {
         <Paper zDepth={ 0 } style={{
             backgroundColor: 'transparent',
             height: 'calc(100% - 200px)',
-            marginTop: '111px',
+            marginTop: '1em',
             width: "100%"
         }}>
           <div style={{
