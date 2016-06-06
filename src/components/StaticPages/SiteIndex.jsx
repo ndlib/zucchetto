@@ -1,7 +1,6 @@
 'use strict'
 var React = require('react');
 var Carousel = require('nuka-carousel');
-var Header = require('../StaticAssets/Header.jsx');
 var HomePageNavigation = require('../StaticAssets/HomePageNavigation.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
 
@@ -48,7 +47,13 @@ var SiteIndex = React.createClass({
   render: function() {
     return (
       <div className="index">
-        <Header />
+        <header>
+          <div className="row">
+            <div className="col-sm-12">
+              <h1>Research Database</h1>
+            </div>
+          </div>
+        </header>
       		<section className="search">
             <h2><Link to="/search?q=">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></Link></h2>
           </section>
