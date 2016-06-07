@@ -11,7 +11,7 @@ import HumanRightsID from '../constants/HumanRightsID.js';
 import VaticanID from '../constants/VaticanID.js';
 
 import DocumentList from '../components/Document/DocumentList.jsx';
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class AllDocumentsPage extends Component {
   constructor() {
     super();
@@ -62,6 +62,7 @@ class AllDocumentsPage extends Component {
         </div>
 
         <FooterHome />
+        <FeedbackLink />
       </div>
     );
   }
