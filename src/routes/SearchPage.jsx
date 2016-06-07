@@ -26,7 +26,7 @@ const CATHOLIC = 'Catholic Social Teaching';
 const CATHOLIC_COLLECTION = HoneycombURL() + "/v1/collections/" + VaticanID;
 const HUMANRIGHTS = 'International Human Rights Law';
 const HUMANRIGHTS_COLLECTION = HoneycombURL() + "/v1/collections/" + HumanRightsID;
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class SearchPage extends Component {
   constructor(props, context) {
     super(props, context);
@@ -113,7 +113,8 @@ class SearchPage extends Component {
           </div>
         </div>
         <Footer showCompareButton={ true } />
-      {this.props.children}
+        {this.props.children}
+        <FeedbackLink />
     </div>
 
     )

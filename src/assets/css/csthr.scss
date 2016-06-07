@@ -147,7 +147,7 @@ nav {
 }
 
 .body {
-	width: 100vw;
+	width: 100%;
 	margin:0 auto;
 	display: flex;
 	flex-direction: row;
@@ -344,6 +344,7 @@ footer {
   border-top: double 3px $yellow;
   bottom: 0px;
   background-color: $tan;
+  position: fixed;
   z-index: 4;
 
 	img.undhl {

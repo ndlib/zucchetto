@@ -10,7 +10,7 @@ import DocumentSection from '../components/Document/DocumentSection.jsx';
 import MetadataSection from '../components/Document/MetadataSection.jsx';
 import DocumentToolbar from '../components/Document/DocumentToolbar.jsx';
 import Drawer from '../components/Search/Drawer.jsx';
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class DocumentPage extends Component {
   constructor(props, context) {
     super(props, context);
@@ -91,6 +91,7 @@ class DocumentPage extends Component {
         />
         { this.contentSection(this.state.showSection) }
         <Footer showCompareButton={ true }/>
+        <FeedbackLink />
       </div>
     );
   }
