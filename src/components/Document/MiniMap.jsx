@@ -6,7 +6,7 @@ class MiniMap extends Component {
 
   constructor(props) {
     super(props);
-    this._scale = .2;
+    this._scale = 0.2
     this.scrollToHere = this.scrollToHere.bind(this);
     this.setTop = this.setTop.bind(this);
     this.state = {
@@ -17,8 +17,8 @@ class MiniMap extends Component {
 
   componentDidMount() {
     this.setState({
-      width: ReactDOM.findDOMNode(this.refs.miniMap).clientWidth/this._scale,
-      height: ReactDOM.findDOMNode(this.refs.miniMap).parentElement.clientHeight/this._scale,
+      width: ReactDOM.findDOMNode(this.refs.miniMap).clientWidth / this._scale,
+      height: ReactDOM.findDOMNode(this.refs.miniMap).parentElement.clientHeight / this._scale,
     });
   }
 
@@ -31,8 +31,9 @@ class MiniMap extends Component {
   }
 
   scrollToHere(e){
+    var here = (ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 210)/this._scale;
     e.preventDefault();
-    this.props.onClick((ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 210)/this._scale);
+    this.props.onClick(here);
   }
 
   style() {
@@ -47,6 +48,18 @@ class MiniMap extends Component {
   render() {
     return (
       <div style={ this.style()} className='mini-map' ref='miniMap' onClick={ this.scrollToHere } >{this.props.children}
+        <div
+          className="mini-map-highlight"
+          style={{
+            backgroundColor: 'rgba(213, 177, 23, 0.4)',
+            height: window.innerHeight - 100,
+            width: window.innerWidth * .65,
+            position: 'absolute',
+            top: (this.props.scrollTop - 80),
+            right: '-300%',
+            zIndex: '1',
+          }}
+        >&nbsp;</div>
       </div>
     );
   }
