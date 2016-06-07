@@ -6,10 +6,10 @@ class MiniMap extends Component {
 
   constructor(props) {
     super(props);
+    this._scale = 0.2
     this.scrollToHere = this.scrollToHere.bind(this);
     this.setTop = this.setTop.bind(this);
     this.state = {
-      scale: .2,
       width: 0,
       height: 0,
     }
@@ -17,11 +17,9 @@ class MiniMap extends Component {
 
   componentDidMount() {
     this.setState({
-      width: ReactDOM.findDOMNode(this.refs.miniMap).clientWidth / this.state.scale,
-      height: ReactDOM.findDOMNode(this.refs.miniMap).parentElement.clientHeight / this.state.scale,
-      top: 0
+      width: ReactDOM.findDOMNode(this.refs.miniMap).clientWidth / this._scale,
+      height: ReactDOM.findDOMNode(this.refs.miniMap).parentElement.clientHeight / this._scale,
     });
-
   }
 
   componentDidUpdate() {
@@ -29,18 +27,17 @@ class MiniMap extends Component {
   }
 
   setTop() {
-    ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop = (this.props.scrollTop - 40) * this.state.scale;
+    ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop = (this.props.scrollTop - 40) * this._scale;
   }
 
   scrollToHere(e){
-    var here = (ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 210)/this.state.scale;
+    var here = (ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 210)/this._scale;
     e.preventDefault();
     this.props.onClick(here);
-    this.setState({ top: (ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 290)/this.state.scale })
   }
 
   style() {
-    var s = { x: this.state.scale, y: this.state.scale };
+    var s = { x: this._scale, y: this._scale };
     var sc = 'scale(' + s.x + ','+ s.y + ')';
     return {
       transform: sc,
@@ -54,11 +51,11 @@ class MiniMap extends Component {
         <div
           className="mini-map-highlight"
           style={{
-            backgroundColor: 'rgba(255, 165, 0, 0.38)',
+            backgroundColor: 'rgba(213, 177, 23, 0.4)',
             height: window.innerHeight - 100,
             width: window.innerWidth * .65,
             position: 'absolute',
-            top: this.state.top + 330,
+            top: (this.props.scrollTop - 80),
             right: '-300%',
             zIndex: '1',
           }}
