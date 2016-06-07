@@ -46,6 +46,7 @@ class Header extends Component {
             backgroundColor: '#224048',
             height: '50px',
             minHeight: '50px',
+            borderBottom: "double 3px #979694",
           }}
           titleStyle={{
             color: '#D5B117',

@@ -1,7 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
-import mui, { FlatButton } from 'material-ui';
+import mui, { FlatButton, FontIcon } from 'material-ui';
 
 class ViewOriginal extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class ViewOriginal extends Component {
         <FlatButton
           label="View PDF"
           onClick={ this.openUrl }
+          icon={<FontIcon className="material-icons">keyboard_arrow_down</FontIcon>}
           style={{ margin: '10px 24px'}}
         />
       );

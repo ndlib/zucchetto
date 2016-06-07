@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentListItem from '../Document/DocumentListItem.jsx'
-import ShareSave from '../Document/ShareSave.jsx'
 import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
 import VaticanID from '../../constants/VaticanID.js';
@@ -97,8 +96,6 @@ class NotebookList extends Component {
   render() {
     return (
       <div className="left-col notebook-list">
-        <h3>My Notebook</h3>
-        <ShareSave />
         <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
             listStyleType: 'none',

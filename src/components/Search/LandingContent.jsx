@@ -20,13 +20,11 @@ class LandingContent extends Component {
               <nav style={{margin: '30px auto'}}>
                 <div className="col-sm-6">
                   <p><Link to="/documents">Document Index</Link></p>
-                  <p><Link to="/about">About the Database</Link></p>
                   <p><Link to="/using">Using the Database</Link></p>
                 </div>
                 <div className="col-sm-6" style={{textAlign: 'right'}}>
                   <p><Link to="/partners">Project Partners</Link></p>
-                  <p><Link to="/privacy">Privacy Policy</Link></p>
-                  <p><Link to="/terms">Terms of Service</Link></p>
+                  <p><Link to="/about">About the Database</Link></p>                  
                 </div>
               </nav>
             </div>

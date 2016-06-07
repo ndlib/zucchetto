@@ -1,7 +1,15 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import mui, { List, ListItem, Divider, FontIcon } from 'material-ui';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import CompareStore from '../../store/CompareStore.js'
+import ItemStore from '../../store/ItemStore.js'
+import _ from 'underscore'
+import VaticanID from '../../constants/VaticanID.js';
+import HumanRightsID from '../../constants/HumanRightsID.js';
+import GroupItemsByParent from '../../modules/GroupItemsByParent.js';
+import ItemQueryParams from '../../modules/ItemQueryParams.js';
 
 class ShareSave extends Component {
 
@@ -11,6 +19,13 @@ class ShareSave extends Component {
       open: false,
       copyMessage: null
     };
+
+    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
+      return item.collection_id == HumanRightsID;
+    });
+    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
+      return item.collection_id == VaticanID;
+    });
 
     this.openDialog = this.openDialog.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
@@ -39,6 +54,28 @@ class ShareSave extends Component {
     }
   }
 
+  documentList(documents) {
+    let clickFunc = this.documentClick;
+    let groupedItems = GroupItemsByParent(documents);
+    if(documents.length > 0) {
+      var itemNodes = [];
+      for(var i = 0;  i < groupedItems.length; i++) {
+        var checked = this.state.column1 === groupedItems[i].doc || this.state.column2 === groupedItems[i].doc;
+        itemNodes.push(
+          <ListItem innerDivStyle={{ padding: "8px" }} primaryText={groupedItems[i].doc.name} rightIcon={ <mui.FontIcon className="material-icons">delete</mui.FontIcon> } />
+        );
+      }
+
+      return(
+        <div>
+          {itemNodes}
+        </div>
+      );
+    }
+    return null;
+  }
+
+
   render() {
     const actions = [
       <FlatButton
@@ -61,15 +98,12 @@ class ShareSave extends Component {
 
     return (
       <div>
-        <a
-          href="#"
-          className="top-links"
+        <FlatButton
+          label="Manage Documents"
+          icon={<FontIcon className="material-icons">library_books</FontIcon>}
           onClick={this.openDialog}
-        >
-          <i
-            className="material-icons"
-            style={ {verticalAlign: 'middle'} }
-          >mail_outline</i>Share/Save</a>
+          style={{ margin: "10px 24px" }}
+        />
         <Dialog
           title="Share or Save this comparison."
           actions={ actions }
@@ -108,6 +142,12 @@ class ShareSave extends Component {
           </div>
           <br/>
           { copyMessage }
+          <h3>Manage Compared Documents</h3>
+          <List style={{overflow: "scroll" }}>
+            { this.documentList(this._vatican_douments) }
+            <Divider />
+            { this.documentList(this._humanrights_documents) }
+          </List>
         </Dialog>
       </div>
     );

@@ -7,6 +7,7 @@ import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
 import NotebookColumn from './NotebookColumn.jsx';
 import NotebookList from './NotebookList.jsx';
+import NotebookToolbar from './NotebookToolbar.jsx';
 import EmptyColumn from './EmptyColumn.jsx';
 
 import Dialog from 'material-ui/lib/dialog';
@@ -90,6 +91,7 @@ class Notebook extends Component {
     return (
       <div>
         <Header />
+        <NotebookToolbar />
         <div className="row body">
           <div className="col-sm-3">
             <NotebookList />
