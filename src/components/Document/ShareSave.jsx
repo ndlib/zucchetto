@@ -145,7 +145,6 @@ class ShareSave extends Component {
           <h3>Manage Compared Documents</h3>
           <List style={{overflow: "scroll" }}>
             { this.documentList(this._vatican_douments) }
-            <Divider />
             { this.documentList(this._humanrights_documents) }
           </List>
         </Dialog>
