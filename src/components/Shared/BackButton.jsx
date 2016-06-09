@@ -12,6 +12,7 @@ class BackButton extends Component {
     return (
       <mui.FlatButton
         label="Back"
+        labelPosition="after"
         icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
         onClick={ this.clickBack.bind(this) }
         backgroundColor="#E4E1D1"

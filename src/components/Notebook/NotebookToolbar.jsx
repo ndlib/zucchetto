@@ -18,11 +18,13 @@ class NotebookToolbar extends Component {
           }}/>
         <ToolbarGroup float="right" className="toolbar-group">
           <ShareSave />
-          <mui.FlatButton
+          <FlatButton
+            labelPosition="after"
             label="Back"
-            icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
+            icon={<FontIcon className="material-icons">navigate_before</FontIcon>}
             onClick={ this.clickBack.bind(this) }
             backgroundColor="#E4E1D1"
+            style={{ float: 'right'}}
           />
         </ToolbarGroup>
       </Toolbar>

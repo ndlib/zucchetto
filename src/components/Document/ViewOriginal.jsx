@@ -20,8 +20,9 @@ class ViewOriginal extends Component {
       return (
         <FlatButton
           label="View PDF"
+          labelPosition="after"
           onClick={ this.openUrl }
-          icon={<FontIcon className="material-icons">keyboard_arrow_down</FontIcon>}
+          icon={<FontIcon className="material-icons">picture_as_pdf</FontIcon>}
           style={{ margin: '10px 24px'}}
         />
       );
