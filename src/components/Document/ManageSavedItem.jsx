@@ -10,6 +10,10 @@ class ManageSavedItem extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
+    this.style = this.style.bind(this);
+    this.state = {
+      clicked: false,
+    }
   }
 
   onClick() {
@@ -17,16 +21,27 @@ class ManageSavedItem extends Component {
     for(var i = 0; i < this.props.docObject.paragraphs.length; i++) {
       CompareActions.removeItem(this.props.docObject.paragraphs[i]);
     }
+    this.setState({
+      clicked: true,
+    })
+    this.props.clickAction();
+  }
+
+  style() {
+    return {
+      display: this.state.clicked ? 'none' : 'block',
+    }
   }
 
   render() {
     return (
       <ListItem
+        style={ this.style()}
         innerDivStyle={{ padding: "8px" }}
         primaryText={this.props.docObject.doc.name}
-        onClick={ this.onClick }
         rightIcon={
           <FontIcon
+            onClick={ this.onClick }
             className="material-icons"
             style={{ margin: '4px 12px' }}
 
@@ -39,6 +54,7 @@ class ManageSavedItem extends Component {
 
 ManageSavedItem.propTypes = {
   docObject: React.PropTypes.object,
+  clickAction: React.PropTypes.func
 }
 
 export default ManageSavedItem;

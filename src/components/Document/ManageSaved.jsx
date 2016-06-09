@@ -17,45 +17,28 @@ class ManageSaved extends Component {
 
   constructor(props) {
     super(props);
-    this.updateList = this.updateList.bind(this);
     this.updatePage = this.updatePage.bind(this);
     this.documentList = this.documentList.bind(this);
-    this.state = {
-      humanrights_documents: [],
-      vatican_douments: [],
-    }
-  }
-
-  componentWillMount() {
-    this.updateList();
-    CompareStore.on('ItemCompareUpdated', this.updateList);
-  }
-
-  componentWillUnmount() {
-    CompareStore.removeListener('ItemCompareUpdated', this.updateList);
-  }
-
-  updateList() {
-    var humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
+    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
       return item.collection_id == HumanRightsID;
     });
-    var vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
+    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
       return item.collection_id == VaticanID;
     });
-    this.setState({
-      humanrights_documents: humanrights_documents,
-      vatican_douments: vatican_douments,
-    }, this.updatePage());
   }
 
   documentList() {
-    var documents = this.state.vatican_douments.concat(this.state.humanrights_documents);
+    var documents = this._vatican_douments.concat(this._humanrights_documents);
     let groupedItems = GroupItemsByParent(documents);
     if(documents.length > 0) {
       var itemNodes = [];
       for(var i = 0;  i < groupedItems.length; i++) {
         itemNodes.push(
-          <ManageSavedItem docObject={ groupedItems[i] } key= { i }/>
+          <ManageSavedItem
+            docObject={ groupedItems[i] }
+            clickAction={ this.updatePage }
+            key= { i }
+            />
         );
       }
 
