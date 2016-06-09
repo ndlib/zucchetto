@@ -36,15 +36,17 @@ class DocumentToolbar extends Component {
           <BackButton />
           <FlatButton
             label="Text"
+            labelPosition="after"
             icon={ <FontIcon className="material-icons">description</FontIcon> }
             onClick={ this.clickDocument }
             backgroundColor={ this.props.activeSection === 'document' ? '#F8F6ED' : 'transparent'}
           />
           <FlatButton
             label="Information"
+            labelPosition="after"
             icon={ <FontIcon className="material-icons">toc</FontIcon> }
             onClick={ this.clickMetaData }
-            backgroundColor={ this.props.activeSection === 'meta' ? '#E4E1D1' : 'transparent'}
+            backgroundColor={ this.props.activeSection === 'meta' ? '#F8F6ED' : 'transparent'}
           />
         </ToolbarGroup>
       </Toolbar>

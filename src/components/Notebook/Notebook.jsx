@@ -19,22 +19,29 @@ class Notebook extends Component {
     this.updateColumns = this.updateColumns.bind(this);
     this.alertColumnError = this.alertColumnError.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
+    this.resize = this.resize.bind(this);
 
     this.state = {
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
       showColumnErrorDialog: false,
+      height: window.innerHeight - 113,
     };
   }
 
   componentWillMount() {
     CompareStore.on("CompareColumnsUpdated", this.updateColumns);
     CompareStore.on("CompareColumnsCannotBeUpdated", this.alertColumnError);
+    window.addEventListener('resize', this.resize);
   }
 
   componentWillUnmount() {
     CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns);
     CompareStore.removeListener("CompareColumnsCannotBeUpdated", this.alertColumnError);
+  }
+
+  resize() {
+    this.setState({ height: window.innerHeight - 113 });
   }
 
   updateColumns() {
@@ -52,15 +59,22 @@ class Notebook extends Component {
     this.setState({showColumnErrorDialog: false});
   }
 
+  style() {
+    return {
+      height: this.state.height,
+      overflowY: 'hidden',
+    }
+  }
+
   renderNotebook() {
     if (this.state.column2 || this.state.column1) {
       return (
         <div className="col-sm-9">
           <div className="row">
-            <div className="col-sm-6 notebook-column left">
+            <div className="col-sm-6 notebook-column left" style={ this.style() }>
               <NotebookColumn item={ this.state.column1 } columnNumber= { 1 } />
             </div>
-            <div className="col-sm-6 notebook-column right">
+            <div className="col-sm-6 notebook-column right" style={ this.style() }>
               <NotebookColumn item={ this.state.column2 } columnNumber={ 2 } />
             </div>
           </div>
@@ -92,8 +106,8 @@ class Notebook extends Component {
       <div>
         <Header />
         <NotebookToolbar />
-        <div className="row body">
-          <div className="col-sm-3">
+        <div className="row body" style={{ height: this.state.height }}>
+          <div className="col-sm-3 left-col">
             <NotebookList />
           </div>
           <Dialog

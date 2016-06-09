@@ -62,7 +62,7 @@ class ShareSave extends Component {
       for(var i = 0;  i < groupedItems.length; i++) {
         var checked = this.state.column1 === groupedItems[i].doc || this.state.column2 === groupedItems[i].doc;
         itemNodes.push(
-          <ListItem innerDivStyle={{ padding: "8px" }} primaryText={groupedItems[i].doc.name} rightIcon={ <mui.FontIcon className="material-icons">delete</mui.FontIcon> } />
+          <ListItem innerDivStyle={{ padding: "8px" }} key={i} primaryText={groupedItems[i].doc.name} rightIcon={ <mui.FontIcon className="material-icons">delete</mui.FontIcon> } />
         );
       }
 
@@ -100,6 +100,7 @@ class ShareSave extends Component {
       <div>
         <FlatButton
           label="Manage Documents"
+          labelPosition="after"
           icon={<FontIcon className="material-icons">library_books</FontIcon>}
           onClick={this.openDialog}
           style={{ margin: "10px 24px" }}
