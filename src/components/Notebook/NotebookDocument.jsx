@@ -27,7 +27,6 @@ class NotebookDocument extends Component {
 
   componentDidMount() {
     var headerHeight = ReactDOM.findDOMNode(this.refs.documentHead).clientHeight
-    console.log(headerHeight);
     this.setState({ height: window.innerHeight - 140 - headerHeight })
   }
 
