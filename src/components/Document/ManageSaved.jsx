@@ -9,6 +9,7 @@ import GroupItemsByParent from '../../modules/GroupItemsByParent.js';
 import ItemQueryParams from '../../modules/ItemQueryParams.js';
 import mui, { List, ListItem, FontIcon } from 'material-ui';
 
+
 class ManageSaved extends Component {
 
   constructor(props) {
@@ -28,12 +29,16 @@ class ManageSaved extends Component {
       var itemNodes = [];
       for(var i = 0;  i < groupedItems.length; i++) {
         itemNodes.push(
-          <ListItem innerDivStyle={{ padding: "8px" }} key={i} primaryText={groupedItems[i].doc.name} rightIcon={ <mui.FontIcon className="material-icons">delete</mui.FontIcon> } />
+          <ListItem
+            innerDivStyle={{ padding: "8px" }}
+            key={i} primaryText={groupedItems[i].doc.name}
+            rightIcon={ <mui.FontIcon className="material-icons" style={{ margin: '4px 12px' }}>delete</mui.FontIcon> }
+          />
         );
       }
 
       return(
-        <div>
+        <div className='manage-item'>
           {itemNodes}
         </div>
       );
@@ -45,7 +50,7 @@ class ManageSaved extends Component {
     return (
       <div>
         <h3>Manage Compared Documents</h3>
-        <List style={{overflow: "scroll" }}>
+        <List style={{ maxHeight: 'calc(40vh - 120px)', overflowY: "scroll" }}>
           { this.documentList(this._vatican_douments) }
           { this.documentList(this._humanrights_documents) }
         </List>

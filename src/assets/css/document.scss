@@ -232,3 +232,10 @@ div[id^='paragraph-'] {
   height: 0px;
   overflow: visible;
 }
+
+.manage-item > div > span > div > div div{
+  white-space: nowrap;
+  max-width: calc(100% - 50px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
