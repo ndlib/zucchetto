@@ -26,7 +26,7 @@ class DocumentToolbar extends Component {
         <ToolbarTitle text={ this.props.document.name }
           style={{
             fontSize: '16px',
-            maxWidth: 'calc(100vw - 660px)',
+            maxWidth: 'calc(100vw - 570px)',
             whiteSpace: 'nowrap',
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
@@ -40,6 +40,7 @@ class DocumentToolbar extends Component {
             icon={ <FontIcon className="material-icons">description</FontIcon> }
             onClick={ this.clickDocument }
             backgroundColor={ this.props.activeSection === 'document' ? '#F8F6ED' : 'transparent'}
+            style={{ margin: '10px 5px' }}
           />
           <FlatButton
             label="Information"
@@ -47,6 +48,7 @@ class DocumentToolbar extends Component {
             icon={ <FontIcon className="material-icons">toc</FontIcon> }
             onClick={ this.clickMetaData }
             backgroundColor={ this.props.activeSection === 'meta' ? '#F8F6ED' : 'transparent'}
+            style={{ margin: '10px 5px' }}
           />
         </ToolbarGroup>
       </Toolbar>

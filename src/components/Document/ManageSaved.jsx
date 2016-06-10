@@ -48,7 +48,7 @@ class ManageSaved extends Component {
         </div>
       );
     }
-    return null;
+    return ( <div><i>No documents currently saved.</i></div>);
   }
 
   updatePage() {
