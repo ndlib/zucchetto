@@ -239,3 +239,23 @@ div[id^='paragraph-'] {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.snack-drawer {
+
+  > div {
+    background-color: white !important;
+    border: 1px solid $green;
+
+    > div {
+      color: $green !important;
+    }
+  }
+
+  button {
+    background-color: $gold !important;
+
+    div {
+      color: $green;
+    }
+  }
+}

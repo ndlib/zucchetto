@@ -92,13 +92,14 @@ class Drawer extends Component {
   render() {
     return (
       <mui.Snackbar
-          open={ this.state.open }
-          message={ this.message() }
-          action={ this.action() }
-          autoHideDuration={ 4000 }
-          onActionTouchTap={this.handleActionTouchTap}
-          onRequestClose={this.handleRequestClose}
-        />
+        className='snack-drawer'
+        open={ this.state.open }
+        message={ this.message() }
+        action={ this.action() }
+        autoHideDuration={ 4000 }
+        onActionTouchTap={this.handleActionTouchTap}
+        onRequestClose={this.handleRequestClose}
+      />
     );
 
     if(CompareStore.drawerOpen()) {
