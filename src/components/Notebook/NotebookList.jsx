@@ -107,7 +107,7 @@ class NotebookList extends Component {
 
   render() {
     return (
-      <div className="left-col notebook-list">
+      <div className="left-col notebook-list" style={{ backgroundColor: "#f8f6ed" }}>
         <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
             listStyleType: 'none',
