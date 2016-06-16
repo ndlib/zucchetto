@@ -119,7 +119,7 @@ class DocumentSection extends Component {
           <div style={{ cursor: 'pointer', position: 'absolute', top: '20px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goBack }>
             <i className="material-icons">arrow_back</i><br/>
           </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '60px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
+          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '10px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
             <i className="material-icons">vertical_align_top</i><br/>
             <p>Top</p>
           </div>

@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import CompareStore from '../../store/CompareStore.js';
+import NotebookLinkString from '../../modules/NotebookLinkString.js'
 import mui from "material-ui"
 
 class NotebookLink extends Component {
@@ -33,13 +34,7 @@ class NotebookLink extends Component {
   clickAction() {
     CompareStore.clearColumnItems();
     if(!this.disabled()) {
-      let vaticanItems = CompareStore.collectionItems(VaticanID);
-      let humanRightItems = CompareStore.collectionItems(HumanRightsID);
-
-      let vString = 'v=' + vaticanItems.join('|');
-      let hString = 'h=' + humanRightItems.join('|');
-
-      this.context.router.push('/notebook' + '?' + vString + '&' + hString)
+      this.context.router.push(NotebookLinkString())
     }
     else {
       // disabled do nothing

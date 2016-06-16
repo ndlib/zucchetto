@@ -232,3 +232,30 @@ div[id^='paragraph-'] {
   height: 0px;
   overflow: visible;
 }
+
+.manage-item > div > span > div > div div{
+  white-space: nowrap;
+  max-width: calc(100% - 50px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.snack-drawer {
+
+  > div {
+    background-color: white !important;
+    border: 1px solid $green;
+
+    > div {
+      color: $green !important;
+    }
+  }
+
+  button {
+    background-color: $gold !important;
+
+    div {
+      color: $green;
+    }
+  }
+}

@@ -31,7 +31,7 @@ class MiniMap extends Component {
   }
 
   scrollToHere(e){
-    var here = (ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 210)/this._scale;
+    var here = (ReactDOM.findDOMNode(this.refs.miniMap).parentElement.scrollTop + e.screenY - 250)/this._scale;
     e.preventDefault();
     this.props.onClick(here);
   }

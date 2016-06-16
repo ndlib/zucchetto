@@ -23,7 +23,7 @@ class ViewOriginal extends Component {
           labelPosition="after"
           onClick={ this.openUrl }
           icon={<FontIcon className="material-icons">picture_as_pdf</FontIcon>}
-          style={{ margin: '10px 24px'}}
+          style={{ margin: '10px 5px'}}
         />
       );
     }

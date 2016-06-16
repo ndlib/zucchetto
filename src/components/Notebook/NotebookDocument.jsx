@@ -54,7 +54,7 @@ class NotebookDocument extends Component {
   selectParagraph(value) {
     this.setState({selectedParagraph: value});
     var offset = document.getElementById('paragraph-' + value).offsetTop;
-    ReactDOM.findDOMNode(this.refs["document-" + this.props.document.id]).scrollTop = offset;
+    ReactDOM.findDOMNode(this.refs["document-" + this.props.document.id]).firstChild.scrollTop = offset;
   }
 
   render() {
