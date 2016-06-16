@@ -96,7 +96,7 @@ class DocumentSection extends Component {
   render() {
     return (
       <Paper style={{ width: '100%', backgroundColor: "inherit" }}>
-        <Paper zDepth={ 0 } style={{ width: "25vw", float: "left", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, backgroundColor: "#E4E1D1"}} >
+        <Paper zDepth={ 0 } style={{ width: "25vw", float: "left", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, backgroundColor: "#f8f6ed"}} >
           <DocumentNav
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
@@ -109,7 +109,7 @@ class DocumentSection extends Component {
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "65vw", float: "left", overflowX: 'hidden', overflowY: 'scroll', height: this.state.height, backgroundColor: "inherit"}} ref='docBody'>
+        <Paper zDepth={ 0 } style={{ width: "65vw", float: "left", overflowX: 'hidden', overflowY: 'scroll', height: this.state.height, backgroundColor: "white"}} ref='docBody'>
           <div ref='docContent'>
               <div style={{ marginTop: '1em'}} >
                 <CopyrightNotification item={ this.props.parent } />

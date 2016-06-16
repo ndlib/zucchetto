@@ -25,7 +25,7 @@ class Notebook extends Component {
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
       showColumnErrorDialog: false,
-      height: window.innerHeight - 113,
+      height: window.innerHeight - 107,
     };
   }
 
@@ -41,7 +41,7 @@ class Notebook extends Component {
   }
 
   resize() {
-    this.setState({ height: window.innerHeight - 113 });
+    this.setState({ height: window.innerHeight - 107 });
   }
 
   updateColumns() {
@@ -63,13 +63,14 @@ class Notebook extends Component {
     return {
       height: this.state.height,
       overflowY: 'hidden',
+      borderRight: '1px solid #ececec',
     }
   }
 
   renderNotebook() {
     if (this.state.column2 || this.state.column1) {
       return (
-        <div className="col-sm-9">
+        <div className="col-sm-12">
           <div className="row">
             <div className="col-sm-6 notebook-column left" style={ this.style() }>
               <NotebookColumn item={ this.state.column1 } columnNumber= { 1 } />
@@ -83,7 +84,7 @@ class Notebook extends Component {
     } else {
       return (
         <div>
-          <div className="col-sm-9">
+          <div className="col-sm-12">
             <EmptyColumn />
           </div>
         </div>
@@ -106,8 +107,8 @@ class Notebook extends Component {
       <div>
         <Header />
         <NotebookToolbar />
-        <div className="row body" style={{ height: this.state.height }}>
-          <div className="col-sm-3 left-col">
+        <div className="row body" style={{ height: this.state.height, backgroundColor: 'white' }}>
+          <div className="col-sm-3 left-col" style={{ backgroundColor: '#f8f6ed' }}>
             <NotebookList />
           </div>
           <Dialog
