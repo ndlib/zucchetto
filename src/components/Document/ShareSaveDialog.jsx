@@ -1,9 +1,9 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui, { Dialog, FlatButton, FontIcon } from 'material-ui';
-import ManageSaved from './ManageSaved.jsx';
+import ShareSave from './ShareSave.jsx';
 
-class ManageDialog extends Component {
+class ShareSaveDialog extends Component {
 
   constructor(props) {
     super(props);
@@ -40,19 +40,20 @@ class ManageDialog extends Component {
     return (
       <div>
         <FlatButton
-          label="Remove Documents"
+          label="Share/Save"
           labelPosition="after"
-          icon={<FontIcon className="material-icons">library_books</FontIcon>}
+          icon={<FontIcon className="material-icons">share</FontIcon>}
           onClick={this.openDialog}
           style={{ margin: "10px 5px" }}
         />
         <Dialog
+          title="Share or Save this comparison."
           actions={ actions }
           modal={ false }
           open={ this.state.open }
           onRequestClose={ this.closeDialog }
         >
-          <ManageSaved />
+          <ShareSave />
         </Dialog>
       </div>
     );
@@ -60,4 +61,4 @@ class ManageDialog extends Component {
 
 }
 
-export default ManageDialog;
+export default ShareSaveDialog;

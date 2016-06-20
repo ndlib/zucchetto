@@ -59,7 +59,7 @@ class ManageSaved extends Component {
   render() {
     return (
       <div>
-        <h3>Manage Compared Documents</h3>
+        <h3>Remove Compared Documents</h3>
         <List style={{ maxHeight: 'calc(40vh - 120px)', overflowY: "scroll" }}>
           { this.documentList() }
         </List>

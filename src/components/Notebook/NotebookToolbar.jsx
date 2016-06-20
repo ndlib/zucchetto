@@ -1,8 +1,9 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton, FontIcon } from 'material-ui';
-import ManageDialog from '../Document/ManageDialog.jsx'
-import BackButton from '../Shared/BackButton.jsx'
+import ManageDialog from '../Document/ManageDialog.jsx';
+import ShareSaveDialog from '../Document/ShareSaveDialog.jsx'
+import BackButton from '../Shared/BackButton.jsx';
 
 class NotebookToolbar extends Component {
   clickBack() {
@@ -18,6 +19,7 @@ class NotebookToolbar extends Component {
           }}/>
         <ToolbarGroup float="right" className="toolbar-group">
           <ManageDialog />
+          <ShareSaveDialog />
           <FlatButton
             labelPosition="after"
             label="Back"
