@@ -18,7 +18,7 @@ module.exports = function(items, type) {
         source = 'Libreria Editrice Vaticana';
       }
 
-      if(item.metadata.source) {
+      if(item.metadata.organization) {
          source = item.metadata.organization.values[0].value
       }
       if(Object.keys(groupedDocuments).indexOf(source) < 0){
