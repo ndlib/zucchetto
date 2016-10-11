@@ -2,7 +2,7 @@
 var React = require('react');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var Header = require('../StaticAssets/Header.jsx');
-var Footer = require('../StaticAssets/Footer.jsx');
+var FooterHome = require('../StaticAssets/FooterHome.jsx');
 var About = React.createClass({
 
   render: function() {
@@ -20,7 +20,7 @@ var About = React.createClass({
           <p>&nbsp;</p>
         </div>
       </div>
-      <Footer/>
+      <FooterHome/>
     </div>
     );
   }

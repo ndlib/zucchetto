@@ -20,8 +20,14 @@ class NotebookDocument extends Component {
     super(props);
     this.state = {
       selectedParagraph: null,
+      height: '100px',
     }
     this.selectParagraph = this.selectParagraph.bind(this);
+  }
+
+  componentDidMount() {
+    var headerHeight = ReactDOM.findDOMNode(this.refs.documentHead).clientHeight
+    this.setState({ height: window.innerHeight - 140 - headerHeight })
   }
 
   removeClick() {
@@ -41,19 +47,20 @@ class NotebookDocument extends Component {
       overflowY: "auto",
       clear: "both",
       marginBottom: '1em',
+      height: this.state.height,
     };
   }
 
   selectParagraph(value) {
     this.setState({selectedParagraph: value});
     var offset = document.getElementById('paragraph-' + value).offsetTop;
-    ReactDOM.findDOMNode(this.refs["document-" + this.props.document.id]).scrollTop = offset;
+    ReactDOM.findDOMNode(this.refs["document-" + this.props.document.id]).firstChild.scrollTop = offset;
   }
 
   render() {
     return (
-      <mui.Paper zDepth={0}>
-        <div className='document-head'>
+      <mui.Paper zDepth={0} style={{height: '100%'}}>
+        <div className='document-head' ref='documentHead'>
           <Heading title={ this.documentTitle() } />
           <div className='document-head'>
             <Title item={this.props.document} />
@@ -62,18 +69,17 @@ class NotebookDocument extends Component {
               primaryAction={ this.selectParagraph }
             />
           </div>
-
-          <Document
-            ref={"document-" + this.props.document.id}
-            documentId={ this.props.document.id }
-            bodyStyle={ this.documentBodyStyle() }
-            selectedParagraphIds={ CompareStore.allItems() }
-            showOnlySelected={true}
-            showCompareButton={false}
-          >
-            <CopyrightNotification item={ this.props.document } align='center' />
-          </Document>
         </div>
+        <Document
+          ref={"document-" + this.props.document.id}
+          documentId={ this.props.document.id }
+          bodyStyle={ this.documentBodyStyle() }
+          selectedParagraphIds={ CompareStore.allItems() }
+          showOnlySelected={true}
+          showCompareButton={false}
+        >
+          <CopyrightNotification item={ this.props.document } align='center' />
+        </Document>
       </mui.Paper>
     );
   }

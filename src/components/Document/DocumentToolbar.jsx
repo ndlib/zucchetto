@@ -1,7 +1,8 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton } from 'material-ui';
+import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton, FontIcon } from 'material-ui';
 import ViewOriginal from './ViewOriginal.jsx';
+import BackButton from '../Shared/BackButton.jsx';
 
 class DocumentToolbar extends Component {
 
@@ -21,23 +22,33 @@ class DocumentToolbar extends Component {
 
   render() {
     return (
-      <Toolbar style={{position: 'fixed', top: '55px', zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
-        <ToolbarTitle text={ this.props.document.name } style={{fontSize: '16px'}}/>
+      <Toolbar style={{ zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
+        <ToolbarTitle text={ this.props.document.name }
+          style={{
+            fontSize: '16px',
+            maxWidth: 'calc(100vw - 570px)',
+            whiteSpace: 'nowrap',
+            overflowX: 'hidden',
+            textOverflow: 'ellipsis',
+          }}/>
         <ToolbarGroup float="right">
           <ViewOriginal documentId={ this.props.document.id } />
-        </ToolbarGroup>
-        <ToolbarGroup float="right">
-          <FlatButton
-            label="Information"
-            onClick={ this.clickMetaData }
-            backgroundColor={ this.props.activeSection === 'meta' ? '#E4E1D1' : 'transparent'}
-            />
-        </ToolbarGroup>
-        <ToolbarGroup float="right">
+          <BackButton />
           <FlatButton
             label="Text"
+            labelPosition="after"
+            icon={ <FontIcon className="material-icons">description</FontIcon> }
             onClick={ this.clickDocument }
             backgroundColor={ this.props.activeSection === 'document' ? '#F8F6ED' : 'transparent'}
+            style={{ margin: '10px 5px' }}
+          />
+          <FlatButton
+            label="Information"
+            labelPosition="after"
+            icon={ <FontIcon className="material-icons">toc</FontIcon> }
+            onClick={ this.clickMetaData }
+            backgroundColor={ this.props.activeSection === 'meta' ? '#F8F6ED' : 'transparent'}
+            style={{ margin: '10px 5px' }}
           />
         </ToolbarGroup>
       </Toolbar>

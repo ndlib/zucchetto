@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import Header from '../components/StaticAssets/Header.jsx';
-import Footer from '../components/StaticAssets/Footer.jsx';
+import FooterHome from '../components/StaticAssets/FooterHome.jsx';
 import Heading from '../components/Shared/Heading.jsx';
 
 import ItemActions from '../actions/ItemActions.jsx';
@@ -11,7 +11,7 @@ import HumanRightsID from '../constants/HumanRightsID.js';
 import VaticanID from '../constants/VaticanID.js';
 
 import DocumentList from '../components/Document/DocumentList.jsx';
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class AllDocumentsPage extends Component {
   constructor() {
     super();
@@ -61,7 +61,8 @@ class AllDocumentsPage extends Component {
           </div>
         </div>
 
-        <Footer />
+        <FooterHome />
+        <FeedbackLink />
       </div>
     );
   }

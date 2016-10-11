@@ -2,11 +2,14 @@
 import React, { Component, PropTypes } from 'react';
 
 import Partners from '../components/StaticPages/Partners.jsx'
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class PartnersPage extends Component {
   render() {
     return (
-      <Partners  />
+      <div>
+        <Partners  />
+        <FeedbackLink />
+      </div>
     );
   }
 }

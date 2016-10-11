@@ -2,11 +2,14 @@
 import React, { Component, PropTypes } from 'react';
 
 import TermsOfService from '../components/StaticPages/TermsOfService.jsx';
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class TermsOfServicePage extends Component {
   render() {
     return (
-      <TermsOfService />
+      <div>
+        <TermsOfService />
+        <FeedbackLink />
+      </div>
      );
   }
 }

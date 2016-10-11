@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from '../store/ItemStore.js'
 
-
 class Page extends Component {
   componentWillMount() {
     ItemActions.preLoadItems();
@@ -11,7 +10,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div>
+      <div className='page'>
         { this.props.children }
       </div>
     );
