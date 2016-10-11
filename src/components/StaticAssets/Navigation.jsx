@@ -14,7 +14,7 @@ class Navigation extends Component {
           <Link to="/search?q=">Search Database</Link>
         </MenuItem>
         <MenuItem>
-          <Link to="/documents">Document Index</Link>
+          <Link to="/documents">Index of Documents</Link>
         </MenuItem>
         <MenuItem>
           <Link to="/about">About the Database</Link>

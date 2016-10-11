@@ -19,7 +19,7 @@ class LandingContent extends Component {
             <TokenSearchBox />
               <nav style={{margin: '30px auto'}}>
                 <div className="col-sm-6">
-                  <p><Link to="/documents">Document Index</Link></p>
+                  <p><Link to="/documents">Index of Documents </Link></p>
                   <p><Link to="/about">About the Database</Link></p>
                   <p><Link to="/using">Using the Database</Link></p>
                 </div>
