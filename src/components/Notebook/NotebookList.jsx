@@ -3,13 +3,13 @@ import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentListItem from '../Document/DocumentListItem.jsx'
-import ShareSave from '../Document/ShareSave.jsx'
 import CompareActions from '../../actions/CompareActions.js'
 import _ from 'underscore'
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import ItemQueryParams from '../../modules/ItemQueryParams.js';
 import GroupItemsByParent from '../../modules/GroupItemsByParent.js';
+import EventEmitter from '../../middleware/EventEmitter.js';
 
 class NotebookList extends Component {
   constructor(props) {
@@ -19,25 +19,25 @@ class NotebookList extends Component {
     this.documentClick = this.documentClick.bind(this);
     this.documentList = this.documentList.bind(this);
     this.updateColumnState = this.updateColumnState.bind(this);
-
-    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
-      return item.collection_id == HumanRightsID;
-    });
-    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
-      return item.collection_id == VaticanID;
-    });
     this.state = {
       column1: CompareStore.getColumn1() ?  CompareStore.getColumn1() : null,
       column2: CompareStore.getColumn2() ?  CompareStore.getColumn2() : null,
-    };
+      humanrights_documents: [],
+      vatican_douments: [],
+    },
+    this.setDocuments = this.setDocuments.bind(this);
+
   }
 
   componentWillMount() {
+    this.setDocuments();
     CompareStore.on('CompareColumnsUpdated', this.updateColumnState);
+    EventEmitter.on('ReloadNoteBookPage', this.setDocuments);
   }
 
   componentWillUnmount() {
     CompareStore.removeListener('CompareColumnsUpdated', this.updateColumnState);
+    EventEmitter.removeListener('ReloadNoteBookPage', this.setDocuments);
   }
 
   updateColumnState(columnNumber) {
@@ -46,6 +46,17 @@ class NotebookList extends Component {
     } else if(columnNumber === 2) {
       this.setState({column2: null});
     }
+  }
+
+  setDocuments() {
+    this.setState({
+      humanrights_documents: _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
+        return item.collection_id == HumanRightsID;
+      }),
+      vatican_douments: _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
+        return item.collection_id == VaticanID;
+      }),
+    });
   }
 
   documentClick(event, item) {
@@ -96,15 +107,13 @@ class NotebookList extends Component {
 
   render() {
     return (
-      <div className="left-col notebook-list">
-        <h3>My Notebook</h3>
-        <ShareSave />
+      <div className="left-col notebook-list" style={{ backgroundColor: "#f8f6ed" }}>
         <h4 className="category">Catholic Social Teachings</h4>
           <ul style={{
             listStyleType: 'none',
             paddingLeft: '1em',
           }}>
-            { this.documentList(this._vatican_douments) }
+            { this.documentList(this.state.vatican_douments) }
           </ul>
 
           <h4 className="category">International Human Rights</h4>
@@ -112,7 +121,7 @@ class NotebookList extends Component {
               listStyleType: 'none',
               paddingLeft: '1em',
             }}>
-              { this.documentList(this._humanrights_documents) }
+              { this.documentList(this.state.humanrights_documents) }
             </ul>
 
       </div>

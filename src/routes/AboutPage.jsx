@@ -2,11 +2,15 @@
 import React, { Component, PropTypes } from 'react';
 
 import About from '../components/StaticPages/About.jsx'
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 
 class AboutPage extends Component {
   render() {
     return (
-      <About  />
+      <div>
+        <About  />
+        <FeedbackLink />
+      </div>
     );
   }
 }

@@ -2,7 +2,7 @@
 var React = require('react');
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
-var Footer = require('../StaticAssets/Footer.jsx');
+var FooterHome = require('../StaticAssets/FooterHome.jsx');
 var Privacy = React.createClass({
 
   render: function() {
@@ -48,7 +48,7 @@ var Privacy = React.createClass({
     	<p>&nbsp;</p>
     	</div>
     </div>
-    <Footer/>
+    <FooterHome/>
   </div>
   );
   }

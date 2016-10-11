@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router'
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
-var Footer = require('../StaticAssets/Footer.jsx');
+var FooterHome = require('../StaticAssets/FooterHome.jsx');
 
 var headingStyle = {
   paddingLeft: '1em',
@@ -80,7 +80,7 @@ class Partners extends Component {
     			</table>
         	</div>
         </div>
-        <Footer/>
+        <FooterHome/>
       </div>
     );
   }

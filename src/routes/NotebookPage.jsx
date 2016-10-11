@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import Notebook from '../components/Notebook/Notebook.jsx';
 import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
-
+import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 
 class NotebookPage extends Component {
   constructor(props) {
@@ -37,6 +37,7 @@ class NotebookPage extends Component {
       <div>
         <Notebook />
         {this.props.children}
+        <FeedbackLink />
       </div>
     );
   }

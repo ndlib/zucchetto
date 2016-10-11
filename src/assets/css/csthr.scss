@@ -33,8 +33,29 @@ h1, h2, h3, h4, h5 {
 	font-weight: bold;
 }
 
+.vertical-text {
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+}
+
+
 .index header .feedback {
 	display:none;
+}
+
+.menu {
+  font-size: 18px;
+
+  a {
+    color:#333;
+    padding:4px 0;
+    font-size: 22px;
+    display: block;
+
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 header {
@@ -69,44 +90,20 @@ header {
 		text-transform: uppercase;
 		margin: 0;
 	}
-	.menu {
-		padding:15px 0;
-	}
-	.menu span {
-		padding:4px 0;
-		font-size: 18px;
 
-		a {
-			color:#333;
-			padding:4px 0;
-			font-size: 22px;
-			display: block;
-
-		}
-		a:hover {
-			text-decoration: none;
-		}
-	}
 
 	.feedback {
-	position:absolute;
-	right:190px;
-	top:18px;
-	z-index:1;
-	display:block;
-		a {
 			font-size:13px;
 			background: $tan;
 			padding:8px;
 			border-radius: 5px;
 			text-transform:uppercase;
 			color:$green;
-		}
-		a:hover {
-			background: $khaki;
-			text-decoration: none;
-		}
 	}
+  .feedback:hover {
+    background: $khaki;
+    text-decoration: none;
+  }
 	.cchr {
 		height: 30px;
 		margin-bottom: 0px;
@@ -150,8 +147,8 @@ nav {
 }
 
 .body {
-	width: 98vw;
-	margin:56px auto 5px;
+	width: 100%;
+	margin:0 auto;
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
@@ -317,7 +314,7 @@ nav {
 
 .filters {
 	overflow-y: scroll;
-	max-height: calc(100vh - 250px);
+	max-height: calc(100vh - 139px);
 }
 
 .partners {
@@ -345,9 +342,9 @@ footer {
   padding-left: 10px;
   padding-right: 10px;
   border-top: double 3px $yellow;
-  position: fixed;
   bottom: 0px;
   background-color: $tan;
+  position: fixed;
   z-index: 4;
 
 	img.undhl {
@@ -361,9 +358,11 @@ footer {
 		margin-right:15px;
 	}
 	img.cchr {
-		display: none;
+    vertical-align: bottom;
+		margin-left: 15px;
+		margin-bottom: 5px;
+		height:35px;
 	}
-
 }
 
 a.right {
@@ -441,10 +440,6 @@ button.right {
 			display:none;
 		}
 	}
-
-  .feedback {
-    display: none;
-  }
 
 	.search {
 		background: rgba(212,176,47,.3);
@@ -577,19 +572,20 @@ button.right {
 			padding-top: 1em;
 			z-index: 5;
 
-    a {
-      color: $green;
-    }
+      a {
+        color: $green;
+      }
 		}
 		.feedback {
+        color: #333;
   			display:block;
-  		}
-
-	}
+    }
+	 }
 }
 
-footer .feedback {
-	display: none;
+.feedback {
+    color: #333;
+    display:block;
 }
 
 .tearms {
@@ -631,8 +627,7 @@ footer .feedback {
 .left-col {
   padding-left: 0;
   background: $tan;
-  margin-top: 5px;
-  margin-bottom: 5em;
+  margin-top: 0;
   padding: 15px;
 
   h2 {
@@ -664,10 +659,15 @@ a.main-heading {
   color: $yellow;
 }
 
+
 .index nav ul.contentnav li a {
 	font-size:30px;
 }
 
 .index nav ul.aboutnav li a {
 	font-size:22px;
+}
+
+.toolbar-group div {
+  display:inline-block;
 }

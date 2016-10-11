@@ -2,7 +2,7 @@
 var React = require('react');
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
-var Footer = require('../StaticAssets/Footer.jsx');
+var FooterHome = require('../StaticAssets/FooterHome.jsx');
 
 var Contact = React.createClass({
 
@@ -21,7 +21,7 @@ var Contact = React.createClass({
               </p>
             </div>
           </div>
-        <Footer/>
+        <FooterHome/>
       </div>
     );
   }

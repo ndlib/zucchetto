@@ -7,6 +7,7 @@ import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
 import NotebookColumn from './NotebookColumn.jsx';
 import NotebookList from './NotebookList.jsx';
+import NotebookToolbar from './NotebookToolbar.jsx';
 import EmptyColumn from './EmptyColumn.jsx';
 
 import Dialog from 'material-ui/lib/dialog';
@@ -18,22 +19,29 @@ class Notebook extends Component {
     this.updateColumns = this.updateColumns.bind(this);
     this.alertColumnError = this.alertColumnError.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
+    this.resize = this.resize.bind(this);
 
     this.state = {
       column1: CompareStore.getColumn1(),
       column2: CompareStore.getColumn2(),
       showColumnErrorDialog: false,
+      height: window.innerHeight - 107,
     };
   }
 
   componentWillMount() {
     CompareStore.on("CompareColumnsUpdated", this.updateColumns);
     CompareStore.on("CompareColumnsCannotBeUpdated", this.alertColumnError);
+    window.addEventListener('resize', this.resize);
   }
 
   componentWillUnmount() {
     CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns);
     CompareStore.removeListener("CompareColumnsCannotBeUpdated", this.alertColumnError);
+  }
+
+  resize() {
+    this.setState({ height: window.innerHeight - 107 });
   }
 
   updateColumns() {
@@ -51,15 +59,23 @@ class Notebook extends Component {
     this.setState({showColumnErrorDialog: false});
   }
 
+  style() {
+    return {
+      height: this.state.height,
+      overflowY: 'hidden',
+      borderRight: '1px solid #ececec',
+    }
+  }
+
   renderNotebook() {
     if (this.state.column2 || this.state.column1) {
       return (
-        <div className="col-sm-9">
+        <div className="col-sm-12">
           <div className="row">
-            <div className="col-sm-6 notebook-column left">
+            <div className="col-sm-6 notebook-column left" style={ this.style() }>
               <NotebookColumn item={ this.state.column1 } columnNumber= { 1 } />
             </div>
-            <div className="col-sm-6 notebook-column right">
+            <div className="col-sm-6 notebook-column right" style={ this.style() }>
               <NotebookColumn item={ this.state.column2 } columnNumber={ 2 } />
             </div>
           </div>
@@ -68,7 +84,7 @@ class Notebook extends Component {
     } else {
       return (
         <div>
-          <div className="col-sm-9">
+          <div className="col-sm-12">
             <EmptyColumn />
           </div>
         </div>
@@ -90,8 +106,9 @@ class Notebook extends Component {
     return (
       <div>
         <Header />
-        <div className="row body">
-          <div className="col-sm-3">
+        <NotebookToolbar />
+        <div className="row body" style={{ height: this.state.height, backgroundColor: 'white' }}>
+          <div className="col-sm-3 left-col" style={{ backgroundColor: '#f8f6ed' }}>
             <NotebookList />
           </div>
           <Dialog

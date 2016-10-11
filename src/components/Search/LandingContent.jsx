@@ -25,8 +25,7 @@ class LandingContent extends Component {
                 </div>
                 <div className="col-sm-6" style={{textAlign: 'right'}}>
                   <p><Link to="/partners">Project Partners</Link></p>
-                  <p><Link to="/privacy">Privacy Policy</Link></p>
-                  <p><Link to="/terms">Terms of Service</Link></p>
+                  <p><Link to="/about">About the Database</Link></p>
                 </div>
               </nav>
             </div>

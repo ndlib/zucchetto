@@ -23,7 +23,7 @@ class DocumentSection extends Component {
     this.state = {
       highlightedIndex: baseState,
       showAllParagraphs: true,
-      height: window.innerHeight - 150,
+      height: window.innerHeight - 107,
       scrollTop: 0
     };
     this.highlightSelectedParagraphs = this.highlightSelectedParagraphs.bind(this);
@@ -46,7 +46,7 @@ class DocumentSection extends Component {
   }
 
   resize(e) {
-    this.setState({height: window.innerHeight - 150})
+    this.setState({height: window.innerHeight - 107})
   }
 
   scrollWindow() {
@@ -95,8 +95,8 @@ class DocumentSection extends Component {
 
   render() {
     return (
-      <Paper style={{position: 'fixed', top: '110px', width: '100%', backgroundColor: "inherit" }}>
-        <Paper zDepth={ 0 } style={{ width: "25%", float: "left", overflow: 'scroll',  height: this.state.height, backgroundColor: "inherit"}} >
+      <Paper style={{ width: '100%', backgroundColor: "inherit" }}>
+        <Paper zDepth={ 0 } style={{ width: "25vw", float: "left", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, backgroundColor: "#f8f6ed"}} >
           <DocumentNav
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
@@ -109,7 +109,7 @@ class DocumentSection extends Component {
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "64%", float: "left", overflow: 'scroll', height: this.state.height, backgroundColor: "inherit"}} ref='docBody'>
+        <Paper zDepth={ 0 } style={{ width: "65vw", float: "left", overflowX: 'hidden', overflowY: 'scroll', height: this.state.height, backgroundColor: "white"}} ref='docBody'>
           <div ref='docContent'>
               <div style={{ marginTop: '1em'}} >
                 <CopyrightNotification item={ this.props.parent } />
@@ -119,12 +119,12 @@ class DocumentSection extends Component {
           <div style={{ cursor: 'pointer', position: 'absolute', top: '20px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goBack }>
             <i className="material-icons">arrow_back</i><br/>
           </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '60px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
+          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '10px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
             <i className="material-icons">vertical_align_top</i><br/>
             <p>Top</p>
           </div>
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "10%", right: '0', marginRight: "5px", overflow: 'scroll',  height: this.state.height, position: 'absolute'}}>
+        <Paper zDepth={ 0 } style={{ width: "10vw", right: '0', marginRight: "0", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, position: 'absolute'}}>
           <MiniMap
             onClick={ this.mapClick }
             scrollTop={ this.state.scrollTop }

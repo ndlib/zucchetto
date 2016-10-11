@@ -1,8 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import CompareButton from '../Document/CompareButton.jsx';
-import BackToSearchButton from '../Document/BackToSearchButton.jsx';
-import { Link } from 'react-router';
+import Drawer from '../../components/Search/Drawer.jsx';
 
 class Footer extends Component {
   render() {

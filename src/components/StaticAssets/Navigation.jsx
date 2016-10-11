@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import mui, { MenuItem } from 'material-ui';
+import mui, { MenuItem, Divider } from 'material-ui';
 import { Link } from 'react-router';
 
 class Navigation extends Component {
@@ -10,12 +10,14 @@ class Navigation extends Component {
         <MenuItem>
           <Link to="/">Home</Link>
         </MenuItem>
+        <Divider />
         <MenuItem>
           <Link to="/search?q=">Search Database</Link>
         </MenuItem>
         <MenuItem>
           <Link to="/documents">Index of Documents</Link>
         </MenuItem>
+        <Divider />
         <MenuItem>
           <Link to="/about">About the Database</Link>
         </MenuItem>
@@ -24,12 +26,6 @@ class Navigation extends Component {
         </MenuItem>
         <MenuItem>
           <Link to="/partners">Project Partners</Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="/privacy">Privacy Policy</Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="/terms">Terms of Service</Link>
         </MenuItem>
         <MenuItem>
           <Link to="/contact">Contact Us</Link>
