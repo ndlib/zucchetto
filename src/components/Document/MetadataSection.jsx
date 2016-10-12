@@ -25,7 +25,7 @@ class MetadataSection extends Component {
         <p key={ prop } ><span style={{ fontFamily: 'sans-serif', fontWeight: 'bold'}}>{label}:</span> {value}</p>
       );
 
-      if(label !== 'Coverage Temporal') {
+      if(label !== 'Coverage Temporal' && label !=='Footnotes') {
         data.push({label: label.toLowerCase(), value: html});
       }
     }
