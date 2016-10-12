@@ -13,7 +13,7 @@ class NotebookToolbar extends Component {
   render() {
     return (
       <Toolbar style={{ zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
-        <ToolbarTitle text="Compare Documents"
+        <ToolbarTitle text=""
           style={{
             fontSize: '16px',
           }}/>
