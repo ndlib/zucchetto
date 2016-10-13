@@ -7,6 +7,7 @@ var SearchSort = React.createClass({
   getInitialState: function() {
     var state = {
       selectValue: 0,
+      newSort: false,
     }
     return state;
   },
@@ -25,7 +26,11 @@ var SearchSort = React.createClass({
     if(window.location.search.match(regex)) {
       sortOption = window.location.search.replace(regex, '').split('&')[0];
     }
-    this.setSort(sortOption);
+    SearchStore.addResultsChangeListener(this.handleResultsChange);
+  },
+
+  handleResultsChange: function() {
+    this.setState({newSort: true});
   },
 
   sortStyle: function() {
@@ -63,21 +68,21 @@ var SearchSort = React.createClass({
   render: function() {
     if(SearchStore.sorts.length > 0) {
       return(
-      <div style={{float: "left", padding: '10px', paddingTop: '15px', color: 'white', fontSize: '16px'}}>
-        Sort By:
-        <div style={this.sortStyle()}>
-          <select
-            ref='searchSort'
-            autoWidth={false}
-            onChange={this.onChange.bind(this, 'selectValue')}
-            menuItems={SearchStore.sorts}
-            defaultValue={SearchStore.sortOption}
-            style={this.sortSelectStyle()}
-          >
-          {this.sortOptions()}
-          </select>
+        <div>
+          <h5>Sort</h5>
+          <div style={this.sortStyle()}>
+            <select
+              ref='searchSort'
+              autoWidth={false}
+              onChange={this.onChange.bind(this, 'selectValue')}
+              menuItems={SearchStore.sorts}
+              defaultValue={SearchStore.sortOption}
+              style={this.sortSelectStyle()}
+            >
+            {this.sortOptions()}
+            </select>
+          </div>
         </div>
-      </div>
       );
     }
     else {

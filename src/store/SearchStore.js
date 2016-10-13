@@ -14,6 +14,12 @@ class SearchStore extends EventEmitter {
 
     this._hits = {};
 
+    this._sorts = [{name: "None", value: 0}];
+    this._sortOption = {name: "None", value: 0};
+
+    Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
+    Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
+
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
@@ -80,7 +86,12 @@ class SearchStore extends EventEmitter {
   }
 
   searchUri() {
-    return '/search?q=' + this._searchTerm + '&t=' + this.getTopics().join(',');
+    var outUri = '/search?q=' + this._searchTerm + '&t=' + this.getTopics().join(',');
+    if(this._sortOption) {
+      outUri += "&sort=" + this._sortOption;
+    }
+
+    return outUri;
   }
 
   // Receives actions sent by the AppDispatcher
@@ -90,6 +101,7 @@ class SearchStore extends EventEmitter {
         this._topics = {};
         this.addTopics(action.topics);
         this._searchTerm = action.searchTerm;
+        this._sortOption = action.sort;
         break;
       case SearchActionTypes.SEARCH_SET_TERM:
         this._searchTerm = action.searchTerm;
@@ -106,6 +118,14 @@ class SearchStore extends EventEmitter {
       case SearchActionTypes.SEARCH_REMOVE_TOPICS:
         this.removeTopics(action.topics);
         this.emitQueryChange();
+        break;
+      case SearchActionTypes.SEARCH_SET_SORT:
+        this._sortOption = action.sort;
+        this.emitQueryChange();
+        break;
+      case SearchActionTypes.SEARCH_SET_SORT_OPTIONS:
+        this._sorts = action.sorts;
+        this.emitResultsChange(action.collection);
         break;
       default:
         break;
