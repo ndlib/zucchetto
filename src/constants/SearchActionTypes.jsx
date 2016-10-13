@@ -6,6 +6,7 @@ var SearchActionTypes = keyMirror({
   SEARCH_SET_TERM: null,
   SEARCH_ADD_TOPICS: null,
   SEARCH_REMOVE_TOPICS: null,
+  SEARCH_CLEAR_TOPICS: null,
 });
 
 module.exports = SearchActionTypes;

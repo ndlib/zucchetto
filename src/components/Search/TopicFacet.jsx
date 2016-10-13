@@ -21,6 +21,11 @@ class TopicFacet extends Component {
 
   componentWillMount() {
     this.expandIfChildSelected(this.props.topic);
+
+    if(this.props.topic.children && this.props.top_level) {
+      console.log(this.props.topic.name + " listening");
+      SearchStore.addTopicsChangeListener(this.onTopicsChanged.bind(this));
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -28,6 +33,10 @@ class TopicFacet extends Component {
       values: TopicNode.flattenValues(nextProps.topic),
     });
     this.expandIfChildSelected(nextProps.topic);
+
+    if(this.props.topic.children && this.props.top_level) {
+      SearchStore.removeTopicsChangeListener(this.onTopicsChanged.bind(this));
+    }
   }
 
   // Expands the node if it contains any children that are in the selected topics.
@@ -42,6 +51,12 @@ class TopicFacet extends Component {
   expandIfChildSelected(topic) {
     if(_.intersection(this.state.values, SearchStore.topics).length > 0) {
       this.setState({expanded: true});
+    }
+  }
+
+  onTopicsChanged(topics, add, clearAll) {
+    if(clearAll) {
+      this.setState({expanded: false});
     }
   }
 
@@ -80,7 +95,7 @@ class TopicFacet extends Component {
 
   children() {
     if(this.props.topic.children && this.state.expanded) {
-      return (<TopicFacets source={this.props.topic.children} />);
+      return (<TopicFacets source={this.props.topic.children} top_level={false} />);
     }
     return null;
   }

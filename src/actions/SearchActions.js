@@ -37,6 +37,12 @@ class SearchActions {
     });
   }
 
+  clearTopics() {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_CLEAR_TOPICS
+    });
+  }
+
   performSearch(collection, topics, searchTerm) {
     $.ajax({
       context: this,
