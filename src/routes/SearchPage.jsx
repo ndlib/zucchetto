@@ -100,15 +100,31 @@ class SearchPage extends Component {
     if (!this.state.loaded) {
       return (<p>Loading....</p>);
     }
-
+    var height = window.innerHeight - 51;
     return (
       <div>
         <Header/>
         <div className="row body" style={{display: 'block'}}>
           <div className="row col-sm-12" style={{ paddingTop: "0"}}>
             <SearchSidebar />
-            <div className="col-sm-9 right-col" style={this.listStyle()}>
+            <div className="col-sm-4 right-col" style={this.listStyle()}>
               { this.renderSearchBody() }
+            </div>
+            <div className="col-sm-5 instructions" style={{ height: height}}>
+              <h2>Getting started: choose a search method</h2>
+              <h3>Keyword search</h3>
+              <p>Use <strong>keyword search</strong> to locate all documents containing a specific word or words. Results will be broad and inclusive.</p>
+              <p>If you compine multiple keywords in a search, the results will include documents containing combinations of keywords <strong>AND</strong> documents containing any one of teh keywords.</p>
+
+              <h3>Topic search</h3>
+              <p>Use <strong>topic search</strong> to locate all documents that include discussion of a specific topic. Results will be more focused than keyword search.</p>
+              <p>You may choose multiple topics in a single search. Results will contain documents that discuss any combination of the selected topics <strong>AND</strong> documents that discuss any one of the topics.</p>
+              
+              <h3>Combined keyword and topic search</h3>
+              <p>For a more narrowly focused search, select a topic <strong>AND</strong> enter a keyword. Results will include only documents that discuss the selected topic and contain the selected keyword.</p>
+              
+              <h3>Search the document index</h3>
+              <p>If you know the name of the document you want to review, find it quickly in the document index.</p>
             </div>
           </div>
         </div>

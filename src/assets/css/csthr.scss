@@ -30,7 +30,7 @@ body {
 h1, h2, h3, h4, h5 {
 	font-family: GPCMed, sans-serif;
 	color: $green;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .vertical-text {
@@ -653,6 +653,24 @@ button.right {
   h2 {
     font-size: 18px;
   }
+}
+
+.instructions {
+	padding: 15px 25px;
+	background: #857F6F;
+	* {
+		color:#fff;
+	}
+	p {
+		padding-left:3em;
+		width:75%;
+	}
+	h2 {
+		font-size:36px;
+	}
+	h3 {
+		font-size:20px;
+	}
 }
 
 a.main-heading {
