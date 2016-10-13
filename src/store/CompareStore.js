@@ -69,6 +69,9 @@ class CompareStore extends EventEmitter {
       case CompareActionTypes.REMOVE_ITEM_TO_COMPARE:
         this.removeItem(action.item);
         break;
+      case CompareActionTypes.CLEAR_ITEMS_TO_COMPARE:
+        this.clearAll();
+        break;
       case CompareActionTypes.SET_COMPARE_COLUMN_ITEM:
         this.setColumnItem(action.item);
         break;
@@ -140,8 +143,9 @@ class CompareStore extends EventEmitter {
   }
 
   clearAll() {
-    LocalStorageExpiration(true);
-    this._forceDrawerState = "open";
+    this.clearColumnItems();
+    window.localStorage.clear();
+    this.resetDrawer();
     this.emit("ItemCompareUpdated");
   }
 
