@@ -104,11 +104,6 @@ var TokenSearchBox = React.createClass({
     });
   },
 
-  onClearClick: function() {
-    SearchActions.setTerm("");
-    this.handleChange([]);
-  },
-
   makeButton: function(callback, buttonType) {
     return (
       <RaisedButton
@@ -129,6 +124,7 @@ var TokenSearchBox = React.createClass({
             color: 'white',
             padding: '0 1px',
             verticalAlign: 'middle'
+
           }}
         >{ buttonType }</FontIcon>
       </RaisedButton>
@@ -158,7 +154,7 @@ var TokenSearchBox = React.createClass({
             display: 'inline-block',
             fontFamily: 'GPCMed, sans-serif',
             height:'36px',
-            width: 'calc(100% - 72px)',
+            width: 'calc(100% - 36px)',
             paddingLeft: '4px',
             verticalAlign:'top',
           }}
@@ -176,7 +172,6 @@ var TokenSearchBox = React.createClass({
             onSubmit={ this.onSubmit }
             />
           </div>
-          { this.makeButton(this.onClearClick, "clear") }
           { this.makeButton(this.onSubmit, "search") }
         </div>
     );
