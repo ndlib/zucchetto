@@ -333,6 +333,10 @@ nav {
 			}
 		}
 	}
+	h2 {
+		font-size:26px !important;
+		padding:15px 15px 0;
+	}
 }
 
 footer {
@@ -688,4 +692,37 @@ a.main-heading {
 
 .toolbar-group div {
   display:inline-block;
+}
+
+.partners-c {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: space-between;
+	flex-wrap: wrap;
+	padding-right:20px;
+
+}
+
+.partners-c a {
+	margin-left:40px;
+	margin-bottom:20px;
+	max-width: 28%;
+	text-align: center;
+}
+
+
+
+.partners-c img {
+	max-width:100%;
+	max-height:110px;
+}
+
+.partners-c .smaller img {
+	max-height:70px;
+}
+
+.partners-c .larger img {
+	max-height:130px;
 }
