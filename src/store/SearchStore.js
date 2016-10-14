@@ -43,6 +43,19 @@ class SearchStore extends EventEmitter {
     this.emit("SearchStoreResultsChanged", collection);
   }
 
+  // Adds a callback to listen for changes to the resulting hits for a collection
+  addTopicsChangeListener(callback) {
+    this.on("SearchStoreTopicsChanged", callback);
+  }
+
+  removeTopicsChangeListener(callback) {
+    this.removeListener("SearchStoreTopicsChanged", callback);
+  }
+
+  emitTopicsChange(topics, add, clearAll) {
+    this.emit("SearchStoreTopicsChanged", topics, add, clearAll);
+  }
+
   addTopics(topics) {
     topics.forEach(function(topic) { this._topics[topic] = true }.bind(this));
   }
@@ -102,10 +115,17 @@ class SearchStore extends EventEmitter {
       case SearchActionTypes.SEARCH_ADD_TOPICS:
         this.addTopics(action.topics);
         this.emitQueryChange();
+        this.emitTopicsChange(action.topics, true, false);
         break;
       case SearchActionTypes.SEARCH_REMOVE_TOPICS:
         this.removeTopics(action.topics);
         this.emitQueryChange();
+        this.emitTopicsChange(action.topics, false, false);
+        break;
+      case SearchActionTypes.SEARCH_CLEAR_TOPICS:
+        this._topics = {};
+        this.emitQueryChange();
+        this.emitTopicsChange([], false, true);
         break;
       default:
         break;

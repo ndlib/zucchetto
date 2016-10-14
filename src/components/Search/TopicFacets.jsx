@@ -7,11 +7,11 @@ class TopicFacets extends Component {
     super(props);
   }
 
-  facets(topics) {
+  facets(topics, top_level) {
     if(topics) {
       let topicList = topics.map(function(topic, index){
         return(
-          <TopicFacet key={ "topic-" + index } topic={topic}/>
+          <TopicFacet key={ "topic-" + index } topic={topic} top_level={top_level} />
         );
       });
       return topicList;
@@ -23,7 +23,7 @@ class TopicFacets extends Component {
     return (
       <ul
         style={{listStyleType: 'none', paddingLeft: '0'}}>
-        {this.facets(this.props.source)}
+        {this.facets(this.props.source, this.props.top_level)}
       </ul>
     );
   }
