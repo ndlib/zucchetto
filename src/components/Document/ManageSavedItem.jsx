@@ -11,9 +11,6 @@ class ManageSavedItem extends Component {
     super(props);
     this.onClick = this.onClick.bind(this);
     this.style = this.style.bind(this);
-    this.state = {
-      clicked: false,
-    }
   }
 
   onClick() {
@@ -21,15 +18,12 @@ class ManageSavedItem extends Component {
     for(var i = 0; i < this.props.docObject.paragraphs.length; i++) {
       CompareActions.removeItem(this.props.docObject.paragraphs[i]);
     }
-    this.setState({
-      clicked: true,
-    })
     this.props.clickAction();
   }
 
   style() {
     return {
-      display: this.state.clicked ? 'none' : 'block',
+      display: 'block',
     }
   }
 

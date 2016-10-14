@@ -32,12 +32,14 @@ class NotebookList extends Component {
   componentWillMount() {
     this.setDocuments();
     CompareStore.on('CompareColumnsUpdated', this.updateColumnState);
-    EventEmitter.on('ReloadNoteBookPage', this.setDocuments);
   }
 
   componentWillUnmount() {
     CompareStore.removeListener('CompareColumnsUpdated', this.updateColumnState);
-    EventEmitter.removeListener('ReloadNoteBookPage', this.setDocuments);
+  }
+
+  componentWillReceiveProps() {
+    this.setDocuments();
   }
 
   updateColumnState(columnNumber) {
