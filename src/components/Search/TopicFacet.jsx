@@ -23,7 +23,6 @@ class TopicFacet extends Component {
     this.expandIfChildSelected(this.props.topic);
 
     if(this.props.topic.children && this.props.top_level) {
-      console.log(this.props.topic.name + " listening");
       SearchStore.addTopicsChangeListener(this.onTopicsChanged.bind(this));
     }
   }
@@ -33,7 +32,9 @@ class TopicFacet extends Component {
       values: TopicNode.flattenValues(nextProps.topic),
     });
     this.expandIfChildSelected(nextProps.topic);
+  }
 
+  componentWillUnMount() {
     if(this.props.topic.children && this.props.top_level) {
       SearchStore.removeTopicsChangeListener(this.onTopicsChanged.bind(this));
     }
