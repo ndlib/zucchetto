@@ -7,12 +7,15 @@ class SearchActions {
   setParamsFromUri() {
     var topicsParam = QueryParam('t');
     var searchTermParam = QueryParam('q');
+    var sortParam = QueryParam('sort');
     var topics = topicsParam == null ? [] : decodeURIComponent(topicsParam).split(',');
     var searchTerm = searchTermParam == null ? "" : decodeURIComponent(searchTermParam);
+    var sort = sortParam == null ? "" : decodeURIComponent(sortParam);
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_INI_PARAMS,
       topics: topics,
       searchTerm: searchTerm,
+      sort: sort,
     });
   }
 
@@ -20,6 +23,13 @@ class SearchActions {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_TERM,
       searchTerm: searchTerm
+    });
+  }
+
+  setSort(sort) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_SET_SORT,
+      sort: sort
     });
   }
 
@@ -43,17 +53,28 @@ class SearchActions {
     });
   }
 
-  performSearch(collection, topics, searchTerm) {
+  performSearch(collection, topics, searchTerm, sort) {
+    var queryUrl = collection
+                   + '/search?q=' + this.buildQuery(topics, searchTerm)
+                   + '&rows=10000';
+    if(sort) {
+      queryUrl += "&sort=" + sort;
+    }
+
     $.ajax({
       context: this,
       type: "GET",
-      url:  collection + '/search?q=' + this.buildQuery(topics, searchTerm) + '&rows=10000',
+      url:  queryUrl,
       dataType: "json",
       success: function(result) {
         AppDispatcher.dispatch({
           actionType: SearchActionTypes.SEARCH_SET_HITS,
           collection: collection,
           hits: result.hits
+        });
+        AppDispatcher.dispatch({
+          actionType: SearchActionTypes.SEARCH_SET_SORT_OPTIONS,
+          sorts: result.sorts
         });
       }.bind(this),
       error: function(request, status, thrownError) {
