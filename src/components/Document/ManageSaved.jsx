@@ -71,8 +71,10 @@ class ManageSaved extends Component {
   render() {
     return (
       <div>
-        <h3>Remove Compared Documents</h3>
-        <ClearSavedButton clickAction={ this.updatePage } />
+        <div>
+          <h3 style={{ display: 'inline-block' }}>Remove Compared Documents</h3>
+          <ClearSavedButton style={{ display: 'inline-block', position: 'absolute', right: '0', margin: '20px 43px' }} clickAction={ this.updatePage } />
+        </div>
         <List style={{ maxHeight: 'calc(40vh - 120px)', overflowY: "scroll" }}>
           { this.documentList() }
         </List>

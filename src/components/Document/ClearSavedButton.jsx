@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import mui, { Dialog, FlatButton, FontIcon } from 'material-ui';
+import mui, { Dialog, RaisedButton, FontIcon } from 'material-ui';
 import CompareActions from '../../actions/CompareActions.js';
 
 class ClearSavedButton extends Component {
@@ -19,10 +19,11 @@ class ClearSavedButton extends Component {
 
   render() {
     return (
-      <FlatButton
+      <RaisedButton
         label="Clear all"
         labelPosition="before"
         primary={ false }
+        style={ this.props.style }
         onClick={ this.onClick }
         icon={ <FontIcon className="material-icons" style={{ margin: '4px 12px' }}>delete</FontIcon> }
       />
@@ -32,7 +33,9 @@ class ClearSavedButton extends Component {
 }
 
 ClearSavedButton.propTypes = {
-  clickAction: React.PropTypes.func
+  clickAction: React.PropTypes.func,
+  style: React.PropTypes.string,
 }
+ClearSavedButton.defaultProps = { style: {} };
 
 export default ClearSavedButton;
