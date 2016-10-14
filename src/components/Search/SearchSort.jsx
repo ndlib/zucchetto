@@ -7,7 +7,6 @@ var SearchSort = React.createClass({
   getInitialState: function() {
     var state = {
       selectValue: 0,
-      newSort: false,
     }
     return state;
   },
@@ -34,7 +33,7 @@ var SearchSort = React.createClass({
   },
 
   handleResultsChange: function() {
-    this.setState({newSort: true});
+    this.forceUpdate();
   },
 
   sortStyle: function() {
