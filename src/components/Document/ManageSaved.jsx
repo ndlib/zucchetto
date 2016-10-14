@@ -10,6 +10,7 @@ import GroupItemsByParent from '../../modules/GroupItemsByParent.js';
 import ItemQueryParams from '../../modules/ItemQueryParams.js';
 import mui, { List } from 'material-ui';
 import ManageSavedItem from './ManageSavedItem.jsx';
+import ClearSavedDocumentsButton from './ClearSavedDocumentsButton.jsx';
 import NotebookLinkString from '../../modules/NotebookLinkString.js';
 import EventEmitter from '../../middleware/EventEmitter.js';
 
@@ -19,12 +20,7 @@ class ManageSaved extends Component {
     super(props);
     this.updatePage = this.updatePage.bind(this);
     this.documentList = this.documentList.bind(this);
-    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
-      return item.collection_id == HumanRightsID;
-    });
-    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
-      return item.collection_id == VaticanID;
-    });
+    this.setDocuments = this.setDocuments.bind(this);
   }
 
   documentList() {
@@ -51,15 +47,34 @@ class ManageSaved extends Component {
     return ( <div><i>No documents currently saved.</i></div>);
   }
 
+  componentWillMount() {
+    this.setDocuments();
+  }
+
+  componentWillUpdate() {
+    this.setDocuments();
+  }
+
+  setDocuments() {
+    this._humanrights_documents = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
+      return item.collection_id == HumanRightsID;
+    });
+    this._vatican_douments = _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
+      return item.collection_id == VaticanID;
+    });
+  }
+
   updatePage() {
     this.context.router.push(NotebookLinkString());
-    EventEmitter.emit('ReloadNoteBookPage');
   }
 
   render() {
     return (
       <div>
-        <h3>Remove Compared Documents</h3>
+        <div>
+          <h3 style={{ display: 'inline-block' }}>Remove Compared Documents</h3>
+          <ClearSavedDocumentsButton style={{ display: 'inline-block', position: 'absolute', right: '0', margin: '20px 43px' }} clickAction={ this.updatePage } />
+        </div>
         <List style={{ maxHeight: 'calc(40vh - 120px)', overflowY: "scroll" }}>
           { this.documentList() }
         </List>

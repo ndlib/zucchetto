@@ -6,15 +6,15 @@ class HomePageNavigation extends Component {
   render() {
     return (
       <nav>
-        <ul>
+        <ul className="contentnav">
           <li>
             <Link to="/using">Using the Database</Link>
           </li>
           <li>
-            <Link to="/documents">Document Index</Link>
+            <Link to="/documents">Index of Documents</Link>
           </li>
         </ul>
-        <ul>
+        <ul className="aboutnav">
           <li>
             <Link to="/about">About the Database</Link>
           </li>

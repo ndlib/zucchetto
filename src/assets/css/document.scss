@@ -226,6 +226,10 @@ div[id^='paragraph-'] {
   display: block;
 }
 
+.paragraph.document-content {
+  margin-bottom:1.2em;
+}
+
 .mini-map .document {
   width: 750px;
   left: -275px;

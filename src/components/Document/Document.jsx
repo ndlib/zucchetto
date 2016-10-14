@@ -9,6 +9,7 @@ import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
 import AddToCompare from './AddToCompare.jsx';
+import FootNotes from './FootNotes.jsx';
 
 class Document extends Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class Document extends Component {
           { this.props.children }
           <DocumentType item={this._parent} />
           { this.paragraphs() }
+          <FootNotes item={ this._parent } />
           <CopyrightNotification item={ this._parent } />
         </div>
       </div>

@@ -47,6 +47,12 @@ class SearchActions {
     });
   }
 
+  clearTopics() {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_CLEAR_TOPICS
+    });
+  }
+
   performSearch(collection, topics, searchTerm, sort) {
     var queryUrl = collection
                    + '/search?q=' + this.buildQuery(topics, searchTerm)
@@ -55,7 +61,6 @@ class SearchActions {
       queryUrl += "&sort=" + sort;
     }
 
-    console.log(queryUrl);
     $.ajax({
       context: this,
       type: "GET",

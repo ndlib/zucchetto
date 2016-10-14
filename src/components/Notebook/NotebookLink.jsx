@@ -61,7 +61,7 @@ class NotebookLink extends Component {
           borderLeft: '1px solid white',
           borderRight: '1px solid white'
         }}
-      >Compare ({ totalCount } Paragraphs)</mui.FlatButton>
+      >Compare { totalCount } Paragraph(s)</mui.FlatButton>
     );
   }
 }

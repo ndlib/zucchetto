@@ -39,7 +39,7 @@ class AllDocumentsPage extends Component {
         <Header/>
         <div className="row body" style={{display: 'block'}}>
           <div className="col-sm-12">
-            <h2>Document Index</h2>
+            <h2>Index of Documents</h2>
           </div>
           <div className="col-sm-6 notebook-column left doc-list">
             <Heading title="Catholic Social Teachings" />

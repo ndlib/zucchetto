@@ -6,6 +6,7 @@ var CompareActionTypes = keyMirror({
   SET_COMPARE_COLUMN_ITEM: false,
   REMOVE_COMPARE_COLUMN_ITEM: false,
   CLEAR_COLUMNS: false,
+  CLEAR_ITEMS_TO_COMPARE: false
 });
 
 module.exports = CompareActionTypes;

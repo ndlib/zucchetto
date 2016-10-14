@@ -18,6 +18,12 @@ class CompareActions {
     });
   }
 
+  clearItems() {
+    AppDispatcher.dispatch({
+      actionType: CompareActionTypes.CLEAR_ITEMS_TO_COMPARE
+    });
+  }
+
   setColumnItem(item) {
     AppDispatcher.dispatch({
       actionType: CompareActionTypes.SET_COMPARE_COLUMN_ITEM,

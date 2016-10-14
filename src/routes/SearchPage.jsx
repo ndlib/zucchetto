@@ -37,11 +37,21 @@ class SearchPage extends Component {
     };
   }
 
-  listStyle(side) {
+  listStyle() {
     return {
       backgroundColor: 'transparent',
       fontFamily: 'GPCMed, sans-serif',
       textAlign: 'left',
+      width: '75%'
+    }
+  }
+
+  columnStyle() {
+    return {
+      backgroundColor: 'transparent',
+      fontFamily: 'GPCMed, sans-serif',
+      textAlign: 'left',
+      width: '50%'
     }
   }
 
@@ -77,16 +87,16 @@ class SearchPage extends Component {
       );
     }
     return (
-      <div className="col-sm-12" style={{ paddingTop: "0"}}>
+      <div className="col-sm-12" style={{ paddingTop: "0" }}>
         <TokenSearchBox />
         <hr className="search-separator" />
-        <div key="catholic" className="col-sm-6">
+        <div key="catholic" className="col-sm-6" style={this.columnStyle()}>
           <Search
             title = { CATHOLIC }
             collection={ CATHOLIC_COLLECTION }
           />
         </div>
-        <div key="humanrights" className="col-sm-6" style={this.listStyle()}>
+        <div key="humanrights" className="col-sm-6" style={this.columnStyle()}>
           <Search
             title = { HUMANRIGHTS }
             collection={ HUMANRIGHTS_COLLECTION }
@@ -100,14 +110,13 @@ class SearchPage extends Component {
     if (!this.state.loaded) {
       return (<p>Loading....</p>);
     }
-
     return (
       <div>
         <Header/>
         <div className="row body" style={{display: 'block'}}>
-          <div className="row col-sm-12" style={{ paddingTop: "0"}}>
+          <div className="row col-sm-12" style={{ padding: "0", margin: "0" }}>
             <SearchSidebar />
-            <div className="col-sm-9 right-col" style={this.listStyle()}>
+            <div className="col-sm-4 right-col" style={this.listStyle()}>
               { this.renderSearchBody() }
             </div>
           </div>

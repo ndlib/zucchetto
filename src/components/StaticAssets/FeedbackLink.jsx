@@ -21,7 +21,7 @@ class FeedbackLink extends Component {
           padding: "0px 15px"
         }}
         >
-        Feedback
+        Report a Problem
       </FlatButton>
     </Link>
     );
