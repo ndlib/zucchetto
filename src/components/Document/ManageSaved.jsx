@@ -10,7 +10,7 @@ import GroupItemsByParent from '../../modules/GroupItemsByParent.js';
 import ItemQueryParams from '../../modules/ItemQueryParams.js';
 import mui, { List } from 'material-ui';
 import ManageSavedItem from './ManageSavedItem.jsx';
-import ClearSavedButton from './ClearSavedButton.jsx';
+import ClearSavedDocumentsButton from './ClearSavedDocumentsButton.jsx';
 import NotebookLinkString from '../../modules/NotebookLinkString.js';
 import EventEmitter from '../../middleware/EventEmitter.js';
 
@@ -73,7 +73,7 @@ class ManageSaved extends Component {
       <div>
         <div>
           <h3 style={{ display: 'inline-block' }}>Remove Compared Documents</h3>
-          <ClearSavedButton style={{ display: 'inline-block', position: 'absolute', right: '0', margin: '20px 43px' }} clickAction={ this.updatePage } />
+          <ClearSavedDocumentsButton style={{ display: 'inline-block', position: 'absolute', right: '0', margin: '20px 43px' }} clickAction={ this.updatePage } />
         </div>
         <List style={{ maxHeight: 'calc(40vh - 120px)', overflowY: "scroll" }}>
           { this.documentList() }

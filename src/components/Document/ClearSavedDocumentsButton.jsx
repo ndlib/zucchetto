@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import mui, { Dialog, RaisedButton, FontIcon } from 'material-ui';
 import CompareActions from '../../actions/CompareActions.js';
 
-class ClearSavedButton extends Component {
+class ClearSavedDocumentsButton extends Component {
 
   constructor(props) {
     super(props);
@@ -32,10 +32,10 @@ class ClearSavedButton extends Component {
   }
 }
 
-ClearSavedButton.propTypes = {
+ClearSavedDocumentsButton.propTypes = {
   clickAction: React.PropTypes.func,
-  style: React.PropTypes.string,
+  style: React.PropTypes.object,
 }
-ClearSavedButton.defaultProps = { style: {} };
+ClearSavedDocumentsButton.defaultProps = { style: {} };
 
-export default ClearSavedButton;
+export default ClearSavedDocumentsButton;
