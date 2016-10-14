@@ -23,6 +23,7 @@ class DocumentToolbar extends Component {
   render() {
     return (
       <Toolbar style={{ zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
+        <ToolbarGroup firstChild={true}>
         <ToolbarTitle text={ this.props.document.name }
           style={{
             fontSize: '16px',
@@ -31,7 +32,8 @@ class DocumentToolbar extends Component {
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
           }}/>
-        <ToolbarGroup float="right">
+      </ToolbarGroup>
+        <ToolbarGroup lastChild={true}>
           <ViewOriginal documentId={ this.props.document.id } />
           <BackButton />
           <FlatButton

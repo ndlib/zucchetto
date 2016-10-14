@@ -83,6 +83,13 @@ class SearchStore extends EventEmitter {
     return '/search?q=' + this._searchTerm + '&t=' + this.getTopics().join(',');
   }
 
+  hasSearch() {
+    if (this.searchUri() == "/search?q=&t=") {
+      return false;
+    }
+    return true;
+  }
+
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
