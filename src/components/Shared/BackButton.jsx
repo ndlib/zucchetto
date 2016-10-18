@@ -14,7 +14,7 @@ class BackButton extends Component {
           linkButton={true}
           icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
           backgroundColor="#E4E1D1"
-          style={{ margin: '10px 5px' }}
+          style={{ margin: '10px 5px', float: 'left' }}
         />
       );
     }

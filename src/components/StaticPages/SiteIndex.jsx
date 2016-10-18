@@ -73,6 +73,7 @@ var SiteIndex = React.createClass({
               <img src="resources/images/cover/02.jpg" />
               <img src="resources/images/cover/03.jpg" />
               <img src="resources/images/cover/04.jpg" />
+              <img src="resources/images/cover/05.jpg" />
             </Carousel>
 
             <div className="fader"></div>
@@ -93,6 +94,10 @@ var SiteIndex = React.createClass({
                 className={this.state.slideIndex === 3 ? 'active' : ''}
                 onClick={() => this.setSlide(3)}
                 >4</li>
+                <li
+                className={this.state.slideIndex === 4 ? 'active' : ''}
+                onClick={() => this.setSlide(4)}
+                >5</li>
             </ul>
           </div>
 
