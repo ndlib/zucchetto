@@ -1,16 +1,10 @@
 #!/bin/bash
-BUCKET=csthr.library.nd.edu
-HONEYCOMB=https://honeycomb.library.nd.edu
+BUCKET=csthr-pprd.library.nd.edu
+HONEYCOMB=https://honeycombpprd-vm.library.nd.edu
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-if [ "${BRANCH}" != "master" ]; then
-  echo "\033[0;31mCurrent branch is ${BRANCH}. You must be on master to deploy to production.\033[0m"
-  exit 1
-fi
-
-echo "\033[0;31mBuilding production on branch ${BRANCH}\033[0m"
-git pull
-npm run build
+echo "\033[0;31mBuilding preproduction on branch ${BRANCH}\033[0m"
+npm run build-pprd
 cd ./public
 
 curl -o ./resources/cache_data/cst_data.json ${HONEYCOMB}/v1/collections/vatican/items
