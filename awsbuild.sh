@@ -1,10 +1,11 @@
 #!/bin/bash
 BUCKET=csthr.library.nd.edu
 HONEYCOMB=https://honeycomb.library.nd.edu
+RELEASE=`cat current_release`
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-if [ "${BRANCH}" != "master" ]; then
-  echo "\033[0;31mCurrent branch is ${BRANCH}. You must be on master to deploy to production.\033[0m"
+if [ "${BRANCH}" != "${RELEASE}" ]; then
+  echo "\033[0;31mCurrent branch is ${BRANCH}. You must be on ${RELEASE} to deploy to production.\033[0m"
   exit 1
 fi
 
