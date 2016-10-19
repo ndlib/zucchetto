@@ -2,9 +2,11 @@
 BUCKET=csthr-pprd.library.nd.edu
 HONEYCOMB=https://honeycombpprd-vm.library.nd.edu
 BRANCH=`git rev-parse --abbrev-ref HEAD`
+REVISION=`git rev-parse HEAD`
 
 echo "\033[0;31mBuilding preproduction on branch ${BRANCH}\033[0m"
 npm run build-pprd
+echo ${REVISION} > public/REVISION
 cd ./public
 
 curl -o ./resources/cache_data/cst_data.json ${HONEYCOMB}/v1/collections/vatican/items
