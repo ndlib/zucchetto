@@ -1,7 +1,7 @@
 #!/bin/bash
 BUCKET=csthr.library.nd.edu
 HONEYCOMB=https://honeycomb.library.nd.edu
-RELEASE=`cat current_release`
+RELEASE=`git show remotes/origin/master:current_release`
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
 if [ "${BRANCH}" != "${RELEASE}" ]; then
