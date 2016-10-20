@@ -1,18 +1,11 @@
 #!/bin/bash
-BUCKET=csthr.library.nd.edu
-HONEYCOMB=https://honeycomb.library.nd.edu
-RELEASE=`git show remotes/origin/master:current_release`
+BUCKET=csthr-pprd.library.nd.edu
+HONEYCOMB=https://honeycombpprd-vm.library.nd.edu
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 REVISION=`git rev-parse HEAD`
 
-if [ "${BRANCH}" != "${RELEASE}" ]; then
-  echo "\033[0;31mCurrent branch is ${BRANCH}. You must be on ${RELEASE} to deploy to production.\033[0m"
-  exit 1
-fi
-
-echo "\033[0;31mBuilding production on branch ${BRANCH}\033[0m"
-git pull
-npm run build
+echo "\033[0;31mBuilding preproduction on branch ${BRANCH}\033[0m"
+npm run build-pprd
 echo ${REVISION} > public/REVISION
 cd ./public
 
