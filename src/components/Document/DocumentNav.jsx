@@ -48,7 +48,7 @@ class DocumentNav extends Component {
 
     return (
       <div style={{margin: '0', backgroundColor: '#f8f6ed'}} className="left-col">
-        <h4>Highlight Paragraphs</h4>
+        <h3>Highlight Paragraphs</h3>
         <div className="right">
           <Toggle
             label="Only Show Highlighted Paragraphs"
@@ -67,6 +67,7 @@ class DocumentNav extends Component {
           }}>
           { searchMenuItem }
           <Divider />
+          <h4>Additional Topics in Document</h4>
           { this.topicList() }
         </SelectableList>
       </div>
