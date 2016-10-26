@@ -67,7 +67,7 @@ class DocumentNav extends Component {
           }}>
           { searchMenuItem }
           <Divider />
-          <h4>Additional Topics in Document</h4>
+          <h4>Topics in Document</h4>
           { this.topicList() }
         </SelectableList>
       </div>
