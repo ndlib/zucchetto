@@ -33,7 +33,7 @@ class DocumentToolbar extends Component {
             textOverflow: 'ellipsis',
           }}/>
       </ToolbarGroup>
-        <ToolbarGroup lastChild={true}>
+        <ToolbarGroup lastChild={true} float="right">
           <ViewOriginal documentId={ this.props.document.id } />
           <BackButton />
           <FlatButton
