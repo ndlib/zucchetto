@@ -104,6 +104,33 @@ var TokenSearchBox = React.createClass({
     });
   },
 
+  makeButton: function(callback, buttonType) {
+    return (
+      <RaisedButton
+          onClick={callback}
+          style={{
+            boxShadow: 'none',
+            lineHeight: '36px',
+            minWidth: '36px',
+            width: '36px',
+            zIndex: '0',
+          }}
+          backgroundColor='#224048'
+          disableTouchRipple={true}
+      >
+        <FontIcon
+          className="material-icons"
+          style={{
+            color: 'white',
+            padding: '0 1px',
+            verticalAlign: 'middle'
+
+          }}
+        >{ buttonType }</FontIcon>
+      </RaisedButton>
+    )
+  },
+
   render: function() {
     var selectedNames = this.state.selected.map(function(tag) {
       return <li key={ tag.id }>{ tag.name }</li>
@@ -145,30 +172,7 @@ var TokenSearchBox = React.createClass({
             onSubmit={ this.onSubmit }
             />
           </div>
-          <RaisedButton
-            onClick={this.onClick}
-            style={{
-              boxShadow: 'none',
-              float: 'right',
-              lineHeight: '36px',
-              marginLeft: '-36px',
-              minWidth: '36px',
-              width: '36px',
-              zIndex: '0',
-
-            }}
-            backgroundColor='#224048'
-            disableTouchRipple={true}
-          >
-            <FontIcon
-              className="material-icons"
-              style={{
-                color: 'white',
-                padding: '0 1px',
-                verticalAlign: 'middle'
-              }}
-            >search</FontIcon>
-          </RaisedButton>
+          { this.makeButton(this.onSubmit, "search") }
         </div>
     );
   }
