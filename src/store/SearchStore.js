@@ -15,7 +15,7 @@ class SearchStore extends EventEmitter {
     this._hits = {};
 
     this._sorts = [{name: "None", value: 0}];
-    this._sortOption = {name: "None", value: 0};
+    this._sortOption = "";
 
     Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
     Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
