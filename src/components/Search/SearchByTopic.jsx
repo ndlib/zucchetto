@@ -14,6 +14,7 @@ class SearchByTopic extends Component {
   render() {
     return (
         <div>
+          <h1 style={{ fontSize: "30px" }}>Filter By Topic</h1>
           <FlatButton
             onClick={this.onClearClicked}
             style={{
@@ -29,8 +30,7 @@ class SearchByTopic extends Component {
             disableTouchRipple={true}
             label="Clear"
           />
-          <h4>Filter By Topic</h4>
-          <h5>Actors</h5>
+          <h4>Actors</h4>
           <ul className='filters' style={{
               listStyleType: 'none',
               paddingLeft: '0',

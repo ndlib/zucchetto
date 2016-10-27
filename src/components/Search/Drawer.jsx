@@ -75,9 +75,9 @@ class Drawer extends Component {
 
   message() {
     if (this.state.countChange < 0)
-      return Math.abs(this.state.countChange) + " Paragraphs removed from comparison.";
+      return Math.abs(this.state.countChange) + " Paragraph(s) removed from comparison.";
     else if (this.state.countChange > 0) {
-      return Math.abs(this.state.countChange) + " Paragraphs added to comparison.";
+      return Math.abs(this.state.countChange) + " Paragraph(s) added to comparison.";
     }
     return "";
   }

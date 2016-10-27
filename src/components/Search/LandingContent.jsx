@@ -13,21 +13,17 @@ class LandingContent extends Component {
     return (
       <div className="col-sm-12" style={{ paddingRight: "0" }}>
         <div className="col-sm-10" style={{ display: "inline-block", width: "45%" }}>
-          <div style={{ display: "inline-block", paddingTop: "45px" }}>
-            <h1>Get Started</h1>
-            <h2>Enter a search query or select a filter to view a list of matching documents.</h2>
+          <div style={{ display: "inline-block", paddingTop: "15px" }}>
+            <h1>Search By Keyword</h1>
             <TokenSearchBox />
-            <nav style={{margin: '30px auto'}}>
-              <div className="col-sm-6">
-                <p><Link to="/documents">Index of Documents </Link></p>
-                <p><Link to="/about">About the Database</Link></p>
-                <p><Link to="/using">Using the Database</Link></p>
-              </div>
-              <div className="col-sm-6" style={{textAlign: 'right'}}>
-                <p><Link to="/partners">Project Partners</Link></p>
-                <p><Link to="/about">About the Database</Link></p>
-              </div>
-            </nav>
+            <hr/>
+            <div style={{margin: '20px auto'}}>
+              <h1>
+                <Link to="/documents" style={{color: "#224048"}}>
+                  Browse the Document Index <i className="glyphicon glyphicon-circle-arrow-right" style={{ top: "5px" }} />
+                </Link>
+              </h1>
+            </div>
           </div>
         </div>
         <div className="col-sm-5 instructions" style={{ height: height, width: '55%' }}>
