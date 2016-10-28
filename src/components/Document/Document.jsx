@@ -53,7 +53,7 @@ class Document extends Component {
           item={ item }
           selected={ selected }
           highlighted = { highlighted }
-          showCheckBoxes={ ( item.metadata.type_of_text.values[0].value === 'BodyText' && this.props.showCompareButton ) }
+          showCheckBoxes={ ( item.metadata.type_of_text && item.metadata.type_of_text.values[0].value === 'BodyText' && this.props.showCompareButton ) }
         />
       </div>
     );
