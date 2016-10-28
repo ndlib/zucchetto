@@ -1,24 +1,27 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui from "material-ui";
+import SearchStore from "../../store/SearchStore"
 
 class BackButton extends Component {
-
   clickBack() {
     this.context.router.goBack();
   }
 
   render() {
-    return (
-      <mui.FlatButton
-        label="Back"
-        labelPosition="after"
-        icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
-        onClick={ this.clickBack.bind(this) }
-        backgroundColor="#E4E1D1"
-        style={{ margin: '10px 5px' }} 
-      />
-    );
+    if (SearchStore.hasSearch()) {
+      return (
+        <mui.FlatButton
+          label="Back to Search"
+          labelPosition="after"
+          onClick={ this.clickBack.bind(this) }
+          icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
+          backgroundColor="#E4E1D1"
+          style={{ margin: '10px 5px', float: 'left' }}
+        />
+      );
+    }
+    return <span />;
   }
 
 }

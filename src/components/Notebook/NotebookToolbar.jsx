@@ -6,28 +6,14 @@ import ShareSaveDialog from '../Document/ShareSaveDialog.jsx'
 import BackButton from '../Shared/BackButton.jsx';
 
 class NotebookToolbar extends Component {
-  clickBack() {
-    this.context.router.goBack();
-  }
 
   render() {
     return (
       <Toolbar style={{ zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
-        <ToolbarTitle text=""
-          style={{
-            fontSize: '16px',
-          }}/>
-        <ToolbarGroup float="right" className="toolbar-group">
+        <ToolbarGroup className="toolbar-group">
           <ManageDialog />
           <ShareSaveDialog />
-          <FlatButton
-            labelPosition="after"
-            label="Back"
-            icon={<FontIcon className="material-icons">navigate_before</FontIcon>}
-            onClick={ this.clickBack.bind(this) }
-            backgroundColor="#E4E1D1"
-            style={{ float: 'right'}}
-          />
+          <BackButton />          
         </ToolbarGroup>
       </Toolbar>
      );
