@@ -2,16 +2,15 @@
 BUCKET=csthr.library.nd.edu
 HONEYCOMB=https://honeycomb.library.nd.edu
 RELEASE=`git show remotes/origin/master:current_release`
-BRANCH=`git rev-parse --abbrev-ref HEAD`
+TAG=`git describe --exact-match --tags HEAD`
 REVISION=`git rev-parse HEAD`
 
-if [ "${BRANCH}" != "${RELEASE}" ]; then
-  echo "\033[0;31mCurrent branch is ${BRANCH}. You must be on ${RELEASE} to deploy to production.\033[0m"
+if [ "${TAG}" != "${RELEASE}" ]; then
+  echo "\033[0;31mYou must be on tag ${TAG} to deploy to production.\033[0m"
   exit 1
 fi
 
-echo "\033[0;31mBuilding production on branch ${BRANCH}\033[0m"
-git pull
+echo "\033[0;31mBuilding production with tag ${TAG} (Rev ${REVISION})\033[0m"
 npm run build
 echo ${REVISION} > public/REVISION
 cd ./public
