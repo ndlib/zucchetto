@@ -27,7 +27,7 @@ class DocumentToolbar extends Component {
         <ToolbarTitle text={ this.props.document.name }
           style={{
             fontSize: '16px',
-            maxWidth: 'calc(100vw - 570px)',
+            maxWidth: 'calc(100vw - 600px)',
             whiteSpace: 'nowrap',
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
