@@ -3,6 +3,7 @@ $gold: #B29138;
 $green: #224048;
 $grey: #979694;
 $ltgrey: #B2B4B2;
+$dkGrey: #857f6f;
 $blue: #193035;
 $tan: #E4E1D1;
 $khaki: #F8F6ED;
@@ -94,14 +95,14 @@ header {
 
 	.feedback {
 			font-size:13px;
-			background: $tan;
+			background: $dkGrey;
 			padding:8px;
 			border-radius: 5px;
 			text-transform:uppercase;
 			color:$green;
 	}
   .feedback:hover {
-    background: $khaki;
+    background: $blue;
     text-decoration: none;
   }
 	.cchr {
@@ -661,7 +662,7 @@ button.right {
 
 .instructions {
 	padding: 15px 25px;
-	background: #857F6F;
+	background: $dkGrey;
 	* {
 		color:#fff;
 	}

@@ -26,7 +26,6 @@ var SiteIndex = React.createClass({
   },
 
   setSlide: function(index) {
-    console.log(index);
     this.setState({
       slideIndex: index,
     });
