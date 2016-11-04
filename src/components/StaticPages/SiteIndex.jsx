@@ -10,38 +10,47 @@ var SiteIndex = React.createClass({
 
   mixins: [Carousel.ControllerMixin],
 
+  // Just add/remove images here will update the carousel correctly.
+  images: [
+    "resources/images/cover/01.jpg",
+    "resources/images/cover/02.jpg",
+    "resources/images/cover/03.jpg",
+    "resources/images/cover/04.jpg",
+    "resources/images/cover/05.jpg",
+  ],
+
   getInitialState: function() {
     return {
       slideIndex: 0,
-      elapsed: 0,
-      start: new Date(),
     };
-  },
-
-  componentDidMount: function() {
-    this.timer = setInterval(this.tick, 50);
-  },
-
-  componentWillUnmount: function() {
-    clearInterval(this.timer);
-  },
-
-  tick: function() {
-    if(this.state.elapsed > 5000) {
-      var slideIndex = ++this.state.slideIndex % 4;
-      this.setSlide(slideIndex);
-    }
-    else {
-      this.setState({elapsed: new Date() - this.state.start});
-    }
   },
 
   setSlide: function(index) {
     this.setState({
       slideIndex: index,
-      elapsed: 0,
-      start: new Date(),
     });
+  },
+
+  items: function() {
+    return this.images.map(function(image) {
+      return <img src={image} />;
+    });
+  },
+
+  itemSetters: function() {
+    var setters = []
+
+    for (var i = 0; i < this.images.length; ++i) {
+      // Just using i will cause all the list items to have the same value.
+      let index = i;
+      setters.push(
+        <li
+          className={this.state.slideIndex === index ? 'active' : ''}
+          onClick={() => this.setSlide(index)}
+        >{index}</li>
+      );
+    }
+    return setters;
   },
 
   render: function() {
@@ -65,39 +74,20 @@ var SiteIndex = React.createClass({
               ref="carousel"
               data={this.setCarouselData.bind(this, 'carousel')}
               decorators={null}
-              easing="easeInOutElastic"
-              slideIndex={this.state.slideIndex}
+              easing="easeInOutQuart"
+              dragging={false}
               afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}
+              slideIndex={this.state.slideIndex}
+              autoplay={true}
+              autoplayInterval={5000}
+              wrapAround={true}
             >
-              <img src="resources/images/cover/01.jpg" />
-              <img src="resources/images/cover/02.jpg" />
-              <img src="resources/images/cover/03.jpg" />
-              <img src="resources/images/cover/04.jpg" />
-              <img src="resources/images/cover/05.jpg" />
+              {this.items()}
             </Carousel>
 
             <div className="fader"></div>
             <ul className="carousel-indicators" style={{color: 'transparent'}}>
-              <li
-                className={this.state.slideIndex === 0 ? 'active' : ''}
-                onClick={() => this.setSlide(0)}
-              >1</li>
-              <li
-                className={this.state.slideIndex === 1 ? 'active' : ''}
-                onClick={() => this.setSlide(1)}
-              >2</li>
-              <li
-                className={this.state.slideIndex === 2 ? 'active' : ''}
-                onClick={() => this.setSlide(2)}
-              >3</li>
-              <li
-                className={this.state.slideIndex === 3 ? 'active' : ''}
-                onClick={() => this.setSlide(3)}
-                >4</li>
-                <li
-                className={this.state.slideIndex === 4 ? 'active' : ''}
-                onClick={() => this.setSlide(4)}
-                >5</li>
+              {this.itemSetters()}
             </ul>
           </div>
 

@@ -14,7 +14,7 @@ class SearchByTopic extends Component {
   render() {
     return (
         <div>
-          <h1 style={{ fontSize: "30px" }}>Filter By Topic</h1>
+          <h1 style={{ fontSize: "30px" }}>Search By Topic</h1>
           <FlatButton
             onClick={this.onClearClicked}
             style={{
