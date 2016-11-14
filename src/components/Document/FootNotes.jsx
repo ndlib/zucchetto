@@ -10,7 +10,7 @@ class FootNotes extends Component {
   render() {
     if(this.props.item && this.props.item.metadata && this.props.item.metadata.footnotes) {
       return (
-        <div className="paragraph document-content"
+        <div className="paragraph document-content footnotes"
              dangerouslySetInnerHTML={ { __html: this.props.item.metadata.footnotes.values[0].value } } />
       )
     }

@@ -26,7 +26,7 @@ class LandingContent extends Component {
             </div>
           </div>
         </div>
-        <div className="col-sm-5 instructions" style={{ height: height, width: '55%', zIndex: '20' }}>
+        <div className="col-sm-5 instructions" style={{ minHeight: "100vh", width: '55%', zIndex: '20' }}>
           <h2>Getting started: choose a search method</h2>
           <h3>Keyword search</h3>
           <p>Use <strong>keyword search</strong> to locate all documents containing a specific word or words. Results will be broad and inclusive.</p>
