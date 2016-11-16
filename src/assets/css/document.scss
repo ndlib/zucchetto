@@ -122,7 +122,7 @@ div[id^='paragraph-'] {
 .heading1, .heading2, .heading3 {
   text-align: center;
   text-transform: uppercase;
-  
+
   line-height: 30px;
   margin:0;
 }
@@ -237,6 +237,11 @@ div[id^='paragraph-'] {
 
 .paragraph.document-content {
   margin-bottom:1.2em;
+}
+
+.paragraph.document-content.footnotes {
+  font-size: 14px;
+  line-height: 1.5em;
 }
 
 .mini-map .document {
