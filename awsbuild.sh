@@ -1,7 +1,7 @@
 #!/bin/bash
 BUCKET=csthr.library.nd.edu
 HONEYCOMB=https://honeycomb.library.nd.edu
-RELEASE=`git show remotes/origin/master:current_release`
+RELEASE=`git fetch --tags;git show remotes/origin/master:current_release`
 TAG=`git describe --exact-match --tags HEAD`
 REVISION=`git rev-parse HEAD`
 
