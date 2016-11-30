@@ -39,7 +39,7 @@ class SearchPage extends Component {
 
   listStyle() {
     return {
-      backgroundColor: 'transparent',
+      backgroundColor: this.hasSearch() ? 'transparent' : '#e4e1d1',
       fontFamily: 'GPCMed, sans-serif',
       textAlign: 'left',
       width: '75%'
@@ -80,8 +80,12 @@ class SearchPage extends Component {
     CompareStore.verifyStore();
   }
 
+  hasSearch() {
+    return SearchStore.searchTerm != '' || SearchStore.topics.length > 0
+  }
+
   renderSearchBody() {
-    if(SearchStore.searchTerm == '' && SearchStore.topics.length <= 0) {
+    if(!this.hasSearch()) {
       return (
         <LandingContent />
       );
