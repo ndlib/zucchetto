@@ -8,7 +8,7 @@ class HomePageNavigation extends Component {
       <nav>
         <ul className="contentnav">
           <li>
-            <Link to="/using">Using the Database</Link>
+            <Link to="/using">How To Use the Database</Link>
           </li>
           <li>
             <Link to="/documents">Index of Documents</Link>

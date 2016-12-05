@@ -22,7 +22,7 @@ class Navigation extends Component {
           <Link to="/about">About the Database</Link>
         </MenuItem>
         <MenuItem>
-          <Link to="/using">Using the Database</Link>
+          <Link to="/using">How To Use the Database</Link>
         </MenuItem>
         <MenuItem>
           <Link to="/partners">Project Partners</Link>
