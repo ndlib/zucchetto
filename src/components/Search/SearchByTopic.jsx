@@ -60,8 +60,8 @@ class SearchByTopic extends Component {
   render() {
     return (
         <div>
-          <h1 style={{ fontSize: "30px" }}>Search By Topic</h1>
           { this.makeClearButton() }
+          <h1 style={{ fontSize: "30px" }}>Search By Topic</h1>
           <ul className='filters' style={{
               listStyleType: 'none',
               paddingLeft: '0',

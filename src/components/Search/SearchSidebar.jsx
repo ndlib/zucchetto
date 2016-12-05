@@ -13,7 +13,7 @@ class SearchSidebar extends Component {
   render() {
     var height = window.innerHeight - 51;
     return (
-      <div className="col-sm-3 left-col" style={{ height: "calc(100vh - 50px)" }}>
+      <div className="col-sm-3 left-col" style={{ minHeight: "100%" }}>
         <SearchByTopic />
       </div>
     );
