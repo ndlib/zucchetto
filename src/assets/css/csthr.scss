@@ -315,7 +315,7 @@ nav {
 
 .filters {
 	overflow-y: scroll;
-	max-height: calc(100vh - 168px);
+	max-height: calc(100vh - 138px);
 }
 
 .partners {
@@ -630,10 +630,10 @@ button.right {
 }
 
 .left-col {
-  padding-left: 0;
+  padding-bottom: 0;
+  padding-top: 15px;
   background: $tan;
   margin-top: 0;
-  padding: 15px;
 
   h2 {
     font-size:22px;
