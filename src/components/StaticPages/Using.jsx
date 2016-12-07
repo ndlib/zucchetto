@@ -13,8 +13,8 @@ var Using = React.createClass({
           <div className="col-sm-3 left-col">
             <Navigation/>
           </div>
-          <div className="col-sm-9 right-col">
-          <h1>Using the Database</h1>
+          <div className="col-sm-9 right-col info-page">
+          <h1>How To Use the Database</h1>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>

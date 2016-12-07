@@ -22,7 +22,7 @@ class Partners extends Component {
         	</div>
         	<div className="col-sm-9 right-col">
         		<h1>Project Partners</h1>
-        		
+
         <h2>Consultants</h2>
         <div className="partners-c">
         <Link to='http://law.nd.edu/' target='_blank' className="smaller"><img alt="University of Notre Dame Law School" src="/resources/images/partners/ndls.png" /></Link>
@@ -41,7 +41,7 @@ class Partners extends Component {
          <div className="partners-c">
              <Link to='http://kroc.nd.edu/' target='_blank'><img alt="Kroc Institute for International Peace Studies" src="/resources/images/partners/kiips.png" /></Link>
              <Link to='http://isla.nd.edu/' target='_blank'><img alt="Institute for Scholarship in the Liberal Arts" src="/resources/images/partners/isla.png" /></Link>
-         </div>   
+         </div>
         </div>
         <h2>Documents</h2>
         <div className="partners-c">
@@ -51,12 +51,12 @@ class Partners extends Component {
             <Link to='http://www.ilo.org/global/lang--en/index.htm' target='_blank'><img alt="International Labor Organization" src="/resources/images/partners/ilo.png" /></Link>
             <Link to='http://www.oas.org/en/default.asp' target='_blank'><img alt="Organization of American States" src="/resources/images/partners/oas.png" /></Link>
             <Link to='https://www.icrc.org/' target='_blank'><img alt="International Committee of the Red Cross" src="/resources/images/partners/icrc_logo.png" /></Link>
-            <Link to='http://www.au.int/' target='_blank'><img alt="African Union" src="/resources/images/partners/au.png" /></Link>   
+            <Link to='http://www.au.int/' target='_blank'><img alt="African Union" src="/resources/images/partners/au.png" /></Link>
         </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        		
+
         	</div>
         </div>
         <FooterHome/>

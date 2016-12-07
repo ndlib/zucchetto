@@ -13,7 +13,7 @@ var About = React.createClass({
           <div className="col-sm-3 left-col">
             <Navigation/>
           </div>
-          <div className="col-sm-9 right-col">
+          <div className="col-sm-9 right-col info-page">
           <h1>About the Database</h1>
            <h2>Purpose</h2>
           <p>This database is a research tool for investigating the connections between international human rights and Catholic social teaching. It searches theological and legal documents simultaneously, returning results in such a way that users are able to compare these bodies of thought side by side.</p>
@@ -32,7 +32,7 @@ var About = React.createClass({
 </p>
 
 <h2>The Topic List</h2>
-<p>A user may search the database via the topic list found on the left side of the screen. This topic list was created through extensive collaboration with experts in the field. While we acknowledge that this list does not include every topic of potential interest, we attempt to be as inclusive as possible. In addition, it is important to note that the terminology utilized for the topic list was generated with a view to the particular documents within the database, and in hopes of being accessible to the broadest audience possible. 
+<p>A user may search the database via the topic list found on the left side of the screen. This topic list was created through extensive collaboration with experts in the field. While we acknowledge that this list does not include every topic of potential interest, we attempt to be as inclusive as possible. In addition, it is important to note that the terminology utilized for the topic list was generated with a view to the particular documents within the database, and in hopes of being accessible to the broadest audience possible.
 </p>
 <p>Specific topics are not highlighted within the text of the search results. This is because the exact language associated with the topic may or may not be used in the text; rather, it is the general concept that is being identified. Relying on the topic list, therefore, should give better search results than a keyword search (which will simply search for the stem of the word and common synonyms).
 </p>
