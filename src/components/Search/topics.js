@@ -140,7 +140,7 @@ module.exports = {
       ]
     },
     {
-      name: 'Right and Freedoms',
+      name: 'Rights and Freedoms',
       value: 'right freedoms',
       children: [
         { name: 'Family', value: 'family' },

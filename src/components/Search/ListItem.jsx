@@ -120,7 +120,7 @@ class ListItem extends Component{
           <span
             style={{ fontSize: '15px' }}
           >{ this._paragraphs.length }
-          </span> Search Results in Document <i
+          </span> Search Result(s) in Document <i
             className="material-icons"
             style={{
               fontSize: '12px',
