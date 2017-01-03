@@ -1,7 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import TokenSearchBox from './TokenSearchBox.jsx';
+import SearchBox from './SearchBox.jsx';
 class LandingContent extends Component {
 
   constructor(props) {
@@ -15,7 +15,7 @@ class LandingContent extends Component {
         <div className="col-sm-10" style={{ display: "inline-block", width: "45%" }}>
           <div style={{ display: "inline-block", paddingTop: "15px" }}>
             <h1>Search By Keyword</h1>
-            <TokenSearchBox />
+            <SearchBox />
             <hr/>
             <div style={{margin: '20px auto'}}>
               <h1>
@@ -31,17 +31,17 @@ class LandingContent extends Component {
 <h3>          Search By Topic
 </h3><p>Use “Search By Topic” to find all documents that include discussion of a specific topic. Choosing from the topic list will return results based on computer-learning algorithms that identify relevant content, regardless of specific language.
 </p><p>You may choose multiple topics in a single search. Results will contain documents that discuss any combination of the selected topics AND documents that discuss any one of the topics.
-          </p>         
+          </p>
 
          <h3> Search By Keyword</h3>
-<p>Use “Search by Keyword” to return all documents containing a specific word or words and common synonyms. While specific, the keyword search can potentially return results that may not be relevant. 
+<p>Use “Search by Keyword” to return all documents containing a specific word or words and common synonyms. While specific, the keyword search can potentially return results that may not be relevant.
 </p><p>If you combine multiple keywords in a search, the results will include documents containing combinations of keywords AND documents containing any one of the keywords.
-          </p>          
+          </p>
 
 
 <h3>Combined keyword and topic search</h3>
 <p>For a more narrowly focused search, select a topic AND enter a keyword. Results will include only documents that discuss the selected topic and contain the selected keyword or common synonym.
-          </p>         
+          </p>
 
 
           <h3>Browse the Document Index</h3>
