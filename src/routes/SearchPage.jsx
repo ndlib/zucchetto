@@ -15,7 +15,7 @@ import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
 import LandingContent from '../components/Search/LandingContent.jsx';
 
-import TokenSearchBox from '../components/Search/TokenSearchBox.jsx';
+import SearchBox from '../components/Search/SearchBox.jsx';
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
 import Drawer from '../components/Search/Drawer.jsx';
 import ItemActions from '../actions/ItemActions.jsx';
@@ -92,7 +92,7 @@ class SearchPage extends Component {
     }
     return (
       <div className="col-sm-12" style={{ paddingTop: "0" }}>
-        <TokenSearchBox />
+        <SearchBox />
         <hr className="search-separator" />
         <div key="catholic" className="col-sm-6" style={this.columnStyle()}>
           <Search

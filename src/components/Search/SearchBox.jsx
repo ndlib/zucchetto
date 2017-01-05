@@ -65,7 +65,7 @@ var SearchBox = React.createClass({
     return(
       <div style={{
           display: 'block',
-          margin: '0',
+          margin: '1em 0 0 0',
           textAlign: 'center',
           width: '100%'}}
       >

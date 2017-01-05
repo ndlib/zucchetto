@@ -88,7 +88,7 @@ class SearchActions {
     if(topics.length > 0) {
       var qualifiedTopics = topics.map(function(v,i) { return v });
       var unionTopics = qualifiedTopics.join(" OR ");
-      q += "(" + unionTopics + ")";
+      q += "actors_t:(" + unionTopics + ")";
     }
     if(searchTerm !== "") {
       if(q !== ""){
