@@ -11,8 +11,19 @@ class DocumentLink extends Component {
     return "/document/" + item.id;
   }
 
+  subtitle(item) {
+    if(item.metadata.alternative_title) {
+      var alternate = item.metadata.alternative_title.values[0].value;
+      return(<div className="subtitle"><p>{alternate}</p></div>)
+    }
+    return null;
+  }
+
   render() {
-    return (<li><Link to={this.documentURL(this.props.item)}>{this.props.item.name}</Link></li>);
+    var item = this.props.item;
+    return (<li><Link to={this.documentURL(item)}>{item.name}</Link>
+        { this.subtitle(item) }
+      </li>);
   }
 }
 
