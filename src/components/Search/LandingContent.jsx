@@ -26,7 +26,7 @@ class LandingContent extends Component {
             </div>
           </div>
         </div>
-        <div className="col-sm-5 instructions" style={{ minHeight: "100vh", width: '55%', zIndex: '20' }}>
+        <div className="col-sm-5 instructions" style={{ minHeight: "calc(100vh - 50px)", width: '55%', zIndex: '20' }}>
           <h2>Getting started: Choose a Search Method</h2>
 <h3>          Search By Topic
 </h3><p>Use “Search By Topic” to find all documents that include discussion of a specific topic. Choosing from the topic list will return results based on computer-learning algorithms that identify relevant content, regardless of specific language.
