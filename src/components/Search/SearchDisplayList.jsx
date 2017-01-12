@@ -27,7 +27,7 @@ var SearchDisplayList = React.createClass({
       return(
         <ListItem
           groupedItem={hit}
-          key={hit['groupId']}
+          key={hit['@id']}
         />
       );
     });

@@ -23,7 +23,7 @@ class ListItem extends Component{
     this.paragraphsOrCompare = this.paragraphsOrCompare.bind(this);
     this.resultCount = this.resultCount.bind(this);
 
-    this._doc = ItemStore.getItem(props.groupedItem["groupId"]);
+    this._doc = ItemStore.getItem(props.groupedItem["@id"]);
     this._paragraphs = [];
     for(var i = 0; i < props.groupedItem.hits.length; i++) {
       this._paragraphs.push(props.groupedItem.hits[i]);
