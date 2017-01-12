@@ -15,7 +15,7 @@ class SearchStore extends EventEmitter {
     this._hits = {};
 
     this._sorts = [
-                    { name: "Relavence", value: "relavence" },
+                    { name: "Relevance", value: "relevance" },
                     { name: "Year Ascending", value: "year_asc" },
                     { name: "Year Descending", value: "year_desc" },
                     { name: "Name Ascending", value: "name_asc" },

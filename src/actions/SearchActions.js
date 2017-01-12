@@ -29,7 +29,7 @@ class SearchActions {
   setSort(sort) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_SORT,
-      sort: sort,
+      sort: sort
     });
   }
 

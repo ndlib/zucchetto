@@ -59,7 +59,7 @@ var SearchSort = React.createClass({
       backgroundColor: 'transparent',
       backgroundImage: 'none',
       width: '130%',
-      color: 'black',
+      color: 'black'
     });
   },
 

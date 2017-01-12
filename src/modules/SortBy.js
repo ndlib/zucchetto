@@ -2,7 +2,7 @@ import _ from 'underscore';
 module.exports = function(groups, sortKey) {
   var split = sortKey.split("_");
   var sortType = split[0];
-  if(sortType == "relavence") {
+  if(sortType == "relevance") {
     return groups;
   }
 
