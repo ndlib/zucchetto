@@ -87,9 +87,9 @@ class SearchStore extends EventEmitter {
 
   setHits(collection, hits) {
     var items = [];
-    for (var h in hits.hit) {
-      if (hits.hit.hasOwnProperty(h)){
-        var hit = hits.hit[h];
+    for (var h in hits.group) {
+      if (hits.group.hasOwnProperty(h)){
+        var hit = hits.group[h];
         var item = hit;
         item.collection = collection
         items.push(item);

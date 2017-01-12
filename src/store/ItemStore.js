@@ -57,7 +57,7 @@ class ItemStore extends EventEmitter {
   }
 
   parseFunction(item) {
-    this._items[item.id] = item;
+    this._items[item["@id"]] = item;
     this._user_defined2_item_id[item.user_defined_id] = item.id;
     if (item.metadata.parent_id) {
       var parent_id = item.metadata.parent_id.values[0].value;

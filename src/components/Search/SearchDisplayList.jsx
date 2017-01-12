@@ -12,59 +12,41 @@ var nodeCount = 0;
 var SearchDisplayList = React.createClass({
 
   propTypes: {
-    items: React.PropTypes.array,
+    groupedHits: React.PropTypes.array,
   },
 
   getDefaultProps: function() {
     return {
-      items: [],
+      groupedHits: [],
     }
   },
 
+  // Creates ListItem nodes from the grouped item hits
   itemList: function() {
-    var groupedItems = [];
-    if(this.props.items.length > 0){
-      this.props.items.forEach(function(item, index) {
-        var fullItem = ItemStore.getItem(IDFromAtID(item['@id']));
-        if (!fullItem.metadata.heading) {
-          return;
-        }
-        var itemParent = ItemStore.getItemParent(fullItem);
-        var docExists = false;
-        for(var i = 0; i < groupedItems.length; i++){
-          if(itemParent && groupedItems[i].doc == itemParent.id) {
-            // found parent
-            docExists = true;
-            groupedItems[i].paragraphs.push(fullItem.id);
-          }
-        }
-        if(itemParent && !docExists) {
-          groupedItems.push({doc: itemParent.id, paragraphs: [fullItem.id]});
-        }
-      });
-      var itemNodes = [];
-      nodeCount = groupedItems.length;
-      for(var i = 0;  i < groupedItems.length; i++) {
-        itemNodes.push(
-          <ListItem
-            groupedItem={groupedItems[i]}
-            key={i}
-          />
-        );
-      }
-
-
-    }
-    if(groupedItems.length > 0) {
-      return (
-        <div>
-          <p style={{ fontSize: '12px', margin: '0', paddingRight: '1.5em', textAlign: 'right'}}>{nodeCount} document(s) found</p>
-          <div className="search-list results">
-            {itemNodes}
-          </div>
-        </div>
+    return this.props.groupedHits.map(function(hit, index) {
+      return(
+        <ListItem
+          groupedItem={hit}
+          key={hit['groupId']}
+        />
       );
-    }
+    });
+  },
+
+  renderResults: function() {
+    return (
+      <div>
+        <p style={{ fontSize: '12px', margin: '0', paddingRight: '1.5em', textAlign: 'right'}}>
+          {this.props.groupedHits.length} document(s) found
+        </p>
+        <div className="search-list results">
+          {this.itemList()}
+        </div>
+      </div>
+    );
+  },
+
+  renderNoResults: function() {
     return (
       <div
         style={{
@@ -77,11 +59,10 @@ var SearchDisplayList = React.createClass({
   },
 
   render: function() {
-    return (
-      <div>
-        {this.itemList()}
-      </div>
-    );
+    if(this.props.groupedHits.length > 0){
+      return this.renderResults();
+    }
+    return this.renderNoResults();
   },
 });
 
