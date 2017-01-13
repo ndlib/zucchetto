@@ -44,7 +44,8 @@ var SearchSort = React.createClass({
       width:'120px',
       verticalAlign: 'middle',
       marginLeft: '5px',
-      background: 'url(/images/arrowdown.gif) no-repeat 90% 50% #fff'
+      background: 'url(/images/arrowdown.gif) no-repeat 90% 50% #fff',
+      marginTop: '7px',
     });
   },
 
@@ -72,7 +73,7 @@ var SearchSort = React.createClass({
     if(SearchStore.sorts.length > 0) {
       return(
         <div>
-          <h5>Sort</h5>
+          <h5 style={{ float: 'left' }}>Sort: </h5>
           <div style={this.sortStyle()}>
             <select
               ref='searchSort'

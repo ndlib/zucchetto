@@ -14,8 +14,16 @@ class SearchStore extends EventEmitter {
 
     this._hits = {};
 
-    this._sorts = [{name: "None", value: 0}];
-    this._sortOption = "";
+    this._sorts = [
+                    { name: "Relevance", value: "relevance" },
+                    { name: "Year Ascending", value: "year_asc" },
+                    { name: "Year Descending", value: "year_desc" },
+                    { name: "Name Ascending", value: "name_asc" },
+                    { name: "Name Descending", value: "name_desc" },
+                    { name: "Hits Ascending", value: "hits_asc" },
+                    { name: "Hits Descending", value: "hits_desc" },
+                  ];
+    this._sortOption = "relevance";
 
     Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
     Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
@@ -148,11 +156,7 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_SORT:
         this._sortOption = action.sort;
-        this.emitQueryChange();
-        break;
-      case SearchActionTypes.SEARCH_SET_SORT_OPTIONS:
-        this._sorts = action.sorts;
-        this.emitResultsChange(action.collection);
+        this.emitResultsChange();
         break;
       default:
         break;
