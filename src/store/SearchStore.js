@@ -23,7 +23,7 @@ class SearchStore extends EventEmitter {
                     { name: "Hits Ascending", value: "hits_asc" },
                     { name: "Hits Descending", value: "hits_desc" },
                   ];
-    this._sortOption = "relavence";
+    this._sortOption = "relevance";
 
     Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
     Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
