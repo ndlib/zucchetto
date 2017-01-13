@@ -36,7 +36,7 @@ class DocumentList extends Component {
   }
 
   render() {
-    return (<div>{this.list()}</div>);
+    return (<div className="doc-list">{this.list()}</div>);
   }
 }
 

@@ -615,6 +615,16 @@ button.right {
 	}
 }
 
+.doc-list {
+	.subtitle {
+		padding-left:10px;
+		p {
+			color: $grey;
+			margin: 0;
+		}
+	}
+}
+
 .slider-slide {
 	overflow: hidden;
 	height:90vh !important;
