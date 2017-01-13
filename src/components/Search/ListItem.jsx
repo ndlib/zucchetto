@@ -10,7 +10,6 @@ import AddToCompare from '../Document/AddToCompare.jsx';
 import Title from '../Document/Title.jsx';
 import { Link } from 'react-router';
 
-
 class ListItem extends Component{
   constructor(props) {
     super(props);
@@ -23,7 +22,7 @@ class ListItem extends Component{
     this.paragraphsOrCompare = this.paragraphsOrCompare.bind(this);
     this.resultCount = this.resultCount.bind(this);
 
-    this._doc = ItemStore.getItem(props.groupedItem["@id"]);
+    this._doc = ItemStore.getItem(props.groupedItem.id);
     this._paragraphs = [];
     for(var i = 0; i < props.groupedItem.hits.length; i++) {
       this._paragraphs.push(props.groupedItem.hits[i]);
@@ -36,7 +35,7 @@ class ListItem extends Component{
   }
 
   titleOnClick(event) {
-    this.refs.DocumentDialog.handleOpen(this._doc["@id"]);
+    this.refs.DocumentDialog.handleOpen(this._doc.id);
   }
 
   paragraphsOrCompare(showParagraphs) {
@@ -130,14 +129,14 @@ class ListItem extends Component{
 
   selectedParagraphIds() {
     return this._paragraphs.map(function (p) {
-      return p["@id"];
+      return p.id;
     });
   }
 
   render() {
     return (
       <article className="result document">
-        <Link to={ "/document/" + this._doc["@id"] + "?searchIds=" + this.selectedParagraphIds() }>
+        <Link to={ "/document/" + this._doc.id + "?searchIds=" + this.selectedParagraphIds() }>
           <Title item={ this._doc } shouldLink={ false }/>
         </Link>
         <div className="blurb">

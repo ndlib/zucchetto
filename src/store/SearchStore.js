@@ -1,6 +1,8 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
+var IDFromAtID = require("../modules/IDFromAtID.js");
+var _ = require('underscore');
 
 class SearchStore extends EventEmitter {
   constructor() {
@@ -86,13 +88,20 @@ class SearchStore extends EventEmitter {
   }
 
   setHits(collection, hits) {
+    var collection_id = IDFromAtID(collection);
     var items = [];
-    for (var h in hits.group) {
-      if (hits.group.hasOwnProperty(h)){
-        var hit = hits.group[h];
-        var item = hit;
-        item.collection = collection
-        items.push(item);
+    for (var g in hits.group) {
+      if (hits.group.hasOwnProperty(g)){
+        var group = hits.group[g];
+        group.collection = collection
+        group.collection_id = collection_id;
+        group.id = IDFromAtID(group["@id"]);
+        for(var h in group.hits) {
+          group.hits[h].collection = collection;
+          group.hits[h].collection_id = collection_id;
+          group.hits[h].id = IDFromAtID(group.hits[h]["@id"]);
+        }
+        items.push(group);
       }
     }
     this._hits[collection] = items;
