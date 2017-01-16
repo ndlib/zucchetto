@@ -37,11 +37,22 @@ var SearchDisplayList = React.createClass({
 
   // Creates ListItem nodes from the grouped item hits
   itemList: function() {
-    return this.props.groupedHits.map(function(hit, index) {
+    var groupedItems = this.props.groupedHits.map(function(hit, index) {
+      var parentItem = ItemStore.getItem(hit.id);
+      return({
+        parentItem: parentItem,
+        hits: hit.hits,
+        name: parentItem.name,
+        year: parentItem.metadata.date_promulgated ? parentItem.metadata.date_promulgated.values[0].iso8601 : "0",
+      });
+    });
+
+    groupedItems = SortBy(groupedItems, SearchStore.sortOption);
+    return groupedItems.map(function(item, index) {
       return(
         <ListItem
-          groupedItem={hit}
-          key={hit.id}
+          key={item.parentItem.id}
+          groupedItem={item}
         />
       );
     });

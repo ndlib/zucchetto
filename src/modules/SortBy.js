@@ -18,7 +18,7 @@ module.exports = function(groups, sortKey) {
       break;
 
       case 'hits':
-        return group.paragraphs.length;
+        return group.hits.length;
       break;
     }
   });
