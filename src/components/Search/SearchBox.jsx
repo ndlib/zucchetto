@@ -5,6 +5,7 @@ var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var VaticanID = require('../../constants/VaticanID.js');
 var HumanRightsID = require('../../constants/HumanRightsID.js');
+import AdvancedSearch from './AdvancedSearch.jsx';
 
 var SearchBox = React.createClass({
   contextTypes: {
@@ -54,9 +55,10 @@ var SearchBox = React.createClass({
       style={{
         fontFamily: 'GPCMed, sans-serif',
         height:'36px',
-        minWidth: '100%',
+        minWidth: 'calc(100% - 72px)',
         paddingLeft: '4px',
         verticalAlign:'top',
+        display: 'inline-block',
        }}
     />);
   },
@@ -70,13 +72,12 @@ var SearchBox = React.createClass({
           width: '100%'}}
       >
         {this.input()}
+        <AdvancedSearch/>
         <mui.RaisedButton
           onClick={this.onClick}
           style={{
             boxShadow: 'none',
-            float: 'right',
             lineHeight: '36px',
-            marginLeft: '-36px',
             minWidth: '36px',
             width: '36px',
             zIndex: '0',
