@@ -28,7 +28,7 @@ var SearchSort = React.createClass({
     SearchStore.addResultsChangeListener(this.handleResultsChange);
   },
 
-  componentWillUnMount: function() {
+  componentWillUnmount: function() {
     SearchStore.removeResultsChangeListener(this.handleResultsChange);
   },
 

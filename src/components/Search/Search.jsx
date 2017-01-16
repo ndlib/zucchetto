@@ -63,7 +63,7 @@ var Search = React.createClass({
       <div>
         <Heading title={this.props.title} />
         { this.state.loading && <CircularProgress style={ styles.circleProgress } color={ Colors.blueGrey700 }/> }
-        { !this.state.loading && <SearchDisplayList items={SearchStore.getHits(this.props.collection)}/> }
+        { !this.state.loading && <SearchDisplayList groupedHits={SearchStore.getHits(this.props.collection)}/> }
       </div>
     );
   }

@@ -3,13 +3,12 @@ import React, { Component, PropTypes } from 'react';
 import ItemStore from '../../store/ItemStore.js';
 import Document from '../Document/Document.jsx';
 import DocumentDialog from '../Document/DocumentDialog.jsx';
-import Paragraph from '../Document/Paragraph.jsx';
+import Hit from './Hit.jsx';
 import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
 import Title from '../Document/Title.jsx';
 import { Link } from 'react-router';
-
 
 class ListItem extends Component{
   constructor(props) {
@@ -23,11 +22,8 @@ class ListItem extends Component{
     this.paragraphsOrCompare = this.paragraphsOrCompare.bind(this);
     this.resultCount = this.resultCount.bind(this);
 
-    this._doc = ItemStore.getItem(props.groupedItem.doc);
-    this._paragraphs = [];
-    for(var i = 0; i < props.groupedItem.paragraphs.length; i++) {
-      this._paragraphs.push(ItemStore.getItem(props.groupedItem.paragraphs[i]));
-    }
+    this._doc = props.groupedItem.parentItem;
+    this._paragraphs = props.groupedItem.hits;
   }
 
   resultsOnClick(event) {
@@ -45,11 +41,7 @@ class ListItem extends Component{
       for(var i = 0; i < this._paragraphs.length; i++) {
         paragraphs.push(
           <div key={ i } >
-            <Paragraph
-              item={ this._paragraphs[i] }
-              showCheckBoxes={ true }
-              showHeadings={ true }
-            />
+            <Hit item={ this._paragraphs[i] } />
           </div>
         );
       }
