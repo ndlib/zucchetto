@@ -55,7 +55,7 @@ class SearchActions {
 
   performSearch(collection, topics, searchTerm) {
     var queryUrl = collection
-                   + '/search?q=' + this.buildQuery(topics, searchTerm)
+                   + '/search/children?q=' + this.buildQuery(topics, searchTerm)
                    + '&rows=10000';
 
     $.ajax({

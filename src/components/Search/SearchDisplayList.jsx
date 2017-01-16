@@ -14,7 +14,7 @@ var nodeCount = 0;
 var SearchDisplayList = React.createClass({
 
   propTypes: {
-    items: React.PropTypes.array,
+    groupedHits: React.PropTypes.array,
   },
 
   componentWillMount: function() {
@@ -31,58 +31,47 @@ var SearchDisplayList = React.createClass({
 
   getDefaultProps: function() {
     return {
-      items: [],
+      groupedHits: [],
     }
   },
 
+  // Creates ListItem nodes from the grouped item hits
   itemList: function() {
-    var groupedItems = [];
-    if(this.props.items.length > 0) {
-      this.props.items.forEach(function(item, index) {
-        var fullItem = ItemStore.getItem(IDFromAtID(item['@id']));
-        if (!fullItem.metadata.heading) {
-          return;
-        }
-        var itemParent = ItemStore.getItemParent(fullItem);
-        var docExists = false;
-        for(var i = 0; i < groupedItems.length; i++) {
-          if(itemParent && groupedItems[i].doc == itemParent.id) {
-            // found parent
-            docExists = true;
-            groupedItems[i].paragraphs.push(fullItem.id);
-          }
-        }
-        if(itemParent && !docExists) {
-          groupedItems.push({
-            doc: itemParent.id,
-            name: itemParent.name,
-            year: itemParent.metadata.date_promulgated ? itemParent.metadata.date_promulgated.values[0].iso8601 : "0",
-            paragraphs: [fullItem.id]
-          });
-        }
+    var groupedItems = this.props.groupedHits.map(function(hit, index) {
+      var parentItem = ItemStore.getItem(hit.id);
+      return({
+        parentItem: parentItem,
+        hits: hit.hits,
+        name: parentItem.name,
+        year: parentItem.metadata.date_promulgated ? parentItem.metadata.date_promulgated.values[0].iso8601 : "0",
       });
-      var itemNodes = [];
-      groupedItems = SortBy(groupedItems, SearchStore.sortOption);
-      nodeCount = groupedItems.length;
-      for(var i = 0;  i < groupedItems.length; i++) {
-        itemNodes.push(
-          <ListItem
-            groupedItem={groupedItems[i]}
-            key={groupedItems[i].doc}
-          />
-        );
-      }
-    }
-    if(groupedItems.length > 0) {
-      return (
-        <div>
-          <p style={{ fontSize: '12px', margin: '0', paddingRight: '1.5em', textAlign: 'right'}}>{nodeCount} document(s) found</p>
-          <div className="search-list results">
-            {itemNodes}
-          </div>
-        </div>
+    });
+
+    groupedItems = SortBy(groupedItems, SearchStore.sortOption);
+    return groupedItems.map(function(item, index) {
+      return(
+        <ListItem
+          key={item.parentItem.id}
+          groupedItem={item}
+        />
       );
-    }
+    });
+  },
+
+  renderResults: function() {
+    return (
+      <div>
+        <p style={{ fontSize: '12px', margin: '0', paddingRight: '1.5em', textAlign: 'right'}}>
+          {this.props.groupedHits.length} document(s) found
+        </p>
+        <div className="search-list results">
+          {this.itemList()}
+        </div>
+      </div>
+    );
+  },
+
+  renderNoResults: function() {
     return (
       <div
         style={{
@@ -95,11 +84,10 @@ var SearchDisplayList = React.createClass({
   },
 
   render: function() {
-    return (
-      <div>
-        {this.itemList()}
-      </div>
-    );
+    if(this.props.groupedHits.length > 0){
+      return this.renderResults();
+    }
+    return this.renderNoResults();
   },
 });
 
