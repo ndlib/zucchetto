@@ -53,13 +53,10 @@ class SearchActions {
     });
   }
 
-  performSearch(collection, topics, searchTerm, sort) {
+  performSearch(collection, topics, searchTerm) {
     var queryUrl = collection
                    + '/search/children?q=' + this.buildQuery(topics, searchTerm)
                    + '&rows=10000';
-    if(sort) {
-      queryUrl += "&sort=" + sort;
-    }
 
     $.ajax({
       context: this,
@@ -71,10 +68,6 @@ class SearchActions {
           actionType: SearchActionTypes.SEARCH_SET_HITS,
           collection: collection,
           hits: result.hits
-        });
-        AppDispatcher.dispatch({
-          actionType: SearchActionTypes.SEARCH_SET_SORT_OPTIONS,
-          sorts: result.sorts
         });
       }.bind(this),
       error: function(request, status, thrownError) {

@@ -5,7 +5,9 @@ var MediaQuery = require('react-responsive');
 var SearchPagination = require('./SearchPagination.jsx');
 var ListItem = require('./ListItem.jsx');
 import ItemStore from '../../store/ItemStore.js';
+import SearchStore from '../../store/SearchStore.js';
 import IDFromAtID from "../../modules/IDFromAtID.js";
+import SortBy from '../../modules/SortBy.js';
 
 var nodeCount = 0;
 
@@ -13,6 +15,18 @@ var SearchDisplayList = React.createClass({
 
   propTypes: {
     groupedHits: React.PropTypes.array,
+  },
+
+  componentWillMount: function() {
+    SearchStore.addResultsChangeListener(this.handleResultsChange);
+  },
+
+  componentWillUnmount: function() {
+    SearchStore.removeResultsChangeListener(this.handleResultsChange);
+  },
+
+  handleResultsChange: function(collection){
+    this.forceUpdate();
   },
 
   getDefaultProps: function() {
