@@ -43,7 +43,7 @@ var SearchDisplayList = React.createClass({
         parentItem: parentItem,
         hits: hit.hits,
         name: parentItem.name,
-        year: parentItem.metadata.date_promulgated ? parentItem.metadata.date_promulgated.values[0].iso8601 : "0",
+        year: parentItem.metadata.coverage_temporal ? parentItem.metadata.coverage_temporal.values[0].value : "0",
       });
     });
 
