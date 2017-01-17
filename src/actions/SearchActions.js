@@ -4,18 +4,30 @@ var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
 var QueryParam = require('../modules/QueryParam.js');
 
 class SearchActions {
+
+  decodeKey(key) {
+    var param = QueryParam(key);
+    return param == null ? "" : decodeURIComponent(param);
+  }
+
+  decodeArray(key) {
+    var param = QueryParam(key);
+    return param == null ? [] : decodeURIComponent(param).split(',');
+  }
+
   setParamsFromUri() {
-    var topicsParam = QueryParam('t');
-    var searchTermParam = QueryParam('q');
-    var sortParam = QueryParam('sort');
-    var topics = topicsParam == null ? [] : decodeURIComponent(topicsParam).split(',');
-    var searchTerm = searchTermParam == null ? "" : decodeURIComponent(searchTermParam);
-    var sort = sortParam == null ? "" : decodeURIComponent(sortParam);
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_INI_PARAMS,
-      topics: topics,
-      searchTerm: searchTerm,
-      sort: sort,
+      topics: this.decodeArray('t'),
+      searchTerm: this.decodeKey('q'),
+      sort: this.decodeKey('sort'),
+      minDate: this.decodeKey('minDate'),
+      maxDate: this.decodeKey('maxDate'),
+      vDocSource: this.decodeArray('v.docSource'),
+      vDocType: this.decodeArray('v.docType'),
+      hDocSource: this.decodeArray('h.docSource'),
+      hDocType: this.decodeArray('h.docType'),
+      topicsOnly: this.decodeKey('to'),
     });
   }
 
@@ -77,9 +89,9 @@ class SearchActions {
     });
   }
 
-  performSearch(collection, topics, searchTerm) {
+  performSearch(collection, topics, searchTerm, store) {
     var queryUrl = collection
-                   + '/search/children?q=' + this.buildQuery(topics, searchTerm)
+                   + '/search/children?q=' + this.buildQuery(topics, searchTerm, store.topicsOnly)
                    + '&rows=10000';
 
     $.ajax({
@@ -100,7 +112,7 @@ class SearchActions {
     });
   }
 
-  buildQuery(topics, searchTerm) {
+  buildQuery(topics, searchTerm, topicsOnly) {
     var q = "";
     if(topics.length > 0) {
       var qualifiedTopics = topics.map(function(v,i) { return v });
@@ -111,7 +123,11 @@ class SearchActions {
       if(q !== ""){
         q += " AND ";
       }
-      q += searchTerm;
+      if(topicsOnly) {
+        q += "actors_t:(" + searchTerm + ")";
+      } else {
+        q += searchTerm;
+      }
     }
     return encodeURIComponent(q);
   }

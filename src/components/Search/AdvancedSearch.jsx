@@ -8,6 +8,7 @@ import HumanRightsID from '../../constants/HumanRightsID.js';
 import VaticanID from '../../constants/VaticanID.js';
 import mui from 'material-ui';
 import DocDateSlider from './DocDateSlider.jsx';
+import AdvancedHowTo from './AdvancedHowTo.jsx';
 
 var AdvancedSearch = React.createClass({
   styles: {
@@ -35,11 +36,15 @@ var AdvancedSearch = React.createClass({
       padding: "15px",
       paddingTop: "0",
     },
+    topicSearchCheckbox: {
+      marginTop: '15px',
+    }
   },
 
   getInitialState: function() {
     return({
       isOpen: false,
+      faqOpen: false,
       vaticanExpanded: false,
       humanExpanded: false,
     });
@@ -50,7 +55,16 @@ var AdvancedSearch = React.createClass({
   },
 
   closeDialog() {
+    SearchStore.emitParamsChange();
     this.setState({isOpen: false});
+  },
+
+  openFAQ() {
+    this.setState({faqOpen: true});
+  },
+
+  closeFAQ() {
+    this.setState({faqOpen: false});
   },
 
   onDoctypeCheck(collection, value, event, isInputChecked) {
@@ -152,15 +166,8 @@ var AdvancedSearch = React.createClass({
     this.forceUpdate();
   },
 
-  resetButton() {
-    return (
-      <mui.FlatButton
-        label="Reset"
-        labelStyle={{color: 'white'}}
-        onTouchTap={ this.reset }
-        backgroundColor={ '#224048' }
-      />
-    );
+  topicSearchChecked(e, isChecked) {
+    SearchStore.topicsOnly = isChecked;
   },
 
   makeCard(title, expandFunc, expanded, collectionId) {
@@ -190,6 +197,27 @@ var AdvancedSearch = React.createClass({
   render: function() {
     const actions = [
       <mui.FlatButton
+        onTouchTap={ this.openFAQ }
+        backgroundColor={ '#224048' }
+        style={{ marginRight: '15px' }}
+      >
+        <mui.FontIcon
+          className="material-icons"
+          style={{
+            color: 'white',
+            padding: '0 1px',
+            verticalAlign: 'middle'
+          }}
+        >info</mui.FontIcon>
+      </mui.FlatButton>,
+      <mui.FlatButton
+        label="Reset"
+        labelStyle={{color: 'white'}}
+        onTouchTap={ this.reset }
+        backgroundColor={ '#224048' }
+        style={{marginRight: '15px'}}
+      />,
+      <mui.FlatButton
         label="Search"
         labelStyle={{ color: 'white' }}
         onTouchTap={ this.closeDialog }
@@ -218,7 +246,7 @@ var AdvancedSearch = React.createClass({
                 padding: '0 1px',
                 verticalAlign: 'middle'
               }}
-            >youtube_searched_for</mui.FontIcon>
+            >filter_list</mui.FontIcon>
           </mui.RaisedButton>
         </div>
         <mui.Dialog
@@ -229,11 +257,34 @@ var AdvancedSearch = React.createClass({
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
-          { this.resetButton() }
+          <mui.Dialog
+            title="How to Advanced Search"
+            actions={[
+              <mui.FlatButton
+                onTouchTap={ this.closeFAQ }
+                label="OK"
+                backgroundColor={ '#224048' }
+                labelStyle={{color: 'white'}}
+              />
+            ]}
+            modal={false}
+            open={this.state.faqOpen}
+            onRequestClose={this.closeFAQ}
+            autoScrollBodyContent={true}
+          >
+            <AdvancedHowTo />
+          </mui.Dialog>
+
           <DocDateSlider />
           <p>Here you can refine search parameters on each document collection separately.</p>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
           { this.makeCard('International Human Rights Law', this.onHumanExpand, this.state.humanExpanded, HumanRightsID) }
+          <mui.Checkbox
+            label="Search Topic List Only"
+            style={ this.styles.topicSearchCheckbox }
+            onCheck={ this.topicSearchChecked }
+            checked={ SearchStore.topicsOnly }
+          />
         </mui.Dialog>
       </div>
     );

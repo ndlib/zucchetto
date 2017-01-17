@@ -33,6 +33,7 @@ class SearchPage extends Component {
     super(props, context);
     this.preLoadFinished = this.preLoadFinished.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
+    this.handleParamsChange = this.handleParamsChange.bind(this);
     this.state = {
       loaded: ItemStore.preLoaded(),
     };
@@ -58,12 +59,14 @@ class SearchPage extends Component {
 
   componentWillMount() {
     SearchStore.addQueryChangeListener(this.handleQueryChange);
+    SearchStore.addParamsChangeListener(this.handleParamsChange);
     SearchActions.setParamsFromUri();
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
   }
 
   componentWillUnmount() {
     SearchStore.removeQueryChangeListener(this.handleQueryChange);
+    SearchStore.removeParamsChangeListener(this.handleParamsChange);
     ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
   }
 
@@ -73,6 +76,10 @@ class SearchPage extends Component {
 
   handleQueryChange(){
     // If the query has changed, use the router to update the uri params
+    this.context.router.push(SearchStore.searchUri());
+  }
+
+  handleParamsChange() {
     this.context.router.push(SearchStore.searchUri());
   }
 
