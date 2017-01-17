@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import mui, { ListItem, FontIcon } from 'material-ui';
 import CompareStore from '../../store/CompareStore.js';
 import CompareActions from '../../actions/CompareActions.js';
-import ItemStore from '../../store/ItemStore.js';
 import VaticanID from '../../constants/VaticanID.js';
 class ManageSavedItem extends Component {
 

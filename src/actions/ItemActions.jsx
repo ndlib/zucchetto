@@ -57,6 +57,28 @@ class ItemActions {
     });
   }
 
+
+  loadChildren(itemId) {
+    var vaticanUrl = HoneycombURL() + "/v1/items/" + itemId + "/children";
+
+    $.ajax({
+      context: this,
+      type: "GET",
+      url: vaticanUrl,
+      dataType: "json",
+      success: function(result) {
+        AppDispatcher.dispatch({
+          actionType: ItemActionTypes.LOAD_CHILD_ITEMS,
+          parentId: itemId,
+          items: result.items
+        });;
+      },
+      error: function(request, status, thrownError) {
+        EventEmitter.emit("SearchStoreQueryFailed", { request: request, status: status, error: thrownError });
+      }
+    });
+
+  }
 }
 module.exports = new ItemActions();
 //export default ItemActions;

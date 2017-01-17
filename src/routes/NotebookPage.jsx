@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import Notebook from '../components/Notebook/Notebook.jsx';
 import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
+import ItemQueryParams from '../modules/ItemQueryParams.js';
 import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 
 class NotebookPage extends Component {
@@ -25,7 +26,17 @@ class NotebookPage extends Component {
   }
 
   preLoadFinished() {
-    this.setState({loaded: true});
+    this.setState({loaded: true}, this.loadChildren);
+  }
+
+  loadChildren() {
+    var docs = ItemQueryParams('d');
+    // TODO: Call a function that makes sure the LoadChildrenFinished event
+    // is actually for this doc
+    ItemStore.on("LoadChildrenFinished", this.forceUpdate.bind(this));
+    for(var doc in docs){
+      ItemActions.loadChildren(docs[doc]);
+    }
   }
 
   render() {

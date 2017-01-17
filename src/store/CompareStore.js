@@ -12,7 +12,6 @@ var CompareActionTypes = require("../constants/CompareActionTypes.jsx");
 import LocalStorageExpiration from '../modules/LocalStorageExpiration.js';
 import VaticanID from '../constants/VaticanID.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
-import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from './ItemStore.js';
 
 class CompareStore extends EventEmitter {
@@ -48,14 +47,14 @@ class CompareStore extends EventEmitter {
 
   validCollection(collection_id) {
     var obj = JSON.parse(window.localStorage.getItem(collection_id));
-    if(obj.items) {
+    /*if(obj.items) {
       var items = obj.items;
       for(var i = 0; i < items.length; i++) {
         if(!ItemStore.validItem(items[i])) {
           return false;
         }
       }
-    }
+    }*/
     return true;
   }
 

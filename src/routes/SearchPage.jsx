@@ -19,7 +19,6 @@ import SearchBox from '../components/Search/SearchBox.jsx';
 import SearchSort from '../components/Search/SearchSort.jsx';
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
 import Drawer from '../components/Search/Drawer.jsx';
-import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
 import { Link } from 'react-router';
 

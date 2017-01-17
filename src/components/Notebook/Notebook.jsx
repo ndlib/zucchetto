@@ -2,8 +2,6 @@
 import React, { Component, PropTypes } from 'react';
 import Header  from '../StaticAssets/Header.jsx';
 import Footer from '../StaticAssets/Footer.jsx';
-import ItemActions from '../../actions/ItemActions.jsx';
-import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
 import NotebookColumn from './NotebookColumn.jsx';
 import NotebookList from './NotebookList.jsx';

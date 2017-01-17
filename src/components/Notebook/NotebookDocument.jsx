@@ -73,6 +73,7 @@ class NotebookDocument extends Component {
         <Document
           ref={"document-" + this.props.document.id}
           documentId={ this.props.document.id }
+          paragraphs={ ItemStore.getItemChildrenInOrder(this.props.document) }
           bodyStyle={ this.documentBodyStyle() }
           selectedParagraphIds={ CompareStore.allItems() }
           showOnlySelected={true}

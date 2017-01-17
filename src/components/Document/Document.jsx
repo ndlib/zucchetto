@@ -23,10 +23,10 @@ class Document extends Component {
   }
 
   paragraphs() {
-    return ItemStore.getItemChildrenInOrder(this._parent).map(this.paragraph.bind(this))
+    return this.props.paragraphs.map(this.paragraphFromItem.bind(this))
   }
 
-  paragraph(item) {
+  paragraphFromItem(item) {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
     let highlighted = (this.props.highlightedParagraphIds.indexOf(item.id) !== -1)
 
@@ -76,6 +76,7 @@ class Document extends Component {
 
 Document.propTypes = {
   documentId: React.PropTypes.string.isRequired,
+  paragraphs: React.PropTypes.array,
   bodyStyle: React.PropTypes.object,
   selectedParagraphIds: React.PropTypes.array,
   highlightedParagraphIds: React.PropTypes.array,

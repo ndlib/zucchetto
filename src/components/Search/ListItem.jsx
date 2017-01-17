@@ -1,6 +1,5 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import ItemStore from '../../store/ItemStore.js';
 import Document from '../Document/Document.jsx';
 import DocumentDialog from '../Document/DocumentDialog.jsx';
 import Hit from './Hit.jsx';
