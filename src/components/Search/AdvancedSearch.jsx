@@ -179,6 +179,7 @@ var AdvancedSearch = React.createClass({
           title={title}
           actAsExpander={true}
           showExpandableButton={true}
+          titleStyle={{fontSize: '17px'}}
         />
         <mui.CardMedia
           expandable={true}
@@ -276,7 +277,7 @@ var AdvancedSearch = React.createClass({
           </mui.Dialog>
 
           <DocDateSlider />
-          <p>Here you can refine search parameters on each document collection separately.</p>
+          <h4>Here you can refine search parameters on each document collection separately.</h4>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
           { this.makeCard('International Human Rights Law', this.onHumanExpand, this.state.humanExpanded, HumanRightsID) }
           <mui.Checkbox
