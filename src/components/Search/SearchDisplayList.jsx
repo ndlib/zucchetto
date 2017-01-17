@@ -8,6 +8,7 @@ import ItemStore from '../../store/ItemStore.js';
 import SearchStore from '../../store/SearchStore.js';
 import IDFromAtID from "../../modules/IDFromAtID.js";
 import SortBy from '../../modules/SortBy.js';
+import FilterBy from '../../modules/FilterBy.js';
 
 var nodeCount = 0;
 
@@ -36,18 +37,7 @@ var SearchDisplayList = React.createClass({
   },
 
   // Creates ListItem nodes from the grouped item hits
-  itemList: function() {
-    var groupedItems = this.props.groupedHits.map(function(hit, index) {
-      var parentItem = ItemStore.getItem(hit.id);
-      return({
-        parentItem: parentItem,
-        hits: hit.hits,
-        name: parentItem.name,
-        year: parentItem.metadata.date_promulgated ? parentItem.metadata.date_promulgated.values[0].iso8601 : "0",
-      });
-    });
-
-    groupedItems = SortBy(groupedItems, SearchStore.sortOption);
+  itemList: function(groupedItems) {
     return groupedItems.map(function(item, index) {
       return(
         <ListItem
@@ -58,14 +48,14 @@ var SearchDisplayList = React.createClass({
     });
   },
 
-  renderResults: function() {
+  renderResults: function(groupedItems) {
     return (
       <div>
         <p style={{ fontSize: '12px', margin: '0', paddingRight: '1.5em', textAlign: 'right'}}>
-          {this.props.groupedHits.length} document(s) found
+          {groupedItems.length} document(s) found
         </p>
         <div className="search-list results">
-          {this.itemList()}
+          {this.itemList(groupedItems)}
         </div>
       </div>
     );
@@ -84,8 +74,24 @@ var SearchDisplayList = React.createClass({
   },
 
   render: function() {
-    if(this.props.groupedHits.length > 0){
-      return this.renderResults();
+    var groupedItems = [];
+    if(this.props.groupedHits.length > 0) {
+      groupedItems = this.props.groupedHits.map(function(hit, index) {
+        var parentItem = ItemStore.getItem(hit.id);
+        return({
+          parentItem: parentItem,
+          hits: hit.hits,
+          name: parentItem.name,
+          year: parentItem.metadata.date_promulgated ? parentItem.metadata.date_promulgated.values[0].iso8601 : "0",
+        });
+      });
+
+      groupedItems = FilterBy(groupedItems, SearchStore.selectedFilters);
+      groupedItems = SortBy(groupedItems, SearchStore.sortOption);
+    }
+
+    if(groupedItems.length > 0){
+      return this.renderResults(groupedItems);
     }
     return this.renderNoResults();
   },

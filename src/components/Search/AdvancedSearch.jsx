@@ -1,4 +1,5 @@
 'use strict'
+var _ = require('underscore');
 var React = require('react');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
@@ -19,7 +20,7 @@ var AdvancedSearch = React.createClass({
     },
     listDiv: {
       display: 'inline-block',
-      maxWidth: 'calc(50% - 40px)',
+      width: 'calc(50% - 40px)',
       textAlign: 'left',
     },
     docDiv: {
@@ -52,11 +53,26 @@ var AdvancedSearch = React.createClass({
     this.setState({isOpen: false});
   },
 
-  onCheck(value, event, isInputChecked) {
-    console.log(value);
+  onDoctypeCheck(collection, value, event, isInputChecked) {
+    if(isInputChecked) {
+      SearchActions.addFilters(collection, { docType: [value] });
+    } else {
+      SearchActions.removeFilters(collection, { docType: [value] });
+    }
+    this.forceUpdate();
+  },
+
+  onDocsourceCheck(collection, value, event, isInputChecked) {
+    if(isInputChecked) {
+      SearchActions.addFilters(collection, { docSource: [value] });
+    } else {
+      SearchActions.removeFilters(collection, { docSource: [value] });
+    }
+    this.forceUpdate();
   },
 
   buildDoctypeList(collectionId) {
+    var currentFilters = SearchStore.selectedFilters[collectionId].docType;
     var doctypes = ItemStore.getDocTypes(collectionId);
     var entries = [];
 
@@ -67,7 +83,8 @@ var AdvancedSearch = React.createClass({
           primaryText={doctypes[i]}
           leftCheckbox={
             <mui.Checkbox
-              onCheck={this.onCheck.bind(this, doctypes[i])}
+              onCheck={this.onDoctypeCheck.bind(this, collectionId, doctypes[i])}
+              checked={ _.contains(currentFilters, doctypes[i]) }
             />
           }
         />
@@ -86,6 +103,7 @@ var AdvancedSearch = React.createClass({
   },
 
   buildDocSourceList(collectionId) {
+    var currentFilters = SearchStore.selectedFilters[collectionId].docSource;
     var sources = ItemStore.getDocSources(collectionId);
     var entries = [];
 
@@ -96,7 +114,8 @@ var AdvancedSearch = React.createClass({
           primaryText={sources[i]}
           leftCheckbox={
             <mui.Checkbox
-              onCheck={this.onCheck.bind(this, sources[i])}
+              onCheck={ this.onDocsourceCheck.bind(this, collectionId, sources[i]) }
+              checked={ _.contains(currentFilters, sources[i]) }
             />
           }
         />
@@ -126,6 +145,24 @@ var AdvancedSearch = React.createClass({
     });
   },
 
+  reset() {
+    SearchActions.setFilters(VaticanID, { docType: [], docSource: [] });
+    SearchActions.setFilters(HumanRightsID, { docType: [], docSource: [] });
+    SearchActions.setFilters(null, { minDate: ItemStore.getEarliestDocYear(), maxDate: new Date().getFullYear() });
+    this.forceUpdate();
+  },
+
+  resetButton() {
+    return (
+      <mui.FlatButton
+        label="Reset"
+        labelStyle={{color: 'white'}}
+        onTouchTap={ this.reset }
+        backgroundColor={ '#224048' }
+      />
+    );
+  },
+
   makeCard(title, expandFunc, expanded, collectionId) {
     return(
       <mui.Card
@@ -140,7 +177,6 @@ var AdvancedSearch = React.createClass({
           expandable={true}
           style={this.styles.cardMedia}
         >
-          <DocDateSlider collection={collectionId} />
           <div style={this.styles.docDiv}>
             { this.buildDoctypeList(collectionId) }
             <div style={this.styles.verticalPadding}/>
@@ -193,9 +229,11 @@ var AdvancedSearch = React.createClass({
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
+          { this.resetButton() }
+          <DocDateSlider />
           <p>Here you can refine search parameters on each document collection separately.</p>
-          { this.makeCard('Vatican', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
-          { this.makeCard('Human Rights', this.onHumanExpand, this.state.humanExpanded, HumanRightsID) }
+          { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
+          { this.makeCard('International Human Rights Law', this.onHumanExpand, this.state.humanExpanded, HumanRightsID) }
         </mui.Dialog>
       </div>
     );

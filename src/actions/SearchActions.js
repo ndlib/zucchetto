@@ -33,6 +33,30 @@ class SearchActions {
     });
   }
 
+  setFilters(collection, filters) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_SET_FILTERS,
+      collection: collection,
+      filters: filters,
+    });
+  }
+
+  addFilters(collection, filters) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_ADD_FILTERS,
+      collection: collection,
+      filters: filters,
+    });
+  }
+
+  removeFilters(collection, filters = {}) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_REMOVE_FILTERS,
+      collection: collection,
+      filters: filters,
+    });
+  }
+
   addTopics(topics) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_ADD_TOPICS,
