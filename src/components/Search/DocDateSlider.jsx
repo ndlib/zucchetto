@@ -6,7 +6,6 @@ var SearchActions = require('../../actions/SearchActions.js');
 var Slider = require('rc-slider');
 import mui from 'material-ui';
 
-
 var DocDateSlider = React.createClass({
   propTypes: {
     collection: React.PropTypes.string,
