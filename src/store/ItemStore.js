@@ -67,12 +67,10 @@ class ItemStore extends EventEmitter {
   }
 
   parseItemsChildren(parentItem) {
+    var parent_id = parentItem.id;
+    this._parent2children[parent_id] = [];
     _.each(parentItem.children, function(child) {
       this._items[child.id] = child;
-      var parent_id = parentItem.id;
-      if (!this._parent2children[parent_id]) {
-        this._parent2children[parent_id] = [];
-      }
       this._parent2children[parent_id].push(child.id);
     }.bind(this));
   }
@@ -102,11 +100,11 @@ class ItemStore extends EventEmitter {
       return item;
     }
 
-    if (!item["isPartOf/parent"]) {
+    if (!item["isPartOf/item"]) {
       return null;
     }
 
-    var parent_id = IDFromAtID(item["isPartOf/parent"]);
+    var parent_id = IDFromAtID(item["isPartOf/item"]);
     if (parent_id) {
       return this.getItem(parent_id);
     } else {
