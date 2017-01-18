@@ -8,7 +8,6 @@ import DownloadPDF from './DownloadPDF.jsx';
 import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
-import AddToCompare from './AddToCompare.jsx';
 import FootNotes from './FootNotes.jsx';
 
 class Document extends Component {

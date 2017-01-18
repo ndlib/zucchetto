@@ -4,6 +4,13 @@ import CompareActionTypes from "../constants/CompareActionTypes.jsx";
 import CompareStore from "../store/CompareStore.js";
 
 class CompareActions {
+  addDoc(item) {
+    AppDispatcher.dispatch({
+      actionType: CompareActionTypes.ADD_DOC_TO_LOAD,
+      item: item
+    });
+  }
+
   setItem(item) {
     AppDispatcher.dispatch({
       actionType: CompareActionTypes.ADD_ITEM_TO_COMPARE,

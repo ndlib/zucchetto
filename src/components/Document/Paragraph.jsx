@@ -60,7 +60,7 @@ class Paragraph extends Component {
       return (
         <div className="paragraph-section">
           {this.showHeading(this.props.showHeadings)}
-          <AddToCompare item={ this.props.item } />
+          <AddToCompare document={ false } item={ this.props.item } />
         </div>
       );
     }

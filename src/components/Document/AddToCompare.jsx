@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import IDFromAtID from "../../modules/IDFromAtID.js";
+import ItemStore from "../../store/ItemStore.js";
 import CompareStore from "../../store/CompareStore.js";
 import CompareActions from "../../actions/CompareActions.js";
 import mui from 'material-ui';
@@ -57,6 +58,7 @@ class AddToCompare extends Component {
   runCompareAction() {
     if(this.props.subItems){
       if (this.state.checked === TRUE) {
+        CompareActions.addDoc(this.props.item);
         for(var i = 0; i < this.props.subItems.length; i++) {
           CompareActions.setItem(this.props.subItems[i]);
         }
@@ -69,6 +71,8 @@ class AddToCompare extends Component {
     }
     else {
       if (this.state.checked === TRUE) {
+        var docId = this.props.item['isPartOf/item'] ? IDFromAtID(this.props.item['isPartOf/item']) : this.props.item.id
+        CompareActions.addDoc(ItemStore.getItem(docId));
         CompareActions.setItem(this.props.item);
       } else {
         CompareActions.removeItem(this.props.item);
