@@ -22,6 +22,10 @@ class NotebookPage extends Component {
     this.loadChildren();
   }
 
+  componentWillUnmount() {
+    ItemStore.removeListener("LoadChildrenFinished", this.handleChildrenLoaded);
+  }
+
   loadChildren() {
     ItemStore.on("LoadChildrenFinished", this.handleChildrenLoaded);
     for(var doc in this.state.docsToLoad){

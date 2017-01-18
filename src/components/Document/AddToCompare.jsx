@@ -64,6 +64,7 @@ class AddToCompare extends Component {
         }
 
       } else {
+        CompareActions.removeDoc(this.props.item);
         for(var i = 0; i < this.props.subItems.length; i++) {
           CompareActions.removeItem(this.props.subItems[i]);
         }
@@ -76,6 +77,7 @@ class AddToCompare extends Component {
         CompareActions.setItem(this.props.item);
       } else {
         CompareActions.removeItem(this.props.item);
+        // TODO: If this was the last item stored for this doc, remove the doc
       }
     }
 

@@ -11,6 +11,13 @@ class CompareActions {
     });
   }
 
+  removeDoc(item) {
+    AppDispatcher.dispatch({
+      actionType: CompareActionTypes.REMOVE_DOC_TO_LOAD,
+      item: item
+    });
+  }
+
   setItem(item) {
     AppDispatcher.dispatch({
       actionType: CompareActionTypes.ADD_ITEM_TO_COMPARE,
