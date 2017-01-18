@@ -69,8 +69,7 @@ class ItemActions {
       success: function(result) {
         AppDispatcher.dispatch({
           actionType: ItemActionTypes.LOAD_CHILD_ITEMS,
-          parentId: itemId,
-          items: result.items
+          parent: result.items
         });;
       },
       error: function(request, status, thrownError) {

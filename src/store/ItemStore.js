@@ -38,8 +38,9 @@ class ItemStore extends EventEmitter {
         this.emitPreLoadIfFinished();
         break;
       case ItemActionTypes.LOAD_CHILD_ITEMS:
-        this.parseItemsChildren(action.items);
-        this.emit("LoadChildrenFinished", action.parentId);
+        this.parseParent(action.parent);
+        this.parseItemsChildren(action.parent);
+        this.emit("LoadChildrenFinished", action.parent.id);
         break;
     }
   }
@@ -55,28 +56,20 @@ class ItemStore extends EventEmitter {
   }
 
   parseItems(items) {
-    var parseFunction = _.bind(this.parseFunction, this);
+    var parseFunction = _.bind(this.parseParent, this);
 
     _.each(items, parseFunction);
   }
 
-  parseFunction(item) {
+  parseParent(item) {
     this._items[item.id] = item;
-    if (item.metadata.parent_id) {
-      var parent_id = item.metadata.parent_id.values[0].value;
-      if (!this._parent2children[parent_id]) {
-        this._parent2children[parent_id] = [];
-      }
-      this._parent2children[parent_id].push(item.id);
-    } else {
-      this._parentItems.push(item);
-    }
+    this._parentItems.push(item);
   }
 
-  parseItemsChildren(item) {
-    _.each(item.children, function(child) {
+  parseItemsChildren(parentItem) {
+    _.each(parentItem.children, function(child) {
       this._items[child.id] = child;
-      var parent_id = item.id;
+      var parent_id = parentItem.id;
       if (!this._parent2children[parent_id]) {
         this._parent2children[parent_id] = [];
       }

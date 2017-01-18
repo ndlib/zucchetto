@@ -1,5 +1,6 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
+import update from 'react-addons-update';
 
 import Notebook from '../components/Notebook/Notebook.jsx';
 import ItemActions from '../actions/ItemActions.jsx';
@@ -10,37 +11,36 @@ import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"
 class NotebookPage extends Component {
   constructor(props) {
     super(props);
-    this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.handleChildrenLoaded = this.handleChildrenLoaded.bind(this);
 
     this.state = {
-      loaded: ItemStore.preLoaded(),
+      docsToLoad: ItemQueryParams('d')
     };
   }
 
   componentWillMount() {
-    ItemStore.on("PreLoadFinished", this.preLoadFinished);
-  }
-
-  componentWillUnmount() {
-    ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
-  }
-
-  preLoadFinished() {
-    this.setState({loaded: true}, this.loadChildren);
+    this.loadChildren();
   }
 
   loadChildren() {
-    var docs = ItemQueryParams('d');
-    // TODO: Call a function that makes sure the LoadChildrenFinished event
-    // is actually for this doc
-    ItemStore.on("LoadChildrenFinished", this.forceUpdate.bind(this));
-    for(var doc in docs){
-      ItemActions.loadChildren(docs[doc]);
+    ItemStore.on("LoadChildrenFinished", this.handleChildrenLoaded);
+    for(var doc in this.state.docsToLoad){
+      ItemActions.loadChildren(this.state.docsToLoad[doc]);
     }
   }
 
+  handleChildrenLoaded(doc) {
+    const newState = update(this.state, {
+      docsToLoad: {$apply: function(remainingDocs) {
+        remainingDocs.pop(doc);
+        return remainingDocs;
+      }}
+    });
+    this.setState(newState);
+  }
+
   render() {
-    if (!this.state.loaded) {
+    if (this.state.docsToLoad.length > 0) {
       return (<p>Loading....</p>);
     }
 

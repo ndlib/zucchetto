@@ -23,14 +23,13 @@ class DocumentPage extends Component {
     }
 
     this.state = {
-      loaded: ItemStore.preLoaded(),
+      loaded: false,
       showSection: 'document',
       comparedItems: CompareStore.allItems(),
       parent: null,
       children: []
     };
 
-    this.preLoadFinished = this.preLoadFinished.bind(this);
     this.childrenLoadFinished = this.childrenLoadFinished.bind(this);
     this.updateCompare = this.updateCompare.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -38,12 +37,12 @@ class DocumentPage extends Component {
   }
 
   componentWillMount() {
-    ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    ItemStore.on("LoadChildrenFinished", this.childrenLoadFinished);
+    ItemActions.loadChildren(this.props.params.id);
     CompareStore.on('ItemCompareUpdated', this.updateCompare);
   }
 
   componentWillUnmount() {
-    ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
     ItemStore.removeListener("LoadChildrenFinished", this.childrenLoadFinished);
     CompareStore.removeListener('ItemCompareUpdated', this.updateCompare);
   }
@@ -52,22 +51,13 @@ class DocumentPage extends Component {
     this.setState({ comparedItems: CompareStore.allItems() })
   }
 
-  // Only call this once the ItemStore has all of the parent items.
-  // Will set the parent and then fire off the children query
-  preLoadFinished() {
-    this.setState({
-      parent: ItemStore.getItem(this.props.params.id)
-    }, function() {
-      ItemStore.on("LoadChildrenFinished", this.childrenLoadFinished);
-      ItemActions.loadChildren(this.props.params.id);
-    }.bind(this));
-  }
-
   childrenLoadFinished(parentId) {
-    if(parentId === this.state.parent.id){
+    if(parentId === this.props.params.id){
+      var parent = ItemStore.getItem(this.props.params.id);
       this.setState({
         loaded: true,
-        children: ItemStore.getItemChildrenInOrder(this.state.parent)
+        parent: parent,
+        children: ItemStore.getItemChildrenInOrder(parent)
       });
     }
   }
