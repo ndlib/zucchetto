@@ -58,7 +58,7 @@ var DocDateSlider = React.createClass({
           max={maxDocDate}
           range={true}
           allowCross={false}
-          value={[this.state.minValue, this.state.maxValue]}
+          value={[Number(this.state.minValue), Number(this.state.maxValue)]}
           onChange={this.onChange}
           pushable={10}
         />
