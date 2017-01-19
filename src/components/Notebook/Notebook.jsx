@@ -36,6 +36,7 @@ class Notebook extends Component {
   componentWillUnmount() {
     CompareStore.removeListener("CompareColumnsUpdated", this.updateColumns);
     CompareStore.removeListener("CompareColumnsCannotBeUpdated", this.alertColumnError);
+    window.removeEventListener('resize', this.resize);
   }
 
   resize() {
