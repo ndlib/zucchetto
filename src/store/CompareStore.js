@@ -47,14 +47,14 @@ class CompareStore extends EventEmitter {
 
   validCollection(collection_id) {
     var obj = JSON.parse(window.localStorage.getItem(collection_id));
-    /*if(obj.items) {
+    if(obj.items) {
       var items = obj.items;
       for(var i = 0; i < items.length; i++) {
         if(!ItemStore.validItem(items[i])) {
           return false;
         }
       }
-    }*/
+    }
     return true;
   }
 
