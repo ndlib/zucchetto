@@ -14,22 +14,22 @@ class NotebookPage extends Component {
     this.handleChildrenLoaded = this.handleChildrenLoaded.bind(this);
 
     this.state = {
-      docsToLoad: ItemQueryParams('d')
+      docsToLoad: [].concat.apply(ItemQueryParams('h'), ItemQueryParams('v'))
     };
   }
 
   componentWillMount() {
-    this.loadChildren();
+    this.loadDocsWithChildren();
   }
 
   componentWillUnmount() {
     ItemStore.removeListener("LoadChildrenFinished", this.handleChildrenLoaded);
   }
 
-  loadChildren() {
+  loadDocsWithChildren() {
     ItemStore.on("LoadChildrenFinished", this.handleChildrenLoaded);
     for(var doc in this.state.docsToLoad){
-      ItemActions.loadChildren(this.state.docsToLoad[doc]);
+      ItemActions.loadParent(this.state.docsToLoad[doc]);
     }
   }
 

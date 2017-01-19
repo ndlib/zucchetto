@@ -57,6 +57,26 @@ class ItemActions {
     });
   }
 
+  loadParent(itemId) {
+    var vaticanUrl = HoneycombURL() + "/v1/items/" + itemId + "/parent_and_children";
+
+    $.ajax({
+      context: this,
+      type: "GET",
+      url: vaticanUrl,
+      dataType: "json",
+      success: function(result) {
+        AppDispatcher.dispatch({
+          actionType: ItemActionTypes.LOAD_CHILD_ITEMS,
+          parent: result.items
+        });;
+      },
+      error: function(request, status, thrownError) {
+        EventEmitter.emit("SearchStoreQueryFailed", { request: request, status: status, error: thrownError });
+      }
+    });
+
+  }
 
   loadChildren(itemId) {
     var vaticanUrl = HoneycombURL() + "/v1/items/" + itemId + "/children";
