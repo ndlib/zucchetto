@@ -4,6 +4,9 @@ var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
 var IDFromAtID = require("../modules/IDFromAtID.js");
 var _ = require('underscore');
 
+import HumanRightsID from '../constants/HumanRightsID.js';
+import VaticanID from '../constants/VaticanID.js';
+
 class SearchStore extends EventEmitter {
   constructor() {
     super();
@@ -26,8 +29,25 @@ class SearchStore extends EventEmitter {
                   ];
     this._sortOption = "relevance";
 
+    this._selectedFilters = {}
+    this._selectedFilters[HumanRightsID] = {
+      docType: [],
+      docSource: [],
+    }
+    this._selectedFilters[VaticanID] = {
+      docType: [],
+      docSource: [],
+    }
+
+    this._topicsOnly = false;
+
     Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
     Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
+    Object.defineProperty(this, "selectedFilters", { get: function() { return this._selectedFilters; } });
+    Object.defineProperty(this, "topicsOnly", {
+      get: function() { return this._topicsOnly; },
+      set: function(only) { this._topicsOnly = only; this.emitQueryChange(); }
+    });
 
     AppDispatcher.register(this.receiveAction.bind(this));
   }
@@ -58,6 +78,19 @@ class SearchStore extends EventEmitter {
     this.emit("SearchStoreResultsChanged", collection);
   }
 
+  // Adds a callback to listen for changes to the search parameters
+  addParamsChangeListener(callback) {
+    this.on("SearchStoreParamsChanged", callback);
+  }
+
+  removeParamsChangeListener(callback) {
+    this.removeListener("SearchStoreParamsChanged", callback);
+  }
+
+  emitParamsChange() {
+    this.emit("SearchStoreParamsChanged");
+  }
+
   // Adds a callback to listen for changes to the resulting hits for a collection
   addTopicsChangeListener(callback) {
     this.on("SearchStoreTopicsChanged", callback);
@@ -77,6 +110,56 @@ class SearchStore extends EventEmitter {
 
   removeTopics(topics) {
     topics.forEach(function(topic) { delete this._topics[topic] }.bind(this));
+  }
+
+  addFilters(collection, filters) {
+    for(var key in filters) {
+      var current = this._selectedFilters[collection][key];
+      if(!current) {
+        current = filters[key];
+      } else if(current instanceof Array) {
+        if(filters[key] instanceof Array) {
+          current.push(...filters[key]);
+        } else {
+          current.push(filters[key]);
+        }
+      }
+    }
+  }
+
+  removeArrayValue(array, value) {
+    for(var i = 0; i < array.length; ++i) {
+      if(array[i] == value) {
+        array.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+  removeFilters(collection, filters) {
+    if(!filters) {
+      this._selectedFilters[collection] = {};
+    } else {
+      for(var key in filters) {
+        var current = this._selectedFilters[collection][key];
+
+        if(filters[key] instanceof Array) {
+          for(var i = 0; i < filters[key].length; ++i) {
+            this.removeArrayValue(current, filters[key][i]);
+          }
+        } else if(current) {
+          delete this._selectedFilters[collection][key];
+        }
+      }
+    }
+  }
+
+  setFilters(collection, filters) {
+    var addTo = collection ? this._selectedFilters[collection] : this._selectedFilters;
+
+    for(var key in filters) {
+      addTo[key] = filters[key];
+    }
   }
 
   hasTopic(topic) {
@@ -114,10 +197,38 @@ class SearchStore extends EventEmitter {
     this._hits[collection] = items;
   }
 
+  makeUriElement(obj, key, name) {
+    var out = "";
+    var writeKey = "&" + (name ? name : key) + "=";
+    if(obj[key]) {
+      if(obj[key] instanceof Array) {
+        if(obj[key].length > 0) {
+          out = writeKey + obj[key].join(',');
+        }
+      } else {
+        out = writeKey + obj[key];
+      }
+    }
+    return out;
+  }
+
   searchUri() {
     var outUri = '/search?q=' + this._searchTerm + '&t=' + this.getTopics().join(',');
     if(this._sortOption) {
       outUri += "&sort=" + this._sortOption;
+    }
+
+    outUri += this.makeUriElement(this._selectedFilters, "minDate");
+    outUri += this.makeUriElement(this._selectedFilters, "maxDate");
+
+    outUri += this.makeUriElement(this._selectedFilters[VaticanID], "docSource", "v.docSource");
+    outUri += this.makeUriElement(this._selectedFilters[VaticanID], "docType", "v.docType");
+
+    outUri += this.makeUriElement(this._selectedFilters[HumanRightsID], "docSource", "h.docSource");
+    outUri += this.makeUriElement(this._selectedFilters[HumanRightsID], "docType", "h.docType");
+
+    if(this._topicsOnly) {
+      outUri += "&to=true";
     }
 
     return outUri;
@@ -138,6 +249,19 @@ class SearchStore extends EventEmitter {
         this.addTopics(action.topics);
         this._searchTerm = action.searchTerm;
         this._sortOption = action.sort;
+        this._topicsOnly = Boolean(action.topicsOnly);
+        this.setFilters(VaticanID, {
+          docSource: action.vDocSource,
+          docType: action.vDocType,
+        });
+        this.setFilters(HumanRightsID, {
+          docSource: action.hDocSource,
+          docType: action.hDocType,
+        });
+        this.setFilters(null, {
+          minDate: action.minDate,
+          maxDate: action.maxDate,
+        });
         break;
       case SearchActionTypes.SEARCH_SET_TERM:
         this._searchTerm = action.searchTerm;
@@ -164,6 +288,22 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_SORT:
         this._sortOption = action.sort;
+        this.emitResultsChange();
+        this.emitParamsChange();
+        break;
+      case SearchActionTypes.SEARCH_ADD_FILTERS:
+        this.addFilters(action.collection, action.filters);
+        this.emitResultsChange();
+        break;
+      case SearchActionTypes.SEARCH_REMOVE_FILTERS:
+        this.removeFilters(action.collection, action.filters);
+        this.emitResultsChange();
+        break;
+      case SearchActionTypes.SEARCH_SET_FILTERS:
+        this.setFilters(action.collection, action.filters);
+        if (action.emit) {
+          this.emitParamsChange();
+        }
         this.emitResultsChange();
         break;
       default:

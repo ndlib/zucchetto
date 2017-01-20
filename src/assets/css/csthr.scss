@@ -644,6 +644,7 @@ button.right {
   padding-top: 15px;
   background: $tan;
   margin-top: 0;
+  min-height: calc(100vh - 50px);
 
   h2 {
     font-size:22px;
