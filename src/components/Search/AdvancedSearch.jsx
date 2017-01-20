@@ -55,7 +55,7 @@ var AdvancedSearch = React.createClass({
   },
 
   closeDialog() {
-    SearchStore.emitParamsChange();
+    SearchActions.setFilters(null, {}, true);
     this.setState({isOpen: false});
   },
 

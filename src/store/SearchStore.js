@@ -301,6 +301,9 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_FILTERS:
         this.setFilters(action.collection, action.filters);
+        if (action.emit) {
+          this.emitParamsChange();
+        }
         this.emitResultsChange();
         break;
       default:
