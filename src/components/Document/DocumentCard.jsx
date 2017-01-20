@@ -1,7 +1,6 @@
 ﻿'use strict'
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import ItemStore from '../../store/ItemStore.js';
 import CurrentParagraph from '../Document/CurrentParagraph.jsx';
 import Title from '../Document/Title.jsx';
 import mui from 'material-ui';

@@ -23,24 +23,27 @@ class DocumentPage extends Component {
     }
 
     this.state = {
-      loaded: ItemStore.preLoaded(),
+      loaded: false,
       showSection: 'document',
       comparedItems: CompareStore.allItems(),
+      parent: null,
+      children: []
     };
 
-    this.preLoadFinished = this.preLoadFinished.bind(this);
+    this.childrenLoadFinished = this.childrenLoadFinished.bind(this);
     this.updateCompare = this.updateCompare.bind(this);
     this.onClick = this.onClick.bind(this);
     this.contentSection = this.contentSection.bind(this);
   }
 
   componentWillMount() {
-    ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    ItemStore.on("LoadChildrenFinished", this.childrenLoadFinished);
+    ItemActions.loadChildren(this.props.params.id);
     CompareStore.on('ItemCompareUpdated', this.updateCompare);
   }
 
   componentWillUnmount() {
-    ItemStore.removeListener("PreLoadFinished", this.preLoadFinished);
+    ItemStore.removeListener("LoadChildrenFinished", this.childrenLoadFinished);
     CompareStore.removeListener('ItemCompareUpdated', this.updateCompare);
   }
 
@@ -48,8 +51,15 @@ class DocumentPage extends Component {
     this.setState({ comparedItems: CompareStore.allItems() })
   }
 
-  preLoadFinished() {
-    this.setState({ loaded: true });
+  childrenLoadFinished(parentId) {
+    if(parentId === this.props.params.id){
+      var parent = ItemStore.getItem(this.props.params.id);
+      this.setState({
+        loaded: true,
+        parent: parent,
+        children: ItemStore.getItemChildrenInOrder(parent)
+      });
+    }
   }
 
   onClick(section) {
@@ -65,12 +75,13 @@ class DocumentPage extends Component {
           baseState={ this._baseState }
           searchIds={ this._searchIds }
           comparedItems={ this.state.comparedItems }
-          parent={ ItemStore.getItem(this.props.params.id) }
+          parent={ this.state.parent }
+          children={ this.state.children }
         />
       );
     } else if (section === 'meta') {
       return (
-        <MetadataSection document={ ItemStore.getItem(this.props.params.id) } />
+        <MetadataSection document={ this.state.parent } />
       );
     }
     return (<p>Loading...</p>)
@@ -85,7 +96,7 @@ class DocumentPage extends Component {
       <div zDepth={ 0 }>
         <Header />
         <DocumentToolbar
-          document={ ItemStore.getItem(this.props.params.id) }
+          document={ this.state.parent }
           buttonFunction={ this.onClick }
           activeSection={ this.state.showSection}
         />
