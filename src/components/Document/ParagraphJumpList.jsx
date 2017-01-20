@@ -31,7 +31,7 @@ class ParagraphJumpList extends Component {
           <option
             key={ item.id }
             value={ item.id }
-          >{ item.metadata.heading.values[0].value }
+          >{ item.metadata.short_description.values[0].value }
         </option>
         );
       }

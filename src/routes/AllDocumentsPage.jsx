@@ -5,7 +5,6 @@ import Header from '../components/StaticAssets/Header.jsx';
 import FooterHome from '../components/StaticAssets/FooterHome.jsx';
 import Heading from '../components/Shared/Heading.jsx';
 
-import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
 import VaticanID from '../constants/VaticanID.js';

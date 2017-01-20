@@ -1,6 +1,5 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
-import ItemStore from '../../store/ItemStore.js';
 import DocumentParagraphListItem from './DocumentParagraphListItem.jsx';
 
 class DocumentListItem extends Component {

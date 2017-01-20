@@ -6,9 +6,9 @@ function dateFilter(item, filters) {
   var minDate = filters["minDate"];
   var maxDate = filters["maxDate"];
 
+  // we will include items that have no date
+  // the items themselves are loged on initial load
   if(!item.metadata.coverage_temporal) {
-    console.log("item doesn't have date, including in results");
-    console.log(item);
     return true;
   }
   var itemDate = item.metadata.coverage_temporal.values[0].value

@@ -8,7 +8,6 @@ import DownloadPDF from './DownloadPDF.jsx';
 import DocumentType from './DocumentType.jsx';
 import CurrentParagraph from './CurrentParagraph.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
-import AddToCompare from './AddToCompare.jsx';
 import FootNotes from './FootNotes.jsx';
 
 class Document extends Component {
@@ -23,10 +22,10 @@ class Document extends Component {
   }
 
   paragraphs() {
-    return ItemStore.getItemChildrenInOrder(this._parent).map(this.paragraph.bind(this))
+    return this.props.paragraphs.map(this.paragraphFromItem.bind(this))
   }
 
-  paragraph(item) {
+  paragraphFromItem(item) {
     let selected = (this.props.selectedParagraphIds.indexOf(item.id) !== -1)
     let highlighted = (this.props.highlightedParagraphIds.indexOf(item.id) !== -1)
 
@@ -76,6 +75,7 @@ class Document extends Component {
 
 Document.propTypes = {
   documentId: React.PropTypes.string.isRequired,
+  paragraphs: React.PropTypes.array,
   bodyStyle: React.PropTypes.object,
   selectedParagraphIds: React.PropTypes.array,
   highlightedParagraphIds: React.PropTypes.array,

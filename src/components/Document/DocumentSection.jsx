@@ -5,7 +5,6 @@ import DocumentNav from './DocumentNav.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
 import Document from './Document.jsx';
 import TopicsInDocuments from '../../modules/TopicsInDocument.js';
-import CompareResultsInDocument from '../../modules/CompareResultsInDocument.js';
 import MiniMap from './MiniMap.jsx';
 
 import mui, { Paper } from 'material-ui';
@@ -82,6 +81,7 @@ class DocumentSection extends Component {
     return (
         <Document
           documentId={ this.props.parent.id }
+          paragraphs={ this.props.children }
           selectedParagraphIds={ this.props.comparedItems }
           highlightedParagraphIds={ this.highlightedDocumentIds() }
           showOnlySelected={ this.state.showAllParagraphs}
@@ -101,7 +101,6 @@ class DocumentSection extends Component {
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
             numSearchResults={ this._searchIds.length }
-            numCompareResults={ CompareResultsInDocument(this.props.parent, this.props.comparedItems) }
             selectedMenuItem={ this.state.highlightedIndex }
             showSelectedParagraphs={ true }
             listedTopics={ this._topics }
@@ -139,7 +138,8 @@ DocumentSection.propTypes = {
   baseState: React.PropTypes.string,
   searchIds: React.PropTypes.array,
   comparedItems: React.PropTypes.array,
-  parent: React.PropTypes.object
+  parent: React.PropTypes.object,
+  children: React.PropTypes.array
 }
 
 DocumentSection.defaultProps = {

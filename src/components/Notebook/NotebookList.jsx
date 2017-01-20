@@ -23,7 +23,7 @@ class NotebookList extends Component {
       column1: CompareStore.getColumn1() ?  CompareStore.getColumn1() : null,
       column2: CompareStore.getColumn2() ?  CompareStore.getColumn2() : null,
       humanrights_documents: [],
-      vatican_douments: [],
+      vatican_documents: [],
     },
     this.setDocuments = this.setDocuments.bind(this);
 
@@ -51,11 +51,13 @@ class NotebookList extends Component {
   }
 
   setDocuments() {
+    var humanrightsRequested = ItemStore.getItemsByMultipleIds(ItemQueryParams('h'));
+    var vaticanRequested = ItemStore.getItemsByMultipleIds(ItemQueryParams('v'));
     this.setState({
-      humanrights_documents: _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')), function(item) {
+      humanrights_documents: _.filter(humanrightsRequested, function(item) {
         return item.collection_id == HumanRightsID;
       }),
-      vatican_douments: _.filter(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')), function(item) {
+      vatican_documents: _.filter(vaticanRequested, function(item) {
         return item.collection_id == VaticanID;
       }),
     });
@@ -115,7 +117,7 @@ class NotebookList extends Component {
             listStyleType: 'none',
             paddingLeft: '1em',
           }}>
-            { this.documentList(this.state.vatican_douments) }
+            { this.documentList(this.state.vatican_documents) }
           </ul>
 
           <h4 className="category">International Human Rights</h4>

@@ -89,9 +89,9 @@ class SearchActions {
     });
   }
 
-  performSearch(collection, topics, searchTerm, store) {
+  performSearch(collection, topics, searchTerm, topicsOnly) {
     var queryUrl = collection
-                   + '/search/children?q=' + this.buildQuery(topics, searchTerm, store.topicsOnly)
+                   + '/search/children?q=' + this.buildQuery(topics, searchTerm, topicsOnly)
                    + '&rows=10000';
 
     $.ajax({

@@ -3,6 +3,7 @@ var React = require('react');
 var ItemStore = require('../../store/ItemStore.js');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
+var Slider = require('rc-slider');
 import mui from 'material-ui';
 
 var DocDateSlider = React.createClass({
@@ -12,11 +13,18 @@ var DocDateSlider = React.createClass({
 
   storedState() {
     var currentFilters = SearchStore.selectedFilters;
-    var minDate = currentFilters["minDate"] ? currentFilters["minDate"] : ItemStore.getEarliestDocYear(this.props.collection);
-    var maxDate = currentFilters["maxDate"] ? currentFilters["maxDate"] : new Date().getFullYear();
+
+    var minDocDate = Number(ItemStore.getEarliestDocYear(this.props.collection));
+    var maxDocDate = Number(new Date().getFullYear());
+
+    var currentMin = currentFilters["minDate"] ? currentFilters["minDate"] : minDocDate;
+    var currentMax = currentFilters["maxDate"] ? currentFilters["maxDate"] : maxDocDate;
     return({
-      minValue: minDate,
-      maxValue: maxDate,
+      minDocDate: minDocDate,
+      maxDocDate: maxDocDate,
+
+      currentMin: Number(currentMin),
+      currentMax: Number(currentMax),
     });
   },
 
@@ -28,63 +36,36 @@ var DocDateSlider = React.createClass({
     this.setState(this.storedState());
   },
 
-  onMinChange(e, newValue) {
-    var maxValue = Math.max(this.state.maxValue, newValue);
+  onChange(e) {
+    var min = e[0];
+    var max = e[1];
+
     this.setState({
-      maxValue: maxValue,
-      minValue: newValue,
+      currentMin: min,
+      currentMax: max,
     });
 
     SearchActions.setFilters(this.props.collection, {
-      minDate: newValue,
-      maxDate: maxValue,
-    });
-  },
-
-  onMaxChange(e, newValue) {
-    var minValue = Math.min(this.state.minValue, newValue);
-    this.setState({
-      maxValue: newValue,
-      minValue: minValue,
-    });
-
-    SearchActions.setFilters(this.props.collection, {
-      maxDate: newValue,
-      minDate: minValue,
+      minDate: min,
+      maxDate: max,
     });
   },
 
   render: function() {
-    var minDocDate = ItemStore.getEarliestDocYear(this.props.collection);
-    var maxDocDate = new Date().getFullYear();
+    var currentMin = this.state.currentMin;
+    var currentMax = this.state.currentMax;
 
     return(
       <div>
         <h4>Date Range</h4>
-        <p>Min - {this.state.minValue}</p>
-        <mui.Slider
-          name='Min Slider'
-          axis='x'
-          value={this.state.minValue}
-          max={maxDocDate}
-          min={minDocDate}
-          step={1}
-          onChange={this.onMinChange}
-          style={{ margin: 0 }}
-        />
-        <p>Max - {this.state.maxValue}</p>
-        <mui.Slider
-          name='Max Slider'
-          axis='x'
-          value={this.state.maxValue}
-          max={maxDocDate}
-          min={minDocDate}
-          step={1}
-          onChange={this.onMaxChange}
-          style={{
-            marginTop: 0,
-            marginBottom: '24px',
-          }}
+        <p>Min - Max: {currentMin} - {currentMax}</p>
+        <Slider
+          min={this.state.minDocDate}
+          max={this.state.maxDocDate}
+          range={true}
+          allowCross={false}
+          value={[currentMin, currentMax]}
+          onChange={this.onChange}
         />
       </div>
     );

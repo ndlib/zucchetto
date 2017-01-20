@@ -19,8 +19,8 @@ import SearchBox from '../components/Search/SearchBox.jsx';
 import SearchSort from '../components/Search/SearchSort.jsx';
 import SearchSidebar from '../components/Search/SearchSidebar.jsx';
 import Drawer from '../components/Search/Drawer.jsx';
-import ItemActions from '../actions/ItemActions.jsx';
 import ItemStore from '../store/ItemStore.js';
+import ItemActions from '../actions/ItemActions.jsx'
 import { Link } from 'react-router';
 
 const CATHOLIC = 'Catholic Social Teaching';
@@ -62,6 +62,7 @@ class SearchPage extends Component {
     SearchStore.addParamsChangeListener(this.handleParamsChange);
     SearchActions.setParamsFromUri();
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    ItemActions.preLoadItems();
   }
 
   componentWillUnmount() {

@@ -26,7 +26,7 @@ var Search = React.createClass({
   componentWillMount: function() {
     CompareStore.on("ItemCompareUpdated", this.handleCompareChange);
     SearchStore.addResultsChangeListener(this.handleResultsChange);
-    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm, SearchStore);
+    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm, SearchStore.topicsOnly);
   },
 
   componentWillUnmount: function() {
@@ -41,7 +41,7 @@ var Search = React.createClass({
     this.setState({
       loading: true,
     });
-    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm, SearchStore);
+    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm, SearchStore.topicsOnly);
   },
 
   handleResultsChange: function(collection){

@@ -1,6 +1,8 @@
 var keyMirror = require('keymirror');
 
 var CompareActionTypes = keyMirror({
+  ADD_DOC_TO_LOAD: false,
+  REMOVE_DOC_TO_LOAD: false,
   ADD_ITEM_TO_COMPARE: false,
   REMOVE_ITEM_FROM_COMPARE: false,
   SET_COMPARE_COLUMN_ITEM: false,

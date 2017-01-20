@@ -9,6 +9,7 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var ItemActionTypes = require("../constants/ItemActionTypes.jsx");
+var IDFromAtID = require("../modules/IDFromAtID.js");
 var _ = require("underscore");
 
 import HumanRightsID from '../constants/HumanRightsID.js';
@@ -19,7 +20,6 @@ class ItemStore extends EventEmitter {
     super();
     this._items = {};
     this._parentItems = [];
-    this._user_defined2_item_id = {};
     this._parent2children = {};
     this._vatican_finished = false;
     this._human_rights_finished = false;
@@ -52,6 +52,11 @@ class ItemStore extends EventEmitter {
         this._human_rights_finished = true;
         this.emitPreLoadIfFinished();
         break;
+      case ItemActionTypes.LOAD_CHILD_ITEMS:
+        this.parseParent(action.parent);
+        this.parseItemsChildren(action.parent);
+        this.emit("LoadChildrenFinished", action.parent.id);
+        break;
     }
   }
 
@@ -66,7 +71,7 @@ class ItemStore extends EventEmitter {
   }
 
   parseItems(items) {
-    var parseFunction = _.bind(this.parseFunction, this);
+    var parseFunction = _.bind(this.parseParent, this);
 
     _.each(items, parseFunction);
     this._data[HumanRightsID].docTypes = _.uniq(this._data[HumanRightsID].docTypes);
@@ -81,33 +86,33 @@ class ItemStore extends EventEmitter {
     this._data[collection].docSources.push(source);
   }
 
-  parseFunction(item) {
+  parseParent(item) {
     this._items[item.id] = item;
-    this._user_defined2_item_id[item.user_defined_id] = item.id;
-    if (item.metadata.parent_id) {
-      var parent_id = item.metadata.parent_id.values[0].value;
-      if (!this._parent2children[parent_id]) {
-        this._parent2children[parent_id] = [];
-      }
-      this._parent2children[parent_id].push(item.id);
+    var doctype = item.metadata.type_of_document.values[0].value;
+    var year = 2017;
+    if(item.metadata.coverage_temporal) {
+      year = item.metadata.coverage_temporal.values[0].value;
     } else {
-      var doctype = item.metadata.type_of_document.values[0].value;
-      var year = 2017;
-      if(item.metadata.coverage_temporal) {
-        year = item.metadata.coverage_temporal.values[0].value;
-      } else {
-        console.log("Item has no date");
-        console.log(item);
-      }
-
-      if(item.collection_id == VaticanID) {
-        this.updateData(VaticanID, doctype, year, item.metadata.promulgated_by.values[0].value)
-      } else if(item.collection_id == HumanRightsID) {
-        this.updateData(HumanRightsID, doctype, year, item.metadata.organization.values[0].value)
-      }
-
-      this._parentItems.push(item);
+      console.log("Item has no date");
+      console.log(item);
     }
+
+    if(item.collection_id == VaticanID) {
+      this.updateData(VaticanID, doctype, year, item.metadata.promulgated_by.values[0].value)
+    } else if(item.collection_id == HumanRightsID) {
+      this.updateData(HumanRightsID, doctype, year, item.metadata.organization.values[0].value)
+    }
+
+    this._parentItems.push(item);
+  }
+
+  parseItemsChildren(parentItem) {
+    var parent_id = parentItem.id;
+    this._parent2children[parent_id] = [];
+    _.each(parentItem.children, function(child) {
+      this._items[child.id] = child;
+      this._parent2children[parent_id].push(child.id);
+    }.bind(this));
   }
 
   validItem(id) {
@@ -157,25 +162,24 @@ class ItemStore extends EventEmitter {
   }
 
   getItemParent(item) {
-    if (this._parent2children[item.user_defined_id]) {
+    if (this._parent2children[item.id]) {
       return item;
     }
 
-    if (!item.metadata.parent_id) {
+    if (!item["isPartOf/item"]) {
       return null;
     }
 
-    var parent_user_defined_id = item.metadata.parent_id.values[0].value;
-    var item_id = this._user_defined2_item_id[parent_user_defined_id];
-    if (item_id) {
-      return this.getItem(item_id);
+    var parent_id = IDFromAtID(item["isPartOf/item"]);
+    if (parent_id) {
+      return this.getItem(parent_id);
     } else {
       return null;
     }
   }
 
   getItemChildrenInOrder(parent) {
-    var items = this._parent2children[parent.user_defined_id];
+    var items = this._parent2children[parent.id];
     if (!items) {
       return [];
     }

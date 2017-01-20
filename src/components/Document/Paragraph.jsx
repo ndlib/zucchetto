@@ -60,7 +60,7 @@ class Paragraph extends Component {
       return (
         <div className="paragraph-section">
           {this.showHeading(this.props.showHeadings)}
-          <AddToCompare item={ this.props.item } />
+          <AddToCompare document={ false } item={ this.props.item } />
         </div>
       );
     }
@@ -68,11 +68,11 @@ class Paragraph extends Component {
   }
 
   render() {
-    if (this.props.item.metadata.transcription) {
+    if (this.props.item.metadata.description) {
       return(
         <div>
           { this.addButton() }
-          {this.determineHTMLTag(this.props.item.metadata.transcription.values[0].value)}
+          {this.determineHTMLTag(this.props.item.metadata.description.values[0].value)}
         </div>
       )
     } else {
