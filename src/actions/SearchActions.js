@@ -126,7 +126,8 @@ class SearchActions {
       if(topicsOnly) {
         q += "actors_t:(" + searchTerm + ")";
       } else {
-        q += searchTerm;
+        // make sure we're only getting hits of type body (paragraph, no headings/subheadings/etc)
+        q += searchTerm + " AND type_of_text_t:BodyText";
       }
     }
     return encodeURIComponent(q);
