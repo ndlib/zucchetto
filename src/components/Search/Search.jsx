@@ -41,7 +41,7 @@ var Search = React.createClass({
     this.setState({
       loading: true,
     });
-    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm, SearchStore);
+    SearchActions.performSearch(this.props.collection, SearchStore.topics, SearchStore.searchTerm, SearchStore.topicsOnly);
   },
 
   handleResultsChange: function(collection){

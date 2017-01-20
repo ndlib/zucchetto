@@ -13,11 +13,18 @@ var DocDateSlider = React.createClass({
 
   storedState() {
     var currentFilters = SearchStore.selectedFilters;
-    var minDate = currentFilters["minDate"] ? currentFilters["minDate"] : ItemStore.getEarliestDocYear(this.props.collection);
-    var maxDate = currentFilters["maxDate"] ? currentFilters["maxDate"] : new Date().getFullYear();
+
+    var minDocDate = Number(ItemStore.getEarliestDocYear(this.props.collection));
+    var maxDocDate = Number(new Date().getFullYear());
+
+    var currentMin = currentFilters["minDate"] ? currentFilters["minDate"] : minDocDate;
+    var currentMax = currentFilters["maxDate"] ? currentFilters["maxDate"] : maxDocDate;
     return({
-      minValue: minDate,
-      maxValue: maxDate,
+      minDocDate: minDocDate,
+      maxDocDate: maxDocDate,
+
+      currentMin: Number(currentMin),
+      currentMax: Number(currentMax),
     });
   },
 
@@ -34,8 +41,8 @@ var DocDateSlider = React.createClass({
     var max = e[1];
 
     this.setState({
-      minValue: min,
-      maxValue: max,
+      currentMin: min,
+      currentMax: max,
     });
 
     SearchActions.setFilters(this.props.collection, {
@@ -45,21 +52,20 @@ var DocDateSlider = React.createClass({
   },
 
   render: function() {
-    var minDocDate = Number(ItemStore.getEarliestDocYear(this.props.collection));
-    var maxDocDate = Number(new Date().getFullYear());
+    var currentMin = this.state.currentMin;
+    var currentMax = this.state.currentMax;
 
     return(
       <div>
         <h4>Date Range</h4>
-        <p>Min - Max: {this.state.minValue} - {this.state.maxValue}</p>
+        <p>Min - Max: {currentMin} - {currentMax}</p>
         <Slider
-          min={minDocDate}
-          max={maxDocDate}
+          min={this.state.minDocDate}
+          max={this.state.maxDocDate}
           range={true}
           allowCross={false}
-          value={[Number(this.state.minValue), Number(this.state.maxValue)]}
+          value={[currentMin, currentMax]}
           onChange={this.onChange}
-          pushable={10}
         />
       </div>
     );
