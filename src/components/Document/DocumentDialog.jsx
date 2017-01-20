@@ -4,8 +4,6 @@ import mui from 'material-ui';
 
 import Header from '../../components/StaticAssets/Header.jsx';
 import Document from '../../components/Document/Document.jsx';
-import ItemActions from '../../actions/ItemActions.jsx'
-import ItemStore from '../../store/ItemStore.js'
 
 class DocumentDialog extends Component {
   constructor(props) {

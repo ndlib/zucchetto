@@ -12,7 +12,6 @@ var CompareActionTypes = require("../constants/CompareActionTypes.jsx");
 import LocalStorageExpiration from '../modules/LocalStorageExpiration.js';
 import VaticanID from '../constants/VaticanID.js';
 import HumanRightsID from '../constants/HumanRightsID.js';
-import ItemActions from '../actions/ItemActions.jsx'
 import ItemStore from './ItemStore.js';
 
 class CompareStore extends EventEmitter {
@@ -63,6 +62,12 @@ class CompareStore extends EventEmitter {
   receiveAction(action) {
     LocalStorageExpiration();
     switch(action.actionType) {
+      case CompareActionTypes.ADD_DOC_TO_LOAD:
+        this.addDoc(action.item);
+        break;
+      case CompareActionTypes.REMOVE_DOC_TO_LOAD:
+        this.removeDoc(action.item);
+        break;
       case CompareActionTypes.ADD_ITEM_TO_COMPARE:
         this.setItem(action.item);
         break;
@@ -84,20 +89,54 @@ class CompareStore extends EventEmitter {
     }
   }
 
+  addDoc(item) {
+    var id = item.id;
+    var collection = item.collection_id;
+    var stored = JSON.parse(window.localStorage.getItem(collection));
+
+    var savedDocsArray = stored.docs;
+    if(!savedDocsArray) {
+      savedDocsArray = [id];
+    } else {
+      if(savedDocsArray.indexOf(id) < 0) {
+        savedDocsArray.push(id);
+      }
+    }
+    stored.docs = savedDocsArray;
+    window.localStorage.setItem(collection, JSON.stringify(stored))
+    this.resetDrawer();
+    this.emit("ItemCompareUpdated");
+  }
+
+  removeDoc(item) {
+    var id = item.id;
+    var collection = item.collection_id;
+    var stored = JSON.parse(window.localStorage.getItem(collection));
+    var savedDocsArray = stored.docs;
+
+    if(savedDocsArray && savedDocsArray.indexOf(id) > -1) {
+      savedDocsArray.splice(savedDocsArray.indexOf(id), 1)
+    }
+    stored.docs = savedDocsArray;
+    window.localStorage.setItem(collection, JSON.stringify(stored))
+    this.resetDrawer();
+    this.emit("ItemCompareUpdated");
+  }
+
   setItem(item) {
     var id = item.id;
     var collection = item.collection_id;
-    var savedItems = JSON.parse(window.localStorage.getItem(collection));
-    var savedItemsArray = savedItems.items;
+    var stored = JSON.parse(window.localStorage.getItem(collection));
+    var savedItemsArray = stored.items;
     if(!savedItemsArray) {
-      savedItems = { items: [id] };
+      savedItemsArray = [id];
     } else {
       if(savedItemsArray.indexOf(id) < 0) {
         savedItemsArray.push(id);
-        savedItems = { items: savedItemsArray };
       }
     }
-    window.localStorage.setItem(collection, JSON.stringify(savedItems))
+    stored.items = savedItemsArray;
+    window.localStorage.setItem(collection, JSON.stringify(stored))
     this.resetDrawer();
     this.emit("ItemCompareUpdated");
   }
@@ -105,16 +144,27 @@ class CompareStore extends EventEmitter {
   removeItem(item) {
     var id = item.id;
     var collection = item.collection_id;
-    var savedItems = JSON.parse(window.localStorage.getItem(collection));
-    var savedItemsArray = savedItems.items;
+    var stored = JSON.parse(window.localStorage.getItem(collection));
+    var savedItemsArray = stored.items;
 
     if(savedItemsArray && savedItemsArray.indexOf(id) > -1) {
       savedItemsArray.splice(savedItemsArray.indexOf(id), 1)
-      savedItems = { items: savedItemsArray };
     }
-    window.localStorage.setItem(collection, JSON.stringify(savedItems))
+    stored.items = savedItemsArray;
+    window.localStorage.setItem(collection, JSON.stringify(stored))
     this.resetDrawer();
     this.emit("ItemCompareUpdated");
+  }
+
+  collectionDocs(collection_id) {
+    var docs = [];
+    if(window.localStorage.getItem(collection_id)) {
+      var obj = JSON.parse(window.localStorage.getItem(collection_id));
+      if(obj.docs) {
+        docs = obj.docs;
+      }
+    }
+    return docs;
   }
 
   collectionItems(collection_id) {
