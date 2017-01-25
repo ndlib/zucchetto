@@ -74,10 +74,10 @@ class ItemStore extends EventEmitter {
     var parseFunction = _.bind(this.parseParent, this);
 
     _.each(items, parseFunction);
-    this._data[HumanRightsID].docTypes = _.uniq(this._data[HumanRightsID].docTypes);
-    this._data[VaticanID].docTypes = _.uniq(this._data[VaticanID].docTypes);
-    this._data[HumanRightsID].docSources = _.uniq(this._data[HumanRightsID].docSources);
-    this._data[VaticanID].docSources = _.uniq(this._data[VaticanID].docSources);
+    this._data[HumanRightsID].docTypes = _.uniq(this._data[HumanRightsID].docTypes).sort();
+    this._data[VaticanID].docTypes = _.uniq(this._data[VaticanID].docTypes).sort();
+    this._data[HumanRightsID].docSources = _.uniq(this._data[HumanRightsID].docSources).sort();
+    this._data[VaticanID].docSources = _.uniq(this._data[VaticanID].docSources).sort();
   }
 
   updateData(collection, doctype, year, source) {
