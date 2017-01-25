@@ -193,21 +193,22 @@ var AdvancedSearch = React.createClass({
   },
 
   render: function() {
+    // This is the button to open how to, turn on when we have info to put in there
+    //  <mui.FlatButton
+    //    onTouchTap={ this.openFAQ }
+    //    backgroundColor={ '#224048' }
+    //    style={{ marginRight: '15px' }}
+    //  >
+    //    <mui.FontIcon
+    //      className="material-icons"
+    //      style={{
+    //        color: 'white',
+    //        padding: '0 1px',
+    //        verticalAlign: 'middle'
+    //      }}
+    //    >info</mui.FontIcon>
+    //  </mui.FlatButton>,
     const actions = [
-      <mui.FlatButton
-        onTouchTap={ this.openFAQ }
-        backgroundColor={ '#224048' }
-        style={{ marginRight: '15px' }}
-      >
-        <mui.FontIcon
-          className="material-icons"
-          style={{
-            color: 'white',
-            padding: '0 1px',
-            verticalAlign: 'middle'
-          }}
-        >info</mui.FontIcon>
-      </mui.FlatButton>,
       <mui.FlatButton
         label="Reset"
         labelStyle={{color: 'white'}}
