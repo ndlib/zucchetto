@@ -61,8 +61,11 @@ class SearchPage extends Component {
     SearchStore.addQueryChangeListener(this.handleQueryChange);
     SearchStore.addParamsChangeListener(this.handleParamsChange);
     SearchActions.setParamsFromUri();
+
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
-    ItemActions.preLoadItems();
+    if(!ItemStore.preLoaded()) {
+      ItemActions.preLoadItems();
+    }
   }
 
   componentWillUnmount() {

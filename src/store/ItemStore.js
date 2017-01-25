@@ -30,12 +30,12 @@ class ItemStore extends EventEmitter {
     this._data[HumanRightsID] = {
       docTypes: [],
       docSources: [],
-      firstYear: 2000,
+      firstYear: new Date().getFullYear(),
     };
     this._data[VaticanID] = {
       docTypes: [],
       docSources: [],
-      firstYear: 2000,
+      firstYear: new Date().getFullYear(),
     };
   }
 
@@ -81,26 +81,38 @@ class ItemStore extends EventEmitter {
   }
 
   updateData(collection, doctype, year, source) {
-    this._data[collection].docTypes.push(doctype);
-    this._data[collection].firstYear = Math.min(this._data[collection].firstYear, year);
-    this._data[collection].docSources.push(source);
+    if(doctype) {
+      this._data[collection].docTypes.push(doctype);
+    }
+    if(year) {
+      this._data[collection].firstYear = Math.min(this._data[collection].firstYear, year);
+    }
+    if(source) {
+      this._data[collection].docSources.push(source);
+    }
+  }
+
+  metaValue(item, name, field, defaultVal) {
+    if(field) {
+      return field.values[0].value;
+    }
+    console.log("Item has no " + name);
+    console.log(item);
+    return defaultVal;
   }
 
   parseParent(item) {
     this._items[item.id] = item;
-    var doctype = item.metadata.type_of_document.values[0].value;
-    var year = 2017;
-    if(item.metadata.coverage_temporal) {
-      year = item.metadata.coverage_temporal.values[0].value;
-    } else {
-      console.log("Item has no date");
-      console.log(item);
-    }
+    var meta = item.metadata
+    var doctype = this.metaValue(item, "DocType", meta.type_of_document, null);
+    var year = this.metaValue(item, "Date", meta.coverage_temporal, new Date().getFullYear());
 
     if(item.collection_id == VaticanID) {
-      this.updateData(VaticanID, doctype, year, item.metadata.promulgated_by.values[0].value)
+      var source = this.metaValue(item, "source", meta.promulgated_by, null);
+      this.updateData(VaticanID, doctype, year, source);
     } else if(item.collection_id == HumanRightsID) {
-      this.updateData(HumanRightsID, doctype, year, item.metadata.organization.values[0].value)
+      var source = this.metaValue(item, "source", meta.organization, null);
+      this.updateData(HumanRightsID, doctype, year, source)
     }
 
     this._parentItems.push(item);
