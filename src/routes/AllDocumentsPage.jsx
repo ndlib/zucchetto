@@ -6,6 +6,7 @@ import FooterHome from '../components/StaticAssets/FooterHome.jsx';
 import Heading from '../components/Shared/Heading.jsx';
 
 import ItemStore from '../store/ItemStore.js';
+import ItemActions from '../actions/ItemActions.jsx';
 import HumanRightsID from '../constants/HumanRightsID.js';
 import VaticanID from '../constants/VaticanID.js';
 
@@ -22,6 +23,9 @@ class AllDocumentsPage extends Component {
 
   componentWillMount() {
     ItemStore.on("PreLoadFinished", this.preLoadFinished);
+    if(!this.state.loaded) {
+      ItemActions.preLoadItems();
+    }
   }
 
   componentWillUnmount() {
@@ -33,6 +37,14 @@ class AllDocumentsPage extends Component {
   }
 
   render() {
+    if(!this.state.loaded) {
+      return (
+        <div>
+          <Header/>
+          Loading...
+        </div>
+      );
+    }
     return (
       <div>
         <Header/>
