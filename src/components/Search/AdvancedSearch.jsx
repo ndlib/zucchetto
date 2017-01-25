@@ -12,16 +12,13 @@ import AdvancedHowTo from './AdvancedHowTo.jsx';
 
 var AdvancedSearch = React.createClass({
   styles: {
-    list: {
-      maxHeight: '200px',
-      overflowY: 'scroll',
-    },
     listItem: {
       minWidth: '150px',
     },
     listDiv: {
       display: 'inline-block',
       width: 'calc(50% - 40px)',
+      verticalAlign: 'top',
       textAlign: 'left',
     },
     docDiv: {
@@ -109,7 +106,7 @@ var AdvancedSearch = React.createClass({
       <div style={this.styles.listDiv}>
         <h4>Document Type</h4>
         <mui.Divider/>
-        <mui.List style={this.styles.list}>
+        <mui.List>
           {entries}
         </mui.List>
       </div>
@@ -140,7 +137,7 @@ var AdvancedSearch = React.createClass({
       <div style={this.styles.listDiv}>
         <h4>Document Source</h4>
         <mui.Divider/>
-        <mui.List style={this.styles.list}>
+        <mui.List>
           {entries}
         </mui.List>
       </div>
@@ -196,21 +193,22 @@ var AdvancedSearch = React.createClass({
   },
 
   render: function() {
+    // This is the button to open how to, turn on when we have info to put in there
+    //  <mui.FlatButton
+    //    onTouchTap={ this.openFAQ }
+    //    backgroundColor={ '#224048' }
+    //    style={{ marginRight: '15px' }}
+    //  >
+    //    <mui.FontIcon
+    //      className="material-icons"
+    //      style={{
+    //        color: 'white',
+    //        padding: '0 1px',
+    //        verticalAlign: 'middle'
+    //      }}
+    //    >info</mui.FontIcon>
+    //  </mui.FlatButton>,
     const actions = [
-      <mui.FlatButton
-        onTouchTap={ this.openFAQ }
-        backgroundColor={ '#224048' }
-        style={{ marginRight: '15px' }}
-      >
-        <mui.FontIcon
-          className="material-icons"
-          style={{
-            color: 'white',
-            padding: '0 1px',
-            verticalAlign: 'middle'
-          }}
-        >info</mui.FontIcon>
-      </mui.FlatButton>,
       <mui.FlatButton
         label="Reset"
         labelStyle={{color: 'white'}}
@@ -219,7 +217,7 @@ var AdvancedSearch = React.createClass({
         style={{marginRight: '15px'}}
       />,
       <mui.FlatButton
-        label="Search"
+        label="OK"
         labelStyle={{ color: 'white' }}
         onTouchTap={ this.closeDialog }
         backgroundColor={ '#224048' }
@@ -279,6 +277,7 @@ var AdvancedSearch = React.createClass({
           <DocDateSlider />
           <h4>Here you can refine search parameters on each document collection separately.</h4>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
+          <br/>
           { this.makeCard('International Human Rights Law', this.onHumanExpand, this.state.humanExpanded, HumanRightsID) }
           <mui.Checkbox
             label="Search Topic List Only"
