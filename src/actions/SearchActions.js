@@ -45,12 +45,11 @@ class SearchActions {
     });
   }
 
-  setFilters(collection, filters, emit=false) {
+  setFilters(collection, filters) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_FILTERS,
       collection: collection,
       filters: filters,
-      emit: emit,
     });
   }
 

@@ -12,7 +12,7 @@ var DocDateSlider = React.createClass({
   },
 
   storedState() {
-    var currentFilters = SearchStore.selectedFilters;
+    var currentFilters = SearchStore.selectedFilters["global"];
 
     var minDocDate = Number(ItemStore.getEarliestDocYear(this.props.collection));
     var maxDocDate = Number(new Date().getFullYear());
@@ -23,13 +23,17 @@ var DocDateSlider = React.createClass({
       minDocDate: minDocDate,
       maxDocDate: maxDocDate,
 
-      currentMin: Number(currentMin),
-      currentMax: Number(currentMax),
+      minDate: Number(currentMin),
+      maxDate: Number(currentMax),
     });
   },
 
   getInitialState: function() {
     return this.storedState();
+  },
+
+  componentWillMount() {
+    this.setState(this.storedState());
   },
 
   componentWillReceiveProps(nextProps) {
@@ -40,20 +44,16 @@ var DocDateSlider = React.createClass({
     var min = e[0];
     var max = e[1];
 
-    this.setState({
-      currentMin: min,
-      currentMax: max,
-    });
-
-    SearchActions.setFilters(this.props.collection, {
+    var data = {
       minDate: min,
       maxDate: max,
-    });
+    }
+    this.setState(data);
   },
 
   render: function() {
-    var currentMin = this.state.currentMin;
-    var currentMax = this.state.currentMax;
+    var currentMin = this.state.minDate;
+    var currentMax = this.state.maxDate;
 
     return(
       <div>

@@ -2,6 +2,7 @@ var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
 var IDFromAtID = require("../modules/IDFromAtID.js");
+var DeepCopy = require("../modules/DeepCopy.js");
 var _ = require('underscore');
 
 import HumanRightsID from '../constants/HumanRightsID.js';
@@ -29,7 +30,7 @@ class SearchStore extends EventEmitter {
                   ];
     this._sortOption = "relevance";
 
-    this._selectedFilters = {}
+    this._selectedFilters = { "global": {} }
     this._selectedFilters[HumanRightsID] = {
       docType: [],
       docSource: [],
@@ -155,11 +156,9 @@ class SearchStore extends EventEmitter {
   }
 
   setFilters(collection, filters) {
-    var addTo = collection ? this._selectedFilters[collection] : this._selectedFilters;
+    var id = collection ? collection : "global";
 
-    for(var key in filters) {
-      addTo[key] = filters[key];
-    }
+    this._selectedFilters[id] = DeepCopy(filters);
   }
 
   hasTopic(topic) {
@@ -218,8 +217,8 @@ class SearchStore extends EventEmitter {
       outUri += "&sort=" + this._sortOption;
     }
 
-    outUri += this.makeUriElement(this._selectedFilters, "minDate");
-    outUri += this.makeUriElement(this._selectedFilters, "maxDate");
+    outUri += this.makeUriElement(this._selectedFilters["global"], "minDate");
+    outUri += this.makeUriElement(this._selectedFilters["global"], "maxDate");
 
     outUri += this.makeUriElement(this._selectedFilters[VaticanID], "docSource", "v.docSource");
     outUri += this.makeUriElement(this._selectedFilters[VaticanID], "docType", "v.docType");
@@ -301,9 +300,7 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_FILTERS:
         this.setFilters(action.collection, action.filters);
-        if (action.emit) {
-          this.emitParamsChange();
-        }
+        this.emitParamsChange();
         this.emitResultsChange();
         break;
       default:

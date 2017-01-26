@@ -4,6 +4,7 @@ var React = require('react');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 var ItemStore = require('../../store/ItemStore.js');
+var DeepCopy = require("../../modules/DeepCopy.js");
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import VaticanID from '../../constants/VaticanID.js';
 import mui from 'material-ui';
@@ -44,15 +45,28 @@ var AdvancedSearch = React.createClass({
       faqOpen: false,
       vaticanExpanded: false,
       humanExpanded: false,
+      filters: DeepCopy(SearchStore.selectedFilters),
     });
   },
 
   openDialog() {
-    this.setState({isOpen: true});
+    this.setState({
+      isOpen: true,
+      filters: DeepCopy(SearchStore.selectedFilters),
+    });
+  },
+
+  applyAndClose() {
+    SearchActions.setFilters(VaticanID, this.state.filters[VaticanID]);
+    SearchActions.setFilters(HumanRightsID, this.state.filters[HumanRightsID]);
+    SearchActions.setFilters(null, {
+      "minDate": this.refs.DateSlider.state.minDate,
+      "maxDate": this.refs.DateSlider.state.maxDate,
+    });
+    this.closeDialog();
   },
 
   closeDialog() {
-    SearchActions.setFilters(null, {}, true);
     this.setState({isOpen: false});
   },
 
@@ -64,26 +78,45 @@ var AdvancedSearch = React.createClass({
     this.setState({faqOpen: false});
   },
 
+  addFilter(collection, key, value) {
+    var current = this.state.filters[collection][key];
+    if(!current) {
+      current = [value];
+    } else if(current instanceof Array) {
+      current.push(value);
+    }
+    this.setState(this.state.filters);
+  },
+
+  removeFilter(collection, key, value) {
+    var array = this.state.filters[collection][key];
+    for(var i = 0; i < array.length; ++i) {
+      if(array[i] == value) {
+        array.splice(i, 1);
+        break;
+      }
+    }
+    this.setState(this.state.filters);
+  },
+
   onDoctypeCheck(collection, value, event, isInputChecked) {
     if(isInputChecked) {
-      SearchActions.addFilters(collection, { docType: [value] });
+      this.addFilter(collection, "docType", value);
     } else {
-      SearchActions.removeFilters(collection, { docType: [value] });
+      this.removeFilter(collection, "docType", value);
     }
-    this.forceUpdate();
   },
 
   onDocsourceCheck(collection, value, event, isInputChecked) {
     if(isInputChecked) {
-      SearchActions.addFilters(collection, { docSource: [value] });
+      this.addFilter(collection, "docSource", value);
     } else {
-      SearchActions.removeFilters(collection, { docSource: [value] });
+      this.removeFilter(collection, "docSource", value);
     }
-    this.forceUpdate();
   },
 
   buildDoctypeList(collectionId) {
-    var currentFilters = SearchStore.selectedFilters[collectionId].docType;
+    var currentFilters = this.state.filters[collectionId]["docType"];
     var doctypes = ItemStore.getDocTypes(collectionId);
     var entries = [];
 
@@ -114,7 +147,7 @@ var AdvancedSearch = React.createClass({
   },
 
   buildDocSourceList(collectionId) {
-    var currentFilters = SearchStore.selectedFilters[collectionId].docSource;
+    var currentFilters = this.state.filters[collectionId]["docSource"];
     var sources = ItemStore.getDocSources(collectionId);
     var entries = [];
 
@@ -160,7 +193,9 @@ var AdvancedSearch = React.createClass({
     SearchActions.setFilters(VaticanID, { docType: [], docSource: [] });
     SearchActions.setFilters(HumanRightsID, { docType: [], docSource: [] });
     SearchActions.setFilters(null, { minDate: ItemStore.getEarliestDocYear(), maxDate: new Date().getFullYear() });
-    this.forceUpdate();
+    this.setState({
+      filters: DeepCopy(SearchStore.selectedFilters),
+    });
   },
 
   topicSearchChecked(e, isChecked) {
@@ -192,6 +227,38 @@ var AdvancedSearch = React.createClass({
     );
   },
 
+  advancedTitle: function() {
+    return(
+      <div>
+        <h3 style={{
+          margin: "0",
+          padding: "24px 24px 0 24px",
+          color: "rgba(0, 0, 0, 0.87)",
+          fontSize: "24px",
+          lineHeight: "32px",
+          fontWeight: "400",
+          display: "inline-block",
+        }}>Advanced Search Filters</h3>
+        <mui.FlatButton
+            onClick={this.closeDialog}
+            style={{
+              float: "right",
+              marginTop: "20px",
+            }}
+            disableTouchRipple={true}
+          >
+            <mui.FontIcon
+              className="material-icons"
+              style={{
+                padding: '0 1px',
+                verticalAlign: 'middle'
+              }}
+            >close</mui.FontIcon>
+          </mui.FlatButton>
+      </div>
+    );
+  },
+
   render: function() {
     // This is the button to open how to, turn on when we have info to put in there
     //  <mui.FlatButton
@@ -219,7 +286,7 @@ var AdvancedSearch = React.createClass({
       <mui.FlatButton
         label="OK"
         labelStyle={{ color: 'white' }}
-        onTouchTap={ this.closeDialog }
+        onTouchTap={ this.applyAndClose }
         backgroundColor={ '#224048' }
       />,
     ];
@@ -249,15 +316,15 @@ var AdvancedSearch = React.createClass({
           </mui.RaisedButton>
         </div>
         <mui.Dialog
-          title="Advanced Search"
+          title={this.advancedTitle()}
           actions={actions}
-          modal={false}
+          modal={true}
           open={this.state.isOpen}
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
           <mui.Dialog
-            title="How to Advanced Search"
+            title="How to use Advanced Search Filters"
             actions={[
               <mui.FlatButton
                 onTouchTap={ this.closeFAQ }
@@ -274,7 +341,7 @@ var AdvancedSearch = React.createClass({
             <AdvancedHowTo />
           </mui.Dialog>
 
-          <DocDateSlider />
+          <DocDateSlider ref="DateSlider" />
           <h4>Here you can refine search parameters on each document collection separately.</h4>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
           <br/>
