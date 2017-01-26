@@ -3,8 +3,8 @@ import HumanRightsID from '../constants/HumanRightsID.js';
 import VaticanID from '../constants/VaticanID.js';
 
 function dateFilter(item, filters) {
-  var minDate = filters["minDate"];
-  var maxDate = filters["maxDate"];
+  var minDate = filters["global"]["minDate"];
+  var maxDate = filters["global"]["maxDate"];
 
   // we will include items that have no date
   // the items themselves are loged on initial load

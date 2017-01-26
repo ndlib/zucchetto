@@ -16,13 +16,15 @@ class SearchActions {
   }
 
   setParamsFromUri() {
+    var minDate = this.decodeKey('minDate')
+    var maxDate = this.decodeKey('maxDate')
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_INI_PARAMS,
       topics: this.decodeArray('t'),
       searchTerm: this.decodeKey('q'),
       sort: this.decodeKey('sort'),
-      minDate: this.decodeKey('minDate'),
-      maxDate: this.decodeKey('maxDate'),
+      minDate: minDate ? Number(minDate) : null,
+      maxDate: maxDate ? Number(maxDate) : null,
       vDocSource: this.decodeArray('v.docSource'),
       vDocType: this.decodeArray('v.docType'),
       hDocSource: this.decodeArray('h.docSource'),
@@ -45,28 +47,18 @@ class SearchActions {
     });
   }
 
-  setFilters(collection, filters, emit=false) {
+  setFilters(collection, filters) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_FILTERS,
       collection: collection,
       filters: filters,
-      emit: emit,
     });
   }
 
-  addFilters(collection, filters) {
+  setTopicsOnly(activated) {
     AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_ADD_FILTERS,
-      collection: collection,
-      filters: filters,
-    });
-  }
-
-  removeFilters(collection, filters = {}) {
-    AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_REMOVE_FILTERS,
-      collection: collection,
-      filters: filters,
+      actionType: SearchActionTypes.SEARCH_SET_TOPICS_ONLY,
+      activated: activated,
     });
   }
 

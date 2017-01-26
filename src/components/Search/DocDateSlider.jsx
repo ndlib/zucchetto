@@ -9,10 +9,11 @@ import mui from 'material-ui';
 var DocDateSlider = React.createClass({
   propTypes: {
     collection: React.PropTypes.string,
+    emitter: React.PropTypes.object,
   },
 
   storedState() {
-    var currentFilters = SearchStore.selectedFilters;
+    var currentFilters = SearchStore.selectedFilters["global"];
 
     var minDocDate = Number(ItemStore.getEarliestDocYear(this.props.collection));
     var maxDocDate = Number(new Date().getFullYear());
@@ -23,8 +24,8 @@ var DocDateSlider = React.createClass({
       minDocDate: minDocDate,
       maxDocDate: maxDocDate,
 
-      currentMin: Number(currentMin),
-      currentMax: Number(currentMax),
+      minDate: Number(currentMin),
+      maxDate: Number(currentMax),
     });
   },
 
@@ -32,28 +33,36 @@ var DocDateSlider = React.createClass({
     return this.storedState();
   },
 
-  componentWillReceiveProps(nextProps) {
+  reset() {
+    this.setState({
+      minDate: this.state.minDocDate,
+      maxDate: this.state.maxDocDate,
+    });
+  },
+
+  componentWillMount() {
+    this.props.emitter.addListener('reset', this.reset);
     this.setState(this.storedState());
+  },
+
+  componentWillUnmount() {
+    this.props.emitter.removeListener('reset', this.reset);
   },
 
   onChange(e) {
     var min = e[0];
     var max = e[1];
 
-    this.setState({
-      currentMin: min,
-      currentMax: max,
-    });
-
-    SearchActions.setFilters(this.props.collection, {
+    var data = {
       minDate: min,
       maxDate: max,
-    });
+    }
+    this.setState(data);
   },
 
   render: function() {
-    var currentMin = this.state.currentMin;
-    var currentMax = this.state.currentMax;
+    var currentMin = this.state.minDate;
+    var currentMax = this.state.maxDate;
 
     return(
       <div>
