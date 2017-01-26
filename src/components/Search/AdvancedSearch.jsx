@@ -190,12 +190,15 @@ var AdvancedSearch = React.createClass({
   },
 
   reset() {
-    SearchActions.setFilters(VaticanID, { docType: [], docSource: [] });
-    SearchActions.setFilters(HumanRightsID, { docType: [], docSource: [] });
-    SearchActions.setFilters(null, { minDate: ItemStore.getEarliestDocYear(), maxDate: new Date().getFullYear() });
-    this.setState({
-      filters: DeepCopy(SearchStore.selectedFilters),
-    });
+    var filters = {
+      global: {
+        minDate: ItemStore.getEarliestDocYear(),
+        maxDate: new Date().getFullYear(),
+      },
+    }
+    filters[VaticanID] = { docType: [], docSource: [] }
+    filters[HumanRightsID] = { docType: [], docSource: [] }
+    this.setState({filters: filters});
   },
 
   topicSearchChecked(e, isChecked) {
@@ -341,7 +344,10 @@ var AdvancedSearch = React.createClass({
             <AdvancedHowTo />
           </mui.Dialog>
 
-          <DocDateSlider ref="DateSlider" />
+          <DocDateSlider ref="DateSlider"
+            currentMin={this.state.filters["global"]["minDate"]}
+            currentMax={this.state.filters["global"]["maxDate"]}
+          />
           <h4>Here you can refine search parameters on each document collection separately.</h4>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
           <br/>

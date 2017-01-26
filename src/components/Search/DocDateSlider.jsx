@@ -9,16 +9,17 @@ import mui from 'material-ui';
 var DocDateSlider = React.createClass({
   propTypes: {
     collection: React.PropTypes.string,
+
+    currentMin: React.PropTypes.number,
+    currentMax: React.PropTypes.number,
   },
 
-  storedState() {
-    var currentFilters = SearchStore.selectedFilters["global"];
-
-    var minDocDate = Number(ItemStore.getEarliestDocYear(this.props.collection));
+  storedState(props) {
+    var minDocDate = Number(ItemStore.getEarliestDocYear(props.collection));
     var maxDocDate = Number(new Date().getFullYear());
 
-    var currentMin = currentFilters["minDate"] ? currentFilters["minDate"] : minDocDate;
-    var currentMax = currentFilters["maxDate"] ? currentFilters["maxDate"] : maxDocDate;
+    var currentMin = props.currentMin ? props.currentMin : minDocDate;
+    var currentMax = props.currentMax ? props.currentMax : maxDocDate;
     return({
       minDocDate: minDocDate,
       maxDocDate: maxDocDate,
@@ -29,15 +30,15 @@ var DocDateSlider = React.createClass({
   },
 
   getInitialState: function() {
-    return this.storedState();
+    return this.storedState(this.props);
   },
 
   componentWillMount() {
-    this.setState(this.storedState());
+    this.setState(this.storedState(this.props));
   },
 
   componentWillReceiveProps(nextProps) {
-    this.setState(this.storedState());
+    this.setState(this.storedState(nextProps));
   },
 
   onChange(e) {

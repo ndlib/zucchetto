@@ -16,13 +16,15 @@ class SearchActions {
   }
 
   setParamsFromUri() {
+    var minDate = this.decodeKey('minDate')
+    var maxDate = this.decodeKey('maxDate')
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_INI_PARAMS,
       topics: this.decodeArray('t'),
       searchTerm: this.decodeKey('q'),
       sort: this.decodeKey('sort'),
-      minDate: this.decodeKey('minDate'),
-      maxDate: this.decodeKey('maxDate'),
+      minDate: minDate ? Number(minDate) : null,
+      maxDate: maxDate ? Number(maxDate) : null,
       vDocSource: this.decodeArray('v.docSource'),
       vDocType: this.decodeArray('v.docType'),
       hDocSource: this.decodeArray('h.docSource'),
