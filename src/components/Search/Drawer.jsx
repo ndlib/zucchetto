@@ -1,7 +1,7 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import CompareStore from '../../store/CompareStore.js';
-import NotebookLink from '../Notebook/NotebookLink.jsx';
+import NotebookLinkString from '../../modules/NotebookLinkString.js';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import mui from 'material-ui';
@@ -29,16 +29,6 @@ class Drawer extends Component {
     CompareStore.clearAll();
   }
 
-  url() {
-    let vaticanItems = CompareStore.collectionItems(VaticanID);
-    let humanRightItems = CompareStore.collectionItems(HumanRightsID);
-
-    let vString = 'v=' + vaticanItems.join('|');
-    let hString = 'h=' + humanRightItems.join('|');
-
-    return '/notebook' + '?' + vString + '&' + hString;
-  }
-
   updateCount() {
     let length = CompareStore.allItems().length
 
@@ -55,7 +45,7 @@ class Drawer extends Component {
     this.setState({
       open: false,
     });
-    this.context.router.push(this.url());
+    this.context.router.push(NotebookLinkString());
 
   };
 
