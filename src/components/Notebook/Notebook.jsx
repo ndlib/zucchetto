@@ -104,7 +104,7 @@ class Notebook extends Component {
 
     return (
       <div>
-        <Header />
+        <Header showCompareActions={ false }/>
         <NotebookToolbar />
         <div className="row body" style={{ height: this.state.height, backgroundColor: 'white' }}>
           <div className="col-sm-3 left-col" style={{ backgroundColor: '#f8f6ed' }}>

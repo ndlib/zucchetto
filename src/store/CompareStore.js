@@ -39,6 +39,7 @@ class CompareStore extends EventEmitter {
   }
 
   validStore() {
+    return true;
     if(!this.validCollection(VaticanID) || !this.validCollection(HumanRightsID)) {
       return false;
     }

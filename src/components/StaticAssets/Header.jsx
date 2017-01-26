@@ -3,6 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import mui, { AppBar, FlatButton, FontIcon, LeftNav } from 'material-ui';
 import NotebookLink from "../Notebook/NotebookLink.jsx"
+import ClearNotebookHeaderButton from "./ClearNotebookHeaderButton.jsx"
+
 import { Link } from 'react-router'
 import Navigation from './Navigation.jsx'
 
@@ -11,6 +13,17 @@ class Header extends Component {
     super();
     this.state = { menuOpen: false }
     this.menuClick = this.menuClick.bind(this);
+  }
+
+  actionButtons() {
+    if(this.props.showCompareActions)
+      return (
+        <div style={{ marginTop: '-8px' }}>
+          <NotebookLink />
+          <ClearNotebookHeaderButton />
+        </div>
+      );
+    return null;
   }
 
   menuClick() {
@@ -54,7 +67,7 @@ class Header extends Component {
             lineHeight: '50px',
           }}
           iconElementLeft={ icon }
-          iconElementRight={ (<div style={{marginTop: '-8px'}}><NotebookLink /></div>) }
+          iconElementRight={ this.actionButtons() }
 
         />
         <LeftNav
@@ -85,6 +98,14 @@ class Header extends Component {
 
     );
   }
+}
+
+Header.propTypes = {
+  showCompareActions: React.PropTypes.bool,
+}
+
+Header.defaultProps = {
+  showCompareActions: true,
 }
 
 export default Header;
