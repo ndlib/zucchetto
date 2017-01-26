@@ -23,6 +23,10 @@ var SearchBox = React.createClass({
     SearchStore.addResultsChangeListener(this.handleResultsChange);
   },
 
+  componentWillUnmount: function() {
+    SearchStore.removeResultsChangeListener(this.handleResultsChange);
+  },
+
   handleResultsChange: function() {
     this.setState({ showAdvanced: SearchStore.hasSearch() });
   },
