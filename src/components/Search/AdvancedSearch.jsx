@@ -56,6 +56,7 @@ var AdvancedSearch = React.createClass({
     this.setState({
       isOpen: true,
       filters: DeepCopy(SearchStore.selectedFilters),
+      topicsOnly: SearchStore.topicsOnly,
     });
   },
 
