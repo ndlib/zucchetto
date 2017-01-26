@@ -237,6 +237,14 @@ class SearchStore extends EventEmitter {
     return true;
   }
 
+  totalDocumentHits() {
+    var total = 0;
+    for(var collection in this._hits){
+      total += this._hits[collection].length;
+    }
+    return total;
+  }
+
   // Receives actions sent by the AppDispatcher
   receiveAction(action) {
     switch(action.actionType) {
