@@ -14,8 +14,17 @@ var SearchBox = React.createClass({
 
   getInitialState: function() {
     return {
+      showAdvanced: false,
       searchTerm: SearchStore.searchTerm
     };
+  },
+
+  componentWillMount: function() {
+    SearchStore.addResultsChangeListener(this.handleResultsChange);
+  },
+
+  handleResultsChange: function() {
+    this.setState({ showAdvanced: SearchStore.totalDocumentHits() > 0 });
   },
 
   onChange: function(e) {
@@ -72,7 +81,7 @@ var SearchBox = React.createClass({
           width: '100%'}}
       >
         {this.input()}
-        <AdvancedSearch/>
+        { this.state.showAdvanced && <AdvancedSearch/> }
         <mui.RaisedButton
           onClick={this.onClick}
           style={{
