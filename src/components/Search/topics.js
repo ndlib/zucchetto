@@ -152,7 +152,7 @@ module.exports = {
           ]
         },
         {
-          name: 'Discrimination/Prejudice/Inequality/Marginalization',
+          name: 'Discrimination/Prejudice/ Inequality/Marginalization',
           value: 'Discrimination Prejudice Inequality Marginalization',
           children: [
             { name: 'Cultural Persecution/Cultural Oppression', value: 'Cultural Persecution Cultural Oppression' },
