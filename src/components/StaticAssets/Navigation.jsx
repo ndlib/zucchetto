@@ -12,7 +12,7 @@ class Navigation extends Component {
         </MenuItem>
         <Divider />
         <MenuItem>
-          <Link to="/search?q=">Search Database</Link>
+          <Link to="/search?q=">Search the Database</Link>
         </MenuItem>
         <MenuItem>
           <Link to="/documents">Index of Documents</Link>
