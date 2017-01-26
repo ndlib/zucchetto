@@ -45,10 +45,7 @@ class SearchStore extends EventEmitter {
     Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
     Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
     Object.defineProperty(this, "selectedFilters", { get: function() { return this._selectedFilters; } });
-    Object.defineProperty(this, "topicsOnly", {
-      get: function() { return this._topicsOnly; },
-      set: function(only) { this._topicsOnly = only; this.emitQueryChange(); }
-    });
+    Object.defineProperty(this, "topicsOnly", { get: function() { return this._topicsOnly; } });
 
     AppDispatcher.register(this.receiveAction.bind(this));
   }
@@ -290,13 +287,9 @@ class SearchStore extends EventEmitter {
         this.emitResultsChange();
         this.emitParamsChange();
         break;
-      case SearchActionTypes.SEARCH_ADD_FILTERS:
-        this.addFilters(action.collection, action.filters);
-        this.emitResultsChange();
-        break;
-      case SearchActionTypes.SEARCH_REMOVE_FILTERS:
-        this.removeFilters(action.collection, action.filters);
-        this.emitResultsChange();
+      case SearchActionTypes.SEARCH_SET_TOPICS_ONLY:
+        this._topicsOnly = action.activated;
+        this.emitQueryChange();
         break;
       case SearchActionTypes.SEARCH_SET_FILTERS:
         this.setFilters(action.collection, action.filters);

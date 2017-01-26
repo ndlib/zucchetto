@@ -3,6 +3,7 @@ var _ = require('underscore');
 var React = require('react');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
+var EventEmitter = require("events").EventEmitter;
 var ItemStore = require('../../store/ItemStore.js');
 var DeepCopy = require("../../modules/DeepCopy.js");
 import HumanRightsID from '../../constants/HumanRightsID.js';
@@ -46,6 +47,8 @@ var AdvancedSearch = React.createClass({
       vaticanExpanded: false,
       humanExpanded: false,
       filters: DeepCopy(SearchStore.selectedFilters),
+      topicsOnly: SearchStore.topicsOnly,
+      emitter: new EventEmitter(),
     });
   },
 
@@ -57,6 +60,7 @@ var AdvancedSearch = React.createClass({
   },
 
   applyAndClose() {
+    SearchActions.setTopicsOnly(this.state.topicsOnly);
     SearchActions.setFilters(VaticanID, this.state.filters[VaticanID]);
     SearchActions.setFilters(HumanRightsID, this.state.filters[HumanRightsID]);
     SearchActions.setFilters(null, {
@@ -190,19 +194,20 @@ var AdvancedSearch = React.createClass({
   },
 
   reset() {
-    var filters = {
-      global: {
-        minDate: ItemStore.getEarliestDocYear(),
-        maxDate: new Date().getFullYear(),
-      },
-    }
+    var filters = {}
     filters[VaticanID] = { docType: [], docSource: [] }
     filters[HumanRightsID] = { docType: [], docSource: [] }
-    this.setState({filters: filters});
+    this.setState({
+      filters: filters,
+      topicsOnly: false,
+    });
+    this.state.emitter.emit('reset');
   },
 
   topicSearchChecked(e, isChecked) {
-    SearchStore.topicsOnly = isChecked;
+    this.setState({
+      topicsOnly: isChecked,
+    });
   },
 
   makeCard(title, expandFunc, expanded, collectionId) {
@@ -344,10 +349,7 @@ var AdvancedSearch = React.createClass({
             <AdvancedHowTo />
           </mui.Dialog>
 
-          <DocDateSlider ref="DateSlider"
-            currentMin={this.state.filters["global"]["minDate"]}
-            currentMax={this.state.filters["global"]["maxDate"]}
-          />
+          <DocDateSlider ref="DateSlider" emitter={this.state.emitter} />
           <h4>Here you can refine search parameters on each document collection separately.</h4>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
           <br/>
@@ -356,7 +358,7 @@ var AdvancedSearch = React.createClass({
             label="Search Topic List Only"
             style={ this.styles.topicSearchCheckbox }
             onCheck={ this.topicSearchChecked }
-            checked={ SearchStore.topicsOnly }
+            checked={ this.state.topicsOnly }
           />
         </mui.Dialog>
       </div>

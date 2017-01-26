@@ -8,8 +8,7 @@ var SearchActionTypes = keyMirror({
   SEARCH_REMOVE_TOPICS: null,
   SEARCH_CLEAR_TOPICS: null,
   SEARCH_SET_SORT: null,
-  SEARCH_ADD_FILTERS: null,
-  SEARCH_REMOVE_FILTERS: null,
+  SEARCH_SET_TOPICS_ONLY: null,
   SEARCH_SET_FILTERS: null,
 });
 

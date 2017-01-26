@@ -55,19 +55,10 @@ class SearchActions {
     });
   }
 
-  addFilters(collection, filters) {
+  setTopicsOnly(activated) {
     AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_ADD_FILTERS,
-      collection: collection,
-      filters: filters,
-    });
-  }
-
-  removeFilters(collection, filters = {}) {
-    AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_REMOVE_FILTERS,
-      collection: collection,
-      filters: filters,
+      actionType: SearchActionTypes.SEARCH_SET_TOPICS_ONLY,
+      activated: activated,
     });
   }
 
