@@ -24,7 +24,7 @@ var SearchBox = React.createClass({
   },
 
   handleResultsChange: function() {
-    this.setState({ showAdvanced: SearchStore.totalDocumentHits() > 0 });
+    this.setState({ showAdvanced: SearchStore.hasSearch() });
   },
 
   onChange: function(e) {
