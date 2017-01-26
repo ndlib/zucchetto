@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton, FontIcon } from 'material-ui';
 import ViewOriginal from './ViewOriginal.jsx';
-import BackButton from '../Shared/BackButton.jsx';
+import BackToSearchButton from './BackToSearchButton.jsx';
 
 class DocumentToolbar extends Component {
 
@@ -35,7 +35,7 @@ class DocumentToolbar extends Component {
       </ToolbarGroup>
         <ToolbarGroup lastChild={true} float="right">
           <ViewOriginal documentId={ this.props.document.id } />
-          <BackButton />
+          <BackToSearchButton />
           <FlatButton
             label="Text"
             labelPosition="after"

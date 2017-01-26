@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton, FontIcon } from 'material-ui';
 import ManageDialog from '../Document/ManageDialog.jsx';
 import ShareSaveDialog from '../Document/ShareSaveDialog.jsx'
-import BackButton from '../Shared/BackButton.jsx';
+import BackToSearchButton from '../Document/BackToSearchButton.jsx';
 
 class NotebookToolbar extends Component {
 
@@ -13,7 +13,7 @@ class NotebookToolbar extends Component {
         <ToolbarGroup className="toolbar-group">
           <ManageDialog />
           <ShareSaveDialog />
-          <BackButton />          
+          <BackToSearchButton />
         </ToolbarGroup>
       </Toolbar>
      );
