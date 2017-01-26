@@ -10,13 +10,20 @@ class BackToSearchButton extends Component {
   }
 
   render() {
-    return (
-      <Link to={ SearchStore.searchUri() }>
-        <mui.FlatButton
-        label="Return To Search"
-        />
-    </Link>
-    );
+    if (SearchStore.hasSearch()) {
+      return (
+        <Link to={ SearchStore.searchUri() }>
+          <mui.FlatButton
+            label="Back to Search"
+            labelPosition="after"
+            icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
+            backgroundColor="#E4E1D1"
+            style={{ margin: '10px 5px', float: 'left' }}
+          />
+        </Link>
+      );
+    }
+    return <span />;
   }
 
 }

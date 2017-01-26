@@ -235,7 +235,7 @@ class SearchStore extends EventEmitter {
   }
 
   hasSearch() {
-    if (this.searchUri() == "/search?q=&t=") {
+    if (this.searchUri() == "/search?q=&t=" || this.searchUri() == "/search?q=&t=&sort=relevance") {
       return false;
     }
     return true;
