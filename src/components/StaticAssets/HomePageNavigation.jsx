@@ -22,7 +22,7 @@ class HomePageNavigation extends Component {
             <Link to="/partners">Project Partners</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <a href="https://docs.google.com/a/nd.edu/forms/d/1KWB42euKekIx9a3P8C7JuPQzwZk2FshQTg0z8KCSlr8/viewform" target="_blank">Contact Us</a>
           </li>
         </ul>
       </nav>
