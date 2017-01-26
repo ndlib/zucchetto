@@ -151,6 +151,12 @@ class CompareStore extends EventEmitter {
     if(savedItemsArray && savedItemsArray.indexOf(id) > -1) {
       savedItemsArray.splice(savedItemsArray.indexOf(id), 1)
     }
+    if(this._column1Item && this._column1Item.id == id) {
+      this.removeColumnItem(1);
+    }
+    if(this._column2Item && this._column2Item.id == id) {
+      this.removeColumnItem(2);
+    }
     stored.items = savedItemsArray;
     window.localStorage.setItem(collection, JSON.stringify(stored))
     this.resetDrawer();
