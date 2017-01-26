@@ -32,6 +32,49 @@ class DocumentSection extends Component {
     this.doc = this.doc.bind(this);
     this.mapClick = this.mapClick.bind(this);
     this.scrollWindow = this.scrollWindow.bind(this);
+
+    this.styles = {
+      paperNav: {
+        width: "25vw",
+        float: "left",
+        overflowX: 'hidden',
+        overflowY: 'scroll',
+        height: this.state.height,
+        backgroundColor: "#f8f6ed",
+        paddingLeft: '7px',
+      },
+      paperDoc: {
+        width: "65vw",
+        float: "left",
+        overflowX: 'hidden',
+        overflowY: 'scroll',
+        height: this.state.height,
+        backgroundColor: "white",
+      },
+      backButton: {
+        cursor: 'pointer',
+        position: 'absolute',
+        top: '20px',
+        left: 'calc(25% + 20px)',
+        textAlign: 'center',
+      },
+      topButton: {
+        cursor: 'pointer',
+        position: 'absolute',
+        bottom: '10px',
+        left: 'calc(25% + 20px)',
+        textAlign: 'center',
+      },
+      paperMap: {
+        width: "10vw",
+        right: '0',
+        marginRight: "0",
+        overflowX: 'hidden',
+        overflowY: 'scroll',
+        height: this.state.height,
+        position: 'absolute',
+      }
+    };
   }
 
   componentDidMount() {
@@ -96,7 +139,7 @@ class DocumentSection extends Component {
   render() {
     return (
       <Paper style={{ width: '100%', backgroundColor: "inherit" }}>
-        <Paper zDepth={ 0 } style={{ width: "25vw", float: "left", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, backgroundColor: "#f8f6ed"}} >
+        <Paper zDepth={ 0 } style={this.styles.paperNav} >
           <DocumentNav
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
@@ -108,22 +151,22 @@ class DocumentSection extends Component {
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "65vw", float: "left", overflowX: 'hidden', overflowY: 'scroll', height: this.state.height, backgroundColor: "white"}} ref='docBody'>
+        <Paper zDepth={ 0 } style={this.styles.paperDoc} ref='docBody'>
           <div ref='docContent'>
               <div style={{ marginTop: '1em'}} >
                 <CopyrightNotification item={ this.props.parent } />
               </div>
             {this.doc()}
           </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', top: '20px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goBack }>
+          <div style={this.styles.backButton} onClick={ this.goBack }>
             <i className="material-icons">arrow_back</i><br/>
           </div>
-          <div style={{ cursor: 'pointer', position: 'absolute', bottom: '10px', left: 'calc(25% + 20px)', textAlign: 'center'}} onClick={ this.goToTop }>
+          <div style={this.styles.topButton} onClick={ this.goToTop }>
             <i className="material-icons">vertical_align_top</i><br/>
             <p>Top</p>
           </div>
         </Paper>
-        <Paper zDepth={ 0 } style={{ width: "10vw", right: '0', marginRight: "0", overflowX: 'hidden', overflowY: 'scroll',  height: this.state.height, position: 'absolute'}}>
+        <Paper zDepth={ 0 } style={this.styles.paperMap}>
           <MiniMap
             onClick={ this.mapClick }
             scrollTop={ this.state.scrollTop }

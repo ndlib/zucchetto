@@ -31,6 +31,7 @@ class DocumentToolbar extends Component {
             whiteSpace: 'nowrap',
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
+            paddingLeft: '7px',
           }}/>
       </ToolbarGroup>
         <ToolbarGroup lastChild={true} float="right">
