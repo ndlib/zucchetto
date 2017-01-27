@@ -86,7 +86,7 @@ class TopicFacet extends Component {
       return (
         <i
           className="material-icons topic-arrow"
-          style={{ transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(180deg)' }}
+          style={{ transform: this.state.expanded ? 'rotate(90deg)' : 'rotate(0deg)' }}
           onClick={this.onArrowClick.bind(this)}
           >play_arrow</i>
       );
