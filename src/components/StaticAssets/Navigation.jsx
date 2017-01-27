@@ -28,7 +28,7 @@ class Navigation extends Component {
           <Link to="/partners">Project Partners</Link>
         </MenuItem>
         <MenuItem>
-          <a href="https://docs.google.com/a/nd.edu/forms/d/1KWB42euKekIx9a3P8C7JuPQzwZk2FshQTg0z8KCSlr8/viewform" target="_blank">Contact Us</a>
+          <Link to="/contact">Contact Us</Link>
         </MenuItem>
       </nav>
     );
