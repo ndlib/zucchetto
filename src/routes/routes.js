@@ -7,6 +7,7 @@ import SiteIndexPage from './SiteIndexPage.jsx';
 import AboutPage from './AboutPage.jsx';
 import PrivacyPage from './PrivacyPage.jsx';
 import PartnersPage from './PartnersPage.jsx';
+import ContactPage from './ContactPage.jsx';
 import ResultPage from './ResultPage.jsx';
 import SearchPage from './SearchPage.jsx';
 import NotebookPage from './NotebookPage.jsx';
@@ -38,6 +39,7 @@ export default function() {
         <Route path="/about" component={ AboutPage } />
         <Route path="/using" component={ UsingPage } />
         <Route path="/partners" component={ PartnersPage } />
+        <Route path="/contact" component={ ContactPage } />
         <Route path="/result" component={ ResultPage} />
         <Route path="/search" component={ SearchPage } />
         <Route path="/documents" component={ AllDocumentsPage } />
