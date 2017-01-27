@@ -115,7 +115,7 @@ class ListItem extends Component{
             className="material-icons"
             style={{
               fontSize: '12px',
-              transform: this.state.showDocument ? 'rotate(90deg)' : 'rotate(180deg)'
+              transform: this.state.showDocument ? 'rotate(90deg)' : 'rotate(0deg)'
             }}
             >play_arrow</i>
         </a>
