@@ -281,7 +281,40 @@ module.exports = {
           name: 'Civil/Political',
           value: 'Civil Political',
           children: [
-            { name: 'MISSING ITEMS!', value: 'MISSING ITEMS!' },
+            { name: 'Association and Assembly', value: 'Association and Assembly' },
+            {
+              name: 'Family Rights',
+              value: 'Family Rights',
+              children: [
+                { name: 'Care of Children', value: 'Care of Children' },
+                { name: 'Fundamental Unit of Society', value: 'Fundamental Unit of Society' },
+                { name: 'Marriage/Divorce', value: 'Marriage Divorce' },
+                { name: 'Maternity', value: 'Maternity' },
+                { name: 'Reproductive Rights', value: 'Reproductive Rights' },
+              ]
+            },
+            { name: 'Freedom from Slavery', value: 'Freedom from Slavery' },
+            { name: 'Humane Treatment', value: 'Humane Treatment' },
+            { name: 'Judicial Rights', value: 'Judicial Rights' },
+            { name: 'Juridical Personality and Equality', value: 'Juridical Personality and Equality' },
+            { name: 'Liberty and Security', value: 'Liberty and Security' },
+            { name: 'Life', value: 'Life' },
+            { name: 'Movement and Residence', value: 'Movement and Residence' },
+            { name: 'Name and Nationality', value: 'Name and Nationality' },
+            { name: 'Opinion/Expression/Information', value: 'Opinion Expression Information' },
+            { name: 'Political Participation', value: 'Political Participation' },
+            { name: 'Privacy', value: 'Privacy' },
+            { name: 'Property Rights', value: 'Property Rights' },
+            {
+              name: 'Thought/Conscience/Religion',
+              value: 'Thought Conscience Religion',
+              children: [
+                { name: 'Separation of Church and State', value: 'Separation of Church and State' },
+                { name: 'Religious Formation/Education', value: 'Religious Formation Education' },
+                { name: 'Free Exercise of Religion', value: 'Free Exercise of Religion' },
+                { name: 'Choose/Change Religion', value: 'Choose Change Religion' },
+              ]
+            },
           ]
         },
         {
