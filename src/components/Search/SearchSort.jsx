@@ -52,7 +52,6 @@ var SearchSort = React.createClass({
   sortSelectStyle: function() {
     return ({
       background: 'transparent',
-      padding: '7px 8px',
       border: 'none',
       boxShadow: 'none',
       appearance: 'none',
