@@ -10,7 +10,7 @@ class NotebookToolbar extends Component {
   render() {
     return (
       <Toolbar style={{ zIndex: '1', backgroundColor: '#E4E1D1', borderBottom: "solid 1px #979694" }}>
-        <ToolbarGroup className="toolbar-group">
+        <ToolbarGroup className="toolbar-group" float="right">
           <ManageDialog />
           <ShareSaveDialog />
           <BackToSearchButton />
