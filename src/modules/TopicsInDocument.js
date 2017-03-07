@@ -9,7 +9,7 @@ module.exports = function(parent) {
   items.map(function(item) {
     if (item.metadata.actors) {
       item.metadata.actors.values.map(function (actor) {
-        var topic = actor.value;
+        var topic = actor.value.trim();
         if (!topics[topic]) {
           topics[topic] = [ item.id ]
         } else {
