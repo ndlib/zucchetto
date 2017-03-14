@@ -456,7 +456,7 @@ module.exports = {
           children: [
             { name: 'As Human Persons', value: 'As Human Persons' },
             { name: 'As Juridical Persons', value: 'As Juridical Persons' },
-            { name: 'Economic', value: 'Economic' },
+            { name: 'Economic Equality', value: 'Economic Equality' },
             { name: 'Equality of Opportunity', value: 'Equality of Opportunity' },
             { name: 'Equality of Outcome', value: 'Equality of Outcome' },
             { name: 'Social/Political', value: 'Social Political' },
