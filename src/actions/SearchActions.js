@@ -109,8 +109,8 @@ class SearchActions {
     var q = "";
     if(topics.length > 0) {
       var qualifiedTopics = topics.map(function(v,i) { return v });
-      var unionTopics = qualifiedTopics.join(" OR ");
-      q += "actors_t:(" + unionTopics + ")";
+      var unionTopics = qualifiedTopics.join(") OR (");
+      q += "actors_t:((" + unionTopics + "))";
     }
     if(searchTerm !== "") {
       if(q !== ""){
