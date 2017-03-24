@@ -59,7 +59,8 @@ var SiteIndex = React.createClass({
         <header>
           <div className="row">
             <div className="col-sm-12">
-              <h1>Research Database</h1>
+              <h1>Convocate</h1>
+              <h2>Brining Catholic Social Teaching and International Human Rights into Dialogue</h2>
             </div>
           </div>
         </header>
