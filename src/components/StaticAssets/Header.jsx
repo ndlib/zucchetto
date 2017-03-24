@@ -52,7 +52,7 @@ class Header extends Component {
     return (
       <div>
         <AppBar
-          title="Research Database"
+          title="Convocate"
           onLeftIconButtonTouchTap={ this.menuClick }
           onTitleTouchTap={ this.titleClick }
           style={{
