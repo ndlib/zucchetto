@@ -1,5 +1,6 @@
 'use strict'
 import ItemStore from '../store/ItemStore.js'
+import topics from '../components/Search/topics.js'
 import _ from "underscore"
 
 module.exports = function(parent) {
@@ -10,7 +11,9 @@ module.exports = function(parent) {
     if (item.metadata.actors) {
       item.metadata.actors.values.map(function (actor) {
         var topic = actor.value.trim();
-        if (!topics[topic]) {
+        if(isUniqueId(topic)) {
+          //do nothing
+        } else if (!topics[topic]) {
           topics[topic] = [ item.id ]
         } else {
           topics[topic].push(item.id);
@@ -20,6 +23,28 @@ module.exports = function(parent) {
   });
 
   return bySortedValue(topics);
+}
+
+function findIds(data) {
+  var out = []
+  for(var index in data) {
+    var node = data[index]
+    out.push(node.value)
+
+    if(node.children) {
+      out = out.concat(findIds(node.children))
+    }
+  }
+  return out;
+}
+
+var uniqueIds = null;
+function isUniqueId(key) {
+  if(uniqueIds == null) {
+    uniqueIds = findIds(topics.topics)
+  }
+
+  return uniqueIds.indexOf(key) >= 0
 }
 
 
