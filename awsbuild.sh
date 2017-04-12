@@ -14,6 +14,6 @@ npm run build
 echo ${REVISION} > public/REVISION
 cd ./public
 
-aws s3 sync . s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read
+aws s3 sync . s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read --profile wseAdmin
 echo "\033[0;31mDeployed to ${BUCKET}.s3-website-us-east-1.amazonaws.com. Rebuilding for development.\033[0m"
 npm run build-dev-nowatch
