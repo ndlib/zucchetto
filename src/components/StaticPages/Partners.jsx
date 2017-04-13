@@ -25,16 +25,16 @@ class Partners extends Component {
 
         <h2>Consultants</h2>
         <div className="partners-c">
-        <Link to='http://law.nd.edu/' target='_blank' className="smaller"><img alt="University of Notre Dame Law School" src="/resources/images/partners/ndls.png" /></Link>
-        <Link to='http://kellogg.nd.edu/' target='_blank'><img alt="Kellog Institute for International Studies" src="/resources/images/partners/kiis.png" /></Link>
-        <Link to='http://www.bc.edu/' target='_blank'><img alt="Boston College" src="/resources/images/partners/bc.png" /></Link>
-        <Link to='http://socialconcerns.nd.edu/' target='_blank' className="smaller"><img alt="Center for Social Concerns" src="/resources/images/partners/csc.png" /></Link>
-        <Link to='http://www.exeter.ac.uk/' target='_blank' className="smaller"><img alt="University of Exeter" src="/resources/images/partners/ue.png" /></Link>
-        <Link to='https://www.scu.edu/jst/' target='_blank' className="larger"><img alt="Jesuit School of Theology in Berkley" src="/resources/images/partners/jstb.png" /></Link>
-        <Link to='http://hls.harvard.edu/' target='_blank' className="smaller"><img alt="Harvard Law School" src="/resources/images/partners/hls.png" /></Link>
-        <Link to='https://www.tcd.ie/' target='_blank'><img alt="Trinity College Dublin" src="/resources/images/partners/tcd.png" /></Link>
-        <Link to='https://www.law.umich.edu/Pages/default.aspx' target='_blank'><img alt="University of Michigan Law School" src="/resources/images/partners/mlum.png" /></Link>
-        <Link to='http://www.law.ou.edu/' target='_blank' className="larger"><img alt="The University of Oklahoma College of Law" src="/resources/images/partners/uocl.png" /></Link>
+        <Link to='http://law.nd.edu/' target='_blank' className="smaller">University of Notre Dame Law School</Link>
+        <Link to='http://kellogg.nd.edu/' target='_blank'>Kellog Institute for International Studies</Link>
+        <Link to='http://www.bc.edu/' target='_blank'>Boston College</Link>
+        <Link to='http://socialconcerns.nd.edu/' target='_blank' className="smaller">Center for Social Concerns</Link>
+        <Link to='http://www.exeter.ac.uk/' target='_blank' className="smaller">University of Exeter</Link>
+        <Link to='https://www.scu.edu/jst/' target='_blank' className="larger">Jesuit School of Theology in Berkley</Link>
+        <Link to='http://hls.harvard.edu/' target='_blank' className="smaller">Harvard Law School</Link>
+        <Link to='https://www.tcd.ie/' target='_blank'>Trinity College Dublin</Link>
+        <Link to='https://www.law.umich.edu/Pages/default.aspx' target='_blank'>University of Michigan Law School</Link>
+        <Link to='http://www.law.ou.edu/' target='_blank' className="larger">The University of Oklahoma College of Law</Link>
         
         <ul>
          <li> <strong><Link to='http://kellogg.nd.edu/faculty/fellows/carozza.shtml' target='_blank'>Carozza, Paolo </Link>       </strong>  <br/><em>Director, Helen Kellogg Instittute for International Studies; Director, JSD Program in International Human Rights Law; Concurrent Professor of Political Science</em> <br/>  Kellogg Institute for International Studies, University of Notre Dame       </li>
