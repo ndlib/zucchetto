@@ -80,7 +80,8 @@ var SiteIndex = React.createClass({
               afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}
               slideIndex={this.state.slideIndex}
               autoplay={true}
-              autoplayInterval={5000}
+              autoplayInterval={15000}
+              speed={2000}
               wrapAround={true}
             >
               {this.items()}
