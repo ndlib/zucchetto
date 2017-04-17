@@ -44,6 +44,181 @@ h1, h2, h3, h4, h5 {
 	display:none;
 }
 
+/* BRANDING HEADER */
+.bwrapper {
+  background-color: #002A5D;
+  background-position: 0 0;
+  background-repeat: repeat-x;
+  background:rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #003b7c 0%, #001227 100%) repeat scroll 0 0;
+  height: 50px;
+  display: block !important;
+  position:relative;
+  z-index: 200;
+}
+
+#header {
+  display: block;
+  position: relative;
+  width: 98%;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+#header h3 {
+  float: left;
+}
+
+#header h3 i,
+#header h2 i {
+  text-transform: none;
+  font-weight: normal;
+}
+
+#header h3 img {
+  display: none;
+}
+
+#header h2 {
+  float: right;
+}
+
+#header h3,
+#header h2 {
+  margin: 18px 0 15px;
+  padding: 0;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: normal;
+  font-family: "Adobe Garamond Pro", Garamond, Georgia, Times, "Times New Roman", serif;
+}
+
+#header h3 a,
+#header h2 a {
+  margin: 0;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body.gold-gray #header h3 a,
+body.gold-gray #header h2 a {
+  color: #002b5c;
+}
+
+body.gold-blue #header h3 a,
+body.gold-blue #header h2 a {
+  color: #002b5c;
+}
+
+#header h3 a:hover,
+#header h2 a:hover {
+  color: #f6efd2;
+}
+
+/* over-ride for graphic type */
+#header.gtype h3,
+#header.gtype h2 {
+  margin: 0;
+}
+
+#header.gtype h3 a,
+#header.gtype h2 a {
+  display: block;
+  height: 50px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background-image: url(http://library.nd.edu/images/brand-type.png);
+  background-repeat: no-repeat;
+}
+
+#header.gtype h3 a {
+  float: left;
+}
+
+#header.gtype h2 a {
+  float: right;
+}
+
+.nddotedu a {
+  width: 310px;
+}
+
+.blue .nddotedu a {
+  background-position: 0 -50px;
+}
+
+.dept-prov a {
+  width: 234px;
+  background-position: 0 -1900px;
+}
+
+/* Office of the Provost */
+.blue .dept-prov a {
+  background-position: 0 -1950px;
+}
+
+/* Site title */
+#header h1 {
+  float: left;
+  clear: both;
+  width: 70%;
+  height: auto;
+  margin: 20px 0;
+  padding: 0 0;
+  font-weight: normal;
+  line-height: 1em;
+  font-family: GPCBook,"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif;
+  color: #4C374B;
+  color: #fff;
+  letter-spacing: .05em;
+  width: auto;
+  background: none;
+}
+
+#header h1 span {
+  color: #fff;
+  background: #4C374B;
+  font-size: 90%;
+  padding: .5% 1%;
+  display: inline-block;
+  font-family: GPCBook,"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif;
+}
+
+#header h1 a {
+  display: block;
+  width: auto;
+  border: none;
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+body.gold-blue #header h1 a {
+  color: #333;
+  text-shadow: 0 0 1px #000;
+}
+
+#header h1.tag-lined {
+  margin-top: 20px;
+}
+
+#header h4 {
+  clear: both;
+  margin: 0;
+  color: #002b5c;
+  text-shadow: 0 0 1px #fff;
+  font-weight: normal;
+}
+
+body.gold-blue #header h4 a {
+  color: #f5e6a0;
+  text-shadow: 0 0 1px #000;
+}
+
 .menu {
   font-size: 18px;
 
