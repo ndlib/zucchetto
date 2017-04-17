@@ -25,7 +25,7 @@ class FooterHome extends Component {
             <Link to="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="undhl" /></Link>
           </div>
         </div>
-      </footer>
+      </footer> 
     );
   }
 }
