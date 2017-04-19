@@ -731,32 +731,38 @@ button.right {
 		clear: both;
 		position: static;
 		background: none;
+		margin-bottom:3em;
 		nav {
 			display: none;
 		}
+
+		img {
+			width: 150px;
+			height: auto;
+		}
+
 		img.cchr {
 			display: block;
 			float: left;
-		}
-		img {
-			height: 40px;
+			display: none;
+
 		}
 		.compare {
 			display:none;
 		}
-		.col-sm-5 {
-			width: 100%;
-			margin-top:-3em;
+		.col-sm-5, .col-sm-8 {
+			
+			padding-top: 16px;
 		}
 		.col-sm-2 {
 			width: 100%;
 			text-align: center;
-			padding-top: 1em;
+			padding-top: 16px;
 			z-index: 5;
 		}
    .col-sm-4 {
-			text-align: center;
-			padding-top: 1em;
+			text-align: left;
+			padding-top: 16px;
 			z-index: 5;
 
       a {
@@ -768,6 +774,18 @@ button.right {
   			display:block;
     }
 	 }
+}
+
+footer.homepage {
+	display: none;
+}
+
+.index footer.homepage, .index footer .cchr {
+	display: block;
+}
+
+.index footer.all {
+	display:none;
 }
 
 .feedback {
