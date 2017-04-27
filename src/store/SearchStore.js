@@ -267,9 +267,11 @@ class SearchStore extends EventEmitter {
           maxDate: action.maxDate,
         });
         break;
+      case SearchActionTypes.SEARCH_EMIT_CHANGE:
+        this.emitQueryChange();
+        break;
       case SearchActionTypes.SEARCH_SET_TERM:
         this._searchTerm = action.searchTerm;
-        this.emitQueryChange();
         break;
       case SearchActionTypes.SEARCH_SET_HITS:
         this.setHits(action.collection, action.hits);

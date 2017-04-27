@@ -75,6 +75,7 @@ var TokenSearchBox = React.createClass({
       terms.push(this.state.selected[i].id)
     }
     SearchActions.setTerm(terms.join(','));
+    SearchActions.emitChange();
   },
 
   filterTags: function(userInput) {

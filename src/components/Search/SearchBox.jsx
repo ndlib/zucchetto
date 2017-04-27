@@ -37,10 +37,12 @@ var SearchBox = React.createClass({
 
   onClick: function(e) {
     SearchActions.setTerm(this.state.searchTerm);
+    SearchActions.emitChange();
   },
 
   setTerm: function(term) {
     this.setState({ searchTerm: term });
+    SearchActions.setTerm(term);
   },
 
   inputStyle: function() {
@@ -52,7 +54,7 @@ var SearchBox = React.createClass({
   handleKeyDown: function(e) {
     var ENTER = 13;
     if( e.keyCode == ENTER ) {
-        this.onClick(e);
+        SearchActions.emitChange();
     }
   },
 
