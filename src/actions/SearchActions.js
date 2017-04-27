@@ -40,6 +40,12 @@ class SearchActions {
     });
   }
 
+  emitChange(searchTerm){
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_EMIT_CHANGE,
+    });
+  }
+
   setSort(sort) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_SORT,
