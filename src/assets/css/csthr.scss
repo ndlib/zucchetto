@@ -104,6 +104,26 @@ h1, h2, h3, h4, h5 {
   text-decoration: none;
 }
 
+#header h3.nddotedu a {
+	height:0;
+	overflow: hidden;
+	padding-top: 16px;
+	display: block;
+	background: url(https://static.nd.edu/images/brandbar/dept-nd-white@2x.png) ;
+	background-position: 0 -16px;
+	background-size: cover;
+}
+
+#header h2.dept-ksga a {
+	height:0;
+	overflow: hidden;
+	padding-top: 16px;
+	display: block;
+	background: url(https://static.nd.edu/images/brandbar/dept-ksga-white@2x.png) ;
+	background-position: 0 -16px;
+	background-size: cover;
+}
+
 body.gold-gray #header h3 a,
 body.gold-gray #header h2 a {
   color: #002b5c;
@@ -669,6 +689,7 @@ button.right {
 		width: 100%;
 		background: rgba(11,34,63,.3);
 		padding: 30px 0;
+		z-index: 200;
 
 		ul {
 			width: 960px;
@@ -967,4 +988,11 @@ a.main-heading {
 
 .partners-c .larger img {
 	max-height:130px;
+}
+
+@media screen and (max-height: 890px) {
+	.index .carousel-indicators {
+		bottom:auto;
+		top:60px;
+	}
 }
