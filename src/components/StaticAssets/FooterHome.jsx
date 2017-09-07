@@ -56,7 +56,7 @@ class FooterHome extends Component {
           </div>
          
           <div className="col-sm-4">
-            <Link to="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="undhl" /></Link>
+            <Link to="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/und.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="undhl" /></Link>
           </div>
         </div>
       </footer>
