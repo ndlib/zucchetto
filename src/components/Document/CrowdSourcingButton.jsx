@@ -63,16 +63,19 @@ class CrowdSourcingButton extends Component {
   render() {
     if(!this.state.marked) {
       return (
-        <div>
-          <span>{this.props.actor}</span>
-          <span>
-            <button onClick={this.yeaClick}><mui.FontIcon className='material-icons' title='Mark as good result.'>thumb_up</mui.FontIcon></button>
-            <button onClick={this.nayClick}><mui.FontIcon className='material-icons' title='Mark as bad result'>thumb_down</mui.FontIcon></button>
-          </span>
-        </div>
+        <mui.ListItem
+          disabled={true}
+          primaryText={this.props.actor}
+          rightIcon={<div style={{width: "80px"}}><button onClick={this.yeaClick}><mui.FontIcon className='material-icons' title='Mark as well tagged.'>thumb_up</mui.FontIcon></button>
+        <button onClick={this.nayClick}><mui.FontIcon className='material-icons' title='Mark as poorly tagged.'>thumb_down</mui.FontIcon></button></div>}
+        />
       )
       } else {
-        return (<div>Thanks for your feedback!</div>)
+        return (
+          <mui.ListItem
+            primaryText="Thanks for your feedback!"
+          />
+      )
       }
 
   }
