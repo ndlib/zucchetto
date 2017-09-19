@@ -16,6 +16,7 @@ import AllDocumentsPage from './AllDocumentsPage.jsx';
 import TermsOfServicePage from './TermsOfServicePage.jsx';
 import UsingPage from './UsingPage.jsx';
 import Page from './Page.jsx';
+import InitUserPage from './InitUserPage.jsx'
 
 var ga = require('react-ga');
 ga.initialize('UA-2118378-43');
@@ -36,6 +37,7 @@ export default function() {
     <Router history={ browserHistory } onUpdate={logPageView}>
       <Route path="/" component={ Page }>
         <IndexRoute component={ SiteIndexPage } />
+        <Route path="/crowdsourcing" component={ InitUserPage } />
         <Route path="/about" component={ AboutPage } />
         <Route path="/using" component={ UsingPage } />
         <Route path="/partners" component={ PartnersPage } />
