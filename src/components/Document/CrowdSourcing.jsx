@@ -37,6 +37,7 @@ class CrowdSourcing extends Component {
         const val = actor.value.match(regex)
         return val !== null
       })
+      // Remove actors with generated, non-descritive names e.g. a201, h300
       actors = filteredActors.map((actor) => {
         const regex = new RegExp(/^((?![a-z]\d{1,3})).*/gim)
         const val = actor.value.match(regex)
@@ -51,9 +52,10 @@ class CrowdSourcing extends Component {
   }
 
   render() {
-
+    // Only render if user has a uuid and the actors have been set.
     if(this.state.uuid && this.state.actorsSet) {
       let buttons = []
+      // Each actor gets its own set of feedback buttons
       this.state.actors.forEach((actor) => {
         buttons.push(
           <CrowdSourcingButton
