@@ -63,6 +63,7 @@ var SearchBox = React.createClass({
     return (<input
       placeholder='SEARCH THE DATABASE'
       ref='searchBox'
+      id='searchBox'
       onChange={this.onChange}
       defaultValue={this.state.searchTerm}
       onKeyDown={this.handleKeyDown}

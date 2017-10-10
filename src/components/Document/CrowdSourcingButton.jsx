@@ -17,8 +17,26 @@ class CrowdSourcingButton extends Component {
     this.state = {
       marked: this.props.marked || false,
       uuid: localStorage.getItem('UUID'),
+      voteType: null
     }
   }
+
+  style(disabled) {
+    return {
+      fontSize: '0.8em',
+      width: '50%',
+      display: 'inline-block',
+      overflow: 'hidden',
+      opacity: disabled ? '0.6' : '1',
+    }
+  }
+  fontStyle(disabled) {
+    return {
+      fontSize: '10px',
+      opacity: disabled ? '0.6' : '1',
+    }
+  }
+
   buildData (feedback) {
     let searchTopics = SearchStore.getTopics().join()
     let data = {
@@ -27,12 +45,13 @@ class CrowdSourcingButton extends Component {
       paragraph: this.props.item.shortDescription,
       actor: this.props.actor,
       search_topics: searchTopics,
+      user_search: document.getElementById('searchBox').value,
       feedback: feedback,
       user_id: this.state.uuid,
       paragraph_link: `https://honeycomb.library.nd.edu/items/${this.props.item.id}/edit`,
       document_link: `https://honeycomb.library.nd.edu/items/${this.props.doc.id}/edit`,
       convocate_link: window.location.href,
-
+      voteType: feedback === 'good' ? 'thumb_up' : 'thumb_down'
     }
     return data
   }
@@ -56,26 +75,42 @@ class CrowdSourcingButton extends Component {
       dataType: 'json',
       data: data
     }).success(
-      this.setState({marked: true})
+      this.setState({
+        marked: true,
+        voteType: data.voteType
+      })
     );
   }
 
   render() {
     if(!this.state.marked) {
       return (
-        <mui.ListItem
-          disabled={true}
-          primaryText={this.props.actor}
-          rightIcon={<div style={{width: "80px"}}><button onClick={this.yeaClick}><mui.FontIcon className='material-icons' title='Mark as well tagged.'>thumb_up</mui.FontIcon></button>
-        <button onClick={this.nayClick}><mui.FontIcon className='material-icons' title='Mark as poorly tagged.'>thumb_down</mui.FontIcon></button></div>}
-        />
+        <div style={this.style()}>
+          <button onClick={this.yeaClick}>
+            <mui.FontIcon
+              className='material-icons'
+              title='Mark as well tagged.'
+              style={this.fontStyle()}
+            >thumb_up</mui.FontIcon>
+          </button>
+          <button onClick={this.nayClick}>
+            <mui.FontIcon
+              className='material-icons'
+              title='Mark as poorly tagged.'
+              style={this.fontStyle()}
+            >thumb_down</mui.FontIcon>
+          </button> {this.props.actor}
+        </div>
       )
       } else {
         return (
-          <mui.ListItem
-            primaryText="Thanks for your feedback!"
-          />
-      )
+          <div style={this.style(true)}>
+            <mui.FontIcon
+              className='material-icons'
+              style={this.fontStyle(true)}
+            >{this.state.voteType}</mui.FontIcon> {this.props.actor}
+          </div>
+        )
       }
 
   }

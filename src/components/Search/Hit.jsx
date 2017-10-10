@@ -13,10 +13,11 @@ class Hit extends Component {
             { this.props.item.shortDescription }
           </div>
           <AddToCompare item={ this.props.item } />
-          <CrowdSourcing item={ this.props.item } />
           <div className="paragraph document-content">
             { this.props.item.description }
+            <CrowdSourcing item={ this.props.item } />
           </div>
+
         </div>
       )
     } else {
