@@ -5,6 +5,7 @@ import _ from 'underscore';
 import ItemStore from '../../store/ItemStore.js'
 import SearchStore from '../../store/SearchStore.js';
 import IDFromAtID  from '../../modules/IDFromAtID.js';
+import mapTermToHumanReadable from '../../modules/mapTermToHumanReadable.js'
 class CrowdSourcingButton extends Component {
 
   constructor(props) {
@@ -38,13 +39,24 @@ class CrowdSourcingButton extends Component {
   }
 
   buildData (feedback) {
-    let searchTopics = SearchStore.getTopics().join()
+    let searchTopics = SearchStore.getTopics()
+
+    let searchTopicsHuman = []
+    searchTopics.map((topic) => {
+      let foundTopic = mapTermToHumanReadable(topic)
+      if(foundTopic) {
+        searchTopicsHuman.push(foundTopic)
+      }
+      return
+    })
+
     let data = {
       collection_id: this.props.item.collection_id,
       document_title: this.props.doc.name,
       paragraph: this.props.item.shortDescription,
       actor: this.props.actor,
-      search_topics: searchTopics,
+      search_topics: searchTopics.join(),
+      search_topics_human: searchTopicsHuman.join(),
       user_search: document.getElementById('searchBox').value,
       feedback: feedback,
       user_id: this.state.uuid,
