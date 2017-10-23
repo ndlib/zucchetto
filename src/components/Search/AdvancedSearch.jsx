@@ -293,7 +293,7 @@ var AdvancedSearch = React.createClass({
         style={{marginRight: '15px'}}
       />,
       <mui.FlatButton
-        label="OK"
+        label="Apply"
         labelStyle={{ color: 'white' }}
         onTouchTap={ this.applyAndClose }
         backgroundColor={ '#224048' }

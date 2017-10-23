@@ -68,7 +68,7 @@ class CrowdSourcing extends Component {
         )
       })
       return (
-        <div>{buttons}</div>
+        <div className="crowdsourcing-buttons">{buttons}</div>
       )
     }
     return null;
