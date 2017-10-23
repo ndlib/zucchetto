@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import AddToCompare from '../Document/AddToCompare.jsx';
+import CrowdSourcing from '../Document/CrowdSourcing.jsx'
 
 class Hit extends Component {
   render() {
@@ -14,7 +15,9 @@ class Hit extends Component {
           <AddToCompare item={ this.props.item } />
           <div className="paragraph document-content">
             { this.props.item.description }
+            <CrowdSourcing item={ this.props.item } />
           </div>
+
         </div>
       )
     } else {

@@ -69,7 +69,7 @@ var Result = React.createClass({
       		</div>
       		<div className="col-sm-9 right-col">
       			<section className="content results">
-        		  <div class="row">
+        		  <div className="row">
                 <div className="helpers">
                   <a href="#" className="left">&laquo; Home</a>
                   <a href="#" className="right"><span className="glyphicon glyphicon-envelope"></span> Share/Save Search Results</a>

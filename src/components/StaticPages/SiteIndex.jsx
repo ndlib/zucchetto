@@ -33,7 +33,7 @@ var SiteIndex = React.createClass({
 
   items: function() {
     return this.images.map(function(image) {
-      return <img src={image} />;
+      return <img src={image} key={image} />;
     });
   },
 
@@ -47,6 +47,7 @@ var SiteIndex = React.createClass({
         <li
           className={this.state.slideIndex === index ? 'active' : ''}
           onClick={() => this.setSlide(index)}
+          key={index}
         >{index}</li>
       );
     }
@@ -57,14 +58,14 @@ var SiteIndex = React.createClass({
     return (
       <div className="index">
         <div className="bwrapper">
-          <div class="gtype blue container-fluid" role="banner" id="header">
-                 
+          <div role="banner" id="header">
+
                     <h3 className="nddotedu"><a href="http://nd.edu">University <i>of</i> Notre Dame</a></h3>
                     <h2 className="dept-ksga"><a href="http://keough.nd.edu/">Keough School
 <i>of</i>
 Global Affairs</a></h2>
-            
-                  
+
+
                  </div>
         </div>
         <header>
