@@ -8,7 +8,7 @@ import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
 import Title from '../Document/Title.jsx';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class ListItem extends Component{
   constructor(props) {

@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { browserHistory, Router, Route, IndexRoute } from 'react-router';
-
+import { browserHistory, Switch, Route } from 'react-router'
+import { BrowserRouter } from 'react-router-dom';
 import SiteIndexPage from './SiteIndexPage.jsx';
 import AboutPage from './AboutPage.jsx';
 import PrivacyPage from './PrivacyPage.jsx';
@@ -34,22 +34,24 @@ function logPageView() {
 export default function() {
 
   return (
-    <Router history={ browserHistory } onUpdate={logPageView}>
-      <Route path="/" component={ Page }>
-        <IndexRoute component={ SiteIndexPage } />
-        <Route path="/crowdsourcing" component={ InitUserPage } />
-        <Route path="/about" component={ AboutPage } />
-        <Route path="/using" component={ UsingPage } />
-        <Route path="/partners" component={ PartnersPage } />
-        <Route path="/contact" component={ ContactPage } />
-        <Route path="/result" component={ ResultPage} />
-        <Route path="/search" component={ SearchPage } />
-        <Route path="/documents" component={ AllDocumentsPage } />
-        <Route path="/notebook" component={ NotebookPage } />
-        <Route path="/document/:id" component={ DocumentPage } />
-        <Route path="/privacy" component={ PrivacyPage } />
-        <Route path="/terms" component={ TermsOfServicePage } />
-      </Route>
-    </Router>
+    <BrowserRouter history={browserHistory} onUpdate={logPageView}>
+      <Page>
+        <Switch>
+          <Route exact path='/' component={ SiteIndexPage } />
+          <Route exact path="/crowdsourcing" component={ InitUserPage } />
+          <Route exact path="/about" component={ AboutPage } />
+          <Route exact path="/using" component={ UsingPage } />
+          <Route exact path="/partners" component={ PartnersPage } />
+          <Route exact path="/contact" component={ ContactPage } />
+          <Route exact path="/result" component={ ResultPage} />
+          <Route exact path="/search" component={ SearchPage } />
+          <Route exact path="/documents" component={ AllDocumentsPage } />
+          <Route exact path="/notebook" component={ NotebookPage } />
+          <Route exact path="/document/:id" component={ DocumentPage } />
+          <Route exact path="/privacy" component={ PrivacyPage } />
+          <Route exact path="/terms" component={ TermsOfServicePage } />
+      </Switch>
+    </Page>
+    </BrowserRouter>
   );
 }

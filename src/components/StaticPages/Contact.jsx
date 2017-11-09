@@ -48,4 +48,4 @@ Phone 574-631-4900 Fax 574-631-6772 <a href="mailto:cds@nd.edu">cds@nd.edu</a> <
 
 });
 
-module.exports = Contact;
+export default Contact;

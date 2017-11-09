@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import mui, {FlatButton, FontIcon} from 'material-ui';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import SearchStore from '../../store/SearchStore.js';
 
 class BackToSearchButton extends Component {

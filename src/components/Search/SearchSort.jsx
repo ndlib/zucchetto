@@ -91,4 +91,4 @@ var SearchSort = React.createClass({
     }
   }
 });
-module.exports = SearchSort
+export default SearchSort

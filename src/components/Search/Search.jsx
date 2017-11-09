@@ -70,4 +70,4 @@ var Search = React.createClass({
   }
 });
 
-module.exports = Search;
+export default Search;

@@ -99,4 +99,4 @@ var SearchDisplayList = React.createClass({
 });
 
 
-module.exports = SearchDisplayList;
+export default SearchDisplayList;

@@ -109,4 +109,4 @@ var SearchBox = React.createClass({
     );
   }
 });
-module.exports = SearchBox
+export default SearchBox

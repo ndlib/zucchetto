@@ -106,4 +106,4 @@ var Using = React.createClass({
 
 });
 
-module.exports = Using;
+export default Using;

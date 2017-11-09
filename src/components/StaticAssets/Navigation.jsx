@@ -2,7 +2,7 @@
 import React, { Component} from 'react';
 import PropTypes from 'prop-types'
 import mui, { MenuItem, Divider } from 'material-ui';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Navigation extends Component {
   render() {

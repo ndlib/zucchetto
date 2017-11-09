@@ -55,4 +55,4 @@ var Privacy = React.createClass({
 
 });
 
-module.exports = Privacy;
+export default Privacy;

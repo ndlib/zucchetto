@@ -55,4 +55,4 @@ var TermsOfService = React.createClass({
 
 });
 
-module.exports = TermsOfService;
+export default TermsOfService;

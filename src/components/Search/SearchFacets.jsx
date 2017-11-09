@@ -129,4 +129,4 @@ var SearchFacets = React.createClass({
   }
 });
 
-module.exports = SearchFacets;
+export default SearchFacets;

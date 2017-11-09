@@ -81,4 +81,4 @@ var DocDateSlider = React.createClass({
     );
   }
 });
-module.exports = DocDateSlider
+export default DocDateSlider

@@ -4,7 +4,7 @@ var Carousel = require('nuka-carousel');
 var HomePageNavigation = require('../StaticAssets/HomePageNavigation.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
 
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 var SiteIndex = React.createClass({
 
@@ -59,14 +59,9 @@ var SiteIndex = React.createClass({
       <div className="index">
         <div className="bwrapper">
           <div role="banner" id="header">
-
-                    <h3 className="nddotedu"><a href="http://nd.edu">University <i>of</i> Notre Dame</a></h3>
-                    <h2 className="dept-ksga"><a href="http://keough.nd.edu/">Keough School
-<i>of</i>
-Global Affairs</a></h2>
-
-
-                 </div>
+            <h3 className="nddotedu"><a href="http://nd.edu">University <i>of</i> Notre Dame</a></h3>
+            <h2 className="dept-ksga"><a href="http://keough.nd.edu/">Keough School <i>of</i> Global Affairs</a></h2>
+          </div>
         </div>
         <header>
           <div className="row">
@@ -77,7 +72,7 @@ Global Affairs</a></h2>
             </div>
           </div>
         </header>
-      		<section className="search">
+        <section className="search">
             <h2><Link to="/search?q=">Search The Database <i className="glyphicon glyphicon-circle-arrow-right"></i></Link></h2>
           </section>
         <HomePageNavigation/>
@@ -114,4 +109,4 @@ Global Affairs</a></h2>
 
 });
 
-module.exports = SiteIndex;
+export default SiteIndex;

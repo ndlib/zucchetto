@@ -6,7 +6,7 @@ import CurrentParagraph from '../Document/CurrentParagraph.jsx';
 import Title from '../Document/Title.jsx';
 import mui, { FontIcon, IconButton, IconMenu, MenuItem } from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const iconButtonElement = (
   <IconButton touch={true}>

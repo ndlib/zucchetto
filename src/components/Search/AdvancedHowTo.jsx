@@ -24,4 +24,4 @@ var AdvancedSearch = React.createClass({
     );
   }
 });
-module.exports = AdvancedSearch
+export default AdvancedSearch

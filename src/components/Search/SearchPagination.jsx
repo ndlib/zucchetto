@@ -72,4 +72,4 @@ var SearchPagination = React.createClass({
   }
 });
 
-module.exports = SearchPagination;
+export default SearchPagination;

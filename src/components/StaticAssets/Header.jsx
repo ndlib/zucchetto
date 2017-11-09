@@ -6,7 +6,7 @@ import mui, { AppBar, FlatButton, FontIcon, Drawer } from 'material-ui';
 import NotebookLink from "../Notebook/NotebookLink.jsx"
 import ClearNotebookHeaderButton from "./ClearNotebookHeaderButton.jsx"
 
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import Navigation from './Navigation.jsx'
 
 class Header extends Component {
