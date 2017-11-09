@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 import PropTypes from 'prop-types';
 import mui, { FontIcon, RaisedButton } from 'material-ui';
 var SearchStore = require('../../store/SearchStore.js');
@@ -8,7 +9,7 @@ var VaticanID = require('../../constants/VaticanID.js');
 var HumanRightsID = require('../../constants/HumanRightsID.js');
 import AdvancedSearch from './AdvancedSearch.jsx';
 
-var SearchBox = React.createClass({
+var SearchBox = createReactClass({
   contextTypes: {
     router: PropTypes.object.isRequired
   },

@@ -1,9 +1,10 @@
 'use strict'
 var React = require("react");
+var createReactClass = require('create-react-class');
 var mui = require('material-ui');
 var Details = require('../display/Details.jsx');
 
-var ItemShow = React.createClass({
+var ItemShow = createReactClass({
   displayName: "Item Show",
 
   propTypes: {

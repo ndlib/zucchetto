@@ -1,12 +1,13 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var Carousel = require('nuka-carousel');
 var HomePageNavigation = require('../StaticAssets/HomePageNavigation.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
 
 import { Link } from 'react-router-dom';
 
-var SiteIndex = React.createClass({
+var SiteIndex = createReactClass({
 
   mixins: [Carousel.ControllerMixin],
 

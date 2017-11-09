@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 import PropTypes from 'prop-types';
 var ItemStore = require('../../store/ItemStore.js');
 var SearchStore = require('../../store/SearchStore.js');
@@ -7,7 +8,7 @@ var SearchActions = require('../../actions/SearchActions.js');
 var Slider = require('rc-slider');
 import mui from 'material-ui';
 
-var DocDateSlider = React.createClass({
+var DocDateSlider = createReactClass({
   propTypes: {
     collection: PropTypes.string,
     emitter: PropTypes.object,

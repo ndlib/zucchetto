@@ -1,9 +1,10 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 var linkPattern = /(^|[\s\n]|<br\/?>)((?:https?|ftp):\/\/[\-A-Z0-9+\u0026\u2019@#\/%?=()~_|!:,.;]*[\-A-Z0-9+\u0026@#\/%=~()_|])/gi;
 
-var MetadataString = React.createClass({
+var MetadataString = createReactClass({
   displayName: 'Metadata String',
 
   propTypes: {

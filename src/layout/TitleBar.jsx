@@ -1,7 +1,7 @@
 'use strict'
 var React = require('react');
-
-var TitleBar = React.createClass({
+var createReactClass = require('create-react-class');
+var TitleBar = createReactClass({
   render: function() {
     var content = this.props.children;
     if (!content) {

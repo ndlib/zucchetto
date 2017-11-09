@@ -46,7 +46,7 @@ class Drawer extends Component {
     this.setState({
       open: false,
     });
-    this.context.router.push(NotebookLinkString());
+    this.context.router.history.push(NotebookLinkString());
 
   };
 

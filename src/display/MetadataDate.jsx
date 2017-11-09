@@ -1,7 +1,8 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var MetadataDate = React.createClass({
+var MetadataDate = createReactClass({
   displayName: 'Metadata Date',
 
   propTypes: {

@@ -66,7 +66,7 @@ class ManageSaved extends Component {
   }
 
   updatePage() {
-    this.context.router.push(NotebookLinkString());
+    this.context.router.history.push(NotebookLinkString());
   }
 
   render() {

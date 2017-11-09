@@ -1,7 +1,8 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var MetadataText = React.createClass({
+var MetadataText = createReactClass({
   displayName: 'Metadata Text',
 
   propTypes: {

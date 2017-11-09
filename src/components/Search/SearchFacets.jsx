@@ -1,10 +1,11 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 import mui, {FontIcon, List, ListItem} from 'material-ui'
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 
-var SearchFacets = React.createClass({
+var SearchFacets = createReactClass({
 
   getInitialState: function() {
     return {

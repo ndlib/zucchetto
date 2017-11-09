@@ -1,9 +1,10 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 
-var SearchSort = React.createClass({
+var SearchSort = createReactClass({
   getInitialState: function() {
     var state = {
       selectValue: 0,

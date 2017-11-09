@@ -81,11 +81,11 @@ class SearchPage extends Component {
 
   handleQueryChange(){
     // If the query has changed, use the router to update the uri params
-    this.context.router.push(SearchStore.searchUri());
+    this.context.router.history.push(SearchStore.searchUri());
   }
 
   handleParamsChange() {
-    this.context.router.push(SearchStore.searchUri());
+    this.context.router.history.push(SearchStore.searchUri());
   }
 
   preLoadFinished() {

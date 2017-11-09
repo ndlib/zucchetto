@@ -1,6 +1,7 @@
 'use strict'
 var _ = require('underscore');
 var React = require('react');
+var createReactClass = require('create-react-class');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 var EventEmitter = require("events").EventEmitter;
@@ -12,7 +13,7 @@ import mui, {Card, CardHeader, CardMedia, Dialog, FontIcon, List, ListItem, Chec
 import DocDateSlider from './DocDateSlider.jsx';
 import AdvancedHowTo from './AdvancedHowTo.jsx';
 
-var AdvancedSearch = React.createClass({
+var AdvancedSearch = createReactClass({
   styles: {
     listItem: {
       minWidth: '150px',

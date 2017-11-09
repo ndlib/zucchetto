@@ -1,9 +1,10 @@
 'use strict'
 var React = require("react");
+var createReactClass = require('create-react-class');
 import mui, {FontIcon, RaisedButton, Paper} from 'material-ui';
 var MetadataList = require('../display/MetadataList.jsx');
 
-var Details = React.createClass({
+var Details = createReactClass({
 
   propTypes: {
     item: PropTypes.object,

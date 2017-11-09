@@ -35,7 +35,7 @@ class NotebookLink extends Component {
   clickAction() {
     CompareStore.clearColumnItems();
     if(!this.disabled()) {
-      this.context.router.push(NotebookLinkString())
+      this.context.router.history.push(NotebookLinkString())
     }
     else {
       // disabled do nothing

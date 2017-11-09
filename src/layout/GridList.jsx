@@ -1,9 +1,9 @@
 //app/assets/javascripts/components/layout/GridList.jsx
 var React = require('react');
-
+var createReactClass = require('create-react-class');
 var gridSize = 12;
 
-var GridList = React.createClass({
+var GridList = createReactClass({
   propTypes: {
     children: PropTypes.oneOfType([
       PropTypes.array,

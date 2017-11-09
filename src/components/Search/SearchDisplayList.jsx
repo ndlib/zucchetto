@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 import PropTypes from 'prop-types'
 var EventEmitter = require("../../middleware/EventEmitter.js");
 var MediaQuery = require('react-responsive');
@@ -13,7 +14,7 @@ import FilterBy from '../../modules/FilterBy.js';
 
 var nodeCount = 0;
 
-var SearchDisplayList = React.createClass({
+var SearchDisplayList = createReactClass({
 
   propTypes: {
     groupedHits: PropTypes.array,
