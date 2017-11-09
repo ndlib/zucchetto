@@ -7,9 +7,9 @@ var ItemShow = React.createClass({
   displayName: "Item Show",
 
   propTypes: {
-    item: React.PropTypes.object,
-    additionalDetails: React.PropTypes.string,
-    height: React.PropTypes.number,
+    item: PropTypes.object,
+    additionalDetails: PropTypes.string,
+    height: PropTypes.number,
   },
 
   outerStyles: function() {

@@ -5,7 +5,7 @@ var MetadataText = React.createClass({
   displayName: 'Metadata Text',
 
   propTypes: {
-    metadata_field: React.PropTypes.object.isRequired,
+    metadata_field: PropTypes.object.isRequired,
   },
 
   render: function () {

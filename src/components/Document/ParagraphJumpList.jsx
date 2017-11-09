@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
 
@@ -51,8 +52,8 @@ class ParagraphJumpList extends Component {
 }
 
 ParagraphJumpList.propTypes = {
-  paragraphs: React.PropTypes.array,
-  primaryAction: React.PropTypes.func,
+  paragraphs: PropTypes.array,
+  primaryAction: PropTypes.func,
 }
 
 export default ParagraphJumpList;

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import TopicFacet from './TopicFacet.jsx';
 
 class TopicFacets extends Component {
@@ -30,7 +31,7 @@ class TopicFacets extends Component {
 }
 
 TopicFacets.propTypes = {
-  source: React.PropTypes.array,
+  source: PropTypes.array,
 }
 
 export default TopicFacets;

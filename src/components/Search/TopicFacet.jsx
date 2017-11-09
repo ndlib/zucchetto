@@ -1,6 +1,7 @@
 'use strict'
 import _ from 'underscore';
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import TopicFacets from './TopicFacets.jsx';
 import SearchActions from '../../actions/SearchActions.js';
 import SearchStore from '../../store/SearchStore.js';
@@ -125,7 +126,7 @@ class TopicFacet extends Component {
 }
 
 TopicFacet.propTypes = {
-  topic: React.PropTypes.object,
+  topic: PropTypes.object,
 }
 
 export default TopicFacet;

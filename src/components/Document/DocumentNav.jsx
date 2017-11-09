@@ -1,20 +1,12 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import mui, { Divider, ListItem, Toggle } from 'material-ui';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import mui, { Divider, List, ListItem, Toggle } from 'material-ui';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import _ from 'underscore';
-import List from 'material-ui/lib/lists/list';
-import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance';
 var theme = require("../../themes/vatican.jsx");
-let SelectableList = SelectableContainerEnhance(List);
 
 class DocumentNav extends Component {
-
-  getChildContext() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(theme)
-    };
-  }
 
   menuClick(event, value) {
     this.props.selectedParagraphClick(event, value);
@@ -23,7 +15,7 @@ class DocumentNav extends Component {
   topicList() {
     return _.pairs(this.props.listedTopics).map(function (topic) {
       var title = topic[0] + " (" + topic[1].length + ")";
-      return (<mui.ListItem
+      return (<ListItem
                 style={{ backgroundColor: "inherit" }}
                 key={topic[0]}
                 value={topic[0]}
@@ -47,46 +39,49 @@ class DocumentNav extends Component {
     }
 
     return (
-      <div style={{margin: '0', backgroundColor: '#f8f6ed'}} className="left-col">
-        <h3>Highlight Paragraphs</h3>
-        <div className="right">
-          <Toggle
-            label="Only Show Highlighted Paragraphs"
-            labelPosition="right"
-            onToggle={ this.props.toggleOnClick }
-            primary={ false }
-            secondary={ false }
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <div style={{margin: '0', backgroundColor: '#f8f6ed'}} className="left-col">
+          <h3>Highlight Paragraphs</h3>
+          <div className="right">
+            <Toggle
+              label="Only Show Highlighted Paragraphs"
+              labelPosition="right"
+              onToggle={ this.props.toggleOnClick }
+              primary={ false }
+              secondary={ false }
 
-          />
+            />
+          </div>
+          <List
+            selectable
+            style={{ backgroundColor: "inherit" }}
+            valueLink={{
+              value: this.props.selectedMenuItem,
+              requestChange: this.menuClick.bind(this)
+            }}>
+            { searchMenuItem }
+            <Divider />
+            <h4>Topics in Document</h4>
+            { this.topicList() }
+          </List>
         </div>
-        <SelectableList
-          style={{ backgroundColor: "inherit" }}
-          valueLink={{
-            value: this.props.selectedMenuItem,
-            requestChange: this.menuClick.bind(this)
-          }}>
-          { searchMenuItem }
-          <Divider />
-          <h4>Topics in Document</h4>
-          { this.topicList() }
-        </SelectableList>
-      </div>
+      </MuiThemeProvider>
     );
   }
 
 }
 DocumentNav.childContextTypes = {
-  muiTheme: React.PropTypes.object
+  muiTheme: PropTypes.object
 }
 
 DocumentNav.propTypes = {
-  selectedParagraphClick: React.PropTypes.func.isRequired,
-  toggleOnClick: React.PropTypes.func.isRequired,
-  listedTopics: React.PropTypes.object,
-  selectedMenuItem: React.PropTypes.string,
-  showSearch: React.PropTypes.bool,
-  numSearchResults: React.PropTypes.number,
-  showSelectedParagraphs: React.PropTypes.bool,
+  selectedParagraphClick: PropTypes.func.isRequired,
+  toggleOnClick: PropTypes.func.isRequired,
+  listedTopics: PropTypes.object,
+  selectedMenuItem: PropTypes.string,
+  showSearch: PropTypes.bool,
+  numSearchResults: PropTypes.number,
+  showSelectedParagraphs: PropTypes.bool,
 }
 
 DocumentNav.defaultProps = {

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import CurrentParagraph from '../Document/CurrentParagraph.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
@@ -82,11 +83,11 @@ class Paragraph extends Component {
 }
 
 Paragraph.propTypes = {
-  item: React.PropTypes.object,
-  selected: React.PropTypes.bool,
-  highlighted: React.PropTypes.bool,
-  showCheckBoxes: React.PropTypes.bool,
-  showHeadings: React.PropTypes.bool,
+  item: PropTypes.object,
+  selected: PropTypes.bool,
+  highlighted: PropTypes.bool,
+  showCheckBoxes: PropTypes.bool,
+  showHeadings: PropTypes.bool,
 }
 
 Paragraph.defaultProps = {

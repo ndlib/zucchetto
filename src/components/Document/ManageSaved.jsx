@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'underscore'
 import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
@@ -84,7 +85,7 @@ class ManageSaved extends Component {
 }
 
 ManageSaved.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default ManageSaved;

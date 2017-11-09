@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CurrentParagraph extends Component {
 
@@ -9,7 +10,7 @@ class CurrentParagraph extends Component {
 }
 
 CurrentParagraph.propTypes = {
-  item: React.PropTypes.object,
+  item: PropTypes.object,
 }
 
 export default CurrentParagraph;

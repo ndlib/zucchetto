@@ -1,8 +1,6 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
-var List = mui.List;
-var ListItem = mui.ListItem;
+import mui, {FontIcon, List, ListItem} from 'material-ui'
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 
@@ -114,7 +112,7 @@ var SearchFacets = React.createClass({
             style={{color: '#a7a7a5'}}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
-            rightIcon={this.isSelected(e.name) ?  (<mui.FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</mui.FontIcon>) :  ( <mui.FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</mui.FontIcon>)}
+            rightIcon={this.isSelected(e.name) ?  (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</FontIcon>) :  ( <FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</FontIcon>)}
           />
         );
       }.bind(this)));

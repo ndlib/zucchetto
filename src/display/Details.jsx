@@ -1,14 +1,13 @@
 'use strict'
 var React = require("react");
-var mui = require("material-ui");
-
+import mui, {FontIcon, RaisedButton, Paper} from 'material-ui';
 var MetadataList = require('../display/MetadataList.jsx');
 
 var Details = React.createClass({
 
   propTypes: {
-    item: React.PropTypes.object,
-    additionalDetails: React.PropTypes.string,
+    item: PropTypes.object,
+    additionalDetails: PropTypes.string,
   },
 
   getDefaultProps: function() {
@@ -63,8 +62,8 @@ var Details = React.createClass({
 
   render: function () {
     return (
-      <mui.Paper className="details" style={this.paperStyle()}>
-        <mui.RaisedButton
+      <Paper className="details" style={this.paperStyle()}>
+        <RaisedButton
           onClick={this.toggleDetails}
           style={this.detailsButtonStyle()}
           disableTouchRipple={true}
@@ -72,15 +71,15 @@ var Details = React.createClass({
         >
           <span style={{fontSize: "20px", letterSpacing: "0", textTransform: "uppercase", fontWeight: "500", padding: "0px 10px" }}>
             Details
-            <mui.FontIcon className="material-icons" style={{verticalAlign:'top', marginLeft:'5px'}}>{this.state.showDetails ? "arrow_forward" : "arrow_back"}</mui.FontIcon>
+            <FontIcon className="material-icons" style={{verticalAlign:'top', marginLeft:'5px'}}>{this.state.showDetails ? "arrow_forward" : "arrow_back"}</FontIcon>
           </span>
-        </mui.RaisedButton>
+        </RaisedButton>
 
         <div className="item-details" style={this.detailsStyle()}>
           <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />
           <MetadataList metadata={this.props.item.metadata} />
         </div>
-      </mui.Paper>
+      </Paper>
     );
   }
 });

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton, FontIcon } from 'material-ui';
 import ViewOriginal from './ViewOriginal.jsx';
 import BackToSearchButton from './BackToSearchButton.jsx';
@@ -34,7 +35,7 @@ class DocumentToolbar extends Component {
             paddingLeft: '7px',
           }}/>
       </ToolbarGroup>
-        <ToolbarGroup lastChild={true} float="right">
+        <ToolbarGroup lastChild={true} style={{float: 'right'}}>
           <ViewOriginal documentId={ this.props.document.id } />
           <BackToSearchButton />
           <FlatButton
@@ -60,9 +61,9 @@ class DocumentToolbar extends Component {
 }
 
 DocumentToolbar.propTypes = {
-  document: React.PropTypes.object,
-  buttonFunction: React.PropTypes.func,
-  activeSection: React.PropTypes.string,
+  document: PropTypes.object,
+  buttonFunction: PropTypes.func,
+  activeSection: PropTypes.string,
 }
 
 DocumentToolbar.defaultProps = {
@@ -72,7 +73,7 @@ DocumentToolbar.defaultProps = {
 }
 
 DocumentToolbar.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default DocumentToolbar;

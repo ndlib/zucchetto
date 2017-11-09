@@ -1,7 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import mui, { Dialog, FlatButton, FontIcon } from 'material-ui';
-import Colors from 'material-ui/lib/styles/colors';
 import CompareActions from '../../actions/CompareActions.js';
 import CompareStore from '../../store/CompareStore.js';
 
@@ -43,11 +43,12 @@ class ClearNotebookHeaderButton extends Component {
         label="Clear all"
         icon={ <FontIcon className="material-icons" style={{ margin: '4px 12px' }}>delete</FontIcon> }
         style={{
-          backgroundColor: this.disabled() ? '#224048': Colors.red900,
+          backgroundColor: this.disabled() ? '#224048': '#b71c1c',
           color: this.disabled() ? '#cdcdcd' : 'white',
           cursor: this.disabled() ? 'default' :'pointer',
           fontFamily: 'Roboto,​sans-serif',
           fontSize: '0.9em',
+          height: '47px',
           margin: '0 0',
           padding: '0 16px',
           textAlign: 'center',

@@ -17,7 +17,7 @@ var MetadataItem = React.createClass({
   displayName: 'Metadata Item',
 
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
+    metadata: PropTypes.object.isRequired,
   },
 
   value: function(metadata_field, index) {

@@ -5,12 +5,12 @@ var gridSize = 12;
 
 var GridList = React.createClass({
   propTypes: {
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.array,
-      React.PropTypes.object,
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
     ]).isRequired,
-    grids: React.PropTypes.object,
-    className: React.PropTypes.string,
+    grids: PropTypes.object,
+    className: PropTypes.string,
   },
 
   getDefaultProps: function () {

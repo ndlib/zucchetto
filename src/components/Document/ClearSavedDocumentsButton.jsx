@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import mui, { Dialog, RaisedButton, FontIcon } from 'material-ui';
 import CompareActions from '../../actions/CompareActions.js';
 
@@ -33,8 +34,8 @@ class ClearSavedDocumentsButton extends Component {
 }
 
 ClearSavedDocumentsButton.propTypes = {
-  clickAction: React.PropTypes.func,
-  style: React.PropTypes.object,
+  clickAction: PropTypes.func,
+  style: PropTypes.object,
 }
 ClearSavedDocumentsButton.defaultProps = { style: {} };
 

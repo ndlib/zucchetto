@@ -1,6 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import mui from 'material-ui';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import mui, {Tabs, Tab, FlatButton, Dialog } from 'material-ui';
 
 import Header from '../../components/StaticAssets/Header.jsx';
 import Document from '../../components/Document/Document.jsx';
@@ -27,22 +28,22 @@ class DocumentDialog extends Component {
   document() {
     if (this.state.documentId) {
       return (
-        <mui.Tabs>
-          <mui.Tab label="Search Results">
+        <Tabs>
+          <Tab label="Search Results">
             <h2>Search Results</h2>
             <p> These would be the selected paragraphs in order of relavance. Options include compare this paragraph. </p>
-          </mui.Tab>
-          <mui.Tab label="Full Document">
+          </Tab>
+          <Tab label="Full Document">
             <Document documentId={ this.state.documentId } />
-          </mui.Tab>
-          <mui.Tab label="Metadata">
+          </Tab>
+          <Tab label="Metadata">
             <h2> Metadata </h2>
             the full document metadata.
-          </mui.Tab>
-          <mui.Tab label="Download PDF">
+          </Tab>
+          <Tab label="Download PDF">
 
-          </mui.Tab>
-        </mui.Tabs>
+          </Tab>
+        </Tabs>
       );
     } else {
       return (<div />);
@@ -51,7 +52,7 @@ class DocumentDialog extends Component {
 
   render() {
     const actions = [
-      <mui.FlatButton
+      <FlatButton
         label="Close"
         keyboardFocused={true}
         onTouchTap={this.handleClose}
@@ -59,7 +60,7 @@ class DocumentDialog extends Component {
     ];
 
     return (
-        <mui.Dialog
+        <Dialog
           actions={actions}
           modal={false}
           open={this.state.open}
@@ -67,7 +68,7 @@ class DocumentDialog extends Component {
           bodyStyle={{ overflow: 'scroll' }}
         >
         { this.document() }
-        </mui.Dialog>
+        </Dialog>
     );
   }
 }

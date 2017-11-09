@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import DocumentNav from './DocumentNav.jsx';
 import CopyrightNotification from './CopyrightNotification.jsx';
@@ -178,11 +179,11 @@ class DocumentSection extends Component {
   }
 }
 DocumentSection.propTypes = {
-  baseState: React.PropTypes.string,
-  searchIds: React.PropTypes.array,
-  comparedItems: React.PropTypes.array,
-  parent: React.PropTypes.object,
-  children: React.PropTypes.array
+  baseState: PropTypes.string,
+  searchIds: PropTypes.array,
+  comparedItems: PropTypes.array,
+  parent: PropTypes.object,
+  children: PropTypes.array
 }
 
 DocumentSection.defaultProps = {
@@ -193,7 +194,7 @@ DocumentSection.defaultProps = {
 }
 
 DocumentSection.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default DocumentSection;

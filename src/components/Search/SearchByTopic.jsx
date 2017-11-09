@@ -1,6 +1,7 @@
 'use strict'
 import { RaisedButton } from 'material-ui';
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import TopicFacets from './TopicFacets.jsx';
 import topics from './topics.js';
 

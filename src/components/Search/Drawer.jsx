@@ -1,10 +1,11 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import CompareStore from '../../store/CompareStore.js';
 import NotebookLinkString from '../../modules/NotebookLinkString.js';
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
-import mui from 'material-ui';
+import mui, { Snackbar } from 'material-ui';
 
 class Drawer extends Component {
   constructor(props, context) {
@@ -80,7 +81,7 @@ class Drawer extends Component {
 
   render() {
     return (
-      <mui.Snackbar
+      <Snackbar
         className='snack-drawer'
         open={ this.state.open }
         message={ this.message() }
@@ -106,7 +107,7 @@ class Drawer extends Component {
 }
 
 Drawer.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 

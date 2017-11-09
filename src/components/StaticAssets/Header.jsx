@@ -1,7 +1,8 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import { browserHistory } from 'react-router';
-import mui, { AppBar, FlatButton, FontIcon, LeftNav } from 'material-ui';
+import mui, { AppBar, FlatButton, FontIcon, Drawer } from 'material-ui';
 import NotebookLink from "../Notebook/NotebookLink.jsx"
 import ClearNotebookHeaderButton from "./ClearNotebookHeaderButton.jsx"
 
@@ -70,7 +71,7 @@ class Header extends Component {
           iconElementRight={ this.actionButtons() }
 
         />
-        <LeftNav
+        <Drawer
           open={this.state.menuOpen}
           docked={ false }
           onRequestChange={ this.requestChange.bind(this) }
@@ -93,7 +94,7 @@ class Header extends Component {
             <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr m" /></a>
             <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="cds" style={{ marginTop: '10px'}} /></a>
           </p>
-        </LeftNav>
+        </Drawer>
       </div>
 
     );
@@ -101,7 +102,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showCompareActions: React.PropTypes.bool,
+  showCompareActions: PropTypes.bool,
 }
 
 Header.defaultProps = {

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 class DocumentLink extends Component {
@@ -28,7 +29,7 @@ class DocumentLink extends Component {
 }
 
 DocumentLink.propTypes = {
-  item: React.PropTypes.object,
+  item: PropTypes.object,
 }
 
 export default DocumentLink;

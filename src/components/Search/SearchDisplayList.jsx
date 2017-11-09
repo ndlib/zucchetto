@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+import PropTypes from 'prop-types'
 var EventEmitter = require("../../middleware/EventEmitter.js");
 var MediaQuery = require('react-responsive');
 var SearchPagination = require('./SearchPagination.jsx');
@@ -15,7 +16,7 @@ var nodeCount = 0;
 var SearchDisplayList = React.createClass({
 
   propTypes: {
-    groupedHits: React.PropTypes.array,
+    groupedHits: PropTypes.array,
   },
 
   componentWillMount: function() {

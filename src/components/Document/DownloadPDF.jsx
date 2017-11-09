@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class DownloadPDF extends Component {
 
@@ -12,7 +13,7 @@ class DownloadPDF extends Component {
 }
 
 DownloadPDF.propTypes = {
-  item: React.PropTypes.object,
+  item: PropTypes.object,
 }
 
 export default DownloadPDF;

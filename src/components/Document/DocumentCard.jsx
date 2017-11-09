@@ -1,19 +1,16 @@
 ﻿'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import CurrentParagraph from '../Document/CurrentParagraph.jsx';
 import Title from '../Document/Title.jsx';
-import mui from 'material-ui';
-import Colors from 'material-ui/lib/styles/colors';
-import IconButton from 'material-ui/lib/icon-button';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import mui, { FontIcon, IconButton, IconMenu, MenuItem } from 'material-ui';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { Link } from 'react-router';
 
 const iconButtonElement = (
   <IconButton touch={true}>
-    <MoreVertIcon color={Colors.grey400} />
+    <MoreVertIcon color='#78909c' />
   </IconButton>
 );
 
@@ -34,7 +31,7 @@ class DocumentCard extends Component {
   }
 
   render() {
-    var icon = (<mui.FontIcon className="material-icons">menu</mui.FontIcon>);
+    var icon = (<FontIcon className="material-icons">menu</FontIcon>);
 
     return (
       <article className="result document">
@@ -49,9 +46,9 @@ class DocumentCard extends Component {
 }
 
 DocumentCard.propTypes = {
-  doc: React.PropTypes.object,
-  paragraphs: React.PropTypes.array,
-  primaryAction: React.PropTypes.func,
+  doc: PropTypes.object,
+  paragraphs: PropTypes.array,
+  primaryAction: PropTypes.func,
 }
 
 export default DocumentCard;

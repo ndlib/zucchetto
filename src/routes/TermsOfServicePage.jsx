@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 
 import TermsOfService from '../components/StaticPages/TermsOfService.jsx';
 import FeedbackLink from "../components/StaticAssets/FeedbackLink.jsx"

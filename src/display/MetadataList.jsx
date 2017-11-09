@@ -5,7 +5,7 @@ var MetadataItem = require('./MetadataItem.jsx');
 var MetadataList = React.createClass({
 
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
+    metadata: PropTypes.object.isRequired,
   },
 
   // Filters out any keys that should not be displayed

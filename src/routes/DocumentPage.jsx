@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import mui, { Paper } from 'material-ui';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
@@ -109,7 +110,7 @@ class DocumentPage extends Component {
 }
 
 DocumentPage.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default DocumentPage;

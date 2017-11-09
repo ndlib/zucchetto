@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 class MiniMap extends Component {
@@ -67,8 +68,8 @@ class MiniMap extends Component {
 }
 
 MiniMap.propTypes = {
-  onClick: React.PropTypes.func,
-  scrollTop: React.PropTypes.number,
+  onClick: PropTypes.func,
+  scrollTop: PropTypes.number,
 }
 
 export default MiniMap;

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class DocumentType extends Component {
 
@@ -12,7 +13,7 @@ class DocumentType extends Component {
 }
 
 DocumentType.propTypes = {
-  item: React.PropTypes.object,
+  item: PropTypes.object,
 }
 
 export default DocumentType;

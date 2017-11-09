@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DocumentParagraphListItem from './DocumentParagraphListItem.jsx';
 
 class DocumentListItem extends Component {
@@ -39,10 +40,10 @@ class DocumentListItem extends Component {
 }
 
 DocumentListItem.propTypes = {
-  item: React.PropTypes.object,
-  subItems: React.PropTypes.array,
-  primaryAction: React.PropTypes.func,
-  checked: React.PropTypes.bool,
+  item: PropTypes.object,
+  subItems: PropTypes.array,
+  primaryAction: PropTypes.func,
+  checked: PropTypes.bool,
 }
 
 DocumentListItem.defaultProps = {

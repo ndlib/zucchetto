@@ -1,7 +1,8 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import BackgroundIcon from 'material-ui/lib/svg-icons/action/find-in-page';
-import Colors from 'material-ui/lib/styles/colors';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
+import BackgroundIcon from 'material-ui/svg-icons/action/find-in-page';
+import Colors from 'material-ui/styles/colors';
 import Search from '../components/Search/Search.jsx';
 import SearchActions from '../actions/SearchActions.js';
 import SearchStore from '../store/SearchStore.js';
@@ -148,7 +149,7 @@ class SearchPage extends Component {
 }
 
 SearchPage.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default SearchPage;

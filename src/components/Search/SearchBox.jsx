@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
-var mui = require('material-ui');
+import PropTypes from 'prop-types';
+import mui, { FontIcon, RaisedButton } from 'material-ui';
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var VaticanID = require('../../constants/VaticanID.js');
@@ -9,7 +10,7 @@ import AdvancedSearch from './AdvancedSearch.jsx';
 
 var SearchBox = React.createClass({
   contextTypes: {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
   },
 
   getInitialState: function() {
@@ -45,12 +46,6 @@ var SearchBox = React.createClass({
     SearchActions.setTerm(term);
   },
 
-  inputStyle: function() {
-    return ({
-      height: '36px',
-    });
-  },
-
   handleKeyDown: function(e) {
     var ENTER = 13;
     if( e.keyCode == ENTER ) {
@@ -67,7 +62,6 @@ var SearchBox = React.createClass({
       onChange={this.onChange}
       defaultValue={this.state.searchTerm}
       onKeyDown={this.handleKeyDown}
-      inputStyle={this.inputStyle()}
       style={{
         fontFamily: 'GPCMed, sans-serif',
         height:'36px',
@@ -89,7 +83,7 @@ var SearchBox = React.createClass({
       >
         {this.input()}
         { this.state.showAdvanced && <AdvancedSearch/> }
-        <mui.RaisedButton
+        <RaisedButton
           onClick={this.onClick}
           style={{
             boxShadow: 'none',
@@ -102,15 +96,15 @@ var SearchBox = React.createClass({
           backgroundColor='#224048'
           disableTouchRipple={true}
         >
-          <mui.FontIcon
+          <FontIcon
             className="material-icons"
             style={{
               color: 'white',
               padding: '0 1px',
               verticalAlign: 'middle'
             }}
-          >search</mui.FontIcon>
-        </mui.RaisedButton>
+          >search</FontIcon>
+        </RaisedButton>
       </div>
     );
   }

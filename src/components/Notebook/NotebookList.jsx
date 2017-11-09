@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import ItemStore from '../../store/ItemStore.js'
 import CompareStore from '../../store/CompareStore.js'
 import DocumentListItem from '../Document/DocumentListItem.jsx'
@@ -134,7 +135,7 @@ class NotebookList extends Component {
 }
 
 NotebookList.propTypes = {
-  selectDocument: React.PropTypes.func,
+  selectDocument: PropTypes.func,
 }
 
 NotebookList.defaultProps = {

@@ -8,7 +8,7 @@ var ItemStore = require('../../store/ItemStore.js');
 var DeepCopy = require("../../modules/DeepCopy.js");
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import VaticanID from '../../constants/VaticanID.js';
-import mui from 'material-ui';
+import mui, {Card, CardHeader, CardMedia, Dialog, FontIcon, List, ListItem, Checkbox, Divider, FlatButton, RaisedButton } from 'material-ui';
 import DocDateSlider from './DocDateSlider.jsx';
 import AdvancedHowTo from './AdvancedHowTo.jsx';
 
@@ -127,11 +127,11 @@ var AdvancedSearch = React.createClass({
 
     for(var i = 0; i < doctypes.length; ++i) {
       entries.push(
-        <mui.ListItem
+        <ListItem
           key={doctypes[i]}
           primaryText={doctypes[i]}
           leftCheckbox={
-            <mui.Checkbox
+            <Checkbox
               onCheck={this.onDoctypeCheck.bind(this, collectionId, doctypes[i])}
               checked={ _.contains(currentFilters, doctypes[i]) }
             />
@@ -143,10 +143,10 @@ var AdvancedSearch = React.createClass({
     return(
       <div style={this.styles.listDiv}>
         <h4>Document Type</h4>
-        <mui.Divider/>
-        <mui.List>
+        <Divider/>
+        <List>
           {entries}
-        </mui.List>
+        </List>
       </div>
     );
   },
@@ -158,11 +158,11 @@ var AdvancedSearch = React.createClass({
 
     for(var i = 0; i < sources.length; ++i) {
       entries.push(
-        <mui.ListItem
+        <ListItem
           key={sources[i]}
           primaryText={sources[i]}
           leftCheckbox={
-            <mui.Checkbox
+            <Checkbox
               onCheck={ this.onDocsourceCheck.bind(this, collectionId, sources[i]) }
               checked={ _.contains(currentFilters, sources[i]) }
             />
@@ -174,10 +174,10 @@ var AdvancedSearch = React.createClass({
     return(
       <div style={this.styles.listDiv}>
         <h4>Document Source</h4>
-        <mui.Divider/>
-        <mui.List>
+        <Divider/>
+        <List>
           {entries}
-        </mui.List>
+        </List>
       </div>
     );
   },
@@ -213,16 +213,16 @@ var AdvancedSearch = React.createClass({
 
   makeCard(title, expandFunc, expanded, collectionId) {
     return(
-      <mui.Card
+      <Card
         onExpandChange={expandFunc}
       >
-        <mui.CardHeader
+        <CardHeader
           title={title}
           actAsExpander={true}
           showExpandableButton={true}
           titleStyle={{fontSize: '17px'}}
         />
-        <mui.CardMedia
+        <CardMedia
           expandable={true}
           style={this.styles.cardMedia}
         >
@@ -231,8 +231,8 @@ var AdvancedSearch = React.createClass({
             <div style={this.styles.verticalPadding}/>
             { this.buildDocSourceList(collectionId) }
           </div>
-        </mui.CardMedia>
-      </mui.Card>
+        </CardMedia>
+      </Card>
     );
   },
 
@@ -248,7 +248,7 @@ var AdvancedSearch = React.createClass({
           fontWeight: "400",
           display: "inline-block",
         }}>Advanced Search Filters</h3>
-        <mui.FlatButton
+        <FlatButton
             onClick={this.closeDialog}
             style={{
               float: "right",
@@ -256,43 +256,43 @@ var AdvancedSearch = React.createClass({
             }}
             disableTouchRipple={true}
           >
-            <mui.FontIcon
+            <FontIcon
               className="material-icons"
               style={{
                 padding: '0 1px',
                 verticalAlign: 'middle'
               }}
-            >close</mui.FontIcon>
-          </mui.FlatButton>
+            >close</FontIcon>
+          </FlatButton>
       </div>
     );
   },
 
   render: function() {
     // This is the button to open how to, turn on when we have info to put in there
-    //  <mui.FlatButton
+    //  <FlatButton
     //    onTouchTap={ this.openFAQ }
     //    backgroundColor={ '#224048' }
     //    style={{ marginRight: '15px' }}
     //  >
-    //    <mui.FontIcon
+    //    <FontIcon
     //      className="material-icons"
     //      style={{
     //        color: 'white',
     //        padding: '0 1px',
     //        verticalAlign: 'middle'
     //      }}
-    //    >info</mui.FontIcon>
-    //  </mui.FlatButton>,
+    //    >info</FontIcon>
+    //  </FlatButton>,
     const actions = [
-      <mui.FlatButton
+      <FlatButton
         label="Reset"
         labelStyle={{color: 'white'}}
         onTouchTap={ this.reset }
         backgroundColor={ '#224048' }
         style={{marginRight: '15px'}}
       />,
-      <mui.FlatButton
+      <FlatButton
         label="Apply"
         labelStyle={{ color: 'white' }}
         onTouchTap={ this.applyAndClose }
@@ -303,7 +303,7 @@ var AdvancedSearch = React.createClass({
     return(
       <div style={{ display: 'inline-block' }}>
         <div>
-          <mui.RaisedButton
+          <RaisedButton
             onClick={this.openDialog}
             style={{
               boxShadow: 'none',
@@ -314,17 +314,17 @@ var AdvancedSearch = React.createClass({
             backgroundColor='#224048'
             disableTouchRipple={true}
           >
-            <mui.FontIcon
+            <FontIcon
               className="material-icons"
               style={{
                 color: 'white',
                 padding: '0 1px',
                 verticalAlign: 'middle'
               }}
-            >filter_list</mui.FontIcon>
-          </mui.RaisedButton>
+            >filter_list</FontIcon>
+          </RaisedButton>
         </div>
-        <mui.Dialog
+        <Dialog
           title={this.advancedTitle()}
           actions={actions}
           modal={true}
@@ -332,10 +332,10 @@ var AdvancedSearch = React.createClass({
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
-          <mui.Dialog
+          <Dialog
             title="How to use Advanced Search Filters"
             actions={[
-              <mui.FlatButton
+              <FlatButton
                 onTouchTap={ this.closeFAQ }
                 label="OK"
                 backgroundColor={ '#224048' }
@@ -348,20 +348,20 @@ var AdvancedSearch = React.createClass({
             autoScrollBodyContent={true}
           >
             <AdvancedHowTo />
-          </mui.Dialog>
+          </Dialog>
 
           <DocDateSlider ref="DateSlider" emitter={this.state.emitter} />
           <h4>Here you can refine search parameters on each document collection separately.</h4>
           { this.makeCard('Catholic Social Teaching', this.onVaticanExpand, this.state.vaticanExpanded, VaticanID) }
           <br/>
           { this.makeCard('International Human Rights Law', this.onHumanExpand, this.state.humanExpanded, HumanRightsID) }
-          <mui.Checkbox
+          <Checkbox
             label="Search Topic List Only"
             style={ this.styles.topicSearchCheckbox }
             onCheck={ this.topicSearchChecked }
             checked={ this.state.topicsOnly }
           />
-        </mui.Dialog>
+        </Dialog>
       </div>
     );
   }

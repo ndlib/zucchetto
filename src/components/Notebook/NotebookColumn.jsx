@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import NotebookList from './NotebookList.jsx';
 import NotebookDocument from './NotebookDocument.jsx';
 import CompareActions from '../../actions/CompareActions.js'
@@ -29,11 +30,11 @@ class NotebookColumn extends Component {
 }
 
 NotebookColumn.propTypes = {
-  item: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.bool
+  item: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool
   ]),
-  columnNumber: React.PropTypes.number,
+  columnNumber: PropTypes.number,
 }
 
 NotebookColumn.defaultProps = {

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CopyrightNotification extends Component {
 
@@ -22,8 +23,8 @@ class CopyrightNotification extends Component {
 }
 
 CopyrightNotification.propTypes = {
-  item: React.PropTypes.object,
-  align: React.PropTypes.string,
+  item: PropTypes.object,
+  align: PropTypes.string,
 }
 
 CopyrightNotification.defaultProps = {

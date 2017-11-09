@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import Drawer from '../../components/Search/Drawer.jsx';
 
 class Footer extends Component {
@@ -9,8 +10,8 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  showCompareButton: React.PropTypes.bool,
-  showBackToSearchButton: React.PropTypes.bool,
+  showCompareButton: PropTypes.bool,
+  showBackToSearchButton: PropTypes.bool,
 }
 
 Footer.defaultProps = {

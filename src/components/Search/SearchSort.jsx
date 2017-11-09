@@ -76,9 +76,7 @@ var SearchSort = React.createClass({
           <div style={this.sortStyle()}>
             <select
               ref='searchSort'
-              autoWidth={false}
               onChange={this.onChange.bind(this, 'selectValue')}
-              menuItems={SearchStore.sorts}
               defaultValue={SearchStore.sortOption}
               style={this.sortSelectStyle()}
             >

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import Document from '../Document/Document.jsx';
 import DocumentDialog from '../Document/DocumentDialog.jsx';
 import Hit from './Hit.jsx';

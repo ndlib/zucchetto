@@ -6,7 +6,7 @@ var PageHeader = React.createClass({
   displayName: 'Page Header',
 
   propTypes: {
-    branding: React.PropTypes.bool,
+    branding: PropTypes.bool,
   },
 
   style: function() {

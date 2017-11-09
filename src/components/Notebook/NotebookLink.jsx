@@ -1,10 +1,11 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import VaticanID from '../../constants/VaticanID.js';
 import HumanRightsID from '../../constants/HumanRightsID.js';
 import CompareStore from '../../store/CompareStore.js';
 import NotebookLinkString from '../../modules/NotebookLinkString.js'
-import mui from "material-ui"
+import mui, {FlatButton} from "material-ui"
 
 class NotebookLink extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class NotebookLink extends Component {
     let totalCount = CompareStore.allItems().length;
 
     return (
-      <mui.FlatButton onClick={this.clickAction.bind(this)}
+      <FlatButton onClick={this.clickAction.bind(this)}
         style={{
           backgroundColor: this.disabled() ? '#224048': '#D5B117',
           color: this.disabled() ? '#cdcdcd' : '#224048',
@@ -53,6 +54,7 @@ class NotebookLink extends Component {
           display: 'inline',
           fontFamily: 'Roboto,​sans-serif',
           fontSize: '0.9em',
+          height: '47px',
           margin: '0 0',
           padding: '0 16px',
           textAlign: 'center',
@@ -61,17 +63,17 @@ class NotebookLink extends Component {
           borderLeft: '1px solid white',
           borderRight: '1px solid white'
         }}
-      >Compare { totalCount } Paragraph(s)</mui.FlatButton>
+      >Compare { totalCount } Paragraph(s)</FlatButton>
     );
   }
 }
 
 NotebookLink.propTypes = {
-  disabled: React.PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 NotebookLink.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 

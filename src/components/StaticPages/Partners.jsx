@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');

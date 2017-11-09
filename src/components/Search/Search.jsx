@@ -1,7 +1,8 @@
 'use strict'
 var React = require('react');
-var CircularProgress = require('material-ui/lib/circular-progress');
-var Colors = require('material-ui/lib/styles/colors');
+import PropTypes from 'prop-types';
+import { CircularProgress } from 'material-ui';
+var Colors = require('material-ui/styles/colors');
 var PageContent = require('../../layout/PageContent.jsx');
 var CompareStore = require("../../store/CompareStore.js");
 var SearchStore = require('../../store/SearchStore.js');
@@ -15,8 +16,8 @@ const styles = {
 
 var Search = React.createClass({
   propTypes: {
-    title: React.PropTypes.string,
-    collection: React.PropTypes.string,
+    title: PropTypes.string,
+    collection: PropTypes.string,
   },
 
   getInitialState: function() {
