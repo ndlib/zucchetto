@@ -23,7 +23,7 @@ class ClearSavedDocumentsButton extends Component {
       <RaisedButton
         label="Clear all"
         labelPosition="before"
-        primary={ false }
+        primary={ 'false' }
         style={ this.props.style }
         onClick={ this.onClick }
         icon={ <FontIcon className="material-icons" style={{ margin: '4px 12px' }}>delete</FontIcon> }

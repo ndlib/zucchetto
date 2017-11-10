@@ -64,7 +64,7 @@ class NotebookDocument extends Component {
 
   render() {
     return (
-      <Paper zDepth={0} style={{height: '100%'}}>
+      <Paper zdepth={0} style={{height: '100%'}}>
         <div className='document-head' ref='documentHead'>
           <Heading title={ this.documentTitle() } />
           <div className='document-head'>

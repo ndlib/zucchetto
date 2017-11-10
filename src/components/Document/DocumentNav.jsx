@@ -1,10 +1,10 @@
 'use strict'
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import mui, { Divider, List, ListItem, Toggle } from 'material-ui';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import mui, { Divider, List, ListItem, Toggle, makeSelectable } from 'material-ui';
 import _ from 'underscore';
 var theme = require("../../themes/vatican.jsx");
+let SelectableList = makeSelectable(List);
 
 class DocumentNav extends Component {
 
@@ -39,7 +39,7 @@ class DocumentNav extends Component {
     }
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      <div>
         <div style={{margin: '0', backgroundColor: '#f8f6ed'}} className="left-col">
           <h3>Highlight Paragraphs</h3>
           <div className="right">
@@ -47,31 +47,26 @@ class DocumentNav extends Component {
               label="Only Show Highlighted Paragraphs"
               labelPosition="right"
               onToggle={ this.props.toggleOnClick }
-              primary={ false }
-              secondary={ false }
+              primary={ 'false' }
+              secondary={ 'false' }
 
             />
           </div>
-          <List
-            selectable
+          <SelectableList
             style={{ backgroundColor: "inherit" }}
-            valueLink={{
-              value: this.props.selectedMenuItem,
-              requestChange: this.menuClick.bind(this)
-            }}>
+            value={this.props.selectedMenuItem}
+            onChange={this.menuClick.bind(this)}
+            >
             { searchMenuItem }
             <Divider />
             <h4>Topics in Document</h4>
             { this.topicList() }
-          </List>
+          </SelectableList>
         </div>
-      </MuiThemeProvider>
+      </div>
     );
   }
 
-}
-DocumentNav.childContextTypes = {
-  muiTheme: PropTypes.object
 }
 
 DocumentNav.propTypes = {

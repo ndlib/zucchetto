@@ -140,7 +140,7 @@ class DocumentSection extends Component {
   render() {
     return (
       <Paper style={{ width: '100%', backgroundColor: "inherit" }}>
-        <Paper zDepth={ 0 } style={this.styles.paperNav} >
+        <Paper zdepth={ 0 } style={this.styles.paperNav} >
           <DocumentNav
             parent={ this.props.parent }
             showSearch={ (this._searchIds.length > 0)}
@@ -152,7 +152,7 @@ class DocumentSection extends Component {
             toggleOnClick={ this.toggleHightlightedParagraphs.bind(this) }
           />
         </Paper>
-        <Paper zDepth={ 0 } style={this.styles.paperDoc} ref='docBody'>
+        <Paper zdepth={ 0 } style={this.styles.paperDoc} ref='docBody'>
           <div ref='docContent'>
               <div style={{ marginTop: '1em'}} >
                 <CopyrightNotification item={ this.props.parent } />
@@ -167,7 +167,7 @@ class DocumentSection extends Component {
             <p>Top</p>
           </div>
         </Paper>
-        <Paper zDepth={ 0 } style={this.styles.paperMap}>
+        <Paper zdepth={ 0 } style={this.styles.paperMap}>
           <MiniMap
             onClick={ this.mapClick }
             scrollTop={ this.state.scrollTop }
