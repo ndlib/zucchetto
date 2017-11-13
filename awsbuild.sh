@@ -4,10 +4,10 @@ RELEASE=`git fetch --tags;git show remotes/origin/master:current_release`
 TAG=`git describe --exact-match --tags HEAD`
 REVISION=`git rev-parse HEAD`
 
-if [ "${TAG}" != "${RELEASE}" ]; then
-  echo "\033[0;31mYou must be on tag ${RELEASE} to deploy to production.\033[0m"
-  exit 1
-fi
+# if [ "${TAG}" != "${RELEASE}" ]; then
+#   echo "\033[0;31mYou must be on tag ${RELEASE} to deploy to production.\033[0m"
+#   exit 1
+# fi
 
 echo "\033[0;31mBuilding production with tag ${TAG} (Rev ${REVISION})\033[0m"
 npm run build
