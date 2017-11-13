@@ -53,7 +53,7 @@ class Header extends Component {
     return (
       <div>
         <AppBar
-          title="Convocate"
+          title={(<Link to="/" style={{color: '#D5B117', textDecoration: 'none'}}>Convocate</Link>)}
           onLeftIconButtonTouchTap={ this.menuClick }
           onTitleTouchTap={ this.titleClick }
           style={{
