@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 var ItemStore = require('../../store/ItemStore.js');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
-var Slider = require('rc-slider');
+import { Range } from 'rc-slider';
 import mui from 'material-ui';
 
 var DocDateSlider = createReactClass({
@@ -70,7 +70,7 @@ var DocDateSlider = createReactClass({
       <div>
         <h4>Date Range</h4>
         <p>Min - Max: {currentMin} - {currentMax}</p>
-        <Slider
+        <Range
           min={this.state.minDocDate}
           max={this.state.maxDocDate}
           range={true}
