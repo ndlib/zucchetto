@@ -1,15 +1,17 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
+import PropTypes from 'prop-types';
 var ItemStore = require('../../store/ItemStore.js');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
-var Slider = require('rc-slider');
+import { Range } from 'rc-slider';
 import mui from 'material-ui';
 
-var DocDateSlider = React.createClass({
+var DocDateSlider = createReactClass({
   propTypes: {
-    collection: React.PropTypes.string,
-    emitter: React.PropTypes.object,
+    collection: PropTypes.string,
+    emitter: PropTypes.object,
   },
 
   storedState() {
@@ -68,7 +70,7 @@ var DocDateSlider = React.createClass({
       <div>
         <h4>Date Range</h4>
         <p>Min - Max: {currentMin} - {currentMax}</p>
-        <Slider
+        <Range
           min={this.state.minDocDate}
           max={this.state.maxDocDate}
           range={true}
@@ -80,4 +82,4 @@ var DocDateSlider = React.createClass({
     );
   }
 });
-module.exports = DocDateSlider
+export default DocDateSlider

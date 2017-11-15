@@ -29,4 +29,4 @@ class TopicNode {
   }
 }
 
-module.exports = new TopicNode;
+export default new TopicNode;

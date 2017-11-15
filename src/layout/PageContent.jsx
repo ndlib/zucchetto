@@ -1,7 +1,7 @@
 
 var React = require('react');
-
-var PageContent = React.createClass({
+var createReactClass = require('create-react-class');
+var PageContent = createReactClass({
 
   classes: function () {
     if (this.props.fluidLayout) {

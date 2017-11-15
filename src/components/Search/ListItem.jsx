@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import Document from '../Document/Document.jsx';
 import DocumentDialog from '../Document/DocumentDialog.jsx';
 import Hit from './Hit.jsx';
@@ -7,7 +8,7 @@ import CopyrightNotification from '../Document/CopyrightNotification.jsx';
 import DocumentCard from '../Document/DocumentCard.jsx';
 import AddToCompare from '../Document/AddToCompare.jsx';
 import Title from '../Document/Title.jsx';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class ListItem extends Component{
   constructor(props) {

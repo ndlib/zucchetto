@@ -1,7 +1,8 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import mui from 'material-ui';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import mui, {FlatButton, FontIcon} from 'material-ui';
+import { Link } from 'react-router-dom';
 import SearchStore from '../../store/SearchStore.js';
 
 class BackToSearchButton extends Component {
@@ -13,10 +14,10 @@ class BackToSearchButton extends Component {
     if (SearchStore.hasSearch()) {
       return (
         <Link to={ SearchStore.searchUri() }>
-          <mui.FlatButton
+          <FlatButton
             label="Back to Search"
             labelPosition="after"
-            icon={<mui.FontIcon className="material-icons">navigate_before</mui.FontIcon>}
+            icon={<FontIcon className="material-icons">navigate_before</FontIcon>}
             backgroundColor="#E4E1D1"
             style={{ margin: '10px 5px', float: 'left' }}
           />

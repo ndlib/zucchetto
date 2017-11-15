@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import ItemStore from '../../store/ItemStore.js';
 import Paragraph from './Paragraph.jsx';
@@ -74,13 +75,13 @@ class Document extends Component {
 }
 
 Document.propTypes = {
-  documentId: React.PropTypes.string.isRequired,
-  paragraphs: React.PropTypes.array,
-  bodyStyle: React.PropTypes.object,
-  selectedParagraphIds: React.PropTypes.array,
-  highlightedParagraphIds: React.PropTypes.array,
-  showOnlySelected: React.PropTypes.bool,
-  showCompareButton: React.PropTypes.bool,
+  documentId: PropTypes.string.isRequired,
+  paragraphs: PropTypes.array,
+  bodyStyle: PropTypes.object,
+  selectedParagraphIds: PropTypes.array,
+  highlightedParagraphIds: PropTypes.array,
+  showOnlySelected: PropTypes.bool,
+  showCompareButton: PropTypes.bool,
 }
 
 Document.defaultProps = {

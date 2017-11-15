@@ -1,6 +1,6 @@
 'use strict'
 var _ = require('underscore');
-var React = require('react');
+var React, { Component } = require('react');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 var ItemStore = require('../../store/ItemStore.js');
@@ -9,19 +9,13 @@ import VaticanID from '../../constants/VaticanID.js';
 import mui from 'material-ui';
 import DocDateSlider from './DocDateSlider.jsx';
 
-var AdvancedSearch = React.createClass({
-  howTo() {
+class AdvancedSearch extends Component {
+  render () {
     return(
       <div>
         <p>How to ------ </p>
       </div>
     );
-  },
-
-  render: function() {
-    return(
-      this.howTo()
-    );
   }
-});
-module.exports = AdvancedSearch
+}
+export default AdvancedSearch

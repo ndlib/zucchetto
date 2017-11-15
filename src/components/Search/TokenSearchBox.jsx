@@ -1,6 +1,7 @@
 import { CircularProgress, FontIcon, RaisedButton } from 'material-ui';
 import _ from 'underscore';
 var React = require('react');
+var createReactClass = require('create-react-class');
 var TokenInput = require('react-tokeninput');
 var ComboboxOption = require('react-tokeninput').Option;
 var without = _.without;
@@ -11,7 +12,7 @@ var VaticanID = require('../../constants/VaticanID.js');
 var HumanRightsID = require('../../constants/HumanRightsID.js');
 var TopicsForAutoComplete = require('./TopicsForAutoComplete.js');
 
-var TokenSearchBox = React.createClass({
+var TokenSearchBox = createReactClass({
 
   getInitialState: function() {
     var selectedTerms = [];

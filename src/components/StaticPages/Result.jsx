@@ -1,12 +1,12 @@
 'use strict'
-var React = require('react');
+import React, { Component } from 'react'
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var Footer = require('../StaticAssets/Footer.jsx');
 
-var Result = React.createClass({
+class Result extends Component{
 
-  render: function() {
+  render() {
     return (
       <div>
       	<Header/>
@@ -177,6 +177,6 @@ var Result = React.createClass({
     );
   }
 
-});
+}
 
-module.exports = Result;
+export default Result;

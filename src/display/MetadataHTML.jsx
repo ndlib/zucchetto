@@ -1,11 +1,12 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var MetadataHTML = React.createClass({
+var MetadataHTML = createReactClass({
   displayName: 'Metadata HTML',
 
   propTypes: {
-    metadata_field: React.PropTypes.object.isRequired,
+    metadata_field: PropTypes.object.isRequired,
   },
 
   render: function () {

@@ -1,11 +1,11 @@
 'use strict'
-var React = require('react');
+import React, { Component } from 'react'
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var Header = require('../StaticAssets/Header.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
-var Using = React.createClass({
+class Using extends Component{
 
-  render: function() {
+  render() {
     return (
       <div>
         <Header/>
@@ -25,7 +25,7 @@ var Using = React.createClass({
 </p>
 <h3>Search by Keyword</h3>
 
-<p>You can input any keyword or phrase in the keyword search bar. This search method will look at both the tags associated with the text and the text itself for particular words/phrases. When searching the actual text, a keyword search will always include the word or phrase entered. Using quotations will force the search engine to look for an exact match in the text. When quotations are not used, the search engine will stem the word in order to return more results. For example, if you search for “children,” texts that also contain the word “child” will be returned. Because the search engine also searches the tags associated with the texts, texts may be returned that do not contain the searched word or phrase. For example, if you search for “subsidiarity” and a paragraph has been tagged with subsidiarity but does not include that word, the paragraph will be returned. 
+<p>You can input any keyword or phrase in the keyword search bar. This search method will look at both the tags associated with the text and the text itself for particular words/phrases. When searching the actual text, a keyword search will always include the word or phrase entered. Using quotations will force the search engine to look for an exact match in the text. When quotations are not used, the search engine will stem the word in order to return more results. For example, if you search for “children,” texts that also contain the word “child” will be returned. Because the search engine also searches the tags associated with the texts, texts may be returned that do not contain the searched word or phrase. For example, if you search for “subsidiarity” and a paragraph has been tagged with subsidiarity but does not include that word, the paragraph will be returned.
 </p><p>The keyword search accepts a full range of Boolean modifiers.</p>
 <h3>Browse the Document Index</h3>
 <p>The Index of Documents contains a list of all documents in the database, listed alphabetically first by source and then by title. Each document title is a link to the full text of the document. For more on reviewing full texts, see “In-Depth Document Analysis.”
@@ -64,7 +64,7 @@ var Using = React.createClass({
       <p>In the comparison frame, all chosen documents will be listed on the left side of the screen, categorized according to discipline. Note that this list includes documents, not individual paragraphs. You can examine individual paragraphs during comparison.</p>
       <p>To begin comparison, choose any document from the list. It will appear on the left side of the main screen. Choosing a second document will place that document on the right side of the screen. The documents are now ready for comparison.</p>
       <p> At any point, you may deselect a document from the list and choose another. You are not required to select documents from both disciplines; you may choose any two documents for comparison.</p>
-  
+
       <h3>Navigating within the Documents</h3>
       <p>In the navigation frame you have access to the full text of the chosen document, so that you may examine the relevant paragraphs in context. To facilitate navigation, at the top of each document there is a <strong>Go To Selected Paragraph</strong> drop down menu. Use this menu to jump directly to paragraphs that were chosen for comparison. Relevant paragraphs are highlighted in blue.</p>
 
@@ -79,7 +79,7 @@ var Using = React.createClass({
       <h3>Sharing/Saving Results</h3>
       <p>You may save the contents of your comparison for later retrieval, or to share with others. At the top of the comparison frame, click <strong>Share/Save</strong>. A pop-up window will offer to copy a link into your clipboard, which you may then copy into an email. This link will take anyone directly to <em>Convocate’s</em> comparison frame, populated with the documents that you have chosen.</p>
       <p>Note: <strong>Save/Share</strong> preserves only the contents of your comparison. It does not save your search parameters. </p>
-  
+
       <h2>In-Depth Document Analysis</h2>
       <p><em>Convocate</em> offers a number of exceptional features for review of individual documents, making it an ideal platform for in-depth analysis in either discipline. The features below apply to the examination of individual documents apart from the comparison function.</p>
       <p>To access a document’s full text and expanded analysis tools, click on the title from either the Index of Documents, the Search page, or the comparison frame. The document will open in a new screen.</p>
@@ -104,6 +104,6 @@ var Using = React.createClass({
     );
   }
 
-});
+}
 
-module.exports = Using;
+export default Using;

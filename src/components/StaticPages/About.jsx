@@ -1,11 +1,11 @@
 'use strict'
-var React = require('react');
+import React, { Component } from 'react'
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var Header = require('../StaticAssets/Header.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
-var About = React.createClass({
+class About extends Component {
 
-  render: function() {
+  render() {
     return (
       <div>
         <Header/>
@@ -59,6 +59,6 @@ var About = React.createClass({
     );
   }
 
-});
+}
 
-module.exports = About;
+export default About;

@@ -1,12 +1,12 @@
 'use stirct'
 var React = require('react');
-
+var createReactClass = require('create-react-class');
 var TitleBar = require('../layout/TitleBar.jsx');
-var PageHeader = React.createClass({
+var PageHeader = createReactClass({
   displayName: 'Page Header',
 
   propTypes: {
-    branding: React.PropTypes.bool,
+    branding: PropTypes.bool,
   },
 
   style: function() {
@@ -28,7 +28,7 @@ var PageHeader = React.createClass({
           <nav className="" role="navigation" >
             {titleBar}
           </nav>
-        </header> 
+        </header>
       </div>
     );
   }

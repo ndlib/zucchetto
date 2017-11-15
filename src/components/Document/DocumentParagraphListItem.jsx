@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class DocumentParagraphListItem extends Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class DocumentParagraphListItem extends Component {
 }
 
 DocumentParagraphListItem.propTypes = {
-  item: React.PropTypes.object,
-  primaryAction: React.PropTypes.func,
+  item: PropTypes.object,
+  primaryAction: PropTypes.func,
 }
 
 export default DocumentParagraphListItem;

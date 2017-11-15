@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom';
 import Document from '../Document/Document.jsx';
 import CopyrightNotification from '../Document/CopyrightNotification.jsx';
@@ -14,6 +15,7 @@ import ItemStore from '../../store/ItemStore.js';
 import CompareStore from '../../store/CompareStore.js';
 const CATHOLIC = 'Catholic Social Teaching';
 const HUMANRIGHTS = 'International Human Rights Law';
+import { Paper } from 'material-ui';
 
 class NotebookDocument extends Component {
   constructor(props) {
@@ -62,7 +64,7 @@ class NotebookDocument extends Component {
 
   render() {
     return (
-      <mui.Paper zDepth={0} style={{height: '100%'}}>
+      <Paper zdepth={0} style={{height: '100%'}}>
         <div className='document-head' ref='documentHead'>
           <Heading title={ this.documentTitle() } />
           <div className='document-head'>
@@ -84,14 +86,14 @@ class NotebookDocument extends Component {
         >
           <CopyrightNotification item={ this.props.document } align='center' />
         </Document>
-      </mui.Paper>
+      </Paper>
     );
   }
 }
 
 NotebookDocument.propTypes = {
-  document: React.PropTypes.object,
-  removeDocument: React.PropTypes.func,
+  document: PropTypes.object,
+  removeDocument: PropTypes.func,
 }
 
 export default NotebookDocument;

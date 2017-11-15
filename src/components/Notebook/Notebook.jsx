@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import Header  from '../StaticAssets/Header.jsx';
 import Footer from '../StaticAssets/Footer.jsx';
 import CompareStore from '../../store/CompareStore.js';
@@ -8,8 +9,7 @@ import NotebookList from './NotebookList.jsx';
 import NotebookToolbar from './NotebookToolbar.jsx';
 import EmptyColumn from './EmptyColumn.jsx';
 
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
+import { Dialog, FlatButton } from 'material-ui';
 
 class Notebook extends Component {
   constructor() {

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CrowdSourcingButton from './CrowdSourcingButton.jsx'
 import ItemStore from '../../store/ItemStore.js'
 import IDFromAtID  from '../../modules/IDFromAtID.js';
@@ -76,8 +77,8 @@ class CrowdSourcing extends Component {
 }
 
 CrowdSourcing.propTypes = {
-  item: React.PropTypes.object.isRequired,
-  marked: React.PropTypes.bool,
+  item: PropTypes.object.isRequired,
+  marked: PropTypes.bool,
 }
 CrowdSourcing.defaultProps = {
   marked: false,

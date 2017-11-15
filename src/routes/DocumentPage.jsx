@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import mui, { Paper } from 'material-ui';
 import Header from '../components/StaticAssets/Header.jsx';
 import Footer from '../components/StaticAssets/Footer.jsx';
@@ -17,7 +18,7 @@ class DocumentPage extends Component {
 
     this._baseState = "none";
     this._searchIds = [];
-    if (this.props.location.query.searchIds) {
+    if (this.props.location.query && this.props.location.query.searchIds) {
       this._baseState = "search"
       this._searchIds = this.props.location.query.searchIds.split(",");
     }
@@ -38,7 +39,7 @@ class DocumentPage extends Component {
 
   componentWillMount() {
     ItemStore.on("LoadChildrenFinished", this.childrenLoadFinished);
-    ItemActions.loadChildren(this.props.params.id);
+    ItemActions.loadChildren(this.props.match.params.id);
     CompareStore.on('ItemCompareUpdated', this.updateCompare);
   }
 
@@ -52,8 +53,8 @@ class DocumentPage extends Component {
   }
 
   childrenLoadFinished(parentId) {
-    if(parentId === this.props.params.id){
-      var parent = ItemStore.getItem(this.props.params.id);
+    if(parentId === this.props.match.params.id){
+      var parent = ItemStore.getItem(this.props.match.params.id);
       this.setState({
         loaded: true,
         parent: parent,
@@ -93,7 +94,7 @@ class DocumentPage extends Component {
     }
 
     return (
-      <div zDepth={ 0 }>
+      <div zdepth={ 0 }>
         <Header />
         <DocumentToolbar
           document={ this.state.parent }
@@ -109,7 +110,7 @@ class DocumentPage extends Component {
 }
 
 DocumentPage.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default DocumentPage;

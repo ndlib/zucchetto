@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 
 import Header from '../components/StaticAssets/Header.jsx';
 import FooterHome from '../components/StaticAssets/FooterHome.jsx';

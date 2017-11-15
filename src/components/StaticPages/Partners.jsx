@@ -1,6 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router'
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
@@ -35,7 +36,7 @@ class Partners extends Component {
         /*<Link to='https://www.tcd.ie/' target='_blank'>Trinity College Dublin</Link>*/
         /*<Link to='https://www.law.umich.edu/Pages/default.aspx' target='_blank'>University of Michigan Law School</Link>*/
         /*<Link to='http://www.law.ou.edu/' target='_blank' className="larger">The University of Oklahoma College of Law</Link>*/}
-        
+
         <ul>
          <li> <strong><Link to='http://kellogg.nd.edu/faculty/fellows/carozza.shtml' target='_blank'>Carozza, Paolo </Link>       </strong>  <br/><em>Director, Helen Kellogg Instittute for International Studies; Director, JSD Program in International Human Rights Law; Concurrent Professor of Political Science</em> <br/>  Kellogg Institute for International Studies, University of Notre Dame       </li>
          <li> <strong><Link to='https://library.nd.edu/directory/employees/plawton' target='_blank'>Lawton, Pat           </Link></strong>  <br/><em>Digital Projects Librarian, Catholic Research Resources Alliance</em><br/>        Hesburgh Libraries, University of Notre Dame    </li>
@@ -69,7 +70,7 @@ class Partners extends Component {
             <Link to='http://www.ilo.org/global/lang--en/index.htm' target='_blank'>International Labor Organization</Link>
             <Link to='http://www.oas.org/en/default.asp' target='_blank'>Organization of American States</Link>
             <Link to='https://www.icrc.org/' target='_blank'>
-            
+
             International Committee of the Red Cross</Link>
             <Link to='http://www.au.int/' target='_blank'>African Union</Link>
             <Link to='http://www.usccb.org/' target='_blank'>United States Conference of Catholic Bishops</Link>

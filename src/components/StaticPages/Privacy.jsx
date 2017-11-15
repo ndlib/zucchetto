@@ -1,11 +1,11 @@
 'use strict'
-var React = require('react');
+import React, { Component } from 'react'
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
-var Privacy = React.createClass({
+class Privacy extends Component {
 
-  render: function() {
+  render() {
     return (
       <div>
         <Header/>
@@ -53,6 +53,6 @@ var Privacy = React.createClass({
   );
   }
 
-});
+}
 
-module.exports = Privacy;
+export default Privacy;

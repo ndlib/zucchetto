@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import mui, { ListItem, FontIcon } from 'material-ui';
 import CompareStore from '../../store/CompareStore.js';
 import CompareActions from '../../actions/CompareActions.js';
@@ -46,8 +47,8 @@ class ManageSavedItem extends Component {
 }
 
 ManageSavedItem.propTypes = {
-  docObject: React.PropTypes.object,
-  clickAction: React.PropTypes.func
+  docObject: PropTypes.object,
+  clickAction: PropTypes.func
 }
 
 export default ManageSavedItem;

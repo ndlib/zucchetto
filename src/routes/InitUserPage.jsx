@@ -1,6 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import mui from 'material-ui'
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
+import mui, {Snackbar} from 'material-ui'
 import SiteIndex from '../components/StaticPages/SiteIndex.jsx'
 import InitUser from '../modules/InitUser.js'
 class InitUserPage extends Component {
@@ -9,7 +10,7 @@ class InitUserPage extends Component {
     return (
       <div>
       <SiteIndex  />
-        <mui.Snackbar
+        <Snackbar
           className='snack-drawer'
           open={ true }
           message={ `Feedback mode has been enabled. Your id is ${localStorage.getItem('UUID')}.` }

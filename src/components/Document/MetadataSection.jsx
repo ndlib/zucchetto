@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import mui, { Paper } from 'material-ui';
 
 class MetadataSection extends Component {
@@ -50,7 +51,7 @@ class MetadataSection extends Component {
   render() {
 
     return (
-        <Paper zDepth={ 0 } style={{
+        <Paper zdepth={ 0 } style={{
             backgroundColor: 'transparent',
             height: 'calc(100% - 200px)',
             marginTop: '1em',
@@ -77,7 +78,7 @@ class MetadataSection extends Component {
   }
 }
 MetadataSection.propTypes = {
-  document: React.PropTypes.object.isRequired,
+  document: PropTypes.object.isRequired,
 }
 
 export default MetadataSection;

@@ -1,15 +1,16 @@
 'use strict'
 var React = require("react");
+var createReactClass = require('create-react-class');
 var mui = require('material-ui');
 var Details = require('../display/Details.jsx');
 
-var ItemShow = React.createClass({
+var ItemShow = createReactClass({
   displayName: "Item Show",
 
   propTypes: {
-    item: React.PropTypes.object,
-    additionalDetails: React.PropTypes.string,
-    height: React.PropTypes.number,
+    item: PropTypes.object,
+    additionalDetails: PropTypes.string,
+    height: PropTypes.number,
   },
 
   outerStyles: function() {

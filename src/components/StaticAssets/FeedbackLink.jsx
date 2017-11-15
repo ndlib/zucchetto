@@ -1,6 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 import mui, { FlatButton } from "material-ui"
 
 class FeedbackLink extends Component {

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom';
 import AddToCompare from '../Document/AddToCompare.jsx';
 import CrowdSourcing from '../Document/CrowdSourcing.jsx'
@@ -27,7 +28,7 @@ class Hit extends Component {
 }
 
 Hit.propTypes = {
-  item: React.PropTypes.object,
+  item: PropTypes.object,
 }
 
 export default Hit;

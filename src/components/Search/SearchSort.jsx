@@ -1,9 +1,10 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 
-var SearchSort = React.createClass({
+var SearchSort = createReactClass({
   getInitialState: function() {
     var state = {
       selectValue: 0,
@@ -76,9 +77,7 @@ var SearchSort = React.createClass({
           <div style={this.sortStyle()}>
             <select
               ref='searchSort'
-              autoWidth={false}
               onChange={this.onChange.bind(this, 'selectValue')}
-              menuItems={SearchStore.sorts}
               defaultValue={SearchStore.sortOption}
               style={this.sortSelectStyle()}
             >
@@ -93,4 +92,4 @@ var SearchSort = React.createClass({
     }
   }
 });
-module.exports = SearchSort
+export default SearchSort

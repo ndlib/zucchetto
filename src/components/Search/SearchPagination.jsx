@@ -1,8 +1,9 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var SearchStore = require('../../store/SearchStore.js');
 
-var SearchPagination = React.createClass({
+var SearchPagination = createReactClass({
   paginationButton: function() {
     return {
       border:'solid 1px',
@@ -72,4 +73,4 @@ var SearchPagination = React.createClass({
   }
 });
 
-module.exports = SearchPagination;
+export default SearchPagination;

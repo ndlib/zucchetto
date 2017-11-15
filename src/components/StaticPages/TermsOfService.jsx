@@ -1,11 +1,10 @@
 'use strict'
-var React = require('react');
+import React, { Component } from 'react';
 var Header = require('../StaticAssets/Header.jsx');
 var Navigation = require('../StaticAssets/Navigation.jsx');
 var FooterHome = require('../StaticAssets/FooterHome.jsx');
-var TermsOfService = React.createClass({
-
-  render: function() {
+class TermsOfService extends Component {
+  render() {
     return (
       <div>
         <Header/>
@@ -53,6 +52,6 @@ var TermsOfService = React.createClass({
     );
   }
 
-});
+}
 
-module.exports = TermsOfService;
+export default TermsOfService;

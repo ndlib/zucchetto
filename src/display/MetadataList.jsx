@@ -1,11 +1,12 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var MetadataItem = require('./MetadataItem.jsx');
 
-var MetadataList = React.createClass({
+var MetadataList = createReactClass({
 
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
+    metadata: PropTypes.object.isRequired,
   },
 
   // Filters out any keys that should not be displayed

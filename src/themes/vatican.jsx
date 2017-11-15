@@ -1,7 +1,7 @@
 'use strict'
-var Colors = require('material-ui/lib/styles/colors');
-var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
-var Spacing = require('material-ui/lib/styles/spacing');
+var Colors = require('material-ui/styles/colors');
+var ColorManipulator = require('material-ui/utils/colorManipulator');
+var Spacing = require('material-ui/styles/spacing');
 
 module.exports = {
   spacing: Spacing,

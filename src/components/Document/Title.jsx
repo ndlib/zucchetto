@@ -1,6 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 class Title extends Component {
 
@@ -14,8 +15,8 @@ class Title extends Component {
 }
 
 Title.propTypes = {
-  item: React.PropTypes.object,
-  shouldLink: React.PropTypes.bool,
+  item: PropTypes.object,
+  shouldLink: PropTypes.bool,
 }
 
 Title.defaultProps = {

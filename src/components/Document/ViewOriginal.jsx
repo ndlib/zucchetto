@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
 import ItemStore from '../../store/ItemStore.js'
 import mui, { FlatButton, FontIcon } from 'material-ui';
 
@@ -32,7 +33,7 @@ class ViewOriginal extends Component {
 }
 
 ViewOriginal.propTypes = {
-  docuementId: React.PropTypes.object,
+  docuementId: PropTypes.object,
 }
 
 export default ViewOriginal;

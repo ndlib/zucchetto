@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import mui, { Dialog, RaisedButton, FontIcon } from 'material-ui';
 import CompareActions from '../../actions/CompareActions.js';
 
@@ -22,7 +23,7 @@ class ClearSavedDocumentsButton extends Component {
       <RaisedButton
         label="Clear all"
         labelPosition="before"
-        primary={ false }
+        primary={ 'false' }
         style={ this.props.style }
         onClick={ this.onClick }
         icon={ <FontIcon className="material-icons" style={{ margin: '4px 12px' }}>delete</FontIcon> }
@@ -33,8 +34,8 @@ class ClearSavedDocumentsButton extends Component {
 }
 
 ClearSavedDocumentsButton.propTypes = {
-  clickAction: React.PropTypes.func,
-  style: React.PropTypes.object,
+  clickAction: PropTypes.func,
+  style: PropTypes.object,
 }
 ClearSavedDocumentsButton.defaultProps = { style: {} };
 

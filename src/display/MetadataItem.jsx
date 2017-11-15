@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 var MetadataString = require('./MetadataString.jsx');
 var MetadataDate = require('./MetadataDate.jsx');
@@ -13,11 +14,11 @@ var fieldTypeMap = {
   MetadataText: MetadataText,
 };
 
-var MetadataItem = React.createClass({
+var MetadataItem = createReactClass({
   displayName: 'Metadata Item',
 
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
+    metadata: PropTypes.object.isRequired,
   },
 
   value: function(metadata_field, index) {

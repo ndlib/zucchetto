@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IDFromAtID from "../../modules/IDFromAtID.js";
 import ItemStore from "../../store/ItemStore.js";
 import CompareStore from "../../store/CompareStore.js";
@@ -123,9 +124,9 @@ class AddToCompare extends Component {
 }
 
 AddToCompare.propTypes = {
-  item: React.PropTypes.object,
-  subItems: React.PropTypes.array,
-  document: React.PropTypes.bool,
+  item: PropTypes.object,
+  subItems: PropTypes.array,
+  document: PropTypes.bool,
 }
 
 AddToCompare.defaultProps = {

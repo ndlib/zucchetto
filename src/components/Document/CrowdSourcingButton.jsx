@@ -1,6 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react'
-import mui from 'material-ui';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+import mui, {FontIcon} from 'material-ui';
 import _ from 'underscore';
 import ItemStore from '../../store/ItemStore.js'
 import SearchStore from '../../store/SearchStore.js';
@@ -99,28 +100,28 @@ class CrowdSourcingButton extends Component {
       return (
         <div style={this.style()}>
           <button onClick={this.yeaClick}>
-            <mui.FontIcon
+            <FontIcon
               className='material-icons'
               title='Mark as well tagged.'
               style={this.fontStyle()}
-            >thumb_up</mui.FontIcon>
+            >thumb_up</FontIcon>
           </button>
           <button onClick={this.nayClick}>
-            <mui.FontIcon
+            <FontIcon
               className='material-icons'
               title='Mark as poorly tagged.'
               style={this.fontStyle()}
-            >thumb_down</mui.FontIcon>
+            >thumb_down</FontIcon>
           </button> {this.props.actor}
         </div>
       )
       } else {
         return (
           <div style={this.style(true)}>
-            <mui.FontIcon
+            <FontIcon
               className='material-icons'
               style={this.fontStyle(true)}
-            >{this.state.voteType}</mui.FontIcon> {this.props.actor}
+            >{this.state.voteType}</FontIcon> {this.props.actor}
           </div>
         )
       }
@@ -128,9 +129,9 @@ class CrowdSourcingButton extends Component {
   }
 }
 CrowdSourcingButton.propTypes = {
-  actor: React.PropTypes.string.isRequired,
-  item: React.PropTypes.object.isRequired,
-  marked: React.PropTypes.bool,
+  actor: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
+  marked: PropTypes.bool,
 }
 
 export default CrowdSourcingButton

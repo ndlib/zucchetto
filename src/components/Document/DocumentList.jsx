@@ -1,6 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import GroupBySource from '../../modules/GroupBySource.js';
 import SortedParents from '../../modules/SortedParents.js';
 import DocumentLink from './DocumentLink.jsx';
@@ -42,8 +42,8 @@ class DocumentList extends Component {
 
 
 DocumentList.propTypes = {
-  items: React.PropTypes.array,
-  type: React.PropTypes.string,
+  items: PropTypes.array,
+  type: PropTypes.string,
 }
 
 export default DocumentList;

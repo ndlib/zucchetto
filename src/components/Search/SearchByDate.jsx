@@ -1,8 +1,7 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import TextField from 'material-ui/lib/text-field';
-import Toggle from 'material-ui/lib/toggle';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types'
+import { DatePicker, TextField, Toggle } from 'material-ui';
 
 class SearchByDate extends Component {
 
