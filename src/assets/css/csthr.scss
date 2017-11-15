@@ -564,6 +564,8 @@ footer {
 	}
 }
 
+
+
 a.right {
 	float:right;
 }
@@ -998,7 +1000,25 @@ a.main-heading {
 		bottom:auto;
 		top:60px;
 	}
+	
 }
+
+@media screen and (max-height: 760px) {
+	.index footer {
+		margin-bottom: 0;
+	}
+	.index .search {
+		margin-top:5vh;
+	}
+	.index nav {
+		padding:15px 0;
+	}
+	.index {
+
+	}
+}
+
+
 
 .crowdsourcing-buttons {
   margin-top: 1em;
