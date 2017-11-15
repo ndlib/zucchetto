@@ -926,6 +926,11 @@ footer.homepage {
 	}
 }
 
+.howToIcon:hover {
+  background-color: $ltgrey;
+  cursor: pointer;
+}
+
 a.main-heading {
   color: $yellow;
 }
