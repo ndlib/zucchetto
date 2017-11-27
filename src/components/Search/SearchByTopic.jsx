@@ -4,6 +4,7 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types'
 import TopicFacets from './TopicFacets.jsx';
 import topics from './topics.js';
+import HowTo from './TopicSearchHowTo.jsx'
 
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
@@ -43,7 +44,8 @@ class SearchByTopic extends Component {
           backgroundColor="#F8F6ED"
           style={{
             float: 'right',
-            lineHeight: 'inherit'
+            lineHeight: 'inherit',
+            marginTop: '17px',
           }}
           labelStyle={{
             color: "#224048",
@@ -62,7 +64,8 @@ class SearchByTopic extends Component {
     return (
         <div>
           { this.makeClearButton() }
-          <h1 style={{ fontSize: "30px" }}>Search By Topic</h1>
+          <h1 style={{ fontSize: "30px", display: 'inline-block' }}>Search By Topic</h1>
+          <HowTo />
           <ul className='filters' style={{
               listStyleType: 'none',
               paddingLeft: '0',
