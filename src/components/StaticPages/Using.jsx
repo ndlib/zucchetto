@@ -16,52 +16,72 @@ class Using extends Component{
           <div className="col-sm-9 right-col info-page">
           <h1>How To Use the Database</h1>
           <div className="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/czl3Qhjk9PE" frameborder="0" allowfullscreen></iframe></div>
+          <h2>User Guide</h2>
+          <p><a href="https://drive.google.com/file/d/1qntwMEWgYZYg5xl1t1RvkzKuMwPEMBlX/view" target="_blank">Read More (PDF)</a></p>
           <h2>FAQ</h2>
-          <p><strong>What is Catholic Social Teaching?</strong></p>
+
+<ul>
+<li><a href="#1">What is Catholic Social Teaching?</a></li>
+<li><a href="#2">What is the scope of documents included in this database?</a></li>
+<li><a href="#3">What is the metadata of a document?</a></li>
+<li><a href="#4">What is meant by relevance?</a></li>
+<li><a href="#5">How do I use the Share / Save option?</a></li>
+<li><a href="#6">What does a particular topic mean?</a></li>
+<li><a href="#7">Where is my keyword / topic in the text?</a></li>
+<li><a href="#8">How do I compare documents?</a></li>
+<li><a href="#9">How were paragraphs / articles tagged?</a></li>
+<li><a href="#10">How do I search by topic? / What happens when I search by topic?</a></li>
+<li><a href="#11">How do I search by keyword? / What happens when I search by keyword?</a></li>
+<li><a href="#12">How do I search by topic AND keyword? / What happens when I search by topic AND by keyword?</a></li>
+<li><a href="#13">How do I edit my original search?</a></li>
+</ul>
+
+
+          <p><strong><a name="1"></a>What is Catholic Social Teaching?</strong></p>
 <p>Catholic social teaching includes statements issued from the teaching authority of the Catholic Church on a myriad of social issues. These statements interpret social issues and provide guidance on response to these situations based on the truth that God has revealed to about Himself.
 </p>
-<p><strong>What is the scope of documents included in this database?</strong></p>
+<p><strong><a name="2"></a>What is the scope of documents included in this database?</strong></p>
 <p>The documents in this database are documents of Catholic social teaching and international human rights law. We are continually seeking to update the database with more documents. If there are documents you would like to see added that fall under one of the two main categories please feel free to contact us from the “Contact Us” page.
 </p>
-<p><strong>What is the metadata of a document?</strong></p>
+<p><strong><a name="3"></a>What is the metadata of a document?</strong></p>
 <p>The metadata of a document is all of the information about a particular document. This includes all of the tags that have been added to each paragraph about the content of the paragraph. The metadata includes tags related to the topic list but can also include tags for specific people, places, organizations, and documents.
 </p>
-<p><strong>What is meant by relevance?</strong></p>
+<p><strong><a name="4"></a>What is meant by relevance?</strong></p>
 <p>By default, Convocate will sort results by Relevance. This means that the document with the single most relevant paragraph will appear at the top of the list. Within this document, paragraphs will be returned in order from the most relevant to the least relevant. The next document returned will be the document with the next most relevant paragraph, not considering any paragraphs from the first document.
 </p><p>The most relevant paragraph is determined by the SOLR search engine of the database. When searching for multiple topics or keywords, SOLR takes into account both the number of different topics that all appear in the same paragraph and the number of times particular words appear in the text. Although rare, this means that it is possible for a paragraph with less of the chosen topics but more instances of a particular word to be considered more relevant to your search than a paragraph with more of the chosen topics. 
 </p>
-<strong>How do I use the Share/Save option?</strong>
+<p><strong><a name="5"></a>How do I use the Share / Save option?</strong></p>
 <p>You may save the contents of your comparison for later retrieval, or to share with others. At the top of the comparison frame, click Share/Save. A pop-up window will offer to copy a link into your clipboard, which you may then copy into an email. This link will take anyone directly to Convocate’s comparison frame, populated with the documents that you have chosen and the related highlighted paragraphs.
 </p><p>Note: Save/Share preserves only the contents of your comparison – all those paragraphs chosen to send to the comparison frame. It does not save your search parameters. It also does not preserve the particular documents you had opened side-by-side when you clicked the Share/Save button.
 </p>
-<p><strong>What does a particular topic mean?</strong></p>
-<p>Each topic of the topic list has a range of possibilities of meanings depending on how restrictive or open the topic is applied to each individual paragraph. A summary of the particular topics and how they were applied to individual paragraphs is available at this link.
+<p><strong><a name="6"></a>What does a particular topic mean?</strong></p>
+<p>Each topic of the topic list has a range of possibilities of meanings depending on how restrictive or open the topic is applied to each individual paragraph. A summary of the particular topics and how they were applied to individual paragraphs is available at <a href="https://humanrights.nd.edu/research/csthr-topic-list/" target="_blank">this link</a>.
 </p>
-<p><strong>Where is my keyword/topic in the text?</strong></p>
+<p><strong><a name="7"></a>Where is my keyword / topic in the text?</strong></p>
 <p>You will not necessarily find the exact keyword or topic in the text of the returned paragraphs. This is because Convocate searches paragraphs that have been tagged, and these tags have been applied when the text relates to the topic, even if the exact word or phrase is not found within the text. The topic list searches for concepts, not language.
 </p>
-<p><strong>How do I compare documents?</strong></p>
+<p><strong><a name="8"></a>How do I compare documents?</strong></p>
 <p>Under the title of each returned document, Convocate will indicate the number of results in the document (the number of relevant paragraphs). Clicking this link will open up a view of those paragraphs. They can then be reviewed and chosen for comparison by clicking Compare. Alternatively, the user may click Compare All to choose all paragraphs in the document.
 </p><p>When a paragraph is chosen for comparison, this will be indicated in a pop-up notification at the bottom of the page. It will also be indicated at the top of the page – the Compare Paragraphs button will turn gold and the number of paragraphs chosen will be indicated there. When all results have been chosen for comparison, click the gold Compare Paragraphs button at the top of the screen. Convocate will advance to the comparison frame.
 </p><p>Please note that this is a research tool – it helps those interested in comparison work by bringing together documents in one platform and returning search results that might not easily be found through traditional word searches. The deeper analysis of the texts is left to the researcher.
 </p>
-<p><strong>How were paragraphs/articles tagged?</strong></p>
+<p><strong><a name="9"></a>How were paragraphs / articles tagged?</strong></p>
 <p>The first core documents of the database were originally tagged by hand by scholars from the fields of human rights and Catholic theology. Each paragraph was analyzed for its content and tagged for the topics which were found within the paragraph. Each topic of the topic list has a range of possibilities of meanings depending on how restrictive or open the topic is applied to each individual paragraph. A summary of the particular topics and how they were applied to individual paragraphs is available at this link.
 </p>
 
 <p>After the initial first round of tagging, natural language processing techniques were utilized to classify newly added texts. Parameters were set in order to tag a wider range of paragraphs. This process yields false positives but is intended to capture those paragraphs that scholars may otherwise miss. Please feel free to provide feedback via the Report Error button and Contact Us page especially for any false positives as we continue to improve our tagging accuracy.
 </p>
-<p><strong>How do I search by topic?/ What happens when I search by topic?</strong></p>
+<p><strong><a name="10"></a>How do I search by topic? / What happens when I search by topic?</strong></p>
 <p>Convocate’s Topic List is composed of predetermined topics categorized into four main sections: Actors, Harms and Violations, Rights and Freedoms, and Principles and Values. Multiple topics may be selected at the same time. The search engine uses the “OR” Boolean to search the database – any document that deals with any of the selected topics will be returned. The document containing the paragraph most relevant to the search will be listed first, followed by the document containing the paragraph of second most relevance, etc.
 </p><p>Using the Topic List to search the database only returns those texts that have been tagged with the corresponding topics. These tags have been applied either manually by scholars or via various methods of computer classification. It is important to note that tags have been applied when the text relates to the topic, even if the exact word or phrase is not found within the text. The topic list searches for concepts, not language.
 </p>
-<p><strong>How do I search by keyword? /What happens when I search by keyword?</strong></p>
+<p><strong><a name="11"></a>How do I search by keyword? / What happens when I search by keyword?</strong></p>
 <p>Keywords or phrases can be entered into the Keyword Search bar. This search method will look at all document data (text and metadata) for specific words and phrases (also common synonyms and alternate spellings). Using quotation marks will force the search engine to look for an exact match. When quotation marks are not used, the search engine will stem the word in order to return more results. For example, if the researcher enters children, document data that contains the word child will also be returned. The keyword search accepts a full range of Boolean modifiers.
 </p>
-<p><strong>How do I search by topic AND keyword? / What happens when I search by topic AND by keyword?</strong></p>
+<p><strong><a name="12"></a>How do I search by topic AND keyword? / What happens when I search by topic AND by keyword?</strong></p>
 <p>Topic and Keyword searches can be combined for focused results. Combining the two search methods will return documents containing the specified topic(s), then eliminate all that do not also contain the specified keyword in either the text of the document or the document’s metadata.
 </p>
-<p><strong>How do I edit my original search?</strong></p>
+<p><strong><a name="13"></a>How do I edit my original search?</strong></p>
 <p>You may change or refine your search at any time during comparison. To change search parameters, use the Back To Search link at the top of the comparison frame. Your original search will still be active, and you may adjust it before returning to the comparison frame.
 </p><p>Note: Do NOT use your browser’s back arrows to return to the search panel, and do NOT use Convocate’s main menu (upper left corner). Either of these methods will result in loss of your search parameters. Always use the Back To Search link.
 </p>
