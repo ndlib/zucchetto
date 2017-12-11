@@ -16,6 +16,12 @@ class Using extends Component{
           <div className="col-sm-9 right-col info-page">
           <h1>How To Use the Database</h1>
           <div className="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/czl3Qhjk9PE" frameborder="0" allowfullscreen></iframe></div>
+          <h2>User Guide</h2>
+          <p>This guide is intended as a brief introduction to the Convocate platform. It will help
+familiarize the researcher with main features and provide instructions for performing
+basic searches. To fully appreciate the power of Convocate, we recommend working
+through the User’s Guide first, then exploring the database on your own.</p>
+          <p><a href='https://drive.google.com/file/d/1qntwMEWgYZYg5xl1t1RvkzKuMwPEMBlX/view' target='_blank'>Convocate User Guide</a> <small><i>(Right click and select 'Save as...' to download.)</i></small></p>
           <h2>FAQ</h2>
           <p><strong>What is Catholic Social Teaching?</strong></p>
 <p>Catholic social teaching includes statements issued from the teaching authority of the Catholic Church on a myriad of social issues. These statements interpret social issues and provide guidance on response to these situations based on the truth that God has revealed to about Himself.
@@ -28,7 +34,7 @@ class Using extends Component{
 </p>
 <p><strong>What is meant by relevance?</strong></p>
 <p>By default, Convocate will sort results by Relevance. This means that the document with the single most relevant paragraph will appear at the top of the list. Within this document, paragraphs will be returned in order from the most relevant to the least relevant. The next document returned will be the document with the next most relevant paragraph, not considering any paragraphs from the first document.
-</p><p>The most relevant paragraph is determined by the SOLR search engine of the database. When searching for multiple topics or keywords, SOLR takes into account both the number of different topics that all appear in the same paragraph and the number of times particular words appear in the text. Although rare, this means that it is possible for a paragraph with less of the chosen topics but more instances of a particular word to be considered more relevant to your search than a paragraph with more of the chosen topics. 
+</p><p>The most relevant paragraph is determined by the SOLR search engine of the database. When searching for multiple topics or keywords, SOLR takes into account both the number of different topics that all appear in the same paragraph and the number of times particular words appear in the text. Although rare, this means that it is possible for a paragraph with less of the chosen topics but more instances of a particular word to be considered more relevant to your search than a paragraph with more of the chosen topics.
 </p>
 <strong>How do I use the Share/Save option?</strong>
 <p>You may save the contents of your comparison for later retrieval, or to share with others. At the top of the comparison frame, click Share/Save. A pop-up window will offer to copy a link into your clipboard, which you may then copy into an email. This link will take anyone directly to Convocate’s comparison frame, populated with the documents that you have chosen and the related highlighted paragraphs.
@@ -46,7 +52,7 @@ class Using extends Component{
 </p><p>Please note that this is a research tool – it helps those interested in comparison work by bringing together documents in one platform and returning search results that might not easily be found through traditional word searches. The deeper analysis of the texts is left to the researcher.
 </p>
 <p><strong>How were paragraphs/articles tagged?</strong></p>
-<p>The first core documents of the database were originally tagged by hand by scholars from the fields of human rights and Catholic theology. Each paragraph was analyzed for its content and tagged for the topics which were found within the paragraph. Each topic of the topic list has a range of possibilities of meanings depending on how restrictive or open the topic is applied to each individual paragraph. A summary of the particular topics and how they were applied to individual paragraphs is available at this link.
+<p>The first core documents of the database were originally tagged by hand by scholars from the fields of human rights and Catholic theology. Each paragraph was analyzed for its content and tagged for the topics which were found within the paragraph. Each topic of the topic list has a range of possibilities of meanings depending on how restrictive or open the topic is applied to each individual paragraph. A summary of the particular topics and how they were applied to individual paragraphs is available at <a href='https://humanrights.nd.edu/research/csthr-topic-list/' target='_blank'>this link</a>.
 </p>
 
 <p>After the initial first round of tagging, natural language processing techniques were utilized to classify newly added texts. Parameters were set in order to tag a wider range of paragraphs. This process yields false positives but is intended to capture those paragraphs that scholars may otherwise miss. Please feel free to provide feedback via the Report Error button and Contact Us page especially for any false positives as we continue to improve our tagging accuracy.
