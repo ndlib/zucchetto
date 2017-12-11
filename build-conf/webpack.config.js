@@ -1,5 +1,6 @@
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require('path')
 
 module.exports = [
   {
@@ -11,6 +12,7 @@ module.exports = [
         path: path.join(__dirname, '../public'),
         filename: 'resources/bundle.js'
     },
+    devtool: 'inline-source-map',
     module: {
       rules: [
         {
@@ -46,15 +48,12 @@ module.exports = [
     },
     plugins: [
       new ExtractTextPlugin("resources/styles.css"),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
+      new webpack.LoaderOptionsPlugin({
+        debug: true
       }),
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify("production")
+          NODE_ENV: JSON.stringify("development")
         }
       })
     ],
