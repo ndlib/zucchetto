@@ -16,6 +16,7 @@ class Using extends Component{
           <div className="col-sm-9 right-col info-page">
           <h1>How To Use the Database</h1>
           <div className="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/czl3Qhjk9PE" frameborder="0" allowfullscreen></iframe></div>
+          <h2>User Guide</h2>
           <p>This guide is intended as a brief introduction to the Convocate platform. It will help
 familiarize the researcher with main features and provide instructions for performing
 basic searches. To fully appreciate the power of Convocate, we recommend working
@@ -51,7 +52,7 @@ through the User’s Guide first, then exploring the database on your own.</p>
 </p>
 <p><strong><a name="4"></a>What is meant by relevance?</strong></p>
 <p>By default, Convocate will sort results by Relevance. This means that the document with the single most relevant paragraph will appear at the top of the list. Within this document, paragraphs will be returned in order from the most relevant to the least relevant. The next document returned will be the document with the next most relevant paragraph, not considering any paragraphs from the first document.
-</p><p>The most relevant paragraph is determined by the SOLR search engine of the database. When searching for multiple topics or keywords, SOLR takes into account both the number of different topics that all appear in the same paragraph and the number of times particular words appear in the text. Although rare, this means that it is possible for a paragraph with less of the chosen topics but more instances of a particular word to be considered more relevant to your search than a paragraph with more of the chosen topics. 
+</p><p>The most relevant paragraph is determined by the SOLR search engine of the database. When searching for multiple topics or keywords, SOLR takes into account both the number of different topics that all appear in the same paragraph and the number of times particular words appear in the text. Although rare, this means that it is possible for a paragraph with less of the chosen topics but more instances of a particular word to be considered more relevant to your search than a paragraph with more of the chosen topics.
 </p>
 <p><strong><a name="5"></a>How do I use the Share / Save option?</strong></p>
 <p>You may save the contents of your comparison for later retrieval, or to share with others. At the top of the comparison frame, click Share/Save. A pop-up window will offer to copy a link into your clipboard, which you may then copy into an email. This link will take anyone directly to Convocate’s comparison frame, populated with the documents that you have chosen and the related highlighted paragraphs.
