@@ -6,7 +6,7 @@ module.exports = [
   {
     name: "browser",
     entry: {
-        main: path.join(__dirname, '../src/main.js')
+        main: ['babel-polyfill', path.join(__dirname, '../src/main.js')]
     },
     output: {
         path: path.join(__dirname, '../public'),
@@ -23,7 +23,7 @@ module.exports = [
           query: {
             cacheDirectory: true,
             presets: ['react', 'es2015', 'stage-0'],
-            plugins: ['transform-runtime', 'add-module-exports']
+            plugins: ['transform-runtime', 'transform-object-assign', 'add-module-exports']
           }
         },
         {
