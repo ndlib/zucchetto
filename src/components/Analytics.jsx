@@ -31,7 +31,9 @@ class Analytics extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.state.location) {
+      // if pathname and/or search properties of location change - fire tracking
       if((this.state.location.pathname !== nextProps.history.location.pathname) || (this.state.location.search !== nextProps.history.location.search)) {
+
         this.logPageView(nextProps.history.location)
         this.setState({location: nextProps.history.location})
       }

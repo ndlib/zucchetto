@@ -1,6 +1,5 @@
 import React from 'react';
 import { browserHistory, Switch, Route } from 'react-router'
-import { withRouter } from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom';
 import SiteIndexPage from './SiteIndexPage.jsx';
 import AboutPage from './AboutPage.jsx';
@@ -19,7 +18,6 @@ import InitUserPage from './InitUserPage.jsx'
 import Analytics from '../components/Analytics.jsx'
 
 const routes = () => {
-
   return (
     <BrowserRouter history={browserHistory}>
       <Analytics>
