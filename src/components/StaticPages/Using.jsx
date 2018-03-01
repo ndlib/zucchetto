@@ -15,7 +15,7 @@ class Using extends Component{
           </div>
           <div className="col-sm-9 right-col info-page">
           <h1>How To Use the Database</h1>
-          <div className="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/czl3Qhjk9PE" frameborder="0" allowfullscreen></iframe></div>
+          <div className="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/czl3Qhjk9PE" frameBorder="0" allowFullScreen></iframe></div>
           <h2>User Guide</h2>
           <p>This guide is intended as a brief introduction to the Convocate platform. It will help
 familiarize the researcher with main features and provide instructions for performing
