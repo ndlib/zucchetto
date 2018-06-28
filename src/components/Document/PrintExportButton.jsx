@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { FlatButton, FontIcon } from 'material-ui'
-import _ from 'underscore'
 import ItemStore from '../../store/ItemStore.js'
 import ItemQueryParams from '../../modules/ItemQueryParams.js'
 import VaticanID from '../../constants/VaticanID.js'
