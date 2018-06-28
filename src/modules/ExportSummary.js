@@ -3,7 +3,7 @@ const _formatParagraphs = (paragraphs) => {
   let output = ''
   paragraphs.forEach((paragraph) => {
     const cleanDescription = paragraph.description.replace(/<\/?[^>]+(>|$)/g, "").trim()
-    output += `${cleanDescription}\n\n`
+    output += `${cleanDescription}\r\n\r\n`
   })
   return output
 }
@@ -24,13 +24,13 @@ const _formatDoc = (item) => {
 
   keys.forEach((key) => {
     if(item.doc.metadata[key]) {
-      output += `${item.doc.metadata[key].label}: ${item.doc.metadata[key].values[0].value}\n`
+      output += `${item.doc.metadata[key].label}: ${item.doc.metadata[key].values[0].value}\r\n`
     }
   })
-  output += `Full Document URL: https://convocate.nd.edu/document/${item.doc.id}\n`
-  output += '\n'
+  output += `Full Document URL: https://convocate.nd.edu/document/${item.doc.id}\r\n`
+  output += '\r\n'
   output += _formatParagraphs(item.paragraphs)
-  output += '\n'
+  output += '\r\n'
   return output
 }
 
@@ -48,16 +48,16 @@ const _download = (output) => {
 const ExportSummary = (vaticanDocs, humanrightsDocs) => {
   let output = ''
 
-  output += `Retrieved from https://convocate.nd.edu on ${new Date()}\n\n`
+  output += `Retrieved from https://convocate.nd.edu on ${new Date()}\r\n\r\n`
 
   if(vaticanDocs && vaticanDocs.length > 0) {
-    output += `Catholic Social Teachings:\n\n`
+    output += `Catholic Social Teachings:\r\n\r\n`
     vaticanDocs.forEach((item) => {
       output += _formatDoc(item)
     })
   }
   if(humanrightsDocs && humanrightsDocs.length > 0) {
-    output += `International Human Rights:\n\n`
+    output += `International Human Rights:\r\n\r\n`
     humanrightsDocs.forEach((item) => {
       output += _formatDoc(item)
     })
