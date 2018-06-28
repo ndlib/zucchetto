@@ -9,23 +9,11 @@ import GroupItemsByParent from '../../modules/GroupItemsByParent.js'
 import ExportSummary from '../../modules/ExportSummary.js'
 
 class PrintExportButton extends Component {
-  constructor(props) {
-    super(props)
-    this.setDocuments = this.setDocuments.bind(this)
-  }
-  componentWillMount() {
-    this.setDocuments()
-  }
-
-  setDocuments() {
-    var humanrightsRequested = GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')))
-
-    var vaticanRequested = GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')))
-
-    this.setState({
-      humanrightsDocuments: humanrightsRequested,
-      vaticanDocuments: vaticanRequested
-    });
+  onClick() {
+    ExportSummary(
+      GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('h'))),
+      GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')))
+    )
   }
 
   render() {
@@ -34,11 +22,7 @@ class PrintExportButton extends Component {
         label="Download Saved Paragraphs"
         labelPosition="after"
         icon={<FontIcon className="material-icons">print</FontIcon>}
-        onClick={
-          ()=>{
-            ExportSummary(this.state.vaticanDocuments, this.state.humanrightsDocuments)
-          }
-        }
+        onClick={ this.onClick }
         style={{ margin: "10px 5px" }}
       />
     )
