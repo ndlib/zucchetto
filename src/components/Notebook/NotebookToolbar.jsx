@@ -1,10 +1,10 @@
-'use strict'
-import React, { Component} from 'react';
+import  React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import mui, { Toolbar, ToolbarTitle, ToolbarGroup, FlatButton, FontIcon } from 'material-ui';
-import ManageDialog from '../Document/ManageDialog.jsx';
+import ManageDialog from '../Document/ManageDialog.jsx'
 import ShareSaveDialog from '../Document/ShareSaveDialog.jsx'
-import BackToSearchButton from '../Document/BackToSearchButton.jsx';
+import BackToSearchButton from '../Document/BackToSearchButton.jsx'
+import PrintExportButton from '../Document/PrintExportButton.jsx'
 
 class NotebookToolbar extends Component {
 
@@ -15,6 +15,7 @@ class NotebookToolbar extends Component {
           <ManageDialog />
           <ShareSaveDialog />
           <BackToSearchButton />
+          <PrintExportButton />
         </ToolbarGroup>
       </Toolbar>
      );

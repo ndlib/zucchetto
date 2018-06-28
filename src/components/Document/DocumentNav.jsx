@@ -47,8 +47,8 @@ class DocumentNav extends Component {
               label="Only Show Highlighted Paragraphs"
               labelPosition="right"
               onToggle={ this.props.toggleOnClick }
-              primary={ 'false' }
-              secondary={ 'false' }
+              primary={ false }
+              secondary={ false }
 
             />
           </div>
