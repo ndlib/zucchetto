@@ -1,3 +1,4 @@
+// Format all the paragraphs in an array from a single doc
 const _formatParagraphs = (paragraphs) => {
   let output = ''
   paragraphs.forEach((paragraph) => {
@@ -7,10 +8,19 @@ const _formatParagraphs = (paragraphs) => {
   return output
 }
 
+// Format individual doc with basic metadata and paragraph content
 const _formatDoc = (item) => {
   let output = ''
 
-  let keys = ['name', 'alternative_title', 'entry_into_force', 'date_promulgated', 'organization', 'rights_holder', 'rights_holder_website']
+  let keys = [
+    'name',
+    'alternative_title',
+    'entry_into_force',
+    'date_promulgated',
+    'organization',
+    'rights_holder',
+    'rights_holder_website'
+  ]
 
   keys.forEach((key) => {
     if(item.doc.metadata[key]) {
@@ -24,6 +34,7 @@ const _formatDoc = (item) => {
   return output
 }
 
+// Create blob file using formatted content and trigger download
 const _download = (output) => {
   let element = document.createElement('a')
   let file = new Blob([output], { type: 'text/plain' })
@@ -32,6 +43,8 @@ const _download = (output) => {
   element.click()
 }
 
+// Put it all together and make a downloadable file based on the arrays of docs
+// Takes an array of vatican documents and a second array of human rights docs
 const ExportSummary = (vaticanDocs, humanrightsDocs) => {
   let output = ''
 
