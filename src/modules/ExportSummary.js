@@ -2,6 +2,12 @@
 const _formatParagraphs = (paragraphs) => {
   let output = ''
   paragraphs.forEach((paragraph) => {
+    try{
+      output +=`${paragraph.metadata.short_description.values[0].value}\r\n`
+    } catch (error) {
+      console.log(error)
+    }
+    console.log()
     const cleanDescription = paragraph.description.replace(/<\/?[^>]+(>|$)/g, "").trim()
     output += `${cleanDescription}\r\n\r\n`
   })

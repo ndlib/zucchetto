@@ -10,8 +10,8 @@ import ExportSummary from '../../modules/ExportSummary.js'
 class PrintExportButton extends Component {
   onClick() {
     ExportSummary(
-      GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('h'))),
-      GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('v')))
+      GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('v'))),
+      GroupItemsByParent(ItemStore.getItemsByMultipleIds(ItemQueryParams('h')))
     )
   }
 
