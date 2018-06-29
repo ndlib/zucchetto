@@ -9,7 +9,7 @@ class HomePageNavigation extends Component {
       <nav>
         <ul className="contentnav">
           <li>
-            <Link to="/using">How To Use the Database</Link>
+            <Link to="/how-to-use-the-database">How To Use the Database</Link>
           </li>
           <li>
             <Link to="/documents">Index of Documents</Link>
@@ -17,13 +17,13 @@ class HomePageNavigation extends Component {
         </ul>
         <ul className="aboutnav">
           <li>
-            <Link to="/about">About the Database</Link>
+            <Link to="/about-the-database">About the Database</Link>
           </li>
           <li>
-            <Link to="/partners">Project Partners</Link>
+            <Link to="/project-partners">Project Partners</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact-us">Contact Us</Link>
           </li>
         </ul>
       </nav>

@@ -82,7 +82,7 @@ class Header extends Component {
           </div>
           <div style={{ position: "absolute", bottom: "140px", left: "35px" }}>
             <Link to="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"  className="feedback" target="_blank" style={{ backgroundColor: "white", textAlign: "center" }}>Project Feedback<br /></Link>
-            <span className="tearms"><Link to='/terms'>Terms of Service</Link> | <Link to="/privacy">Privacy Policy</Link></span>
+            <span className="tearms"><Link to='/terms-of-service'>Terms of Service</Link> | <Link to="/privacy-policy">Privacy Policy</Link></span>
           </div>
           <p
             style={{

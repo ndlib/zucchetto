@@ -512,7 +512,7 @@ nav {
 	max-height: calc(100vh - 138px);
 }
 
-.partners {
+.partners, .project-partners {
 	table {
 		width: 100%;
 		margin-bottom:4em;
@@ -897,7 +897,7 @@ footer.homepage {
   }
 }
 
-.info-page {
+.info-page, .about-the-database, .how-to-use-the-database {
 	margin-bottom: 50px;
 	padding-right: 50px;
 	h2 {
@@ -952,7 +952,8 @@ a.main-heading {
 	border:none;
 }
 
-.partners-c {
+.partners-c,
+.project-partners {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -964,7 +965,8 @@ a.main-heading {
 }
 
 
-.partners-c a {
+.partners-c a,
+.project-partners a {
 	margin-left:40px;
 	margin-bottom:20px;
 	max-width: 28%;
@@ -972,7 +974,8 @@ a.main-heading {
 	font-size:20px;
 }
 
-.partners-c li {
+.partners-c li,
+.project-partners li {
 	width:46%;
 	float: left;
 	list-style: none;
@@ -987,16 +990,19 @@ a.main-heading {
 }
 
 
-.partners-c img {
+.partners-c img,
+.project-partners img {
 	max-width:100%;
 	max-height:110px;
 }
 
-.partners-c .smaller img {
+.partners-c .smaller img
+.project-partners .smaller img {
 	max-height:70px;
 }
 
-.partners-c .larger img {
+.partners-c .larger img,
+.project-partners .larger img {
 	max-height:130px;
 }
 
@@ -1005,7 +1011,7 @@ a.main-heading {
 		bottom:auto;
 		top:60px;
 	}
-	
+
 }
 
 @media screen and (max-height: 760px) {
@@ -1023,22 +1029,24 @@ a.main-heading {
 	}
 }
 
-
-
 .crowdsourcing-buttons {
   margin-top: 1em;
 }
 
 .videoWrapper {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 25px;
-	height: 0;
+  position: relative  !important;
+  padding-bottom: 56.25% !important; /* 16:9 */
+  padding-top: 25px !important;
+  height: 0 !important;
 }
 .videoWrapper iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.partner-docs {
+  margin-bottom: 60px;
 }

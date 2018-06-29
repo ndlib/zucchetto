@@ -1,4 +1,3 @@
-"use strict"
 var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var ItemActionTypes = require("../constants/ItemActionTypes.jsx");
 var EventEmitter = require("../middleware/EventEmitter.js");
