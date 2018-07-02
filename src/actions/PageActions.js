@@ -1,7 +1,6 @@
-var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
-var PageActionTypes = require("../constants/PageActionTypes.jsx");
-var EventEmitter = require("../middleware/EventEmitter.js");
-var HoneycombURL = require("../modules/HoneycombURL.js");
+const AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
+const PageActionTypes = require("../constants/PageActionTypes.jsx");
+const EventEmitter = require("../middleware/EventEmitter.js");
 
 class PageActions {
   fetchSitePath() {
