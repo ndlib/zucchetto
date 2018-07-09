@@ -241,7 +241,6 @@ module.exports = {
             },
             { name: 'Coercion', value: 'h164' },
             { name: 'Domestic Violence', value: 'h159' },
-            { name: 'Murder', value: 'h160' },
             { name: 'Sexual Violence/Rape/Prostitution/Sex Trafficking', value: 'h161' },
             { name: 'Terrorism', value: 'h162' },
             { name: 'Torture/Cruel, Inhuman and Degrading Treatment', value: 'h163' }
@@ -282,17 +281,7 @@ module.exports = {
           value: 'r1',
           children: [
             { name: 'Association and Assembly', value: 'r2' },
-            {
-              name: 'Family Rights',
-              value: 'r3',
-              children: [
-                { name: 'Care of Children', value: 'r4' },
-                { name: 'Fundamental Unit of Society', value: 'r5' },
-                { name: 'Marriage/Divorce', value: 'r6' },
-                { name: 'Maternity', value: 'r7' },
-                { name: 'Reproductive Rights', value: 'r8' }
-              ]
-            },
+
             { name: 'Freedom from Slavery', value: 'r9' },
             { name: 'Humane Treatment', value: 'r10' },
             { name: 'Judicial Rights', value: 'r11' },
@@ -340,17 +329,6 @@ module.exports = {
                 { name: 'Aims of Education', value: 'r35' },
                 { name: 'Liberty of Parents', value: 'r36' },
                 { name: 'Religious/Moral Education', value: 'r37' }
-              ]
-            },
-            {
-              name: 'Family Rights',
-              value: 'r38',
-              children: [
-                { name: 'Care of Children', value: 'r39' },
-                { name: 'Fundamental Unit of Society', value: 'r40' },
-                { name: 'Marriage/Divorce', value: 'r41' },
-                { name: 'Maternity', value: 'r42' },
-                { name: 'Reproductive Rights', value: 'r43' }
               ]
             },
             {
@@ -407,6 +385,17 @@ module.exports = {
                 }
               ]
             }
+          ]
+        },
+        {
+          name: 'Family Rights',
+          value: 'r3',
+          children: [
+            { name: 'Care of Children', value: 'r4' },
+            { name: 'Fundamental Unit of Society', value: 'r5' },
+            { name: 'Marriage/Divorce', value: 'r6' },
+            { name: 'Maternity', value: 'r7' },
+            { name: 'Reproductive Rights', value: 'r8' }
           ]
         },
         { name: 'Self-Determination', value: 'r68' }
