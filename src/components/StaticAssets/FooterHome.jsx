@@ -18,7 +18,7 @@ class FooterHome extends Component {
           </div>
           <div className="col-sm-4" style={{textAlign: 'center', zIndex: '6'}} >
  <Link to="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"  className="feedback" target="_blank">Report a Problem<br /></Link>
-            <span className="tearms"><Link to='/terms'>Terms of Service</Link> | <Link to="/privacy">Privacy Policy</Link></span><br/>
+            <span className="tearms"><Link to='/terms-of-service'>Terms of Service</Link> | <Link to="/privacy-policy">Privacy Policy</Link></span><br/>
             <span className="copyright org tearms">
           <a href="http://www.nd.edu/copyright/">Copyright</a> &copy; 2017
           <a href="http://www.nd.edu/" className="org"> &nbsp;University of Notre Dame</a>
@@ -51,7 +51,7 @@ class FooterHome extends Component {
         <span className="tearms">
 <a href="http://www.nd.edu/about/accessibility/">Accessibility Information</a><br/>
 <Link to="https://docs.google.com/a/nd.edu/forms/d/1yCnSjl4nBCJYmw70_S2VfVx1LzgNQ-kmroOqapq6i0Q/viewform"  className="feedback" target="_blank">Report a Problem<br /></Link>
-            <span className="tearms"><Link to='/terms'>Terms of Service</Link> | <Link to="/privacy">Privacy Policy</Link></span><br/>
+            <span className="tearms"><Link to='/terms-of-service'>Terms of Service</Link> | <Link to="/privacy-policy">Privacy Policy</Link></span><br/>
 </span>
 
           </div>
