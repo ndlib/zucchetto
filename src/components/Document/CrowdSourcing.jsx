@@ -57,22 +57,20 @@ class CrowdSourcing extends Component {
   }
 
   setActors(item) {
-    let filteredActors = []
-    let sortedActors = []
+    let actors = []
     if(item.items.metadata && item.items.metadata.actors) {
       const regex = new RegExp(/^((?![a-z]\d{1,3})).*/gim)
-      
-      // Filter out a bunch of null values
+
       // Remove actors with generated, non-descritive names e.g. a201, h300
-      filteredActors = item.items.metadata.actors.values.filter((actor) => {
+      actors = item.items.metadata.actors.values.filter((actor) => {
+        // Filter out a bunch of null values
         return actor.value.match(regex) !== null
       }).map((actor) => {
         return actor.value.match(regex)
       })
-      // Sort into groups
-      sortedActors = this.sortActors(filteredActors)
+
     }
-    this.setState({actors: sortedActors, actorsSet: true})
+    this.setState({actors: this.sortActors(actors), actorsSet: true})
   }
 
   render() {
