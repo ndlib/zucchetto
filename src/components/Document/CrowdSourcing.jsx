@@ -45,9 +45,9 @@ class CrowdSourcing extends Component {
       let assigned = false
       let index = 0
       while (!assigned && index < sortedActors.length) {
-        if(_.where(this.state.topicArrays[index], {name: actor[0].trim()}).length > 0) {
+        if(_.where(this.state.topicArrays[index], {name: actor.value.trim()}).length > 0) {
           assigned = true
-          sortedActors[index].push(actor)
+          sortedActors[index].push(actor.value.trim())
         }
         index += 1
       }
@@ -65,8 +65,6 @@ class CrowdSourcing extends Component {
       actors = item.items.metadata.actors.values.filter((actor) => {
         // Filter out a bunch of null values
         return actor.value.match(regex) !== null
-      }).map((actor) => {
-        return actor.value.match(regex)
       })
 
     }
@@ -90,7 +88,7 @@ class CrowdSourcing extends Component {
               (actor) => {
                 buttons.push(
                   <CrowdSourcingButton
-                    actor={actor.join()}
+                    actor={actor}
                     doc={this.state.doc}
                     item={this.props.item}
                     marked={false}
