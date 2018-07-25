@@ -26,6 +26,8 @@ class CrowdSourcing extends Component {
       ]
     }
     this.sortActors = this.sortActors.bind(this)
+    this.headings = [
+      'Actors', 'Harms and Violations', 'Rights and Freedoms', 'Principles and Values']
   }
 
   componentWillMount() {
@@ -47,7 +49,7 @@ class CrowdSourcing extends Component {
       while (!assigned && index < sortedActors.length) {
         if(_.where(this.state.topicArrays[index], {name: actor.value.trim()}).length > 0) {
           assigned = true
-          sortedActors[index].push(actor.value.trim())
+          sortedActors[index].push({label: actor.value.trim(), category: this.headings[index]})
         }
         index += 1
       }
@@ -72,8 +74,7 @@ class CrowdSourcing extends Component {
   }
 
   render() {
-    const headings = [
-      'Actors', 'Harms and Violations', 'Rights and Freedoms', 'Principles and Values']
+
     // Only render if user has a uuid and the actors have been set.
     if(this.state.uuid && this.state.actorsSet) {
       let buttons = []
@@ -82,7 +83,7 @@ class CrowdSourcing extends Component {
         (group, index) => {
           if(group.length > 0) {
             buttons.push(
-              <h5 key={buttons.length}>{headings[index]}</h5>
+              <h5 key={buttons.length}>{this.headings[index]}</h5>
             )
             group.forEach(
               (actor) => {
