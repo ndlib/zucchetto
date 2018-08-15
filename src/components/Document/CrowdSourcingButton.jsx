@@ -1,4 +1,3 @@
-'use strict'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import mui, {FontIcon} from 'material-ui';
@@ -50,12 +49,12 @@ class CrowdSourcingButton extends Component {
       }
       return
     })
-
     let data = {
       collection_id: this.props.item.collection_id,
       document_title: this.props.doc.name,
       paragraph: this.props.item.shortDescription,
-      actor: this.props.actor,
+      feedback_topic: this.props.actor.label,
+      feedback_topic_category: this.props.actor.category,
       search_topics: searchTopics.join(),
       search_topics_human: searchTopicsHuman.join(),
       user_search: document.getElementById('searchBox').value,
@@ -112,7 +111,7 @@ class CrowdSourcingButton extends Component {
               title='Mark as poorly tagged.'
               style={this.fontStyle()}
             >thumb_down</FontIcon>
-          </button> {this.props.actor}
+          </button> {this.props.actor.label}
         </div>
       )
       } else {
@@ -121,7 +120,7 @@ class CrowdSourcingButton extends Component {
             <FontIcon
               className='material-icons'
               style={this.fontStyle(true)}
-            >{this.state.voteType}</FontIcon> {this.props.actor}
+            >{this.state.voteType}</FontIcon> {this.props.actor.label}
           </div>
         )
       }
@@ -129,7 +128,7 @@ class CrowdSourcingButton extends Component {
   }
 }
 CrowdSourcingButton.propTypes = {
-  actor: PropTypes.string.isRequired,
+  actor: PropTypes.object.isRequired,
   item: PropTypes.object.isRequired,
   marked: PropTypes.bool,
 }
