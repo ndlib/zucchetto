@@ -91,8 +91,8 @@ class Header extends Component {
                 margin: '10px',
             }}
           >
-            <a href="http://humanrights.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Center For Civil and Human Rights" className="cchr m" /></a>
-            <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl-cds.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="cds" style={{ marginTop: '10px'}} /></a>
+            <a href="http://klau.nd.edu/" target="_blank" ><img src="/resources/images/cchr.png" alt="The Klau Center For Civil and Human Rights" className="cchr m" /></a>
+            <a href="https://library.nd.edu/cds" target="_blank" ><img src="/resources/images/undhl.png" alt="Hesburgh Library Center for Digital Scholarship University of Notre Dame" className="cds" style={{ margin: '15px auto 0', height: '49px', width: 'auto', position: 'relative', left: '16%'}} /></a>
           </p>
         </Drawer>
       </div>

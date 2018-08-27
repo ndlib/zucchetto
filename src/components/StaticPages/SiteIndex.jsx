@@ -67,7 +67,7 @@ var SiteIndex = createReactClass({
         <header>
           <div className="row">
             <div className="col-sm-12">
-              <h2>The Center for Civil and Human Rights and Hesburgh Libraries</h2>
+              <h2>The Klau Center for Civil and Human Rights and Hesburgh Libraries</h2>
               <h1>Convocate</h1>
               <h2>Bringing Catholic Social Teaching and International Human Rights into Dialogue</h2>
             </div>
